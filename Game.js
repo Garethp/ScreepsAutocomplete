@@ -1,3 +1,9 @@
+/**
+ * The main global game object containing all the gameplay information.
+ *
+ * @class
+ * @constructor
+ */
 var Game = function()
 {
 
@@ -61,27 +67,59 @@ Game.prototype = {
 	STRUCTURE_WALL: "constructedWall",
 
 	/**
-	 * @type Creep[]
+	 * A hash containing all your creeps with creep names as hash keys.
+	 *
+	 * @type Creeps[]
 	 */
 	creeps: null,
 
+	/**
+	 * A hash containing all your flags with flag names as hash keys.
+	 *
+	 * @type Flag[]
+	 */
 	flags: null,
 
 	/**
+	 * A hash containing all your spawns with spawn names as hash keys.
+	 *
 	 * @type Spawn[]
 	 */
 	spawns: null,
 
 	/**
+	 * A hash containing all your structures with structure id as hash keys.
+	 *
 	 * @type Structure[]
 	 */
 	structures: null,
 
+	/**
+	 * System game tick counter. It is automatically incremented on every tick.
+	 *
+	 * @type Number
+	 */
 	time: 0,
 
+	/**
+	 * Get an object with the specified unique ID. It may be a game object of any type. Only objects from the rooms which are visible to you can be accessed.
+	 *
+	 * @param id {String}
+	 */
 	getObjectById: function(id) { },
 
+	/**
+	 * Get an instance object of the specified room. You can gain access to a room only if you have a creep, spawn, or extension within it.
+	 *
+	 * @param name {String}
+	 * @return Room
+	 */
 	getRoom: function(name) { },
 
+	/**
+	 * Send a custom message at your profile email. This way, you can set up notifications to yourself on any occasion within the game. Not available in the Simulation Room.
+	 *
+	 * @param message {string} Custom text which will be sent in the message.
+	 */
 	notify: function(message) { }
 };
