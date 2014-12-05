@@ -36,7 +36,7 @@ Creep.prototype = {
 	 * An object with the creep’s owner info containing the following properties:
 	 *  - username
 	 *
-	 * @type object
+	 * @type Owner
 	 */
 	owner: null,
 

@@ -20,7 +20,7 @@ Structure.prototype = {
 	/**
 	 * An object with the structure’s owner info containing username
 	 *
-	 * @type Object
+	 * @type Owner
 	 */
 	owner: "",
 

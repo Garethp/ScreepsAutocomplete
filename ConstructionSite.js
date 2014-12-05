@@ -21,7 +21,7 @@ ConstructionSite.prototype = {
 	/**
 	 * An object with the structure’s owner info containing the following properties:
 	 *
-	 * @type object
+	 * @type Owner
 	 */
 	owner: null,
 

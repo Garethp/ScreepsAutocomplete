@@ -28,7 +28,7 @@ Spawn.prototype = {
 	/**
 	 * An object with the spawn’s owner info containing the following properties:
 	 *
-	 * @type string
+	 * @type Owner
 	 */
 	owner: "",
 
