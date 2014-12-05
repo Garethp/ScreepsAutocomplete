@@ -68,6 +68,8 @@ Room.prototype = {
 	 *  automatically attacks the structure. The default value is false.
 	 * @param {Boolean} [withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
 	 *  move your creeps safely. The default value is false.
+	 *
+	 *  @return {PathStep[]}
 	 */
 	findPath: function(fromPos, toPos, opts) { },
 
