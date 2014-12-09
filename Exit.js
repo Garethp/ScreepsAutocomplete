@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-Exit = function()
-{
+Exit = function () {
 
 };
 

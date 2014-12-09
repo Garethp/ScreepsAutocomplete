@@ -5,8 +5,7 @@
  * @class
  * @constructor
  */
-Room = function()
-{
+Room = function () {
 
 };
 
@@ -25,7 +24,8 @@ Room.prototype = {
 	 * @param {String} [name] The name of a new flag. It should be unique name, i.e. the Game.flags object should not
 	 *  contain another flag with the same name (hash key). If not defined, a random name will be generated.
 	 */
-	createFlag: function(x, y, name) { },
+	createFlag: function (x, y, name) {
+	},
 
 	/**
 	 * Create new ConstructionSite at the specified location.
@@ -33,7 +33,8 @@ Room.prototype = {
 	 * @param {Object} pos Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param {Object} structureType One of the game structure constants
 	 */
-	createConstructionSite: function(x, y, structureType) { },
+	createConstructionSite: function (x, y, structureType) {
+	},
 
 	/**
 	 * Find all objects of the specified type in the room.
@@ -42,7 +43,8 @@ Room.prototype = {
 	 * @param {Object|function|string} [opts.filter] The result list will be filtered using the Lodash.filter method.
 	 * @return {Object[]} An array with the objects found.
 	 */
-	find: function(type, opts) { },
+	find: function (type, opts) {
+	},
 
 	/**
 	 * Get the list of objects at the specified room position.
@@ -50,7 +52,8 @@ Room.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param {Object} [opts] See Room.find
 	 */
-	lookAt: function(x, y, opts) { },
+	lookAt: function (x, y, opts) {
+	},
 
 	/**
 	 * Find an optimal path between fromPos and toPos using A* search algorithm.
@@ -66,12 +69,16 @@ Room.prototype = {
 	 *  (constructed walls, ramparts, spawns, extensions) as walkable. Use this flag when you need to move through a
 	 *  territory blocked by hostile structures. If a creep with an ATTACK body part steps on such a square, it
 	 *  automatically attacks the structure. The default value is false.
-	 * @param {Boolean} [withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
+	 * @param {Number} [opts.heuristicWeight] Weight to apply to the heuristic to allow for suboptimal paths, in order to
+	 *  speed up the search. The less the value, the more accurate path will be found, but more CPU time could be used.
+	 *  The default value is 10.
+	 * @param {Boolean} [opts.withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
 	 *  move your creeps safely. The default value is false.
 	 *
 	 *  @return {PathStep[]}
 	 */
-	findPath: function(fromPos, toPos, opts) { },
+	findPath: function (fromPos, toPos, opts) {
+	},
 
 	/**
 	 * Creates a RoomPosition object at the specified location.
@@ -81,7 +88,8 @@ Room.prototype = {
 	 *
 	 * @return RoomPosition
 	 */
-	getPositionAt: function(x, y) { },
+	getPositionAt: function (x, y) {
+	},
 
 	/**
 	 * Create a room snapshot with all objects currently present in the room. Room snapshots are saved in your account
@@ -90,5 +98,6 @@ Room.prototype = {
 	 *
 	 * @param {string} [description] The description message which will be attached to the snapshot.
 	 */
-	makeSnapshot: function(description) { }
+	makeSnapshot: function (description) {
+	}
 };

@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-Energy = function()
-{
+Energy = function () {
 
 };
 

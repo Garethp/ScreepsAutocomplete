@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-var Game = function()
-{
+var Game = function () {
 
 };
 
@@ -106,7 +105,8 @@ Game.prototype = {
 	 *
 	 * @param id {String}
 	 */
-	getObjectById: function(id) { },
+	getObjectById: function (id) {
+	},
 
 	/**
 	 * Get an instance object of the specified room. You can gain access to a room only if you have a creep, spawn, or extension within it.
@@ -114,12 +114,14 @@ Game.prototype = {
 	 * @param name {String}
 	 * @return Room
 	 */
-	getRoom: function(name) { },
+	getRoom: function (name) {
+	},
 
 	/**
 	 * Send a custom message at your profile email. This way, you can set up notifications to yourself on any occasion within the game. Not available in the Simulation Room.
 	 *
 	 * @param message {string} Custom text which will be sent in the message.
 	 */
-	notify: function(message) { }
+	notify: function (message) {
+	}
 };

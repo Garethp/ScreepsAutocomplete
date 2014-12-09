@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-Structure = function()
-{
+Structure = function () {
 
 };
 
