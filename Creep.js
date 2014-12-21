@@ -189,7 +189,7 @@ Creep.prototype = {
 	 * pos.findPathTo() and move() methods. Needs the MOVE body part.
 	 *
 	 * @param target {Object} Can be a RoomPosition object or any object containing RoomPosition.
-	 * @param [opts] An object containing pathfinding options flags (see Room.findPath for more info).
+	 * @param [opts] {Object} An object containing pathfinding options flags (see Room.findPath for more info).
 	 */
 	moveTo: function (target, opts) {
 	},
@@ -233,4 +233,14 @@ Creep.prototype = {
 	 */
 	transferEnergy: function (target, amount) {
 	}
+};
+
+/**
+ * Find the optimal path to the target within the same room and move to it. A shorthand to consequent calls of
+ * pos.findPathTo() and move() methods. Needs the MOVE body part.
+ *
+ * @param x {Number} X position of the target in the room.
+ * @param y {Number} Y position of the target in the room.
+ */
+Creep.prototype.move = function(x, y) {
 };
