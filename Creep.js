@@ -1,11 +1,11 @@
 /**
  * Creeps are your units. Creeps can move, harvest energy, construct structures, attack another creeps, and perform other actions. Each creep consists of the following body parts:
  *  - MOVE Cost: 50 Effect: Moves a creep 1 square per tick per 1 other body part
- *  - WORK Cost: 20 Effect: Harvests 2 energy units from a source per tick; constructs a structure for 1 energy per tick; repairs a structure for 10 hits per tick.
+ *  - WORK Cost: 20 Effect: Harvests 2 energy units from a source per tick; constructs a structure for 5 energy units per tick; Repairs a structure for 20 hits per tick consuming 2 energy unit per tick.
  *  - CARRY Cost: 50 Effect: Can contain up to 50 energy units.
- *  - ATTACK Cost: 100 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
- *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 15 hits per tick in a long-ranged attack up to 3 squares long.
- *  - HEAL: Cost: 200 Effect: Heals another creep restoring 10 hits per tick.
+ *  - ATTACK Cost: 80 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
+ *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 10 hits per tick in a long-ranged attack up to 3 squares long.
+ *  - HEAL: Cost: 200 Effect: Heals another creep restoring 12 hits per tick in short range or 4 hits per tick at a distance.
  *  - TOUGH: Cost: 5 Effect: No effect
  *
  * @class
@@ -209,6 +209,16 @@ Creep.prototype = {
 	 * @param target {Creep|Spawn|Structure} The target object to be attacked.
 	 */
 	rangedAttack: function (target) {
+	},
+
+	/**
+	 * Heal another creep at a distance. It will restore the target creep’s
+	 * damaged body parts function and increase the hits counter. Needs the HEAL body part.
+	 * The target has to be within 3 squares range of the creep.
+	 *
+	 * @param target {Creep} The creep target object
+	 */
+	rangedHeal: function (target) {
 	},
 
 	/**
