@@ -190,6 +190,12 @@ Creep.prototype = {
 	 *
 	 * @param target {Object} Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param [opts] {Object} An object containing pathfinding options flags (see Room.findPath for more info).
+	 * @param [opts.reusePath] {Number} This option enables reusing the path found along multiple game ticks.
+	 *  It allows to save CPU time, but can result in a slightly slower creep reaction behavior.
+	 *  The path is stored into the creep's memory to the _move property.
+	 *  The reusePath value defines the amount of ticks which the path should be reused for.
+	 *  The default value is 5. Increase the amount to save more CPU, decrease to make the movement more consistent.
+	 *  Set to 0 if you want to disable path reusing.
 	 */
 	moveTo: function (target, opts) {
 	},
@@ -222,11 +228,29 @@ Creep.prototype = {
 	},
 
 	/**
+	 * A ranged attack against all hostile creeps or structures within 3 squares range.
+	 * Needs the RANGED_ATTACK body part. The attack power depends on the range to each target.
+	 * Friendly units are not affected.
+	 */
+	rangedMassAttack: function () {
+	},
+
+	/**
 	 * Repair a damaged structure (spawn, extension, rampart, or road) using carried energy. Needs the WORK and CARRY body parts.
 	 *
 	 * @param target {Spawn|Structure} The target structure to be repaired.
 	 */
 	repair: function (target) {
+	},
+
+	/**
+	 * Display a visual speech balloon above the creep with the specified message.
+	 * The message will disappear after a few seconds. Useful for debugging purposes.
+	 * Only the creep's owner can see the speech message.
+	 *
+	 * @param message {String} The message to be displayed. Maximum length is 10 characters.
+	 */
+	say: function (message) {
 	},
 
 	/**

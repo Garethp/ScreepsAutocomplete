@@ -23,8 +23,9 @@ Room.prototype = {
 	 * @param {Object} pos Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param {String} [name] The name of a new flag. It should be unique name, i.e. the Game.flags object should not
 	 *  contain another flag with the same name (hash key). If not defined, a random name will be generated.
+	 * @param {String} [color] The color of a new flag. Should be one of the Game.COLOR_* constants. The default value is Game.COLOR_WHITE.
 	 */
-	createFlag: function (pos, name) {
+	createFlag: function (pos, name, color) {
 	},
 
 	/**
@@ -44,14 +45,6 @@ Room.prototype = {
 	 * @return {Object[]} An array with the objects found.
 	 */
 	find: function (type, opts) {
-	},
-
-	/**
-	 * Get the list of objects at the specified room position.
-	 *
-	 * @param {Object|RoomPosition} pos target Can be a RoomPosition object or any object containing RoomPosition.
-	 */
-	lookAt: function (pos) {
 	},
 
 	/**
@@ -84,6 +77,26 @@ Room.prototype = {
 	},
 
 	/**
+	 * Get the list of objects at the specified room position.
+	 *
+	 * @param {Object|RoomPosition} pos target Can be a RoomPosition object or any object containing RoomPosition.
+	 */
+	lookAt: function (pos) {
+	},
+
+	/**
+	 * Get the list of objects at the specified room area.
+	 * This method is more CPU efficient in comparison to multiple lookAt calls.
+	 *
+	 * @param {Number} top The top Y boundary of the area.
+	 * @param {Number} left The left X boundary of the area.
+	 * @param {Number} bottom The bottom Y boundary of the area.
+	 * @param {Number} right The right X boundary of the area.
+	 */
+	lookAtArea: function(top, left, bottom, right) {
+	},
+
+	/**
 	 * Creates a RoomPosition object at the specified location.
 	 *
 	 * @param x {Number} The X position.
@@ -112,8 +125,9 @@ Room.prototype = {
  * @param {Number} y The Y position.
  * @param {String} [name] The name of a new flag. It should be unique name, i.e. the Game.flags object should not
  *  contain another flag with the same name (hash key). If not defined, a random name will be generated.
+ * @param {String} [color] The color of a new flag. Should be one of the Game.COLOR_* constants. The default value is Game.COLOR_WHITE.
  */
-Room.prototype.createFlag = function(x, y, name) {
+Room.prototype.createFlag = function(x, y, name, color) {
 };
 
 /**
