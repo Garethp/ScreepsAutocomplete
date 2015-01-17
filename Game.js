@@ -65,6 +65,17 @@ Game.prototype = {
 	STRUCTURE_SPAWN: "spawn",
 	STRUCTURE_WALL: "constructedWall",
 
+	COLOR_RED: "red",
+	COLOR_PURPLE: "purple",
+	COLOR_BLUE: "blue",
+	COLOR_CYAN: "cyan",
+	COLOR_GREEN: "green",
+	COLOR_YELLOW: "yellow",
+	COLOR_ORANGE: "orange",
+	COLOR_BROWN: "brown",
+	COLOR_GREY: "grey",
+	COLOR_WHITE: "white",
+
 	/**
 	 * A hash containing all your creeps with creep names as hash keys.
 	 *
