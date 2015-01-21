@@ -76,10 +76,14 @@ Game.prototype = {
 	COLOR_GREY: "grey",
 	COLOR_WHITE: "white",
 
+	MODE_SIMULATION: "simulation",
+	MODE_SURVIVAL: "survival",
+	MODE_WORLD: "world",
+
 	/**
 	 * A hash containing all your creeps with creep names as hash keys.
 	 *
-	 * @type Creeps[]
+	 * @type Creep[]
 	 */
 	creeps: null,
 
@@ -89,6 +93,13 @@ Game.prototype = {
 	 * @type Flag[]
 	 */
 	flags: null,
+
+	/**
+	 * A hash containing all the rooms available to you with room names as hash keys.
+	 *
+	 * @type Room[]
+	 */
+	rooms: null,
 
 	/**
 	 * A hash containing all your spawns with spawn names as hash keys.
@@ -121,6 +132,8 @@ Game.prototype = {
 
 	/**
 	 * Get an instance object of the specified room. You can gain access to a room only if you have a creep, spawn, or extension within it.
+	 *
+	 * @deprecated This method is deprecated and will be removed soon.
 	 *
 	 * @param name {String}
 	 * @return Room

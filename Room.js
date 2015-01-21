@@ -10,6 +10,14 @@ Room = function () {
 };
 
 Room.prototype = {
+	/*
+	 * One of the following constants:
+	 * - Game.MODE_SIMULATION
+	 * - Game.MODE_SURVIVAL
+	 * - Game.MODE_WORLD
+	 */
+	mode: null,
+
 	/**
 	 * The name of the room.
 	 *
