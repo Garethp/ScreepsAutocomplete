@@ -66,14 +66,14 @@ Structure.prototype = {
 	my: true,
 
 	/**
-	 * The amount of energy containing in the extension.
+	 * The amount of energy containing in the extension. (Extensions only)
 	 *
 	 * @type number
 	 */
 	energy: 0,
 
 	/**
-	 * The total amount of energy the extension can contain.
+	 * The total amount of energy the extension can contain. (Extensions only)
 	 *
 	 * @type number
 	 */

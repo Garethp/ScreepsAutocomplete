@@ -1,11 +1,11 @@
 /**
  * Creeps are your units. Creeps can move, harvest energy, construct structures, attack another creeps, and perform other actions. Each creep consists of the following body parts:
  *  - MOVE Cost: 50 Effect: Moves a creep 1 square per tick per 1 other body part
- *  - WORK Cost: 20 Effect: Harvests 2 energy units from a source per tick; constructs a structure for 1 energy per tick; repairs a structure for 10 hits per tick.
+ *  - WORK Cost: 20 Effect: Harvests 2 energy units from a source per tick; constructs a structure for 5 energy units per tick; Repairs a structure for 20 hits per tick consuming 2 energy unit per tick.
  *  - CARRY Cost: 50 Effect: Can contain up to 50 energy units.
- *  - ATTACK Cost: 100 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
- *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 15 hits per tick in a long-ranged attack up to 3 squares long.
- *  - HEAL: Cost: 200 Effect: Heals another creep restoring 10 hits per tick.
+ *  - ATTACK Cost: 80 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
+ *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 10 hits per tick in a long-ranged attack up to 3 squares long.
+ *  - HEAL: Cost: 200 Effect: Heals another creep restoring 12 hits per tick in short range or 4 hits per tick at a distance.
  *  - TOUGH: Cost: 5 Effect: No effect
  *
  * @class
@@ -189,7 +189,13 @@ Creep.prototype = {
 	 * pos.findPathTo() and move() methods. Needs the MOVE body part.
 	 *
 	 * @param target {Object} Can be a RoomPosition object or any object containing RoomPosition.
-	 * @param [opts] An object containing pathfinding options flags (see Room.findPath for more info).
+	 * @param [opts] {Object} An object containing pathfinding options flags (see Room.findPath for more info).
+	 * @param [opts.reusePath] {Number} This option enables reusing the path found along multiple game ticks.
+	 *  It allows to save CPU time, but can result in a slightly slower creep reaction behavior.
+	 *  The path is stored into the creep's memory to the _move property.
+	 *  The reusePath value defines the amount of ticks which the path should be reused for.
+	 *  The default value is 5. Increase the amount to save more CPU, decrease to make the movement more consistent.
+	 *  Set to 0 if you want to disable path reusing.
 	 */
 	moveTo: function (target, opts) {
 	},
@@ -212,11 +218,39 @@ Creep.prototype = {
 	},
 
 	/**
+	 * Heal another creep at a distance. It will restore the target creep’s
+	 * damaged body parts function and increase the hits counter. Needs the HEAL body part.
+	 * The target has to be within 3 squares range of the creep.
+	 *
+	 * @param target {Creep} The creep target object
+	 */
+	rangedHeal: function (target) {
+	},
+
+	/**
+	 * A ranged attack against all hostile creeps or structures within 3 squares range.
+	 * Needs the RANGED_ATTACK body part. The attack power depends on the range to each target.
+	 * Friendly units are not affected.
+	 */
+	rangedMassAttack: function () {
+	},
+
+	/**
 	 * Repair a damaged structure (spawn, extension, rampart, or road) using carried energy. Needs the WORK and CARRY body parts.
 	 *
 	 * @param target {Spawn|Structure} The target structure to be repaired.
 	 */
 	repair: function (target) {
+	},
+
+	/**
+	 * Display a visual speech balloon above the creep with the specified message.
+	 * The message will disappear after a few seconds. Useful for debugging purposes.
+	 * Only the creep's owner can see the speech message.
+	 *
+	 * @param message {String} The message to be displayed. Maximum length is 10 characters.
+	 */
+	say: function (message) {
 	},
 
 	/**
@@ -233,4 +267,14 @@ Creep.prototype = {
 	 */
 	transferEnergy: function (target, amount) {
 	}
+};
+
+/**
+ * Find the optimal path to the target within the same room and move to it. A shorthand to consequent calls of
+ * pos.findPathTo() and move() methods. Needs the MOVE body part.
+ *
+ * @param x {Number} X position of the target in the room.
+ * @param y {Number} Y position of the target in the room.
+ */
+Creep.prototype.move = function(x, y) {
 };
