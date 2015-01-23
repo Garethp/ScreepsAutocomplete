@@ -81,6 +81,13 @@ Game.prototype = {
 	MODE_WORLD: "world",
 
 	/**
+	 * An amount of available CPU time at the current game tick.
+	 *
+	 * @type Number
+	 */
+	cpuLimit: Infinity,
+
+	/**
 	 * A hash containing all your creeps with creep names as hash keys.
 	 *
 	 * @type Creep[]
@@ -139,6 +146,15 @@ Game.prototype = {
 	 * @return Room
 	 */
 	getRoom: function (name) {
+	},
+
+	/**
+	 * Get amount of CPU time used during the current game tick.
+	 *
+	 * @callback callback
+	 * @param callback {callback} The callback function to be called with the used CPU value as its first argument.
+	 */
+	getUsedCpu: function (callback) {
 	},
 
 	/**
