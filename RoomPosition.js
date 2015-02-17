@@ -66,10 +66,17 @@ RoomPosition.prototype = {
 	findPathTo: function(target, opts) { },
 
 	/**
-	 * Find an object of the specified type with the shortest path. Uses A* search algorithm.
+	 * An alias for findClosest method. This method is deprecated and will be removed soon.
 	 *
+	 * @deprecated
 	 * @param {number} type See Room.find.
 	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
+	 *  method will be used.
+	 * @param {String} [opts.algorithm] One of the following constants:
+	 *  - astar is faster when there are relatively few possible targets;
+	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
+	 *  The default value is determined automatically using heuristics.
 	 */
 	findNearest: function(type, opts) { },
 
@@ -82,6 +89,21 @@ RoomPosition.prototype = {
 	 * @return {Object[]} An array with the objects found.
 	 */
 	findInRange: function(type, range, opts) { },
+
+	/**
+	 * Find an object with the shortest path. Uses A* search algorithm and Dijkstra's algorithm.
+	 *
+	 * @deprecated
+	 * @param {number} type See Room.find.
+	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
+	 *  method will be used.
+	 * @param {String} [opts.algorithm] One of the following constants:
+	 *  - astar is faster when there are relatively few possible targets;
+	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
+	 *  The default value is determined automatically using heuristics.
+	 */
+	findClosest: function(type, opts) { },
 
 	/**
 	 * Check whether this position is the same as the specified position.

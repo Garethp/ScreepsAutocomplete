@@ -18,6 +18,24 @@ Flag.prototype = {
 	id: "",
 
 	/**
+	 * Flag color. One of the following constants:
+	 *  - Game.COLOR_RED,
+	 *  - Game.COLOR_PURPLE
+	 *  - Game.COLOR_BLUE
+	 *  - Game.COLOR_CYAN
+	 *  - Game.COLOR_GREEN
+	 *  - Game.COLOR_YELLOW
+	 *  - Game.COLOR_ORANGE
+	 *  - Game.COLOR_BROWN
+	 *  - Game.COLOR_GREY
+	 *  - Game.COLOR_WHITE
+	 *
+	 *  @type {Game.COLOR_RED|Game.COLOR_PURPLE|Game.COLOR_BLUE|Game.COLOR_CYAN|Game.COLOR_GREEN|Game.COLOR_YELLOW
+	 *  |Game.COLOR_ORANGE|Game.COLOR_BROWN|Game.COLOR_GREY|Game.COLOR_WHITE}
+	 */
+	color: '',
+
+	/**
 	 * Flag’s name. You can choose the name while creating a new flag, and it cannot be changed later. This name is a
 	 * hash key to access the spawn via the Game.flags object.
 	 *

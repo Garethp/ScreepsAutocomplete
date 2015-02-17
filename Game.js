@@ -66,6 +66,28 @@ Game.prototype = {
 	STRUCTURE_SPAWN: "spawn",
 	STRUCTURE_WALL: "constructedWall",
 
+	COLOR_RED: "red",
+	COLOR_PURPLE: "purple",
+	COLOR_BLUE: "blue",
+	COLOR_CYAN: "cyan",
+	COLOR_GREEN: "green",
+	COLOR_YELLOW: "yellow",
+	COLOR_ORANGE: "orange",
+	COLOR_BROWN: "brown",
+	COLOR_GREY: "grey",
+	COLOR_WHITE: "white",
+
+	MODE_SIMULATION: "simulation",
+	MODE_SURVIVAL: "survival",
+	MODE_WORLD: "world",
+
+	/**
+	 * An amount of available CPU time at the current game tick.
+	 *
+	 * @type number
+	 */
+	cpuLimit: 0,
+
 	/**
 	 * A hash containing all your creeps with creep names as hash keys.
 	 *
@@ -79,6 +101,13 @@ Game.prototype = {
 	 * @type Flag[]
 	 */
 	flags: null,
+
+	/**
+	 * A hash containing all the rooms available to you with room names as hash keys.
+	 *
+	 * @type Room[]
+	 */
+	rooms: null,
 
 	/**
 	 * A hash containing all your spawns with spawn names as hash keys.
@@ -111,10 +140,18 @@ Game.prototype = {
 	/**
 	 * Get an instance object of the specified room. You can gain access to a room only if you have a creep, spawn, or extension within it.
 	 *
+	 * @deprecated
 	 * @param name {String}
 	 * @return Room
 	 */
 	getRoom: function(name) { },
+
+	/**
+	 * Get amount of CPU time used during the current game tick.
+	 *
+	 * @param callback {function(number)} The callback function to be called with the used CPU value as its first argument
+	 */
+	getUsedCpu: function(callback) { },
 
 	/**
 	 * Send a custom message at your profile email. This way, you can set up notifications to yourself on any occasion within the game. Not available in the Simulation Room.

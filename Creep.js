@@ -6,7 +6,7 @@
  *  - ATTACK Cost: 100 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
  *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 15 hits per tick in a long-ranged attack up to 3 squares long.
  *  - HEAL: Cost: 200 Effect: Heals another creep restoring 10 hits per tick.
- *  - TOUGH: Cost: 5 Effect: No effect
+ *  - TOUGH: Cost: 20 Effect: No effect
  *
  * @class
  * @constructor
@@ -179,11 +179,16 @@ Creep.prototype = {
 	move: function(direction) { },
 
 	/**
-	 * Find the optimal path to the target within the same room and move to it. A shorthand to consequent calls of
-	 * pos.findPathTo() and move() methods. Needs the MOVE body part.
+	 * Find the optimal path to the target within the same room and move to it. A shorthand to consequent calls of pos.findPathTo()
+	 * and move() methods. Needs the MOVE body part.
 	 *
 	 * @param target {Object} Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param [opts] An object containing pathfinding options flags (see Room.findPath for more info).
+	 * @param [opts.reusePath] {number} This option enables reusing the path found along multiple game ticks.
+	 *  It allows to save CPU time, but can result in a slightly slower creep reaction behavior. The path is stored
+	 *  into the creep's memory to the _move property. The reusePath value defines the amount of ticks which the path
+	 *  should be reused for. The default value is 5. Increase the amount to save more CPU, decrease to make the movement
+	 *  more consistent. Set to 0 if you want to disable path reusing.
 	 */
 	moveTo: function(target, opts) { },
 
@@ -203,11 +208,33 @@ Creep.prototype = {
 	rangedAttack: function(target) { },
 
 	/**
+	 * Heal another creep at a distance. It will restore the target creep’s damaged body parts function and increase the
+	 * hits counter. Needs the HEAL body part. The target has to be within 3 squares range of the creep.
+	 *
+	 * @param target {Creep} The target creep object
+	 */
+	rangedHeal: function(target) { },
+
+	/**
+	 * A ranged attack against all hostile creeps or structures within 3 squares range. Needs the RANGED_ATTACK body part.
+	 * The attack power depends on the range to each target. Friendly units are not affected.
+	 */
+	rangedMassAttack: function() { },
+
+	/**
 	 * Repair a damaged structure (spawn, extension, rampart, or road) using carried energy. Needs the WORK and CARRY body parts.
 	 *
 	 * @param target {Spawn|Structure} The target structure to be repaired.
 	 */
 	repair: function(target) { },
+
+	/**
+	 * Display a visual speech balloon above the creep with the specified message. The message will disappear after a few
+	 * seconds. Useful for debugging purposes. Only the creep's owner can see the speech message.
+	 *
+	 * @param message {string} The message to be displayed. Maximum length is 10 characters.
+	 */
+	say: function(message) { },
 
 	/**
 	 * Kill the creep immediately.

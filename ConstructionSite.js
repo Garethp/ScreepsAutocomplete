@@ -66,6 +66,14 @@ ConstructionSite.prototype = {
 	structureType: null,
 
 	/**
+	 * The remaining amount of game ticks after which the construction site will decay. The counter is refreshed on each
+	 * build action.
+	 *
+	 * @type {Number}
+	 */
+	ticksToLive: 0,
+
+	/**
 	 * Whether this is your own construction site.
 	 *
 	 * @type Boolean
