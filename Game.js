@@ -90,7 +90,7 @@ Game.prototype = {
 	/**
 	 * A hash containing all your creeps with creep names as hash keys.
 	 *
-	 * @type Creeps[]
+	 * @type Creep[]
 	 */
 	creeps: null,
 
