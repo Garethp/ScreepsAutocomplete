@@ -38,7 +38,7 @@ Room.prototype = {
 	 *  |Game.COLOR_ORANGE|Game.COLOR_BROWN|Game.COLOR_GREY|Game.COLOR_WHITE} color
 	 *  The color of a new flag. Should be one of the Game.COLOR constants. The default value is Game.COLOR_WHITE.
 	 */
-	createFlag: function(x, y, name, color) { },
+	createFlag: function(pos, name, color) { },
 
 	/**
 	 * Create new ConstructionSite at the specified location.
@@ -46,7 +46,7 @@ Room.prototype = {
 	 * @param {Object} pos Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param {Object} structureType One of the game structure constants
 	 */
-	createConstructionSite: function(x, y, structureType) { },
+	createConstructionSite: function(pos, structureType) { },
 
 	/**
 	 * Find all objects of the specified type in the room.
@@ -63,7 +63,7 @@ Room.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param {Object} [opts] See Room.find
 	 */
-	lookAt: function(x, y, opts) { },
+	lookAt: function(target, opts) { },
 
 	/**
 	 * Get the list of objects at the specified room area. This method is more CPU efficient in comparison to multiple lookAt calls.
@@ -104,7 +104,7 @@ Room.prototype = {
 	 *  (constructed walls, ramparts, spawns, extensions) as walkable. Use this flag when you need to move through a
 	 *  territory blocked by hostile structures. If a creep with an ATTACK body part steps on such a square, it
 	 *  automatically attacks the structure. The default value is false.
-	 * @param {Boolean} [withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
+	 * @param {Boolean} [opts.withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
 	 *  move your creeps safely. The default value is false.
 	 * @param {Array} [opts.ignore] An array of the room's objects or RoomPosition objects which should be treated as
 	 *  walkable tiles during the search.

@@ -44,9 +44,9 @@ RoomPosition.prototype = {
 	 * Check whether this position is on the adjacent square to the specified position. The same as inRangeTo(target, 1)
 	 *
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
-	 * @return {booelan}
+	 * @return {boolean}
 	 */
-	isNearTo: function (x, y) {
+	isNearTo: function (target) {
 	},
 
 	/**
@@ -55,7 +55,7 @@ RoomPosition.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @return A number representing one of the direction constants.
 	 */
-	getDirectionTo: function (x, y) {
+	getDirectionTo: function (target) {
 	},
 
 	/**
@@ -98,8 +98,7 @@ RoomPosition.prototype = {
 	/**
 	 * Find an object with the shortest path. Uses A* search algorithm and Dijkstra's algorithm.
 	 *
-	 * @deprecated
-	 * @param {number} type See Room.find.
+	 * @param {number|Object[]} type See Room.find.
 	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
 	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
 	 *  method will be used.
@@ -116,6 +115,6 @@ RoomPosition.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @return {boolean}
 	 */
-	equalsTo: function (x, y) {
+	equalsTo: function (target) {
 	}
 };
