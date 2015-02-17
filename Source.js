@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-Source = function()
-{
+Source = function () {
 
 };
 

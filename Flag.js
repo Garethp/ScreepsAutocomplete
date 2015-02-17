@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-Flag = function()
-{
+Flag = function () {
 
 };
 
@@ -67,5 +66,6 @@ Flag.prototype = {
 	/**
 	 * Remove the flag.
 	 */
-	remove: function() { }
+	remove: function () {
+	}
 };

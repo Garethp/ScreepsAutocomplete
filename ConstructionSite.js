@@ -5,8 +5,7 @@
  * @class
  * @constructor
  */
-ConstructionSite = function()
-{
+ConstructionSite = function () {
 
 };
 
@@ -83,5 +82,6 @@ ConstructionSite.prototype = {
 	/**
 	 * Remove the construction site.
 	 */
-	remove: function() { }
+	remove: function () {
+	}
 };

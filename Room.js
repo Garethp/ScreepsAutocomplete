@@ -98,14 +98,13 @@ Room.prototype = {
 	 * @param {RoomPosition} fromPos The start position.
 	 * @param {RoomPosition} toPos The end position.
 	 * @param {Object} [opts] An object containing additonal pathfinding flags:
-	 *
 	 * @param {Boolean} [opts.ignoreCreeps] Treat squares with creeps as walkable. Can be useful with too many moving
 	 *  creeps around or in some other cases. The default value is false.
 	 * @param {Boolean} [opts.ignoreDestructibleStructures] Treat squares with destructible structures
 	 *  (constructed walls, ramparts, spawns, extensions) as walkable. Use this flag when you need to move through a
 	 *  territory blocked by hostile structures. If a creep with an ATTACK body part steps on such a square, it
 	 *  automatically attacks the structure. The default value is false.
-	 * @param {Boolean} [opts.withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
+	 * @param {Boolean} [withinRampartsOnly] The path will be found only within the area of your ramparts. Use it to
 	 *  move your creeps safely. The default value is false.
 	 * @param {Array} [opts.ignore] An array of the room's objects or RoomPosition objects which should be treated as
 	 *  walkable tiles during the search.

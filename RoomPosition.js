@@ -5,8 +5,7 @@
  * @class
  * @constructor
  */
-RoomPosition = function()
-{
+RoomPosition = function () {
 };
 
 RoomPosition.prototype = {
@@ -38,7 +37,8 @@ RoomPosition.prototype = {
 	 * @param {number} range The range distance.
 	 * @return {boolean}
 	 */
-	inRangeTo: function(toPos, range) { },
+	inRangeTo: function (toPos, range) {
+	},
 
 	/**
 	 * Check whether this position is on the adjacent square to the specified position. The same as inRangeTo(target, 1)
@@ -46,7 +46,8 @@ RoomPosition.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @return {booelan}
 	 */
-	isNearTo: function(x, y) { },
+	isNearTo: function (x, y) {
+	},
 
 	/**
 	 * Get linear direction to the specified position.
@@ -54,7 +55,8 @@ RoomPosition.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @return A number representing one of the direction constants.
 	 */
-	getDirectionTo: function(x, y) { },
+	getDirectionTo: function (x, y) {
+	},
 
 	/**
 	 * Find an optimal path to the specified position using A* search algorithm. This method is a shorthand for Room.findPath.
@@ -63,7 +65,8 @@ RoomPosition.prototype = {
 	 * @param {Object} [opts] An object containing pathfinding options flags (see Room.findPath for more details).
 	 * @return {PathStep[]}
 	 */
-	findPathTo: function(target, opts) { },
+	findPathTo: function (target, opts) {
+	},
 
 	/**
 	 * An alias for findClosest method. This method is deprecated and will be removed soon.
@@ -78,7 +81,8 @@ RoomPosition.prototype = {
 	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
 	 *  The default value is determined automatically using heuristics.
 	 */
-	findNearest: function(type, opts) { },
+	findNearest: function (type, opts) {
+	},
 
 	/**
 	 * Find all objects in the specified linear range of the given type.
@@ -88,7 +92,8 @@ RoomPosition.prototype = {
 	 * @param {Object} [opts] See Room.find.
 	 * @return {Object[]} An array with the objects found.
 	 */
-	findInRange: function(type, range, opts) { },
+	findInRange: function (type, range, opts) {
+	},
 
 	/**
 	 * Find an object with the shortest path. Uses A* search algorithm and Dijkstra's algorithm.
@@ -111,5 +116,6 @@ RoomPosition.prototype = {
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @return {boolean}
 	 */
-	equalsTo: function(x, y) { }
+	equalsTo: function (x, y) {
+	}
 };

@@ -11,8 +11,7 @@
  * @class
  * @constructor
  */
-Creep = function()
-{
+Creep = function () {
 
 };
 
@@ -132,20 +131,23 @@ Creep.prototype = {
 	 *
 	 * @param target {Creep|Spawn|Structure} The target object to be attacked
 	 */
-	attack: function(target) { },
+	attack: function (target) {
+	},
 
 	/**
 	 * Build a structure at the target construction site using carried energy. Needs WORK and CARRY body parts.
 	 *
 	 * @param target {ConstructionSite}
 	 */
-	build: function(target) { },
+	build: function (target) {
+	},
 
 	/**
 	 * Drop a piece of energy on the ground.
 	 * @param [amount] {number} The amount of energy to be dropped. If omitted, all the available carried energy is used.
 	 */
-	dropEnergy: function(amount) { },
+	dropEnergy: function (amount) {
+	},
 
 	/**
 	 * Get the quantity of live body parts of the given type. Fully damaged parts do not count.
@@ -153,7 +155,8 @@ Creep.prototype = {
 	 * @param type {string} A body part type, one of body part constants.
 	 * @return {number} A number representing the quantity of body parts.
 	 */
-	getActiveBodyparts: function(type) { },
+	getActiveBodyparts: function (type) {
+	},
 
 	/**
 	 * Harvest energy from the source. Needs the WORK body part. If the creep has an empty CARRY body part, the harvested
@@ -161,7 +164,8 @@ Creep.prototype = {
 	 *
 	 * @param target {Source} The source object to be harvested.
 	 */
-	harvest: function(target) { },
+	harvest: function (target) {
+	},
 
 	/**
 	 * Heal another creep. It will restore the target creep’s damaged body parts function and increase the hits counter.
@@ -169,14 +173,16 @@ Creep.prototype = {
 	 *
 	 * @param target {Creep} The target creep object.
 	 */
-	heal: function(target) { },
+	heal: function (target) {
+	},
 
 	/**
 	 * Move the creep one square in the specified direction. Needs the MOVE body part.
 	 *
 	 * @param direction One of the Game direction constants
 	 */
-	move: function(direction) { },
+	move: function (direction) {
+	},
 
 	/**
 	 * Find the optimal path to the target within the same room and move to it. A shorthand to consequent calls of pos.findPathTo()
@@ -190,14 +196,16 @@ Creep.prototype = {
 	 *  should be reused for. The default value is 5. Increase the amount to save more CPU, decrease to make the movement
 	 *  more consistent. Set to 0 if you want to disable path reusing.
 	 */
-	moveTo: function(target, opts) { },
+	moveTo: function (target, opts) {
+	},
 
 	/**
 	 * Pick up an item (a dropped piece of energy). Needs the CARRY body part.
 	 *
 	 * @param target {Energy} The target object to be picked up.
 	 */
-	pickup: function(target) { },
+	pickup: function (target) {
+	},
 
 	/**
 	 * A ranged attack against another creep or structure. Needs the RANGED_ATTACK body part. If the target is inside a
@@ -205,7 +213,8 @@ Creep.prototype = {
 	 *
 	 * @param target {Creep|Spawn|Structure} The target object to be attacked.
 	 */
-	rangedAttack: function(target) { },
+	rangedAttack: function (target) {
+	},
 
 	/**
 	 * Heal another creep at a distance. It will restore the target creep’s damaged body parts function and increase the
@@ -226,7 +235,8 @@ Creep.prototype = {
 	 *
 	 * @param target {Spawn|Structure} The target structure to be repaired.
 	 */
-	repair: function(target) { },
+	repair: function (target) {
+	},
 
 	/**
 	 * Display a visual speech balloon above the creep with the specified message. The message will disappear after a few
@@ -239,7 +249,8 @@ Creep.prototype = {
 	/**
 	 * Kill the creep immediately.
 	 */
-	suicide: function() { },
+	suicide: function () {
+	},
 
 	/**
 	 * Transfer energy from the creep to another object which can contain energy.
@@ -247,5 +258,6 @@ Creep.prototype = {
 	 * @param target {Creep|Spawn|Structure} The target object.
 	 * @param [amount] {Number} The amount of energy to be transferred. If omitted, all the available carried energy is used.
 	 */
-	transferEnergy: function(target, amount) { }
+	transferEnergy: function (target, amount) {
+	}
 };

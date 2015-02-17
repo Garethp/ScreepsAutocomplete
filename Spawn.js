@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-Spawn = function()
-{
+Spawn = function () {
 
 };
 
@@ -110,7 +109,8 @@ Spawn.prototype = {
 	 *  contain another creep with the same name (hash key). If not defined, a random name will be generated.
 	 * @param {any[]} [memory] The memory of a new creep. If provided, it will be immediately stored into Memory.creeps[name].
 	 */
-	createCreep: function(bodyParts, name, memory) { },
+	createCreep: function (bodyParts, name, memory) {
+	},
 
 	/**
 	 * Transfer the energy from the spawn to a creep
@@ -119,5 +119,6 @@ Spawn.prototype = {
 	 * @param {number} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy
 	 *  will be used.
 	 */
-	transferEnergy: function(target, amount) { }
+	transferEnergy: function (target, amount) {
+	}
 };

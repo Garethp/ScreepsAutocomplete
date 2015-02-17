@@ -4,8 +4,7 @@
  * @class
  * @constructor
  */
-var Game = function()
-{
+var Game = function () {
 
 };
 
@@ -135,7 +134,8 @@ Game.prototype = {
 	 *
 	 * @param id {String}
 	 */
-	getObjectById: function(id) { },
+	getObjectById: function (id) {
+	},
 
 	/**
 	 * Get an instance object of the specified room. You can gain access to a room only if you have a creep, spawn, or extension within it.
@@ -144,7 +144,8 @@ Game.prototype = {
 	 * @param name {String}
 	 * @return Room
 	 */
-	getRoom: function(name) { },
+	getRoom: function (name) {
+	},
 
 	/**
 	 * Get amount of CPU time used during the current game tick.
@@ -158,5 +159,6 @@ Game.prototype = {
 	 *
 	 * @param message {string} Custom text which will be sent in the message.
 	 */
-	notify: function(message) { }
+	notify: function (message) {
+	}
 };
