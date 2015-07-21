@@ -116,7 +116,7 @@ Spawn.prototype = {
 	/**
 	 * Start the creep spawning process.
 	 *
-	 * @param {array<string>} bodyParts An array describing the new creep’s body. Should contain 1 to 30 elements
+	 * @param {string[]} bodyParts An array describing the new creep’s body. Should contain 1 to 30 elements
 	 * @param {string} [name] The name of a new creep. It should be unique creep name, i.e. the Game.creeps object should not
 	 *  contain another creep with the same name (hash key). If not defined, a random name will be generated.
 	 * @param {any[]} [memory] The memory of a new creep. If provided, it will be immediately stored into Memory.creeps[name].
