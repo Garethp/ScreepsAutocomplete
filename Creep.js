@@ -1,12 +1,12 @@
 /**
  * Creeps are your units. Creeps can move, harvest energy, construct structures, attack another creeps, and perform other actions. Each creep consists of the following body parts:
  *  - MOVE Cost: 50 Effect: Moves a creep 1 square per tick per 1 other body part
- *  - WORK Cost: 100 Effect: Harvests 2 energy units from a source per tick; constructs a structure for 5 energy per tick; repairs a structure for 100 hits per tick.
+ *  - WORK Cost: 20 Effect: Harvests 2 energy units from a source per tick; constructs a structure for 1 energy per tick; repairs a structure for 10 hits per tick.
  *  - CARRY Cost: 50 Effect: Can contain up to 50 energy units.
- *  - ATTACK Cost: 80 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
- *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 10 hits per tick in a long-ranged attack up to 3 squares long.
- *  - HEAL: Cost: 200 Effect: Heals another creep restoring 12 hits per tick.
- *  - TOUGH: Cost: 10 Effect: No effect
+ *  - ATTACK Cost: 100 Effect: Attacks another creep/structure with 30 hits per tick in a short-ranged attack.
+ *  - RANGED_ATTACK: Cost: 150 Effect: Attacks another creep/structure with 15 hits per tick in a long-ranged attack up to 3 squares long.
+ *  - HEAL: Cost: 200 Effect: Heals another creep restoring 10 hits per tick.
+ *  - TOUGH: Cost: 20 Effect: No effect
  *
  * @class
  * @constructor
