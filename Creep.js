@@ -55,8 +55,7 @@ Creep.prototype = {
 
 	/**
 	 * Shorthand to Memory.creeps[creep.name]. You can use it for quick access the creep’s specific memory data object.
-	 * Note: you can't access the memory property of the creep object which has been just scheduled to spawn, but you
-	 * still can write its memory like that:
+	 * Note: you can't access the memory property of the creep object which has been just scheduled to spawn.
 	 */
 	memory: null,
 
@@ -79,7 +78,7 @@ Creep.prototype = {
 	 *  - type
 	 *  - hits
 	 *
-	 * @type array<object>
+	 * @type Array<Object>
 	 */
 	body: [ ],
 
@@ -130,6 +129,7 @@ Creep.prototype = {
 	 * rampart, then the rampart is attacked instead.
 	 *
 	 * @param target {Creep|Spawn|Structure} The target object to be attacked
+	 * @return {number}
 	 */
 	attack: function (target) {
 	},
@@ -138,13 +138,31 @@ Creep.prototype = {
 	 * Build a structure at the target construction site using carried energy. Needs WORK and CARRY body parts.
 	 *
 	 * @param target {ConstructionSite}
+	 * @return {number}
 	 */
 	build: function (target) {
 	},
 
 	/**
+	 * Cancel the order given during the current game tick.
+	 * @param methodName {string} The name of a creep's method to be cancelled.
+	 * @return {number}
+	 */
+	cancelOrder: function (methodName) {
+	},
+
+	/**
+	 * Claim a neutral controller under your control. The target has to be at adjacent square to the creep
+	 * @param target {Structure} The target controller object.
+	 * @return {number}
+	 */
+	claimController: function (target) {
+	},
+
+	/**
 	 * Drop a piece of energy on the ground.
 	 * @param [amount] {number} The amount of energy to be dropped. If omitted, all the available carried energy is used.
+	 * @return {number}
 	 */
 	dropEnergy: function (amount) {
 	},
@@ -163,6 +181,7 @@ Creep.prototype = {
 	 * energy is put into it; otherwise it is dropped on the ground.
 	 *
 	 * @param target {Source} The source object to be harvested.
+	 * @return {number}
 	 */
 	harvest: function (target) {
 	},
@@ -172,6 +191,7 @@ Creep.prototype = {
 	 * Needs the HEAL body part.
 	 *
 	 * @param target {Creep} The target creep object.
+	 * @return {number}
 	 */
 	heal: function (target) {
 	},
@@ -180,8 +200,17 @@ Creep.prototype = {
 	 * Move the creep one square in the specified direction. Needs the MOVE body part.
 	 *
 	 * @param direction One of the Game direction constants
+	 * @return {number}
 	 */
 	move: function (direction) {
+	},
+
+	/**
+	 * Move the creep using the specified predefined path. Needs the MOVE body part.
+	 * @param path {Array<PathStep>} An array with path steps as returned from Room.findPath or RoomPosition.findPathTo methods.
+	 * @return {number}
+	 */
+	moveByPath: function(path) {
 	},
 
 	/**
@@ -195,23 +224,38 @@ Creep.prototype = {
 	 *  into the creep's memory to the _move property. The reusePath value defines the amount of ticks which the path
 	 *  should be reused for. The default value is 5. Increase the amount to save more CPU, decrease to make the movement
 	 *  more consistent. Set to 0 if you want to disable path reusing.
+	 *
+	 * @note An alternative function is moveTo(x, y, opts)
+	 *
 	 */
 	moveTo: function (target, opts) {
 	},
 
 	/**
+	 * Toggle auto notification when the creep is under attack. The notification will be sent to your account email. Turned on by default.
+	 *
+	 * @param enabled {boolean} Whether to enable notification or disable.
+	 * @return {number}
+	 */
+	notifyWhenAttacked: function(enabled){
+	},
+
+	/**
 	 * Pick up an item (a dropped piece of energy). Needs the CARRY body part.
+	 * The target has to be at adjacent square to the creep or at the same square.
 	 *
 	 * @param target {Energy} The target object to be picked up.
+	 * @return {number}
 	 */
 	pickup: function (target) {
 	},
 
 	/**
 	 * A ranged attack against another creep or structure. Needs the RANGED_ATTACK body part. If the target is inside a
-	 * rampart, the rampart is attacked instead.
+	 * rampart, the rampart is attacked instead. The target has to be within 3 squares range of the creep.
 	 *
 	 * @param target {Creep|Spawn|Structure} The target object to be attacked.
+	 * @return {number}
 	 */
 	rangedAttack: function (target) {
 	},
@@ -221,12 +265,15 @@ Creep.prototype = {
 	 * hits counter. Needs the HEAL body part. The target has to be within 3 squares range of the creep.
 	 *
 	 * @param target {Creep} The target creep object
+	 * @return {number}
 	 */
 	rangedHeal: function(target) { },
 
 	/**
 	 * A ranged attack against all hostile creeps or structures within 3 squares range. Needs the RANGED_ATTACK body part.
 	 * The attack power depends on the range to each target. Friendly units are not affected.
+	 *
+	 * @return {number}
 	 */
 	rangedMassAttack: function() { },
 
@@ -234,6 +281,8 @@ Creep.prototype = {
 	 * Repair a damaged structure (spawn, extension, rampart, or road) using carried energy. Needs the WORK and CARRY body parts.
 	 *
 	 * @param target {Spawn|Structure} The target structure to be repaired.
+	 *
+	 * @return {number}
 	 */
 	repair: function (target) {
 	},
@@ -243,11 +292,14 @@ Creep.prototype = {
 	 * seconds. Useful for debugging purposes. Only the creep's owner can see the speech message.
 	 *
 	 * @param message {string} The message to be displayed. Maximum length is 10 characters.
+	 * @return {number}
 	 */
 	say: function(message) { },
 
 	/**
 	 * Kill the creep immediately.
+	 *
+	 * @return {number}
 	 */
 	suicide: function () {
 	},
@@ -257,7 +309,28 @@ Creep.prototype = {
 	 *
 	 * @param target {Creep|Spawn|Structure} The target object.
 	 * @param [amount] {Number} The amount of energy to be transferred. If omitted, all the available carried energy is used.
+	 *
+	 * @return {number}
 	 */
 	transferEnergy: function (target, amount) {
+	},
+
+	/**
+	 * Make your claimed controller neutral again. The target has to be at adjacent square to the creep.
+	 *
+	 * @param target {Structure} The target controller object.
+	 * @return {number}
+	 */
+	unclaimController: function(target) {
+	},
+
+	/**
+	 * Upgrade your controller to the next level using carried energy. Upgrading controllers raises your Global Control Level in parallel.
+	 * Needs WORK and CARRY body parts. The target has to be at adjacent square to the creep.
+	 *
+	 * @param target {Structure} The target controller object to be upgraded.
+	 * @return {number}
+	 */
+	upgradeController: function(target) {
 	}
 };
