@@ -74,6 +74,9 @@ RoomPosition.prototype = {
 	 *
 	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
 	 * @param {Object} [opts] An object containing pathfinding options flags (see Room.findPath for more details).
+	 *
+	 * @note An alternative function is findPathTo(x, y, opts)
+	 *
 	 * @return {PathStep[]}
 	 */
 	findPathTo: function (target, opts) {

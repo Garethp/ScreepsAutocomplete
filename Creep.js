@@ -78,12 +78,13 @@ Creep.prototype = {
 	 *  - type
 	 *  - hits
 	 *
-	 * @type Array<Object>
+	 * @type Object[]
 	 */
 	body: [ ],
 
 	/**
 	 * The current amount of energy the creep is carrying.
+	 * @deprecated As of 2015-07-22, replaced with Creep.carry.energy
 	 *
 	 * @type number
 	 */
@@ -91,10 +92,32 @@ Creep.prototype = {
 
 	/**
 	 * The total amount of energy the creep can carry.
+	 * @deprecated As of 2015-07-22, replaced with Creep.carryCapacity
 	 *
 	 * @type number
 	 */
 	energyCapacity: 0,
+
+	/**
+	 * An object with the creep's cargo contents
+	 *
+	 * @type Object
+	 */
+	carry: {
+		/**
+		 * The current amount of energy the creep is carrying.
+		 *
+		 * @type number
+		 */
+		energy: 0
+	},
+
+	/**
+	 * The total amount of items the creep can carry.
+	 *
+	 * @type number
+	 */
+	carryCapacity: 0,
 
 	/**
 	 * The current amount of hit points of the creep.

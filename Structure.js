@@ -21,7 +21,7 @@ Structure.prototype = {
 	 *
 	 * @type Owner
 	 */
-	owner: "",
+	owner: null,
 
 	/**
 	 * The link to the Room object. May not be available in case a flag is placed in a room which you do not have access to.
