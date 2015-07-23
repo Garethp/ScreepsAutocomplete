@@ -21,7 +21,7 @@ Structure.prototype = {
 	 *
 	 * @type Owner
 	 */
-	owner: "",
+	owner: null,
 
 	/**
 	 * The link to the Room object. May not be available in case a flag is placed in a room which you do not have access to.
@@ -77,5 +77,21 @@ Structure.prototype = {
 	 *
 	 * @type number
 	 */
-	energyCapacity: 0
+	energyCapacity: 0,
+
+	/**
+	 * Destroy this structure immediately.
+	 *
+	 * @return {number}
+	 */
+	destroy: function() { },
+
+	/**
+	 * Toggle auto notification when the structure is under attack. The notification will be sent to your account email. Turned on by default.
+	 *
+	 * @param {boolean} enabled Whether to enable notification or disable.
+	 *
+	 * @return {number}
+	 */
+	notifyWhenAttacked: function(enabled) { }
 };

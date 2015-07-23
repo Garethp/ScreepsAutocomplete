@@ -3,6 +3,7 @@
  *
  * @class
  * @constructor
+ * @deprecated
  */
 Exit = function () {
 
