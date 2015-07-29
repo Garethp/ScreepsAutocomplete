@@ -131,6 +131,8 @@ global.prototype = {
     /** @type {string} */
     WORK: "work",
     /** @type {string} */
+    CARRY: "carry",
+    /** @type {string} */
     ATTACK: "attack",
     /** @type {string} */
     RANGED_ATTACK: "ranged_attack",
@@ -161,6 +163,8 @@ global.prototype = {
     STRUCTURE_CONTROLLER: "controller",
     /** @type {string} */
     STRUCTURE_LINK: "link",
+    /** @type {string} */
+    STRUCTURE_STORAGE: "storage",
 
     /* MODES */
 

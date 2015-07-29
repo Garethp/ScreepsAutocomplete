@@ -182,7 +182,7 @@ RoomPosition.prototype = {
 	 * - structure
 	 * - terrain
 	 *
-	 * @return {Object|Object[]|Undefined} An object or an array of objects of the given type at the specified position if found, otherwise undefined.
+	 * @return {Object[]|Undefined} An array of objects of the given type at the specified position if found, otherwise undefined.
 	 */
 	lookFor: function(type) { },
 
