@@ -30,7 +30,7 @@ Room.prototype = {
 	 *  - Game.MODE_SURVIVAL
 	 *  - Game.MODE_WORLD
 	 *
-	 * @type {Game.MODE_SIMULATION|Game.MODE_SURVIVAL|Game.MODE_WORLD}
+	 * @type {String|Game.MODE_SIMULATION|Game.MODE_SURVIVAL|Game.MODE_WORLD}
 	 */
 	mode: '',
 
@@ -40,6 +40,20 @@ Room.prototype = {
 	 * @type string
 	 */
 	name: "",
+
+	/**
+	 * Total amount of energy available in all spawns and extensions in the room.
+	 *
+	 * @type {Number}
+	 */
+	energyAvailable: 0,
+
+	/**
+	 * Total amount of energyCapacity of all spawns and extensions in the room.
+	 *
+	 * @type {Number}
+	 */
+	energyCapacityAvailable: 0,
 
 	/**
 	 * An object with survival game info if available

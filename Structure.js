@@ -12,86 +12,108 @@ Structure.prototype = {
 	/**
 	 * A unique object identificator.
 	 *
-	 * @type string
+	 * @type {String}
 	 */
 	id: "",
 
 	/**
 	 * An object with the structure’s owner info containing username
 	 *
-	 * @type Owner
+	 * @type {Owner}
 	 */
 	owner: null,
 
 	/**
 	 * The link to the Room object. May not be available in case a flag is placed in a room which you do not have access to.
 	 *
-	 * @type Room
+	 * @type {Room}
 	 */
 	room: null,
 
 	/**
 	 * An object representing the position of this structure in the room.
 	 *
-	 * @type RoomPosition
+	 * @type {RoomPosition}
 	 */
 	pos: null,
 
 	/**
 	 * The current amount of hit points of the structure.
 	 *
-	 * @type number
+	 * @type {Number}
 	 */
 	hits: 0,
 
 	/**
 	 * The total amount of hit points of the structure.
 	 *
-	 * @type number
+	 * @type {Number}
 	 */
 	hitsMax: 0,
 
 	/**
 	 * One of the game constants
 	 *
-	 * @type number
+	 * @type {String}
 	 */
 	structureType: "",
 
 	/**
 	 * Whether this is your own structure.
 	 *
-	 * @type boolean
+	 * @type {Boolean}
 	 */
 	my: true,
 
 	/**
 	 * The amount of energy containing in the extension.
 	 *
-	 * @type number
+	 * @note Link, Spawn & Extensions only
+	 *
+	 * @type {Number}
 	 */
 	energy: 0,
 
 	/**
 	 * The total amount of energy the extension can contain.
 	 *
-	 * @type number
+	 * @note Link, Spawn & Extensions only
+	 *
+	 * @type {Number}
 	 */
 	energyCapacity: 0,
 
 	/**
+	 * The amount of game ticks when this road will lose some hit points.
+	 *
+	 * @note Roads Only
+	 *
+	 * @type {Number}
+	 */
+	ticksToDecay: 0,
+
+	/**
+	 * The amount of game ticks when the wall will disappear (only for automatically placed border walls at the start of the game).
+	 *
+	 * @note Newbie walls Only
+	 *
+	 * @type {Number}
+	 */
+	ticksToLive: 0,
+
+	/**
 	 * Destroy this structure immediately.
 	 *
-	 * @return {number}
+	 * @return {Number}
 	 */
 	destroy: function() { },
 
 	/**
 	 * Toggle auto notification when the structure is under attack. The notification will be sent to your account email. Turned on by default.
 	 *
-	 * @param {boolean} enabled Whether to enable notification or disable.
+	 * @param {Boolean} enabled Whether to enable notification or disable.
 	 *
-	 * @return {number}
+	 * @return {Number}
 	 */
 	notifyWhenAttacked: function(enabled) { }
 };
