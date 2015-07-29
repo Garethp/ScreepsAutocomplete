@@ -184,5 +184,24 @@ RoomPosition.prototype = {
 	 *
 	 * @return {Object|Object[]|Undefined} An object or an array of objects of the given type at the specified position if found, otherwise undefined.
 	 */
-	lookFor: function(type) { }
+	lookFor: function(type) { },
+
+	/**
+	 * Create new Flag at the specified location.
+	 *
+	 * @param {String} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
+	 * @param {String} [color] The color of a new flag. Should be one of the global.COLOR_* constants.
+	 *
+	 * @return {Number}
+	 */
+	createFlag: function(name, color) { },
+
+	/**
+	 * Create new ConstructionSite at the specified location.
+	 *
+	 * @param structureType One of the global.STRUCTURE_* constants.
+	 *
+	 * @return {Number}
+	 */
+	createConstructionSite: function(structureType) { }
 };
