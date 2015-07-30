@@ -84,6 +84,27 @@ Structure.prototype = {
 	energyCapacity: 0,
 
 	/**
+	 * An object with the storage contents
+	 *
+	 * @type {Object}
+	 */
+	store: {
+
+		/**
+		 * The current amount of energy in the storage.
+		 * @type {Number}
+		 */
+		energy: 0
+	},
+
+	/**
+	 * The total amount of resources the storage can contain.
+	 *
+	 * @type {Number}
+	 */
+	storeCapacity: 0,
+
+	/**
 	 * The amount of game ticks when this road will lose some hit points.
 	 *
 	 * @note Roads Only

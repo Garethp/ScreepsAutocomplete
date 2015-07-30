@@ -20,6 +20,13 @@ Room.prototype = {
 	controller: null,
 
 	/**
+	 * The Storage structure of this room, if present, otherwise undefined.
+	 *
+	 * @type {Structure}
+	 */
+	storage: null,
+
+	/**
 	 * A shorthand to Memory.rooms[room.name]. You can use it for quick access the room’s specific memory data object.
 	 */
 	memory: null,
@@ -153,7 +160,7 @@ Room.prototype = {
 	 *
 	 * @note An alternative function is lookForAt(type, x, y)
 	 *
-	 * @return {Object|Object[]|undefined} An object or an array of objects of the given type at the specified position if found, otherwise undefined.
+	 * @return {|Object[]|undefined} An array of objects of the given type at the specified position if found, otherwise undefined.
 	 */
 	lookForAt: function(type, target) { },
 
