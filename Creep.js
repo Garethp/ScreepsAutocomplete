@@ -83,22 +83,6 @@ Creep.prototype = {
 	body: [ ],
 
 	/**
-	 * The current amount of energy the creep is carrying.
-	 * @deprecated As of 2015-07-22, replaced with Creep.carry.energy
-	 *
-	 * @type number
-	 */
-	energy: 0,
-
-	/**
-	 * The total amount of energy the creep can carry.
-	 * @deprecated As of 2015-07-22, replaced with Creep.carryCapacity
-	 *
-	 * @type number
-	 */
-	energyCapacity: 0,
-
-	/**
 	 * An object with the creep's cargo contents
 	 *
 	 * @type Object
