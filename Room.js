@@ -15,14 +15,14 @@ Room.prototype = {
 	/**
 	 * The controller of this room, if present.
 	 *
-	 * @type {Structure}
+	 * @type {Structure_Controller}
 	 */
 	controller: null,
 
 	/**
 	 * The Storage structure of this room, if present, otherwise undefined.
 	 *
-	 * @type {Structure}
+	 * @type {Structure_Storage}
 	 */
 	storage: null,
 

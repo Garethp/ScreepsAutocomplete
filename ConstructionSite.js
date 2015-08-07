@@ -57,11 +57,13 @@ ConstructionSite.prototype = {
 
 	/**
 	 * One of the following constants:
-	 *  - Game.STRUCTURE_EXTENSION
-	 *  - Game.STRUCTURE_RAMPART
-	 *  - Game.STRUCTURE_ROAD
-	 *  - Game.STRUCTURE_SPAWN
-	 *  - Game.STRUCTURE_WALL
+	 *  - global.STRUCTURE_EXTENSION
+	 *  - global.STRUCTURE_RAMPART
+	 *  - global.STRUCTURE_ROAD
+	 *  - global.STRUCTURE_SPAWN
+	 *  - global.STRUCTURE_WALL
+	 *  - global.STRUCTURE_LINK
+	 *  - global.STRUCTURE_STORAGE
 	 *
 	 *  @type string
 	 */

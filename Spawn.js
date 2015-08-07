@@ -29,7 +29,7 @@ Spawn.prototype = {
 	 *
 	 * @type {Owner}
 	 */
-	owner: "",
+	owner: null,
 
 	/**
 	 * The link to the Room object of this spawn.
@@ -69,7 +69,7 @@ Spawn.prototype = {
 	/**
 	 * If the spawn is in process of spawning a new creep, this object will contain the new creep’s information, or null otherwise.
 	 *
-	 * @return {Object|null}
+	 * @return {Creep|null}
 	 */
 	spawning: null,
 

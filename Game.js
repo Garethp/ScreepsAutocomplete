@@ -4,7 +4,7 @@
  * @class
  * @constructor
  */
-var Game = function () {
+Game = function () {
 
 };
 

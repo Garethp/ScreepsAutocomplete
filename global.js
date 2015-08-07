@@ -4,7 +4,7 @@
  * @class
  * @constructor
  */
-var global = function () {
+global = function () {
 
 };
 

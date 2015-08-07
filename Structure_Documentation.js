@@ -4,7 +4,7 @@
  * @constructor
  * @extends Structure
  */
-var Structure_Extension = function() { };
+Structure_Extension = function() { };
 
 /**
  * @type {{}}
@@ -48,7 +48,7 @@ Structure_Extension.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Link = function() { };
+Structure_Link = function() { };
 
 Structure_Link.prototype =
 {
@@ -97,7 +97,7 @@ Structure_Link.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Keeper_Lair = function() { };
+Structure_Keeper_Lair = function() { };
 
 Structure_Keeper_Lair.prototype =
 {
@@ -121,7 +121,7 @@ Structure_Keeper_Lair.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Controller = function() { };
+Structure_Controller = function() { };
 
 Structure_Controller.prototype =
 {
@@ -166,7 +166,7 @@ Structure_Controller.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Rampart = function() {};
+Structure_Rampart = function() {};
 
 Structure_Rampart.prototype =
 {
@@ -190,7 +190,7 @@ Structure_Rampart.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Road = function() { };
+Structure_Road = function() { };
 
 Structure_Road.prototype =
 {
@@ -214,7 +214,7 @@ Structure_Road.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Wall = function() { };
+Structure_Wall = function() { };
 
 Structure_Wall.prototype =
 {
@@ -238,7 +238,7 @@ Structure_Wall.prototype =
  * @constructor
  * @extends Structure
  */
-var Structure_Storage = function() { };
+Structure_Storage = function() { };
 
 Structure_Storage.prototype =
 {
