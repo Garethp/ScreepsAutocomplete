@@ -158,7 +158,29 @@ Structure_Controller.prototype =
      *
      * @type {Number}
      */
-    ticksToDowngrade: 0
+    ticksToDowngrade: 0,
+
+    /**
+     * An object with the controller reservation info if present
+     *
+     * @type {Object|Null}
+     */
+    reservation: {
+
+        /**
+         * The name of a player who reserved this controller.
+         *
+         * @type {String}
+         */
+        username: "",
+
+        /**
+         * The amount of game ticks when the reservation will end.
+         *
+         * @type {Number}
+         */
+        ticksToEnd: 0
+    }
 };
 
 /**
