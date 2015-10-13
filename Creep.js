@@ -167,6 +167,18 @@ Creep.prototype = {
 	},
 
 	/**
+	 * Temporarily block a neutral controller from claiming by other players.
+	 * Each tick, this command spends 1 energy units and increases the counter of the period during which the controller is unavailable by 5 ticks.
+	 * The maximum reservation period to maintain is 5,000 ticks. Reserving controllers raises your Global Control Level in parallel.
+	 * Needs at least 40xWORK and 1xCARRY body parts. The target has to be at adjacent square to the creep.
+	 *
+	 * @param {Structure} target The target controller object to be reserved.
+	 * @return {number}
+	 */
+	reserveController: function(target) {},
+
+
+	/**
 	 * Drop a piece of energy on the ground.
 	 * @param [amount] {number} The amount of energy to be dropped. If omitted, all the available carried energy is used.
 	 * @return {number}

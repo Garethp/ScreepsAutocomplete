@@ -66,6 +66,30 @@ Game.prototype = {
 	 */
 	time: 0,
 
+	gcl: {
+
+		/**
+		 * The current level.
+		 *
+		 * @type {Number}
+		 */
+		level: 0,
+
+		/**
+		 * The current progress to the next level.
+		 *
+		 * @type {Number}
+		 */
+		progress: 0,
+
+		/**
+		 * The progress required to reach the next level.
+		 *
+		 * @type {Number}
+		 */
+		progressTotal: 0
+	},
+
 	/**
 	 * Get an object with the specified unique ID. It may be a game object of any type. Only objects from the rooms which are visible to you can be accessed.
 	 *

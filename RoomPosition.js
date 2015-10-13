@@ -124,9 +124,34 @@ RoomPosition.prototype = {
 	 *  @note An alternative function is findClosest(objects, opts)
 	 *  - objects {Array} An array of room's objects or RoomPosition objects that the search should be executed against.
 	 *
+	 * @deprecated Replaced with RoomPosition.findClosestByPath
+	 *
 	 *  @return {Object|null} The closest object if found, null otherwise.
 	 */
 	findClosest: function(type, opts) { },
+
+
+
+	/**
+	 * Find an object with the shortest path from the given position. Uses A* search algorithm and Dijkstra's algorithm.
+	 *
+	 * @param {number} type See Room.find.
+	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
+	 *  method will be used.
+	 * @param {String} [opts.algorithm] One of the following constants:
+	 *  - astar is faster when there are relatively few possible targets;
+	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
+	 *  The default value is determined automatically using heuristics.
+	 *
+	 *  @note An alternative function is findClosestByPath(objects, opts)
+	 *  - objects {Array} An array of room's objects or RoomPosition objects that the search should be executed against.
+	 *
+	 * @deprecated
+	 *
+	 *  @return {Object|null} The closest object if found, null otherwise.
+	 */
+	findClosestByPath: function(type, opts) { },
 
 	/**
 	 * Find an object with the shortest linear distance from the given position.

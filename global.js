@@ -46,6 +46,10 @@ global.prototype = {
     FIND_CONSTRUCTION_SITES: 111,
     /** @type {number} */
     FIND_MY_SPAWNS: 112,
+    /** @type {number} */
+    FIND_MY_CONSTRUCTION_SITES: 114,
+    /** @type {number} */
+    FIND_HOSTILE_CONSTRUCTION_SITES: 115,
 
     /* DIRECTIONAL CONSTANTS */
 
