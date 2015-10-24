@@ -48,7 +48,7 @@ Spawn.prototype = {
 	/**
 	 * A shorthand to Memory.spawns[spawn.name]. You can use it for quick access the spawn’s specific memory data object.
 	 *
-	 * @type {any[]}
+	 * @type {*[]}
 	 */
 	memory: [ ],
 
@@ -119,7 +119,7 @@ Spawn.prototype = {
 	 * @param {string[]} bodyParts An array describing the new creep’s body. Should contain 1 to 30 elements
 	 * @param {string} [name] The name of a new creep. It should be unique creep name, i.e. the Game.creeps object should not
 	 *  contain another creep with the same name (hash key). If not defined, a random name will be generated.
-	 * @param {any[]} [memory] The memory of a new creep. If provided, it will be immediately stored into Memory.creeps[name].
+	 * @param {*[]} [memory] The memory of a new creep. If provided, it will be immediately stored into Memory.creeps[name].
 	 *
 	 * @return {String, number} The name of a new creep or an error code
 	 */
