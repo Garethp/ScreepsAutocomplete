@@ -10,7 +10,7 @@ Structure = function () {
 
 Structure.prototype = {
 	/**
-	 * A unique object identificator.
+	 * A unique object identifier.
 	 *
 	 * @type {String}
 	 */

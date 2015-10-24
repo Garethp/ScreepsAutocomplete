@@ -10,7 +10,7 @@ Spawn = function () {
 
 Spawn.prototype = {
 	/**
-	 * A unique object identificator.
+	 * A unique object identifier.
 	 *
 	 * @type {string}
 	 */
