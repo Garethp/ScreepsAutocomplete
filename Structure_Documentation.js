@@ -154,7 +154,7 @@ Structure_Controller.prototype =
     progressTotal: 0,
 
     /**
-     * The amount of game ticks when this controller will lose one level due to absense of owner's spawns in the room.
+     * The amount of game ticks when this controller will lose one level due to absence of owner's spawns in the room.
      *
      * @type {Number}
      */

@@ -10,7 +10,7 @@ Flag = function () {
 
 Flag.prototype = {
 	/**
-	 * A unique object identificator.
+	 * A unique object identifier.
 	 *
 	 * @type string
 	 */
@@ -29,10 +29,9 @@ Flag.prototype = {
 	 *  - Game.COLOR_GREY
 	 *  - Game.COLOR_WHITE
 	 *
-	 *  @type {Game.COLOR_RED|Game.COLOR_PURPLE|Game.COLOR_BLUE|Game.COLOR_CYAN|Game.COLOR_GREEN|Game.COLOR_YELLOW
-	 *  |Game.COLOR_ORANGE|Game.COLOR_BROWN|Game.COLOR_GREY|Game.COLOR_WHITE}
+	 *  @type string
 	 */
-	color: '',
+	color: "",
 
 	/**
 	 * Flag’s name. You can choose the name while creating a new flag, and it cannot be changed later. This name is a

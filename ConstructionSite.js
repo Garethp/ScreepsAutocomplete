@@ -14,7 +14,7 @@ ConstructionSite = function () {
 
 ConstructionSite.prototype = {
 	/**
-	 * A unique object identificator.
+	 * A unique object identifier.
 	 *
 	 * @type {string}
 	 */
