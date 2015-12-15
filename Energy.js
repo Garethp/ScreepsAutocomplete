@@ -10,7 +10,7 @@ Energy = function () {
 
 Energy.prototype = {
 	/**
-	 * A unique object identificator.
+	 * A unique object identifier.
 	 *
 	 * @type string
 	 */

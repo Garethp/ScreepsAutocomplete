@@ -17,7 +17,7 @@ Creep = function () {
 
 Creep.prototype = {
 	/**
-	 * A unique object identificator.
+	 * A unique object identifier.
 	 *
 	 * @type string
 	 */
