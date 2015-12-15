@@ -4,57 +4,55 @@
  * @class
  * @constructor
  */
-Map = function () {
-
-};
+Map = function() { };
 
 Map.prototype =
 {
     /**
+     * List all exits available from the room with the given name.
+     *
+     * @param {string} roomName
+     *
+     * @return {object<string,string>} The exits information in the following format, or null if the room not found.
+     *  {
+            "1": "W8N4",    // TOP
+            "3": "W7N3",    // RIGHT
+            "5": "W8N2",    // BOTTOM
+            "7": "W9N3"     // LEFT
+        }
+     */
+    describeExits: function(roomName) { },
+
+    /**
      * Find the exit direction from the given room en route to another room.
      *
-     * @param {String|Room} fromRoom Start room name or room object.
-     * @param {String|Room} toRoom Finish room name or room object.
+     * @param {string|Room} fromRoom Start room name or room object.
+     * @param {string|Room} toRoom Finish room name or room object.
      *
-     * @return {Number} The room direction constant or an error code
+     * @return {number|FIND_EXIT_TOP|FIND_EXIT_RIGHT|FIND_EXIT_BOTTOM|FIND_EXIT_LEFT|ERR_NO_PATH|ERR_INVALID_ARGS} The room direction constant or an error constant
      */
     findExit: function(fromRoom, toRoom) { },
 
     /**
      * Find route from the given room to another room.
      *
-     * @param {String|Room} fromRoom Start room name or room object.
-     * @param {String|Room} toRoom Finish room name or room object.
+     * @param {string|Room} fromRoom Start room name or room object.
+     * @param {string|Room} toRoom Finish room name or room object.
      *
-     * @return {Object[]} The route array in the following format (or an error code)
+     * @return {object[]|ERR_NO_PATH} The route array in the following format or an error constant
      *  [
-     *       { exit: FIND_EXIT_RIGHT, room: 'arena21' },
-     *       { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
-     *  ]
+            { exit: FIND_EXIT_RIGHT, room: 'arena21' },
+            { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
+        ]
      */
     findRoute: function(fromRoom, toRoom) { },
 
     /**
-     * List all exits available from the room with the given name.
-     *
-     * @param {String} roomName The room name.
-     *
-     * @return {Object[]} The exits information in the following format, or null if the room not found.
-     *  {
-     *       "1": "W8N4",    // TOP
-     *       "3": "W7N3",    // RIGHT
-     *       "5": "W8N2",    // BOTTOM
-     *       "7": "W9N3"     // LEFT
-     *   }
-     */
-    describeExits: function(roomName) { },
-
-    /**
      * Check if the room with the given name is protected by temporary "newbie" walls.
      *
-     * @param {String} roomName The room name.
+     * @param {string} roomName The room name.
      *
-     * @return {Boolean}
+     * @return {boolean}
      */
     isRoomProtected: function(roomName) { }
-};
+}
