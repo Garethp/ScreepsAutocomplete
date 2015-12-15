@@ -1,211 +1,232 @@
 /**
- * An object representing the specified position in the room.
- * Every object in the room contains RoomPosition as the pos property.
+ * An object representing the specified position in the room. Every object in the room contains RoomPosition as the pos
+ * property. The position object of a custom location can be obtained using the Room.getPositionAt() method or using the constructor.
  *
- * @note The position object of a custom location can be obtained using the Room.getPositionAt() method or using the constructor.
- *
- * @param {number} x X position in the room.
- * @param {number} y Y position in the room.
- * @param {string} roomName The room name.
- * @constructor
  * @class
+ * @constructor
+ *
+ * @param x {number} X position in the room.
+ * @param y {number} Y position in the room.
+ * @param roomName {String} The room name.
+ *
  */
-RoomPosition = function(x, y, roomName) { };
+RoomPosition = function (x, y, roomName) {
+};
 
-RoomPosition.prototype =
-{
-    /**
-     * The name of the room.
-     *
-     * @type {string}
-     */
-    roomName: "",
+RoomPosition.prototype = {
+	/**
+	 * X position in the room.
+	 *
+	 * @type number
+	 */
+	x: 0,
 
-    /**
-     * X position in the room.
-     *
-     * @type {number}
-     */
-    x: 0,
+	/**
+	 * Y position in the room.
+	 *
+	 * @type number
+	 */
+	y: 0,
 
-    /**
-     * Y position in the room.
-     *
-     * @type {number}
-     */
-    y: 0,
+	/**
+	 * The name of the room.
+	 *
+	 * @type string
+	 */
+	roomName: "",
 
-    /**
-     * Create new ConstructionSite at the specified location.
-     *
-     * @param {string|STRUCTURE_EXTENSION|STRUCTURE_RAMPART|STRUCTURE_ROAD|STRUCTURE_SPAWN|STRUCTURE_WALL|STRUCTURE_LINK} structureType
-     *
-     * @return {number|OK|ERR_INVALID_TARGET|ERR_FULL|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
-     */
-    createConstructionSite: function(structureType) { },
+	/**
+	 * Check whether this position is in the given range of another position.
+	 *
+	 * @param {RoomPosition} toPos The target position.
+	 * @param {number} range The range distance.
+	 * @return {boolean}
+	 */
+	inRangeTo: function (toPos, range) {
+	},
 
-    /**
-     * Create new Flag at the specified location.
-     *
-     * @param {string} [name] The name of a new flag.
-     *                        It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key).
-     *                        If not defined, a random name will be generated.
-     * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} [color] The color of a new flag. Default is COLOR_WHITE.
-     *
-     * @return {string|ERR_NAME_EXISTS|ERR_INVALID_ARGS} The name of a new flag or an error constant.
-     */
-    createFlag: function(name, color) { },
+	/**
+	 * Check whether this position is on the adjacent square to the specified position. The same as inRangeTo(target, 1)
+	 *
+	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
+	 *
+	 * @note An alternative function is isNearTo(x, y)
+	 *
+	 * @return {boolean}
+	 */
+	isNearTo: function (target) {
+	},
 
-    /**
-     * Find an object with the shortest path from the given position.
-     * Uses A* search algorithm and Dijkstra's algorithm.
-     *
-     *
-     * @param {number} type See {@link Room.find}
-     * @param {object} [opts] An object containing pathfinding options (see {@link Room.findPath}), or one of the following:
-     * @param {object|function|string} [opts.filter] Only the objects which pass the filter using the Lodash.filter method will be used.
-     * @param {string} [opts.filter] One of the following constants:
-     *                               - astar    - is faster when there are relatively few possible targets.
-     *                               - dijkstra - is faster when there are a lot of possible targets or when the closest target is nearby.
-     *                               The default value is determined automatically using heuristics.
-     *
-     * @note Another variant of this function is findClosestByPath(objects, opts) where:
-     * @param {Array} objects An array of room's objects or RoomPosition objects that the search should be executed against.
-     *
-     * @return {object|null} The closest object if found, null otherwise.
-     */
-    findClosestByPath: function(type, opts) { },
+	/**
+	 * Get linear direction to the specified position.
+	 *
+	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
+	 *
+	 * @note An alternative function is getDirectionTo(x, y)
+	 *
+	 * @return A number representing one of the direction constants.
+	 */
+	getDirectionTo: function (target) {
+	},
 
-    /**
-     * Find an object with the shortest linear distance from the given position.
-     *
-     * @param {number} type See {@link Room.find}
-     * @param {object} [opts] An object containing one of the following options:
-     * @param {object|function|string} [opts.filter] Only the objects which pass the filter using the Lodash.filter method will be used.
-     *
-     * @note Another variant of this function is findClosestByPath(objects, opts) where:
-     * @param {Array} objects An array of room's objects or RoomPosition objects that the search should be executed against.
-     */
-    findClosestByRange: function(type, opts) { },
+	/**
+	 * Find an optimal path to the specified position using A* search algorithm. This method is a shorthand for Room.findPath.
+	 *
+	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
+	 * @param {Object} [opts] An object containing pathfinding options flags (see Room.findPath for more details).
+	 *
+	 * @note An alternative function is findPathTo(x, y, opts)
+	 *
+	 * @return {PathStep[]}
+	 */
+	findPathTo: function (target, opts) {
+	},
 
-    /**
-     * Find all objects in the specified linear range.
-     *
-     * @param {number} type See {@link Room.find}
-     * @param {number} range The range distance.
-     * @param {object} [opts] See {@link Room.find}
-     *
-     * @note Another variant of this function is findInRange(objects, range, opts) where:
-     * @param {Array} objects An array of room's objects or RoomPosition objects that the search should be executed against.
-     *
-     * @return {Array} An array with the objects found.
-     */
-    findInRange: function(type, range, opts) { },
+	/**
+	 * An alias for findClosest method. This method is deprecated and will be removed soon.
+	 *
+	 * @deprecated
+	 * @param {number} type See Room.find.
+	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
+	 *  method will be used.
+	 * @param {String} [opts.algorithm] One of the following constants:
+	 *  - astar is faster when there are relatively few possible targets;
+	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
+	 *  The default value is determined automatically using heuristics.
+	 */
+	findNearest: function (type, opts) {
+	},
 
-    /**
-     * Find an optimal path to the specified position using A* search algorithm.
-     * This method is a shorthand for Room.findPath.
-     * If the target is in another room, then the corresponding exit will be used as a target
-     *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
-     * @param {object} [opts] An object containing pathfinding options flags (see {@link Room.findPath} for more details).
-     *
-     * @note Another variant of this function is findPathTo(target, opts) where:
-     * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
-     *
-     * @return {object[]} An array with path steps in the following format:
-     * [
-         { x: 10, y: 5, dx: 1,  dy: 0, direction: RIGHT },
-         { x: 10, y: 6, dx: 0,  dy: 1, direction: BOTTOM },
-         { x: 9,  y: 7, dx: -1, dy: 1, direction: BOTTOM_LEFT },
-         ...
-       ]
-     */
-    findPathTo: function(x, y, opts) { },
+	/**
+	 * Find all objects in the specified linear range of the given type.
+	 *
+	 * @param {number} type See Room.find.
+	 * @param {number} range The range distance.
+	 * @param {Object} [opts] See Room.find.
+	 * @return {Object[]} An array with the objects found.
+	 */
+	findInRange: function (type, range, opts) {
+	},
 
-    /**
-     * Get linear direction to the specified position.
-     *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
-     *
-     * @note Another variant of this function is getDirectionTo(target) where:
-     * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
-     *
-     * @return {number} A number representing one of the direction constants.
-     */
-    getDirectionTo: function(x, y) { },
+	/**
+	 * Find an object with the shortest path. Uses A* search algorithm and Dijkstra's algorithm.
+	 *
+	 * @param {number} type See Room.find.
+	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
+	 *  method will be used.
+	 * @param {String} [opts.algorithm] One of the following constants:
+	 *  - astar is faster when there are relatively few possible targets;
+	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
+	 *  The default value is determined automatically using heuristics.
+	 *
+	 *  @note An alternative function is findClosest(objects, opts)
+	 *  - objects {Array} An array of room's objects or RoomPosition objects that the search should be executed against.
+	 *
+	 * @deprecated Replaced with RoomPosition.findClosestByPath
+	 *
+	 *  @return {Object|null} The closest object if found, null otherwise.
+	 */
+	findClosest: function(type, opts) { },
 
-    /**
-     * Get linear range to the specified position.
-     *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
-     *
-     * @note Another variant of this function is getRangeTo(target) where:
-     * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
-     *
-     * @return {number} A number of squares to the given position.
-     */
-    getRangeTo: function(x, y) { },
 
-    /**
-     * Check whether this position is in the given range of another position.
-     *
-     * @param {RoomPosition} toPos The target position.
-     * @param {number} range The range distance.
-     *
-     * @return {boolean}
-     */
-    inRangeTo: function(toPos, range) { },
 
-    /**
-     * Check whether this position is the same as the specified position.
-     *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
-     *
-     * @note Another variant of this function is isEqualTo(target) where:
-     * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
-     *
-     * return {boolean}
-     */
-    isEqualTo: function(x, y) { },
+	/**
+	 * Find an object with the shortest path from the given position. Uses A* search algorithm and Dijkstra's algorithm.
+	 *
+	 * @param {number} type See Room.find.
+	 * @param {Object} [opts] An object containing pathfinding options (see Room.findPath), or filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter
+	 *  method will be used.
+	 * @param {String} [opts.algorithm] One of the following constants:
+	 *  - astar is faster when there are relatively few possible targets;
+	 *  - dijkstra is faster when there are a lot of possible targets or when the closest target is nearby.
+	 *  The default value is determined automatically using heuristics.
+	 *
+	 *  @note An alternative function is findClosestByPath(objects, opts)
+	 *  - objects {Array} An array of room's objects or RoomPosition objects that the search should be executed against.
+	 *
+	 * @deprecated
+	 *
+	 *  @return {Object|null} The closest object if found, null otherwise.
+	 */
+	findClosestByPath: function(type, opts) { },
 
-    /**
-     * Check whether this position is on the adjacent square to the specified position.
-     * The same as inRangeTo(target, 1).
-     *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
-     *
-     * @note Another variant of this function is isNearTo(target) where:
-     * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
-     *
-     * return {boolean}
-     */
-    isNearTo: function(x, y) { },
+	/**
+	 * Find an object with the shortest linear distance from the given position.
+	 *
+	 * @param {number} type See Room.find.
+	 * @param {Object} [opts] An object containing a filter
+	 * @param {Object|Function|String} [opts.filter] Only the objects which pass the filter using the Lodash.filter method will be used.
+	 *
+	 * @return {Object|null} The closest object if found, null otherwise.
+	 */
+	findClosestByRange: function(type, opts) { },
 
-    /**
-     * Get the list of objects at the specified room position.
-     *
-     * @return {object[]} An array with objects at the specified position in the following format:
-     * [
-         { type: 'creep', creep: {...} },
-         { type: 'structure', structure: {...} },
-         ...
-         { type: 'terrain', terrain: 'swamp' }
-       ]
-     */
-    look: function() { },
+	/**
+	 * Get linear range to the specified position.'
+	 *
+	 * @param {RoomPosition|Object} target Can be a RoomPosition object or any object containing RoomPosition.
+	 *
+	 * @note An alternative function is getRangeTo(x, y)
+	 *
+	 * @return {number} A number of squares to the given position.
+	 */
+	getRangeTo: function(target) { },
 
-    /**
-     * Get an object with the given type at the specified room position.
-     *
-     * @param {string} type One of the following constants: constructionSite, creep, exit, flag, resource, source, structure, terrain
-     *
-     * @return {object[]} An array of objects of the given type at the specified position if found.
-     */
-    lookFor: function(type) { }
+	/**
+	 * Check whether this position is the same as the specified position.
+	 *
+	 * @param {Object|RoomPosition} target Can be a RoomPosition object or any object containing RoomPosition.
+	 *
+	 * @note An alternative function is equalsTo(x, y)
+	 *
+	 * @return {boolean}
+	 */
+	equalsTo: function (target) {
+	},
+
+	/**
+	 * Get the list of objects at the specified room position.
+	 *
+	 * @return {Object[]}
+	 */
+	look: function() { },
+
+	/**
+	 * Get an object with the given type at the specified room position.
+	 *
+	 * @param {String} type One of the following string constants:
+	 * - constructionSite
+	 * - creep
+	 * - energy
+	 * - exit
+	 * - flag
+	 * - source
+	 * - structure
+	 * - terrain
+	 *
+	 * @return {Object[]|Undefined} An array of objects of the given type at the specified position if found, otherwise undefined.
+	 */
+	lookFor: function(type) { },
+
+	/**
+	 * Create new Flag at the specified location.
+	 *
+	 * @param {String} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
+	 * @param {String} [color] The color of a new flag. Should be one of the global.COLOR_* constants.
+	 *
+	 * @return {Number}
+	 */
+	createFlag: function(name, color) { },
+
+	/**
+	 * Create new ConstructionSite at the specified location.
+	 *
+	 * @param structureType One of the global.STRUCTURE_* constants.
+	 *
+	 * @return {Number}
+	 */
+	createConstructionSite: function(structureType) { }
 };
