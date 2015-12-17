@@ -1,44 +1,100 @@
 /**
- *
  * @class
  * @constructor
- * @extends Structure
+ * @extends {Structure}
+ */
+Structure_Controller = function() { };
+
+Structure_Controller.prototype =
+{
+    /**
+     * Current controller level, from 0 to 8.
+     *
+     * @type {number}
+     */
+    level: 0,
+
+    /**
+     * The current progress of upgrading the controller to the next level.
+     *
+     * @type {number}
+     */
+    progress: 0,
+
+    /**
+     * The progress needed to reach the next level.
+     *
+     * @type {number}
+     */
+    progressTotal: 0,
+
+    /**
+     * An object with the controller reservation info if present.
+     *
+     * @type {object}
+     */
+    reservation: {
+        /**
+         * The name of a player who reserved this controller.
+         *
+         * @type {string}
+         */
+        username: "",
+
+        /**
+         * The amount of game ticks when the reservation will end.
+         *
+         * @type {number}
+         */
+        ticksToEnd: 0
+    },
+
+    /**
+     * The amount of game ticks when this controller will lose one level.
+     * This timer can be reset by using Creep.upgradeController.
+     *
+     * @type {number}
+     */
+    ticksToDowngrade: 0,
+
+    /**
+     * Make your claimed controller neutral again.
+     *
+     * @return {number|OK|ERR_NOT_OWNER}
+     */
+    unclaim: function() { }
+};
+
+/**
+ * @class
+ * @constructor
+ * @extends {Structure}
  */
 Structure_Extension = function() { };
 
-/**
- * @type {{}}
- */
 Structure_Extension.prototype =
 {
     /**
-     * Will always be global.STRUCTURE_EXTENSION
-     *
-     * @type {String}
-     */
-    structureType: global.STRUCTURE_EXTENSION,
-
-    /**
      * The amount of energy containing in the extension.
      *
-     * @type {Number}
+     * @type {number}
      */
     energy: 0,
 
     /**
      * The total amount of energy the extension can contain.
      *
-     * @type {Number}
+     * @type {number}
      */
     energyCapacity: 0,
 
     /**
-     * Transfer the energy from the extension to a creep
+     * Transfer the energy from the extension to a creep.
      *
      * @param {Creep} target The creep object which energy should be transferred to.
-     * @param {Number} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
+     * @param {number} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
      *
-     * @return {Number}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
      */
     transferEnergy: function(target, amount) { }
 };
@@ -46,72 +102,16 @@ Structure_Extension.prototype =
 /**
  * @class
  * @constructor
- * @extends Structure
- */
-Structure_Link = function() { };
-
-Structure_Link.prototype =
-{
-    /**
-     * Will always be global.STRUCTURE_LINK
-     *
-     * @type {String}
-     */
-    structureType: global.STRUCTURE_LINK,
-
-    /**
-     * The amount of game ticks the link has to wait until the next transfer is possible.
-     *
-     * @type {Number}
-     */
-    cooldown: 0,
-
-    /**
-     * The amount of energy containing in the link.
-     *
-     * @type {Number}
-     */
-    energy: 0,
-
-    /**
-     * The total amount of energy the link can contain.
-     *
-     * @type {Number}
-     */
-    energyCapacity: 0,
-
-    /**
-     * Transfer energy from the link to another link or a creep. If the target is a creep, it has to be at adjacent square to the link.
-     * If the target is a link, it can be at any location in the same room. Remote transfer process implies 3% energy loss and cooldown delay depending on the distance.
-     *
-     * @param {Creep|Structure_Link} target The target object.
-     * @param {Number} [amount] The amount of energy to be transferred. If omitted, all the available energy is used.
-     *
-     * @return {Number}
-     */
-    transferEnergy: function(target, amount) { }
-};
-
-/**
- * @class
- * @constructor
- * @extends Structure
- */
+ * @extends {Structure}
+*/
 Structure_Keeper_Lair = function() { };
 
 Structure_Keeper_Lair.prototype =
 {
     /**
-     * Will always be global.STRUCTURE_KEEPER_LAIR
-     *
-     * @type {String}
-     */
-    structureType: global.STRUCTURE_KEEPER_LAIR,
-
-    /**
      * Time to spawning of the next Source Keeper.
      *
-     * @type {Number}
+     * @type {number}
      */
     ticksToSpawn: 0
 };
@@ -119,90 +119,87 @@ Structure_Keeper_Lair.prototype =
 /**
  * @class
  * @constructor
- * @extends Structure
+ * @extends {Structure}
  */
-Structure_Controller = function() { };
+Structure_Link = function() { };
 
-Structure_Controller.prototype =
+Structure_Link.prototype =
 {
     /**
-     * Will always be global.STRUCTURE_CONTROLLER
+     * The amount of game ticks the link has to wait until the next transfer is possible.
      *
-     * @type {String}
+     * @type {number}
      */
-    structureType: global.STRUCTURE_CONTROLLER,
+    cooldown: 0,
 
     /**
-     * Current controller level, from 0 to 8.
+     * The amount of energy containing in the link.
      *
-     * @type {Number}
+     * @type {number}
      */
-    level: 0,
+    energy: 0,
 
     /**
-     * The current progress of upgrading the controller to the next level.
+     * The total amount of energy the link can contain.
      *
-     * @type {Number}
+     * @type {number}
      */
-    progress: 0,
+    energyCapacity: 0,
 
     /**
-     * The progress needed to reach the next level.
+     * Transfer energy from the link to another link or a creep.
+     * If the target is a creep, it has to be at adjacent square to the link.
+     * If the target is a link, it can be at any location in the same room.
+     * Remote transfer process implies 3% energy loss and cooldown delay depending on the distance.
      *
-     * @type {Number}
-     */
-    progressTotal: 0,
-
-    /**
-     * The amount of game ticks when this controller will lose one level due to absence of owner's spawns in the room.
+     * @param {Creep|Structure|Structure_Link} target The target object.
+     * @param {number} [amount] The amount of energy to be transferred. If omitted, all the available energy is used.
      *
-     * @type {Number}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS|ERR_TIRED|ERR_RCL_NOT_ENOUGH}
      */
-    ticksToDowngrade: 0,
-
-    /**
-     * An object with the controller reservation info if present
-     *
-     * @type {Object|Null}
-     */
-    reservation: {
-
-        /**
-         * The name of a player who reserved this controller.
-         *
-         * @type {String}
-         */
-        username: "",
-
-        /**
-         * The amount of game ticks when the reservation will end.
-         *
-         * @type {Number}
-         */
-        ticksToEnd: 0
-    }
+    transferEnergy: function(target, amount) { }
 };
 
 /**
  * @class
  * @constructor
- * @extends Structure
+ * @extends {Structure}
  */
-Structure_Rampart = function() {};
+Structure_Observer = function() { };
 
-Structure_Rampart.prototype =
+Structure_Observer.prototype =
 {
     /**
-     * Will always be global.STRUCTURE_RAMPART
+     * Provide visibility into a distant room from your script.
+     * The target room object will be available on the next tick. The maximum range is 5 rooms.
      *
-     * @type {String}
+     * @param {string} roomName The name of the target room.
+     *
+     * @return {number|OK|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
-    structureType: global.STRUCTURE_RAMPART,
+    observeRoom: function(roomName) { }
+};
+
+/**
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Power_Bank = function() { };
+
+Structure_Power_Bank.prototype =
+{
+    /**
+     * The amount of power containing.
+     *
+     * @type {number}
+     */
+    power: 0,
 
     /**
-     * The amount of game ticks when this rampart will lose some hit points.
+     * The amount of game ticks when this structure will disappear.
      *
-     * @type {Number}
+     * @type {number}
      */
     ticksToDecay: 0
 };
@@ -210,95 +207,233 @@ Structure_Rampart.prototype =
 /**
  * @class
  * @constructor
- * @extends Structure
+ * @extends {Structure}
+ */
+Structure_Power_Spawn = function() { };
+
+Structure_Power_Spawn.prototype =
+{
+    /**
+     * The amount of energy containing in this structure.
+     *
+     * @type {number}
+     */
+    energy: 0,
+
+    /**
+     * The total amount of energy this structure can contain.
+     *
+     * @type {number}
+     */
+    energyCapacity: 0,
+
+    /**
+     * The amount of power containing in this structure.
+     *
+     * @type {number}
+     */
+    power: 0,
+
+    /**
+     * The total amount of power this structure can contain.
+     *
+     * @type {number}
+     */
+    powerCapacity: 0,
+
+    /**
+     * Create a power creep.
+     *
+     * @note This method is under development.
+     *
+     * @param {string} name The name of the power creep.
+     */
+    createPowerCreep: function(name) { },
+
+    /**
+     * Register power resource units into your account.
+     * Registered power allows to develop power creeps skills.
+     * Consumes 1 power resource unit and 50 energy resource units.
+     *
+     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_RCL_NOT_ENOUGH}
+     */
+    processPower: function() { },
+
+    /**
+     * Transfer the energy from this structure to a creep.
+     *
+     * @param {Creep} target The creep object which energy should be transferred to.
+     * @param {number} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
+     */
+    transferEnergy: function(target, amount) { }
+};
+
+/**
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Rampart = function() { };
+
+Structure_Rampart.prototype =
+{
+    /**
+     * The amount of game ticks when this rampart will lose some hit points.
+     *
+     * @type {number}
+     */
+    ticksToDecay: 0
+};
+
+/**
+ * @class
+ * @constructor
+ * @extends {Structure}
  */
 Structure_Road = function() { };
 
 Structure_Road.prototype =
 {
     /**
-     * Will always be global.STRUCTURE_ROAD
-     *
-     * @type {String}
-     */
-    structureType: global.STRUCTURE_ROAD,
-
-    /**
      * The amount of game ticks when this road will lose some hit points.
      *
-     * @type {Number}
+     * @type {number}
      */
     ticksToDecay: 0
-}
-
-/**
- * @class
- * @constructor
- * @extends Structure
- */
-Structure_Wall = function() { };
-
-Structure_Wall.prototype =
-{
-    /**
-     * Will always be global.STRUCTURE_WALL
-     *
-     * @type {String}
-     */
-    structureType: global.STRUCTURE_WALL,
-
-    /**
-     * The amount of game ticks when the wall will disappear (only for automatically placed border walls at the start of the game).
-     *
-     * @type {Number}
-     */
-    ticksToLive: 0
 };
 
 /**
  * @class
  * @constructor
- * @extends Structure
+ * @extends {Structure}
  */
 Structure_Storage = function() { };
 
 Structure_Storage.prototype =
 {
     /**
-     * Will always be global.STRUCTURE_STORAGE
-     *
-     * @type {String}
-     */
-    structureType: global.STRUCTURE_STORAGE,
-
-    /**
      * An object with the storage contents.
      *
-     * @type {Object}
+     * @type {object}
      */
     store: {
         /**
-         * The current amount of energy in the storage.
+         * The amount of energy resource units.
          *
-         * @type {Number}
+         * @type {number}
          */
-        energy: 0
+        energy: 0,
+
+        /**
+         * The amount of power resource units if present, undefined otherwise.
+         *
+         * @type {number|undefined}
+         */
+        power: 0
     },
 
     /**
      * The total amount of resources the storage can contain.
      *
-     * @type {Number}
+     * @type {number}
      */
     storeCapacity: 0,
 
     /**
-     * Transfer the energy from the storage to a creep.
+     * Transfer resource from this storage to a creep. The target has to be at adjacent square.
      *
-     * @param {Creep} target The creep object which energy should be transferred to.
-     * @param {Number} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
+     * @param {Creep} target The target object.
+     * @param {string} resourceType One of the RESOURCE_* constants.
+     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      *
-     * @return {Number}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
+     */
+    transfer: function(target, resourceType, amount) { },
+
+    /**
+     * An alias for storage.transfer(target, RESOURCE_ENERGY, amount).
+     * @deprecated
+     *
+     * @param {Creep} target The target object.
+     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      */
     transferEnergy: function(target, amount) { }
+};
+
+/**
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Tower = function() { };
+
+Structure_Tower.prototype =
+{
+    /**
+     * The amount of energy containing in this structure.
+     *
+     * @type {number}
+     */
+    energy: 0,
+
+    /**
+     * The total amount of energy this structure can contain.
+     *
+     * @type {number}
+     */
+    energyCapacity: 0,
+
+    /**
+     * Remotely attack any creep in the room.
+     * Consumes 10 energy units per tick.
+     * Attack power depends on the distance to the target: from 600 hits at range 10 to 300 hits at range 40.
+     *
+     * @param {Creep} target The target creep.
+     *
+     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
+     */
+    attack: function(target) { },
+
+    /**
+     * Remotely heal any creep in the room.
+     * Consumes 10 energy units per tick.
+     * Heal power depends on the distance to the target: from 400 hits at range 10 to 200 hits at range 40.
+     *
+     * @param {Creep} target The target creep.
+     *
+     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
+     */
+    heal: function(target) { },
+
+    /**
+     * Remotely repair any structure in the room.
+     * Consumes 10 energy units per tick.
+     * Repair power depends on the distance to the target: from 600 hits at range 10 to 300 hits at range 40.
+     *
+     * @param {Spawn|Structure} target The target structure.
+     *
+     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
+     */
+    repair: function(target) { }
+};
+
+/**
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Wall = function() { };
+
+Structure_Wall.prototype =
+{
+    /**
+     * The amount of game ticks when the wall will disappear
+     *
+     * @note only for automatically placed border walls at the start of the game.
+     *
+     * @type {number}
+     */
+    ticksToLive: 0
 };

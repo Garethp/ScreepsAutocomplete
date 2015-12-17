@@ -4,126 +4,125 @@
  * @class
  * @constructor
  */
-Game = function () {
+Game = function() { };
 
-};
 
-Game.prototype = {
+Game.prototype =
+{
+    /**
+     * An amount of available CPU time at the current game tick. It can be higher than your account CPU limit.
+     *
+     * @type {number}
+     */
+    cpuLimit: 0,
 
-	/**
-	 * An amount of available CPU time at the current game tick.
-	 *
-	 * @type number
-	 */
-	cpuLimit: 0,
+    /**
+     * A hash containing all your creeps with creep names as hash keys.
+     *
+     * @type {object<string, Creep>}
+     */
+    creeps: null,
 
-	/**
-	 * A hash containing all your creeps with creep names as hash keys.
-	 *
-	 * @type Object<String, Creep>
-	 */
-	creeps: null,
+    /**
+     * A hash containing all your flags with flag names as hash keys.
+     *
+     * @type {object<string, Flag>}
+     */
+    flags: null,
 
-	/**
-	 * A global object representing world map.
-	 *
-	 * @type Map
-	 */
-	map: null,
+    /**
+     * Your Global Control Level
+     *
+     * @type {object}
+     */
+    gcl: {
 
-	/**
-	 * A hash containing all your flags with flag names as hash keys.
-	 *
-	 * @type Object<String, Flag>
-	 */
-	flags: null,
+        /**
+         * The current level.
+         *
+         * @type {number}
+         */
+        level: 0,
 
-	/**
-	 * A hash containing all the rooms available to you with room names as hash keys.
-	 *
-	 * @type Object<String, Room>
-	 */
-	rooms: null,
+        /**
+         * The current progress to the next level.
+         *
+         * @type {number}
+         */
+        progress: 0,
 
-	/**
-	 * A hash containing all your spawns with spawn names as hash keys.
-	 *
-	 * @type Object<String, Spawn>
-	 */
-	spawns: null,
+        /**
+         * The progress required to reach the next level.
+         *
+         * @type {number}
+         */
+        progressTotal: 0
+    },
 
-	/**
-	 * A hash containing all your structures with structure id as hash keys.
-	 *
-	 * @type Object<String, Structure>
-	 */
-	structures: null,
+    /**
+     * A global object representing world map.
+     *
+     * @type {Map}
+     */
+    map: null,
 
-	/**
-	 * System game tick counter. It is automatically incremented on every tick.
-	 *
-	 * @type Number
-	 */
-	time: 0,
+    /**
+     * A hash containing all the rooms available to you with room names as hash keys.
+     *
+     * @type {object<string, Room>}
+     */
+    rooms: null,
 
-	gcl: {
+    /**
+     * A hash containing all your spawns with spawn names as hash keys.
+     *
+     * @type {object<string, Spawn>}
+     */
+    spawns: null,
 
-		/**
-		 * The current level.
-		 *
-		 * @type {Number}
-		 */
-		level: 0,
+    /**
+     * A hash containing all your structures with structure id as hash keys.
+     *
+     * @type {object<string, Structure>}
+     */
+    structures: null,
 
-		/**
-		 * The current progress to the next level.
-		 *
-		 * @type {Number}
-		 */
-		progress: 0,
+    /**
+     * System game tick counter. It is automatically incremented on every tick.
+     *
+     * @type {number}
+     */
+    time : 0,
 
-		/**
-		 * The progress required to reach the next level.
-		 *
-		 * @type {Number}
-		 */
-		progressTotal: 0
-	},
+    /**
+     * Get an object with the specified unique ID. It may be a game object of any type.
+     * Only objects from the rooms which are visible to you can be accessed.
+     *
+     * @param {string} id The unique identificator.
+     *
+     * @return {object|null} Returns an object instance or null if it cannot be found.
+     */
+    getObjectById: function(id) { },
 
-	/**
-	 * Get an object with the specified unique ID. It may be a game object of any type. Only objects from the rooms which are visible to you can be accessed.
-	 *
-	 * @param id {String}
-	 */
-	getObjectById: function (id) {
-	},
+    /**
+     * Get amount of CPU time used from the beginning of the current game tick.
+     * Always returns 0 in the Simulation mode.
+     *
+     * @return {number} Returns currently used CPU time as a float number.
+     */
+    getUsedCpu: function() { },
 
-	/**
-	 * Get an instance object of the specified room. You can gain access to a room only if you have a creep, spawn, or extension within it.
-	 *
-	 * @deprecated
-	 * @param name {String}
-	 * @return Room
-	 */
-	getRoom: function (name) {
-	},
-
-	/**
-	 * Get amount of CPU time used during the current game tick.
-	 *
-	 * @param {Function} callback {function(number)} The callback function to be called with the used CPU value as its first argument
-	 */
-	getUsedCpu: function(callback) { },
-
-	/**
-	 * Send a custom message at your profile email. This way, you can set up notifications to yourself on any occasion within the game. Not available in the Simulation Room.
-	 * You can schedule up to 20 notifications during one game tick.
-	 *
-	 * @param message {string} Custom text which will be sent in the message. Maximum length is 1000 characters.
-	 * @param [groupInterval] {number} If set to 0 (default), the notification will be scheduled immediately.
-	 * Otherwise, it will be grouped with other notifications and mailed out later using the specified time in minutes.
-	 */
-	notify: function (message, groupInterval) {
-	}
-};
-
+    /**
+     * Send a custom message at your profile email.
+     * This way, you can set up notifications to yourself on any occasion within the game.
+     * You can schedule up to 20 notifications during one game tick.
+     * Not available in the Simulation Room.
+     *
+     * @param {string} message Custom text which will be sent in the message. Maximum length is 1000 characters.
+     * @param {number} [groupInterval] If set to 0 (default), the notification will be scheduled immediately.
+     * Otherwise, it will be grouped with other notifications and mailed out later using the specified time in minutes.
+     *
+     * @return {null}
+     */
+    notify: function(message, groupInterval) { }
+}
