@@ -43,6 +43,12 @@ const HEAL = "heal";
  */
 const TOUGH = "tough";
 
+/**
+ * @constant
+ * @type {string}
+ */
+const CLAIM = "claim";
+
 /** DIRECTION CONSTANTS **/
 
 /**

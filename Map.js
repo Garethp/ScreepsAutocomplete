@@ -48,6 +48,21 @@ Map.prototype =
     findRoute: function(fromRoom, toRoom) { },
 
     /**
+     * Get terrain type at the specified room position.
+     * This method works for any room in the world even if you have no access to it.
+     *
+     * @param {number} x X position in the room.
+     * @param {number} y Y position in the room.
+     * @param {string} roomName The room name.
+     *
+     * @note Another variant of this function is getTerrianAt(pos) where:
+     * @param {RoomPosition} pos The position object.
+     *
+     * @return {string} Returns either "plain", "swamp" or "wall".
+     */
+    getTerrianAt: function(x, y, roomName) { },
+
+    /**
      * Check if the room with the given name is protected by temporary "newbie" walls.
      *
      * @param {string} roomName The room name.

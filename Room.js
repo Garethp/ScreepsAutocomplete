@@ -131,13 +131,14 @@ Room.prototype =
      * @param {number} y The Y position.
      * @param {string} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
      * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} [color] The color of a new flag. Default value is COLOR_WHITE.
+     * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} [secondaryColor] The secondary color of a new flag. The default value is equal to color.
      *
      * @note Another variant of the function is createFlag(pos, name, color) where:
      * @param {object} pos Can be a RoomPosition object or any object containing RoomPosition.
      *
      * @return {string|number|ERR_NAME_EXISTS|ERR_INVALID_ARGS} The name of the new flag or an error constant.
      */
-    createFlag: function(x, y, name, color) { },
+    createFlag: function(x, y, name, color, secondaryColor) { },
 
     /**
      * Find all objects of the specified type in the room.
@@ -173,14 +174,20 @@ Room.prototype =
      *                                                      Use this flag when you need to move through a territory blocked by hostile structures.
      *                                                      If a creep with an ATTACK body part steps on such a square, it automatically attacks the structure.
      *                                                      The default value is false.
-     * @param {Array} [opts.ignore] An array of the room's objects or RoomPosition objects which should be treated as walkable tiles during the search.
-     * @param {Array} [opts.avoid] An array of the room's objects or RoomPosition objects which should be treated as obstacles during the search.
+     * @param {boolean} [opts.ignoreRoads] Ignore road structures. Enabling this option can speed up the search. The default value is false. This is only used when the new PathFinder is enabled.
+     * @param {function} [opts.costCallback] You can use this callback to modify a CostMatrix for any room during the search.
+     *                                       The callback accepts two arguments, roomName and costMatrix.
+     *                                       Use the costMatrix instance to make changes to the positions costs.
+     *                                       This is only used when the new PathFinder is enabled.
+     * @param {Array} [opts.ignore] An array of the room's objects or RoomPosition objects which should be treated as walkable tiles during the search. Cannot be used when the new PathFinder is enabled.
+     * @param {Array} [opts.avoid] An array of the room's objects or RoomPosition objects which should be treated as obstacles during the search.  Cannot be used when the new PathFinder is enabled.
      * @param {number} [opts.maxOps] The maximum limit of possible pathfinding operations. The greater the value, the more accurate path will be found, but more CPU time could be used.
      *                               The default value is 2000.
      * @param {number} [opts.heuristicWeight] Weight to apply to the heuristic to allow for suboptimal paths (for example, not using the roads or going through swamps),
      *                                        in order to speed up the search. Set any large value (say, 1000) in order to ignore terrain costs.
      *                                        The default value is 1.
      * @param {boolean} [opts.serialize] If true, the result path will be serialized using Room.serializePath. The default is false.
+     * @param {number} [opts.maxRooms] The maximum allowed rooms to search. The default (and maximum) is 16. This is only used when the new PathFinder is enabled.
      *
      * @return {object[]} An array with path steps in the following format:
      *  [

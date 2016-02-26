@@ -37,7 +37,7 @@ Spawn.prototype =
     hitsMax: 0,
 
     /**
-     * A unique object identifier. You can use Game.getObjectById method to retrieve an object instance by its id.
+     * A unique object identificator. You can use Game.getObjectById method to retrieve an object instance by its id.
      *
      * @type {string}
      */
@@ -143,6 +143,14 @@ Spawn.prototype =
      */
     destroy: function() { },
 
+    /**
+     * Check whether this spawn can be used.
+     * If the room controller level is not enough, then this method will return false,
+     * and the structure will be highlighted with red in the game.
+     *
+     * @return {boolean}
+     */
+    isActive: function() { },
     /**
      * Toggle auto notification when the spawn is under attack.
      * The notification will be sent to your account email. Turned on by default.
