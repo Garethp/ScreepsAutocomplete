@@ -13,7 +13,7 @@ Creep.prototype =
     /**
      * An array describing the creep’s body.
      * Each element contains the following properties:
-     * type {string|MOVE|WORK|CARRY|ATTACK|RANGED_ATTACK|HEAL|TOUGH} The part's type
+     * type {string|MOVE|WORK|CARRY|ATTACK|RANGED_ATTACK|HEAL|TOUGH|CLAIM} The part's type
      * hits {number} The remaining amount of hit points of this body part.
      *
      * @type {object[]}
@@ -70,7 +70,7 @@ Creep.prototype =
     hitsMax: 0,
 
     /**
-     * A unique object identifier.
+     * A unique object identificator.
      * You can use Game.getObjectById method to retrieve an object instance by its id.
      *
      * @type {string}
@@ -181,9 +181,21 @@ Creep.prototype =
      *
      * @param {Structure} target The target controller object.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_GCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_GCL_NOT_ENOUGH|ERR_FULL}
      */
     claimController: function(target) { },
+
+    /**
+     * Dismantles any (even hostile) structure returning 50% of the energy spent on its repair.
+     * Requires the WORK body part. If the creep has an empty CARRY body part,
+     * the energy is put into it; otherwise it is dropped on the ground.
+     * The target has to be at adjacent square to the creep.
+     *
+     * @param {Spawn|Structure} target The target structure.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     */
+    dismantle: function(target) { },
 
     /**
      * Drop this resource on the ground.

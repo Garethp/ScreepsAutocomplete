@@ -9,7 +9,7 @@ Flag = function() { };
 Flag.prototype =
 {
     /**
-     * A unique object identifier. You can use Game.getObjectById method to retrieve an object instance by its id.
+     * A unique object identificator. You can use Game.getObjectById method to retrieve an object instance by its id.
      *
      * @type {string}
      */
@@ -62,6 +62,13 @@ Flag.prototype =
     roomName: "",
 
     /**
+     * Flag secondary color.
+     *
+     * @type {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN}
+     */
+    secondaryColor: "",
+
+    /**
      * Remove the flag.
      *
      * @return {OK} Always returns OK.
@@ -72,10 +79,11 @@ Flag.prototype =
      * Set new color of the flag.
      *
      * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} color
+     * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} [secondaryColor] Secondary color of the flag
      *
      * @return {number|OK|ERR_INVALID_ARGS}
      */
-    setColor: function(color) { },
+    setColor: function(color, secondaryColor) { },
 
     /**
      * Set new position of the flag.

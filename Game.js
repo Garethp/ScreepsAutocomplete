@@ -11,7 +11,8 @@ Game.prototype =
 {
     /**
      * An amount of available CPU time at the current game tick. It can be higher than your account CPU limit.
-     *
+     * @alias Game.cpu.tickLimit
+     * @deprecated
      * @type {number}
      */
     cpuLimit: 0,
@@ -57,6 +58,35 @@ Game.prototype =
          * @type {number}
          */
         progressTotal: 0
+    },
+
+    /**
+     * An object containing information about your CPU usage
+     *
+     * @type {object}
+     */
+    cpu: {
+        /**
+         * Your CPU limit depending on your Global Control Level.
+         *
+         * @type {number}
+         */
+        limit: 0,
+
+        /**
+         * An amount of available CPU time at the current game tick.
+         * It can be higher than Game.cpu.limit
+         *
+         * @type {number}
+         */
+        tickLimit: 0,
+
+        /**
+         * An amount of unused CPU accumulated in your bucket
+         *
+         * @type {number}
+         */
+        bucket: 0
     },
 
     /**
@@ -107,6 +137,9 @@ Game.prototype =
     /**
      * Get amount of CPU time used from the beginning of the current game tick.
      * Always returns 0 in the Simulation mode.
+     *
+     * @alias Game.cpu.getUsed
+     * @deprecated
      *
      * @return {number} Returns currently used CPU time as a float number.
      */

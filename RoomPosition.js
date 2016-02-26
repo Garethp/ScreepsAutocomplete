@@ -51,10 +51,11 @@ RoomPosition.prototype =
      *                        It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key).
      *                        If not defined, a random name will be generated.
      * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} [color] The color of a new flag. Default is COLOR_WHITE.
+     * @param {string|COLOR_WHITE|COLOR_GREY|COLOR_RED|COLOR_PURPLE|COLOR_BLUE|COLOR_CYAN|COLOR_GREEN|COLOR_YELLOW|COLOR_ORANGE|COLOR_BROWN} [secondaryColor] The secondary color of a new flag. The default value is equal to color.
      *
      * @return {string|ERR_NAME_EXISTS|ERR_INVALID_ARGS} The name of a new flag or an error constant.
      */
-    createFlag: function(name, color) { },
+    createFlag: function(name, color, secondaryColor) { },
 
     /**
      * Find an object with the shortest path from the given position.
