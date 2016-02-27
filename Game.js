@@ -86,7 +86,15 @@ Game.prototype =
          *
          * @type {number}
          */
-        bucket: 0
+        bucket: 0,
+
+        /**
+         * Get amount of CPU time used from the beginning of the current game tick.
+         * @note Always returns 0 in the Simulation mode
+         *
+         * @return {number} Returns currently used CPU time as a float number.
+         */
+        getUsed: function() { }
     },
 
     /**
