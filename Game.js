@@ -105,6 +105,13 @@ Game.prototype =
     map: null,
 
     /**
+     * A global object representing the in-game market.
+     *
+     * @type {Market}
+     */
+    market: null,
+
+    /**
      * A hash containing all the rooms available to you with room names as hash keys.
      *
      * @type {object<string, Room>}
