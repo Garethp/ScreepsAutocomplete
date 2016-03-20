@@ -48,6 +48,17 @@ Map.prototype =
     findRoute: function(fromRoom, toRoom) { },
 
     /**
+     * Get the linear distance (in rooms) between two rooms.
+     * You can use this function to estimate the energy cost of sending resources through terminals, or using observers and nukes.
+     *
+     * @param {string} roomName1 The name of the first room.
+     * @param {string} roomName2 The name of the second room.
+     *
+     * @return {number} A number of rooms between the given two rooms.
+     */
+    getRoomLinearDistance: function(roomName1, roomName2) { },
+
+    /**
      * Get terrain type at the specified room position.
      * This method works for any room in the world even if you have no access to it.
      *

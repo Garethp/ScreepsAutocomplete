@@ -13,7 +13,8 @@ Creep.prototype =
     /**
      * An array describing the creep’s body.
      * Each element contains the following properties:
-     * type {string|MOVE|WORK|CARRY|ATTACK|RANGED_ATTACK|HEAL|TOUGH|CLAIM} The part's type
+     * boost {string|undefined} If the body part is boosted, this property specifies the mineral type which is used for boosting. One of the RESOURCE_* constants.
+     * type {string|MOVE|WORK|CARRY|ATTACK|RANGED_ATTACK|HEAL|TOUGH|CLAIM} One of the body part types constants.
      * hits {number} The remaining amount of hit points of this body part.
      *
      * @type {object[]}
@@ -415,9 +416,11 @@ Creep.prototype =
     /**
      * Upgrade your controller to the next level using carried energy.
      * Upgrading controllers raises your Global Control Level in parallel.
-     * Needs WORK and CARRY body parts. The target has to be at adjacent square to the creep.
+     * Requires WORK and CARRY body parts.
+     * The target has to be at adjacent square to the creep.
      * A fully upgraded level 8 controller can't be upgraded with the power over 15 energy units per tick regardless of creeps power.
      * The cumulative effect of all the creeps performing upgradeController in the current tick is taken into account.
+     * The effect can be boosted by ghodium mineral compounds (including limit increase).
      *
      * @param {Structure} target The target controller object to be upgraded.
      *
