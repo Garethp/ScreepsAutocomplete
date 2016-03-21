@@ -1,4 +1,6 @@
 /**
+ * Claim this structure to take control over the room.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -66,6 +68,8 @@ Structure_Controller.prototype =
 };
 
 /**
+ * Contains up to 200 energy units which can be spent on spawning bigger creeps.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -100,6 +104,9 @@ Structure_Extension.prototype =
 };
 
 /**
+ * Non-player structure.
+ * Spawns source keepers.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -117,6 +124,9 @@ Structure_Keeper_Lair.prototype =
 };
 
 /**
+ * Remotely transfers up to 500 energy to another Link.
+ * Cooldown period equals to 1 tick per tile of the linear distance to the target.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -161,6 +171,8 @@ Structure_Link.prototype =
 };
 
 /**
+ * Provides visibility into a distant room from your script.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -181,6 +193,9 @@ Structure_Observer.prototype =
 };
 
 /**
+ * Non-player structure.
+ * Contains power resource.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -205,6 +220,8 @@ Structure_Power_Bank.prototype =
 };
 
 /**
+ * 	Spawns power creeps with special unique powers.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -271,6 +288,9 @@ Structure_Power_Spawn.prototype =
 };
 
 /**
+ * Blocks movement of hostile creeps, and defends your creeps and structures.
+ * Decays for 300 hits per 100 game ticks.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -288,6 +308,10 @@ Structure_Rampart.prototype =
 };
 
 /**
+ * Decreases movement cost to 1. Can be constructed in neutral rooms.
+ * Decays for 100 hits per 1,000 ticks if built on plain land.
+ * Decays for 500 hits per 1,000 ticks if built on swamp.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -305,6 +329,8 @@ Structure_Road.prototype =
 };
 
 /**
+ * 	Stores up to 1,000,000 resource units.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -363,6 +389,8 @@ Structure_Storage.prototype =
 };
 
 /**
+ * Remotely attacks or heals any creep in a room, or repairs a structure.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -420,6 +448,8 @@ Structure_Tower.prototype =
 };
 
 /**
+ * Blocks movement of all creeps.
+ *
  * @class
  * @constructor
  * @extends {Structure}
@@ -436,4 +466,207 @@ Structure_Wall.prototype =
      * @type {number}
      */
     ticksToLive: 0
+};
+
+/**
+ * Allows to harvest mineral deposits.
+ *
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Extractor = function() { };
+
+Structure_Extractor.prototype =
+{
+
+};
+
+/**
+ * Produces mineral compounds from base minerals and boosts creeps.
+ *
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Lab = function() { };
+
+Structure_Lab.prototype =
+{
+    /**
+     * The amount of game ticks the lab has to wait until the next reaction is possible.
+     *
+     * @type {number}
+     */
+    cooldown: 0,
+
+    /**
+     * The amount of energy containing in the lab. Energy is used for boosting creeps.
+     *
+     * @type {number}
+     */
+    energy: 0,
+
+    /**
+     * The total amount of energy the lab can contain.
+     *
+     * @type {number}
+     */
+    energyCapacity: 0,
+
+    /**
+     * The amount of mineral resources containing in the lab.
+     *
+     * @type {number}
+     */
+    mineralAmount: 0,
+
+    /**
+     * The type of minerals containing in the lab. Labs can contain only one mineral type at the same time.
+     * One of the RESOURCE_* constants.
+     *
+     * @type {string}
+     */
+    mineralType : "",
+
+    /**
+     * The total amount of minerals the lab can contain.
+     *
+     * @type {number}
+     */
+    mineralCapacity: 0,
+
+    /**
+     * Boosts creep body part using the containing mineral compound.
+     * The creep has to be at adjacent square to the lab.
+     * Boosting one body part consumes 30 mineral units and 20 energy units.
+     *
+     * @param {Creep} creep The target creep.
+     * @param {number} [bodyPartsCount] The number of body parts of the corresponding type to be boosted. Body parts are always counted left-to-right for TOUGH, and right-to-left for other types. If undefined, all the eligible body parts are boosted.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
+     */
+    boostCreep: function(creep, bodyPartsCount) { },
+
+    /**
+     * Produce mineral compounds using reagents from two another labs.
+     * Labs have to be within 2 squares range. Each reaction produces 10 mineral units and has a 10 ticks cooldown period.
+     * The same input labs can be used by many output labs.
+     *
+     * @param {Structure|Structure_Lab} lab1 The first source lab.
+     * @param {Structure|Structure_Lab} lab2 The second source lab.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS|ERR_TIRED}
+     */
+    runReaction: function(lab1, lab2) { },
+
+    /**
+     * Transfer resource from this structure to a creep.
+     * The target has to be at adjacent square.
+     *
+     * @param {Creep} target The target object.
+     * @param {string} resourceType One of the RESOURCE_* constants.
+     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
+     */
+    transfer: function(target, resourceType, amount) { }
+};
+
+/**
+ * Sends any resources to a Terminal in another room.
+ *
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Terminal = function() { };
+
+Structure_Terminal.prototype =
+{
+    /**
+     * An object with the storage contents.
+     * Each object key is one of the RESOURCE_* constants, values are resources amounts.
+     * Use _.sum(structure.store) to get the total amount of contents.
+     *
+     * @type {object}
+     */
+    store: {},
+
+    /**
+     * The total amount of resources the storage can contain.
+     *
+     * @type {number}
+     */
+    storeCapacity: 0,
+
+    /**
+     * Sends resource to a Terminal in another room with the specified name.
+     * If the target Terminal's storage is full, the resources are dropped on the ground.
+     * Each transaction requires additional energy according to this formula: ceil(0.2 * amount * linearDistanceBetweenRooms).
+     * For example, sending 100 resource units from W1N1 to W2N3 will consume 40 energy units.
+     * You can track your incoming and outgoing transactions and estimate range cost between rooms using the Game.market object.
+     *
+     * @param {string} resourceType One of the RESOURCE_* constants.
+     * @param {number} amount The amount of resources to be sent. The minimum amount is 100.
+     * @param {string} destination The name of the target room. You don't have to gain visibility in this room.
+     * @param {string} [description] The description of the transaction. It is visible to the recipient. The maximum length is 100 characters.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
+     */
+    send: function(resourceType, amount, destination, description) { },
+
+    /**
+     * Transfer resource from this terminal to a creep.
+     * The target has to be at adjacent square.
+     *
+     * @param {Creep} target The target object.
+     * @param {string} resourceType One of the RESOURCE_* constants.
+     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
+     */
+    transfer: function(target, resourceType, amount) { }
+};
+
+/**
+ * Contains up to 2,000 resource units.
+ * Can be constructed in neutral rooms.
+ * Decays for 5,000 hits per 100 ticks.
+ *
+ * @class
+ * @constructor
+ * @extends {Structure}
+ */
+Structure_Container = function() { };
+
+Structure_Container.prototype =
+{
+    /**
+     * An object with the structure contents.
+     * Each object key is one of the RESOURCE_* constants, values are resources amounts.
+     * Use _.sum(structure.store) to get the total amount of contents.
+     *
+     * @type {object<string, number>}
+     */
+    store: {},
+
+    /**
+     * The total amount of resources the structure can contain.
+     *
+     * @type {number}
+     */
+    storeCapacity: 0,
+
+    /**
+     * Transfer resource from this structure to a creep.
+     * The target has to be at adjacent square.
+     *
+     * @param {Creep} target The target object.
+     * @param {string} resourceType One of the RESOURCE_* constants.
+     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
+     *
+     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
+     */
+    transfer: function(target, resourceType, amount) { }
 };

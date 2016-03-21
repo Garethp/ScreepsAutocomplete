@@ -56,9 +56,16 @@ Room.prototype =
     /**
      * The Storage structure of this room, if present, otherwise undefined.
      *
-     * @type {Structure}
+     * @type {Structure|Structure_Storage|undefined}
      */
     storage: null,
+
+    /**
+     * The Terminal structure of this room, if present, otherwise undefined.
+     *
+     * @type {Structure|Structure_Terminal|undefined}
+     */
+    terminal: null,
 
     /**
      * An object with survival game info.
