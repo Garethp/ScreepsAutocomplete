@@ -1,8 +1,7 @@
 /**
- * RawMemory object allows to implement your own memory stringifier instead of built-in serializer based on JSON.stringify
+ * RawMemory object allows to implement your own memory stringifier instead of built-in serializer based on JSON.stringify.
  *
  * @class
- * @constructor
  */
 RawMemory = function() { };
 
@@ -11,7 +10,7 @@ RawMemory.prototype =
     /**
      * Get a raw string representation of the Memory object.
      *
-     * @note Sample: var myMemory = JSON.parse(RawMemory.get());
+     * @type {function}
      *
      * @return {string}
      */
@@ -20,9 +19,11 @@ RawMemory.prototype =
     /**
      * Set new memory value.
      *
-     * @param {string} value New memory value as a string.
+     * @type {function}
      *
-     * @return {null}
+     * @param {string} value
+     *
+     * @return {void}
      */
     set: function(value) { }
 };

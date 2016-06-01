@@ -2,42 +2,68 @@
  * The main global game object containing all the gameplay information.
  *
  * @class
- * @constructor
  */
 Game = function() { };
-
 
 Game.prototype =
 {
     /**
-     * An amount of available CPU time at the current game tick. It can be higher than your account CPU limit.
-     * @alias Game.cpu.tickLimit
-     * @deprecated
-     * @type {number}
+     * An object containing information about your CPU usage
      */
-    cpuLimit: 0,
+    cpu:
+    {
+        /**
+         * Your CPU limit depending on your Global Control Level.
+         *
+         * @type {number}
+         */
+        limit: 0,
+
+        /**
+         * An amount of available CPU time at the current game tick.
+         * It can be higher than Game.cpu.limit.
+         *
+         * @type {number}
+         */
+        tickLimit: 0,
+
+        /**
+         * An amount of unused CPU accumulated in your bucket.
+         *
+         * @type {number}
+         */
+        bucket: 0,
+
+        /**
+         * Get amount of CPU time used from the beginning of the current game tick.
+         * Always returns 0 in the Simulation mode.
+         *
+         * @type {function}
+         *
+         * @return {number}
+         */
+        getUsed: function() { }
+    },
 
     /**
      * A hash containing all your creeps with creep names as hash keys.
      *
-     * @type {object<string, Creep>}
+     * @type {Array<string, Creep>}
      */
-    creeps: null,
+    creeps: {},
 
     /**
      * A hash containing all your flags with flag names as hash keys.
      *
-     * @type {object<string, Flag>}
+     * @type {Array<string, Flag>}
      */
-    flags: null,
+    flags: {},
 
     /**
      * Your Global Control Level
-     *
-     * @type {object}
      */
-    gcl: {
-
+    gcl:
+    {
         /**
          * The current level.
          *
@@ -61,43 +87,6 @@ Game.prototype =
     },
 
     /**
-     * An object containing information about your CPU usage
-     *
-     * @type {object}
-     */
-    cpu: {
-        /**
-         * Your CPU limit depending on your Global Control Level.
-         *
-         * @type {number}
-         */
-        limit: 0,
-
-        /**
-         * An amount of available CPU time at the current game tick.
-         * It can be higher than Game.cpu.limit
-         *
-         * @type {number}
-         */
-        tickLimit: 0,
-
-        /**
-         * An amount of unused CPU accumulated in your bucket
-         *
-         * @type {number}
-         */
-        bucket: 0,
-
-        /**
-         * Get amount of CPU time used from the beginning of the current game tick.
-         * @note Always returns 0 in the Simulation mode
-         *
-         * @return {number} Returns currently used CPU time as a float number.
-         */
-        getUsed: function() { }
-    },
-
-    /**
      * A global object representing world map.
      *
      * @type {Map}
@@ -114,51 +103,43 @@ Game.prototype =
     /**
      * A hash containing all the rooms available to you with room names as hash keys.
      *
-     * @type {object<string, Room>}
+     * @type {Array<string, Room>}
      */
-    rooms: null,
+    rooms: {},
 
     /**
      * A hash containing all your spawns with spawn names as hash keys.
      *
-     * @type {object<string, Spawn>}
+     * @type {Array<string, Spawn>}
      */
-    spawns: null,
+    spawns: {},
 
     /**
      * A hash containing all your structures with structure id as hash keys.
      *
-     * @type {object<string, Structure>}
+     * @type {Array<string, Structure>}
      */
-    structures: null,
+    structures: {},
 
     /**
      * System game tick counter. It is automatically incremented on every tick.
      *
      * @type {number}
      */
-    time : 0,
+    time: 0,
 
     /**
-     * Get an object with the specified unique ID. It may be a game object of any type.
+     * Get an object with the specified unique ID.
+     * It may be a game object of any type.
      * Only objects from the rooms which are visible to you can be accessed.
+     *
+     * @type {function}
      *
      * @param {string} id The unique identificator.
      *
-     * @return {object|null} Returns an object instance or null if it cannot be found.
+     * @return {object|null}
      */
     getObjectById: function(id) { },
-
-    /**
-     * Get amount of CPU time used from the beginning of the current game tick.
-     * Always returns 0 in the Simulation mode.
-     *
-     * @alias Game.cpu.getUsed
-     * @deprecated
-     *
-     * @return {number} Returns currently used CPU time as a float number.
-     */
-    getUsedCpu: function() { },
 
     /**
      * Send a custom message at your profile email.
@@ -167,10 +148,9 @@ Game.prototype =
      * Not available in the Simulation Room.
      *
      * @param {string} message Custom text which will be sent in the message. Maximum length is 1000 characters.
-     * @param {number} [groupInterval] If set to 0 (default), the notification will be scheduled immediately.
-     * Otherwise, it will be grouped with other notifications and mailed out later using the specified time in minutes.
+     * @param {number} [groupInterval] If set to 0 (default), the notification will be scheduled immediately. Otherwise, it will be grouped with other notifications and mailed out later using the specified time in minutes.
      *
-     * @return {null}
+     * @return {void}
      */
     notify: function(message, groupInterval) { }
-}
+};

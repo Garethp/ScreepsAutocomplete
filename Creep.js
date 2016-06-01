@@ -1,46 +1,32 @@
 /**
- * Creeps are your units.
- * Creeps can move, harvest energy, construct structures, attack another creeps, and perform other actions.
- * Each creep consists of up to 50 body parts.
  *
  * @class
- * @constructor
+ * @extends {RoomObject}
  */
 Creep = function() { };
 
 Creep.prototype =
 {
     /**
-     * An array describing the creep’s body.
-     * Each element contains the following properties:
-     * boost {string|undefined} If the body part is boosted, this property specifies the mineral type which is used for boosting. One of the RESOURCE_* constants.
-     * type {string|MOVE|WORK|CARRY|ATTACK|RANGED_ATTACK|HEAL|TOUGH|CLAIM} One of the body part types constants.
-     * hits {number} The remaining amount of hit points of this body part.
+     * An array describing the creep’s body
      *
-     * @type {object[]}
+     * @type {Array<{boost:string, type:string, hits:number}>}
+     *
+     * @note boost: If the body part is boosted, this property specifies the mineral type which is used for boosting. One of the RESOURCE_* constants.
+     * @note type: One of the body part types constants.
+     * @note hits: The remaining amount of hit points of this body part.
+     *
      */
     body: [],
 
     /**
-     * An object with the creep's cargo.
+     * An object with the creep's cargo contents.
+     * Each object key is one of the RESOURCE_* constants, values are resources amounts.
+     * Use _.sum(creep.carry) to get the total amount of contents.
      *
-     * @type {object}
+     * @type {object<string, number>}
      */
-    carry: {
-        /**
-         * The amount of energy resource units.
-         *
-         * @type {number}
-         */
-        energy: 0,
-
-        /**
-         * The amount of power resource units if present, undefined otherwise.
-         *
-         * @type {number|undefined}
-         */
-        power: 0
-    },
+    carry: {},
 
     /**
      * The total amount of resources the creep can carry.
@@ -82,11 +68,9 @@ Creep.prototype =
      * A shorthand to Memory.creeps[creep.name].
      * You can use it for quick access the creep’s specific memory data object.
      *
-     * @note you can't access the memory property of the creep object which has been just scheduled to spawn
-     *
-     * @type {object}
+     * @type {*}
      */
-    memory: { },
+    memory: {},
 
     /**
      * Whether it is your creep or foe.
@@ -96,41 +80,23 @@ Creep.prototype =
     my: true,
 
     /**
-     * Creep’s name. You can choose the name while creating a new creep, and it cannot be changed later.
-     *
-     * @note This name is a hash key to access the creep via the Game.creeps object.
+     * Creep’s name.
+     * You can choose the name while creating a new creep, and it cannot be changed later.
+     * This name is a hash key to access the creep via the Game.creeps object.
      *
      * @type {string}
      */
     name: "",
 
     /**
-     * An object with the creep’s owner info.
+     * An object with the creep’s owner info
      *
-     * @type {object}
+     * @type {{username:string}}
      */
-    owner: {
-        /**
-         * The name of the owner user.
-         *
-         * @type {string}
-         */
+    owner:
+    {
         username: ""
     },
-
-    /**
-     * An object representing the position of this creep in a room.
-     *
-     * @type {RoomPosition}
-     */
-    pos: null,
-
-    /**
-     * The link to the Room object of this creep.
-     *
-     * @type {Room}
-     */
-    room: null,
 
     /**
      * Whether this creep is still being spawned.
@@ -148,8 +114,12 @@ Creep.prototype =
 
     /**
      * Attack another creep or structure in a short-ranged attack.
-     * Needs the ATTACK body part. If the target is inside a rampart, then the rampart is attacked instead.
+     * Requires the ATTACK body part.
+     * If the target is inside a rampart, then the rampart is attacked instead.
      * The target has to be at adjacent square to the creep.
+     * If the target is a creep with ATTACK body parts and is not inside a rampart, it will automatically hit back at the attacker.
+     *
+     * @type {function}
      *
      * @param {Creep|Spawn|Structure} target The target object to be attacked.
      *
@@ -158,8 +128,24 @@ Creep.prototype =
     attack: function(target) { },
 
     /**
+     * Decreases the controller's downgrade or reservation timer for 1 tick per every 5 CLAIM body parts (so the creep must have at least 5xCLAIM).
+     * The controller under attack cannot be upgraded for the next 1,000 ticks.
+     * The target has to be at adjacent square to the creep.
+     *
+     * @type {function}
+     *
+     * @param {StructureController} target The target controller object.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     */
+    attackController: function(target) { },
+
+    /**
      * Build a structure at the target construction site using carried energy.
-     * Needs WORK and CARRY body parts. The target has to be within 3 squares range of the creep.
+     * Requires WORK and CARRY body parts.
+     * The target has to be within 3 squares range of the creep.
+     *
+     * @type {function}
      *
      * @param {ConstructionSite} target The target construction site to be built.
      *
@@ -170,6 +156,8 @@ Creep.prototype =
     /**
      * Cancel the order given during the current game tick.
      *
+     * @type {function}
+     *
      * @param {string} methodName The name of a creep's method to be cancelled.
      *
      * @return {number|OK|ERR_NOT_FOUND}
@@ -177,20 +165,25 @@ Creep.prototype =
     cancelOrder: function(methodName) { },
 
     /**
-     * Claim a neutral controller under your control.
+     * Claims a neutral controller under your control.
+     * Requires the CLAIM body part.
      * The target has to be at adjacent square to the creep.
      *
-     * @param {Structure} target The target controller object.
+     * @type {function}
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_GCL_NOT_ENOUGH|ERR_FULL}
+     * @param {StructureController} target The target controller object.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_NO_BODYPART|ERR_GCL_NOT_ENOUGH}
      */
     claimController: function(target) { },
 
     /**
      * Dismantles any (even hostile) structure returning 50% of the energy spent on its repair.
-     * Requires the WORK body part. If the creep has an empty CARRY body part,
-     * the energy is put into it; otherwise it is dropped on the ground.
+     * Requires the WORK body part.
+     * If the creep has an empty CARRY body part, the energy is put into it; otherwise it is dropped on the ground.
      * The target has to be at adjacent square to the creep.
+     *
+     * @type {function}
      *
      * @param {Spawn|Structure} target The target structure.
      *
@@ -201,6 +194,8 @@ Creep.prototype =
     /**
      * Drop this resource on the ground.
      *
+     * @type {function}
+     *
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number} [amount] The amount of resource units to be dropped. If omitted, all the available carried amount is used.
      *
@@ -209,42 +204,40 @@ Creep.prototype =
     drop: function(resourceType, amount) { },
 
     /**
-     * An alias for creep.drop(RESOURCE_ENERGY, amount)
-     * @deprecated
-     *
-     * @param {number} [amount] The amount of energy to be dropped.If omitted, all the available carried amount is used.
-     *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES}
-     */
-    dropEnergy: function(amount) { },
-
-    /**
      * Get the quantity of live body parts of the given type.
      * Fully damaged parts do not count.
      *
-     * @param {string|MOVE|WORK|CARRY|ATTACK|RANGED_ATTACK|HEAL|TOUGH} type A body part type
+     * @type {function}
+     *
+     * @param {string} type A body part type, one of the following body part constants: MOVE, WORK, CARRY, ATTACK, RANGED_ATTACK, HEAL, TOUGH
      *
      * @return {number} A number representing the quantity of body parts.
      */
-    getActiveBodyparts: function(type) { },
+    getActiveBodyParts: function(type) { },
 
     /**
-     * Harvest energy from the source. Needs the WORK body part.
-     * If the creep has an empty CARRY body part, the harvested energy is put into it;
-     * otherwise it is dropped on the ground. The target has to be at an adjacent square to the creep.
+     * Harvest energy from the source or minerals from the mineral deposit.
+     * Requires the WORK body part.
+     * If the creep has an empty CARRY body part, the harvested resource is put into it; otherwise it is dropped on the ground.
+     * The target has to be at an adjacent square to the creep.
      *
-     * @param {Source} target The source object to be harvested.
+     * @type {function}
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     * @param {Source|Mineral} target The object to be harvested.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
     harvest: function(target) { },
 
     /**
      * Heal self or another creep.
      * It will restore the target creep’s damaged body parts function and increase the hits counter.
-     * Needs the HEAL body part. The target has to be at adjacent square to the creep.
+     * Requires the HEAL body part.
+     * The target has to be at adjacent square to the creep.
      *
-     * @param {Creep} target
+     * @type {function}
+     *
+     * @param {Creep} target The target creep object.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -252,9 +245,11 @@ Creep.prototype =
 
     /**
      * Move the creep one square in the specified direction.
-     * Needs the MOVE body part.
+     * Requires the MOVE body part.
      *
-     * @param {number|TOP|TOP_RIGHT|RIGHT|BOTTOM_RIGHT|BOTTOM|BOTTOM_LEFT|LEFT|TOP_LEFT} direction
+     * @type {function}
+     *
+     * @param {number} direction One of the following constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART}
      */
@@ -262,9 +257,11 @@ Creep.prototype =
 
     /**
      * Move the creep using the specified predefined path.
-     * Needs the MOVE body part.
+     * Requires the MOVE body part.
      *
-     * @param {object[]|string} path A path value as returned from Room.findPath or RoomPosition.findPathTo methods. Both array form and serialized string form are accepted.
+     * @type {function}
+     *
+     * @param {Array|string} path A path value as returned from Room.findPath or RoomPosition.findPathTo methods. Both array form and serialized string form are accepted.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_INVALID_ARGS|ERR_TIRED|ERR_NO_BODYPART}
      */
@@ -274,25 +271,17 @@ Creep.prototype =
      * Find the optimal path to the target within the same room and move to it.
      * A shorthand to consequent calls of pos.findPathTo() and move() methods.
      * If the target is in another room, then the corresponding exit will be used as a target.
-     * Needs the MOVE body part.
+     * Requires the MOVE body part.
      *
-     * @param {number} x X position of the target in the room.
-     * @param {number} y Y position of the target in the room.
-     * @param {object} [opts] An object containing pathfinding options flags (see Room.findPath for more info) or one of the following:
-     * @param {number} [opts.reusePath] This option enables reusing the path found along multiple game ticks.
-     *                                  It allows to save CPU time, but can result in a slightly slower creep reaction behavior.
-     *                                  The path is stored into the creep's memory to the _move property.
-     *                                  The reusePath value defines the amount of ticks which the path should be reused for.
-     *                                  The default value is 5. Increase the amount to save more CPU, decrease to make the movement more consistent.
-     *                                  Set to 0 if you want to disable path reusing.
-     * @param {boolean} [opts.serializeMemory] If reusePath is enabled and this option is set to true,
-     *                                         the path will be stored in memory in the short serialized form using Room.serializePath.
-     *                                         The default value is true.
-     * @param {boolean} [opts.noPathFinding] If this option is set to true, moveTo method will return ERR_NOT_FOUND if there is no memorized path to reuse.
-     *                                       This can significantly save CPU time in some cases. The default value is false.
+     * @type {function}
      *
-     * @note Another variant of this function is moveTo(target, opts) where:
-     * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
+     * @param {number} x X position of the target in the same room.
+     * @param {number} y Y position of the target in the same room.
+     * @param {object} [opts] An object containing additional options
+     * @param {number} [opts.reusePath] This option enables reusing the path found along multiple game ticks. It allows to save CPU time, but can result in a slightly slower creep reaction behavior. The path is stored into the creep's memory to the _move property. The reusePath value defines the amount of ticks which the path should be reused for. The default value is 5. Increase the amount to save more CPU, decrease to make the movement more consistent. Set to 0 if you want to disable path reusing.
+     * @param {boolean} [opts.serializeMemory] If reusePath is enabled and this option is set to true, the path will be stored in memory in the short serialized form using Room.serializePath. The default value is true.
+     * @param {boolean} [opts.noPathFinding] If this option is set to true, moveTo method will return ERR_NOT_FOUND if there is no memorized path to reuse. This can significantly save CPU time in some cases. The default value is false.
+     * @note opts also supports any method from the Room.findPath options.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART|ERR_INVALID_TARGET|ERR_NO_PATH}
      */
@@ -300,7 +289,10 @@ Creep.prototype =
 
     /**
      * Toggle auto notification when the creep is under attack.
-     * The notification will be sent to your account email. Turned on by default.
+     * The notification will be sent to your account email.
+     * Turned on by default.
+     *
+     * @type {function}
      *
      * @param {boolean} enabled Whether to enable notification or disable.
      *
@@ -309,8 +301,11 @@ Creep.prototype =
     notifyWhenAttacked: function(enabled) { },
 
     /**
-     * Pick up an item (a dropped piece of energy). Needs the CARRY body part.
+     * Pick up an item (a dropped piece of energy).
+     * Requires the CARRY body part.
      * The target has to be at adjacent square to the creep or at the same square.
+     *
+     * @type {function}
      *
      * @param {Resource} target The target object to be picked up.
      *
@@ -320,8 +315,11 @@ Creep.prototype =
 
     /**
      * A ranged attack against another creep or structure.
-     * Needs the RANGED_ATTACK body part. If the target is inside a rampart, the rampart is attacked instead.
+     * Requires the RANGED_ATTACK body part.
+     * If the target is inside a rampart, the rampart is attacked instead.
      * The target has to be within 3 squares range of the creep.
+     *
+     * @type {function}
      *
      * @param {Creep|Spawn|Structure} target The target object to be attacked.
      *
@@ -332,7 +330,10 @@ Creep.prototype =
     /**
      * Heal another creep at a distance.
      * It will restore the target creep’s damaged body parts function and increase the hits counter.
-     * Needs the HEAL body part. The target has to be within 3 squares range of the creep.
+     * Requires the HEAL body part.
+     * The target has to be within 3 squares range of the creep.
+     *
+     * @type {function}
      *
      * @param {Creep} target The target creep object.
      *
@@ -342,17 +343,22 @@ Creep.prototype =
 
     /**
      * A ranged attack against all hostile creeps or structures within 3 squares range.
-     * Needs the RANGED_ATTACK body part. The attack power depends on the range to each target.
+     * Requires the RANGED_ATTACK body part.
+     * The attack power depends on the range to each target.
      * Friendly units are not affected.
+     *
+     * @type {function}
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NO_BODYPART}
      */
-    rangedMassAttack:  function() { },
+    rangedMassAttack: function() { },
 
     /**
      * Repair a damaged structure using carried energy.
-     * Needs the WORK and CARRY body parts.
+     * Requires the WORK and CARRY body parts.
      * The target has to be within 3 squares range of the creep.
+     *
+     * @type {function}
      *
      * @param {Spawn|Structure} target The target structure to be repaired.
      *
@@ -362,20 +368,25 @@ Creep.prototype =
 
     /**
      * Temporarily block a neutral controller from claiming by other players.
-     * Each tick, this command spends 1 energy units and increases the counter of the period during which the controller is unavailable by 5 ticks.
-     * The maximum reservation period to maintain is 5,000 ticks. Reserving controllers raises your Global Control Level in parallel.
-     * Needs at least 40xWORK and 1xCARRY body parts. The target has to be at adjacent square to the creep.
+     * Each tick, this command increases the counter of the period during which the controller is unavailable by 1 tick per each CLAIM body part.
+     * The maximum reservation period to maintain is 5,000 ticks.
+     * The target has to be at adjacent square to the creep.
      *
-     * @param {Structure} target The target controller object to be reserved.
+     * @type {function}
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     * @param {StructureController} target The target controller object to be reserved.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
     reserveController: function(target) { },
 
     /**
      * Display a visual speech balloon above the creep with the specified message.
-     * The message will disappear after a few seconds. Useful for debugging purposes.
+     * The message will disappear after a few seconds.
+     * Useful for debugging purposes.
      * Only the creep's owner can see the speech message.
+     *
+     * @type {function}
      *
      * @param {string} message The message to be displayed. Maximum length is 10 characters.
      *
@@ -386,12 +397,17 @@ Creep.prototype =
     /**
      * Kill the creep immediately.
      *
+     * @type {function}
+     *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
     suicide: function() { },
 
     /**
-     * Transfer resource from the creep to another object. The target has to be at adjacent square to the creep.
+     * Transfer resource from the creep to another object.
+     * The target has to be at adjacent square to the creep.
+     *
+     * @type {function}
      *
      * @param {Creep|Spawn|Structure} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
@@ -402,27 +418,17 @@ Creep.prototype =
     transfer: function(target, resourceType, amount) { },
 
     /**
-     * An alias for creep.transfer(target, RESOURCE_ENERGY, amount).
-     * This method is deprecated.
-     * @deprecated
-     *
-     * @param {Creep|Spawn|Structure} target target The target object.
-     * @param {number} [amount] The amount of energy to be transferred. If omitted, all the available carried energy is used.
-     *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
-     */
-    transferEnergy: function(target, amount) { },
-
-    /**
      * Upgrade your controller to the next level using carried energy.
      * Upgrading controllers raises your Global Control Level in parallel.
      * Requires WORK and CARRY body parts.
-     * The target has to be at adjacent square to the creep.
+     * The target has to be within 3 squares range of the creep.
      * A fully upgraded level 8 controller can't be upgraded with the power over 15 energy units per tick regardless of creeps power.
      * The cumulative effect of all the creeps performing upgradeController in the current tick is taken into account.
      * The effect can be boosted by ghodium mineral compounds (including limit increase).
      *
-     * @param {Structure} target The target controller object to be upgraded.
+     * @type {function}
+     *
+     * @param {StructureController} target The target controller object to be upgraded.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */

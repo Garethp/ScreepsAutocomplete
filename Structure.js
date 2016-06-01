@@ -1,8 +1,7 @@
 /**
- * This is the base class for all Structures in the game.
- *
+ * The base prototype object of all structures.
  * @class
- * @constructor
+ * @extends {RoomObject}
  */
 Structure = function() { };
 
@@ -20,7 +19,7 @@ Structure.prototype =
      *
      * @type {number}
      */
-    maxHits: 0,
+    hitsMax: 0,
 
     /**
      * A unique object identificator.
@@ -29,43 +28,6 @@ Structure.prototype =
      * @type {string}
      */
     id: "",
-
-    /**
-     * Whether this is your own structure.
-     * Walls and roads don't have this property as they are considered neutral structures.
-     *
-     * @type {boolean}
-     */
-    my: true,
-
-    /**
-     * An object with the structure’s owner info (if present).
-     *
-     * @type {object}
-     */
-    owner: {
-        /**
-         * The name of the owner user.
-         *
-         * @type {string}
-         */
-        username: ""
-    },
-
-    /**
-     * An object representing the position of this structure in the room.
-     *
-     * @type {RoomPosition}
-     */
-    pos: null,
-
-    /**
-     * The link to the Room object.
-     * May not be available in case a flag is placed in a room which you do not have access to.
-     *
-     * @type {Room|null}
-     */
-    room: null,
 
     /**
      * One of the STRUCTURE_* constants.
@@ -77,14 +39,18 @@ Structure.prototype =
     /**
      * Destroy this structure immediately.
      *
+     * @type {function}
+     *
      * @return {number|OK|ERR_NOT_OWNER}
      */
     destroy: function() { },
 
     /**
      * Check whether this structure can be used.
-     * If the room controller level is not enough, then this method will return false,
-     * and the structure will be highlighted with red in the game.
+     * If the room controller level is not enough,
+     * then this method will return false, and the structure will be highlighted with red in the game.
+     *
+     * @type {function}
      *
      * @return {boolean}
      */
@@ -92,7 +58,10 @@ Structure.prototype =
 
     /**
      * Toggle auto notification when the structure is under attack.
-     * The notification will be sent to your account email. Turned on by default.
+     * The notification will be sent to your account email.
+     * Turned on by default.
+     *
+     * @type {function}
      *
      * @param {boolean} enabled Whether to enable notification or disable.
      *
