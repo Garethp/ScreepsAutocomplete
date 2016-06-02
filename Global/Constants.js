@@ -399,6 +399,12 @@ const FIND_HOSTILE_CONSTRUCTION_SITES = 115;
  */
 const FIND_MINERALS = 116;
 
+/**
+ * @constant
+ * @type {number}
+ */
+const FIND_NUKES = 117;
+
 /** GAME MODE CONSTANTS **/
 
 /**
@@ -535,6 +541,12 @@ const STRUCTURE_TERMINAL = "terminal";
  */
 const STRUCTURE_CONTAINER = "container";
 
+/**
+ * @constant
+ * @type {string}
+ */
+const STRUCTURE_NUKER = "nuker";
+
 /** RESOURCE CONSTANTS **/
 
 /**
@@ -553,247 +565,247 @@ const RESOURCE_POWER = "power";
  * @constant
  * @type {string}
  */
-const RESOURCE_HYDROGEN = "H"
+const RESOURCE_HYDROGEN = "H";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_OXYGEN = "O"
+const RESOURCE_OXYGEN = "O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_UTRIUM = "U"
+const RESOURCE_UTRIUM = "U";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_KEANIUM = "K"
+const RESOURCE_KEANIUM = "K";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_LEMERGIUM = "L"
+const RESOURCE_LEMERGIUM = "L";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_ZYNTHIUM = "Z"
+const RESOURCE_ZYNTHIUM = "Z";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYST = "X"
+const RESOURCE_CATALYST = "X";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_HYDROXIDE = "OH"
+const RESOURCE_HYDROXIDE = "OH";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_ZYNTHIUM_KEANITE = "ZK"
+const RESOURCE_ZYNTHIUM_KEANITE = "ZK";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_UTRIUM_LEMERGITE = "UL"
+const RESOURCE_UTRIUM_LEMERGITE = "UL";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_GHODIUM = "G"
+const RESOURCE_GHODIUM = "G";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_UTRIUM_HYDRIDE = "UH"
+const RESOURCE_UTRIUM_HYDRIDE = "UH";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_UTRIUM_OXIDE = "UO"
+const RESOURCE_UTRIUM_OXIDE = "UO";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_KEANIUM_HYDRIDE = "KH"
+const RESOURCE_KEANIUM_HYDRIDE = "KH";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_KEANIUM_OXIDE = "KO"
+const RESOURCE_KEANIUM_OXIDE = "KO";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_LEMERGIUM_HYDRIDE = "LH"
+const RESOURCE_LEMERGIUM_HYDRIDE = "LH";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_LEMERGIUM_OXIDE = "LO"
+const RESOURCE_LEMERGIUM_OXIDE = "LO";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_ZYNTHIUM_HYDRIDE = "ZH"
+const RESOURCE_ZYNTHIUM_HYDRIDE = "ZH";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_ZYNTHIUM_OXIDE = "ZO"
+const RESOURCE_ZYNTHIUM_OXIDE = "ZO";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_GHODIUM_HYDRIDE = "GH"
+const RESOURCE_GHODIUM_HYDRIDE = "GH";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_GHODIUM_OXIDE = "GO"
+const RESOURCE_GHODIUM_OXIDE = "GO";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_UTRIUM_ACID = "UH2O"
+const RESOURCE_UTRIUM_ACID = "UH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_UTRIUM_ALKALIDE = "UHO2"
+const RESOURCE_UTRIUM_ALKALIDE = "UHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_KEANIUM_ACID = "KH2O"
+const RESOURCE_KEANIUM_ACID = "KH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_KEANIUM_ALKALIDE = "KHO2"
+const RESOURCE_KEANIUM_ALKALIDE = "KHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_LEMERGIUM_ACID = "LH2O"
+const RESOURCE_LEMERGIUM_ACID = "LH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_LEMERGIUM_ALKALIDE = "LHO2"
+const RESOURCE_LEMERGIUM_ALKALIDE = "LHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_ZYNTHIUM_ACID = "ZH2O"
+const RESOURCE_ZYNTHIUM_ACID = "ZH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_ZYNTHIUM_ALKALIDE = "ZHO2"
+const RESOURCE_ZYNTHIUM_ALKALIDE = "ZHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_GHODIUM_ACID = "GH2O"
+const RESOURCE_GHODIUM_ACID = "GH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_GHODIUM_ALKALIDE = "GHO2"
+const RESOURCE_GHODIUM_ALKALIDE = "GHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_UTRIUM_ACID = "XUH2O"
+const RESOURCE_CATALYZED_UTRIUM_ACID = "XUH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_UTRIUM_ALKALIDE = "XUHO2"
+const RESOURCE_CATALYZED_UTRIUM_ALKALIDE = "XUHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_KEANIUM_ACID = "XKH2O"
+const RESOURCE_CATALYZED_KEANIUM_ACID = "XKH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_KEANIUM_ALKALIDE = "XKHO2"
+const RESOURCE_CATALYZED_KEANIUM_ALKALIDE = "XKHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_LEMERGIUM_ACID = "XLH2O"
+const RESOURCE_CATALYZED_LEMERGIUM_ACID = "XLH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_LEMERGIUM_ALKALIDE = "XLHO2"
+const RESOURCE_CATALYZED_LEMERGIUM_ALKALIDE = "XLHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_ZYNTHIUM_ACID = "XZH2O"
+const RESOURCE_CATALYZED_ZYNTHIUM_ACID = "XZH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_ZYNTHIUM_ALKALIDE = "XZHO2"
+const RESOURCE_CATALYZED_ZYNTHIUM_ALKALIDE = "XZHO2";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_GHODIUM_ACID = "XGH2O"
+const RESOURCE_CATALYZED_GHODIUM_ACID = "XGH2O";
 
 /**
  * @constant
  * @type {string}
  */
-const RESOURCE_CATALYZED_GHODIUM_ALKALIDE = "XGHO2"
+const RESOURCE_CATALYZED_GHODIUM_ALKALIDE = "XGHO2";
 
 
 /**
@@ -1434,3 +1446,65 @@ const MAX_CONSTRUCTION_SITES = 100;
  * @type {number}
  */
 const MAX_CREEP_SIZE = 50;
+
+/** LOOK CONSTANTS **/
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_CREEPS = "creep";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_ENERGY = "energy";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_RESOURCES = "resource";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_SOURCES = "source";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_MINERALS = "mineral";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_STRUCTURES = "structure";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_FLAGS = "flag";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_CONSTRUCTION_SITES = "constructionSite";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_NUKES = "nuke";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_TERRAIN = "terrain";

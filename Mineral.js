@@ -1,12 +1,11 @@
-
 /**
- * A mineral deposit object. Can be harvested by creeps with a WORK body part using the extractor structure.
+ * A mineral deposit.
+ * Can be harvested by creeps with a WORK body part using the extractor structure.
  *
  * @class
- * @constructor
+ * @extends {RoomObject}
  */
 Mineral = function() { };
-
 
 Mineral.prototype =
 {
@@ -20,9 +19,9 @@ Mineral.prototype =
     /**
      * The resource type, one of the RESOURCE_* constants.
      *
-     * @type {string}
+     * @type {number}
      */
-    mineralType: "",
+    mineralType: 0,
 
     /**
      * A unique object identificator.
@@ -33,24 +32,9 @@ Mineral.prototype =
     id: "",
 
     /**
-     * An object representing the position of this structure in the room.
-     *
-     * @type {RoomPosition}
-     */
-    pos: null,
-
-    /**
-     * The link to the Room object of this structure.
-     *
-     * @type {Room}
-     */
-    room: null,
-
-    /**
      * The remaining time after which the deposit will be refilled.
      *
      * @type {number}
      */
     ticksToRegeneration: 0
-
 };
