@@ -3,9 +3,7 @@
  *
  * @class
  */
-Game = function() { };
-
-Game.prototype =
+Game =
 {
     /**
      * An object containing information about your CPU usage
