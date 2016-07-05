@@ -67,8 +67,8 @@ Flag.prototype =
      *
      * @type {function}
      *
-     * @param {number} x The X position in the room.
-     * @param {number} y The Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x The X position in the room.
+     * @param {number} [y] The Y position in the room.
      *
      * @note Alternative function: setPosition(pos)
      * @param {object} pos Can be a RoomPosition object or any object containing RoomPosition.

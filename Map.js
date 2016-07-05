@@ -76,9 +76,9 @@ Map.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
-     * @param {string} roomName The room name.
+     * @param {number|RoomPosition} x X position in the room.
+     * @param {number} [y] Y position in the room.
+     * @param {string} [roomName] The room name.
      *
      * @note Alternative function: getTerrainAt(pos)
      * @param {RoomPosition} pos The position object.

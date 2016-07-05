@@ -65,7 +65,7 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} type See Room.find.
+     * @param {number|Array<RoomPosition>|Array<RoomObject>} type See Room.find.
      * @param {object} [opts] An object containing pathfinding options (see Room.findPath)
      * @param {object|function|string} [opts.filter] Only the objects which pass the filter using the Lodash.filter method will be used.
      * @param {string} [opts.algorithm] One of the following constants:
@@ -85,7 +85,7 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} type See Room.find.
+     * @param {number|Array<RoomPosition>|Array<RoomObject>} type See Room.find.
      * @param {object} [opts]
      * @param {object|function|string} [opts.filter] Only the objects which pass the filter using the Lodash.filter method will be used.
      *
@@ -101,7 +101,7 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} type See Room.find.
+     * @param {number|Array<RoomPosition>|Array<RoomObject>} type See Room.find.
      * @param {number} range The range distance.
      * @param {object} [opts] See Room.find.
      *
@@ -119,8 +119,8 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      * @param {object} [opts] An object containing pathfinding options flags (see Room.findPath for more details).
      *
      * @note Alternative function: findPathTo(target, opts)
@@ -141,8 +141,8 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      *
      * @note Alternative function: getDirectionTo(target)
      * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
@@ -156,8 +156,8 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      *
      * @note Alternative function: getRangeTo(target)
      * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
@@ -171,8 +171,8 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      * @param {number} range The range distance.
      *
      *
@@ -188,8 +188,8 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      *
      * @note Alternative function: isEqualTo(target)
      * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
@@ -204,8 +204,8 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      *
      * @note Alternative function: isNearTo(target)
      * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.

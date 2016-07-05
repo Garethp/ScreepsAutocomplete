@@ -93,9 +93,9 @@ Room.prototype =
      *
      * @type {function}
      *
-     * @param {number} x The X position.
-     * @param {number} y The Y position.
-     * @param {string} structureType One of the STRUCTURE_* constants.
+     * @param {number|RoomPosition|RoomObject} x The X position.
+     * @param {number|string} [y] The Y position.
+     * @param {string} [structureType] One of the STRUCTURE_* constants.
      *
      * @note Alternative function: createConstructionSite(pos, structureType)
      * @param {object} pos Can be a RoomPosition object or any object containing RoomPosition.
@@ -109,9 +109,9 @@ Room.prototype =
      *
      * @type {function}
      *
-     * @param {number} x The X position.
-     * @param {number} y The Y position.
-     * @param {string} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
+     * @param {number|RoomPosition|RoomObject} x The X position.
+     * @param {number|string} y The Y position.
+     * @param {string|string} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
      * @param {string} [color] The color of a new flag. Should be one of the COLOR_* constants. The default value is COLOR_WHITE.
      * @param {string} [secondaryColor] The secondary color of a new flag. Should be one of the COLOR_* constants. The default value is equal to color.
      *
@@ -194,7 +194,7 @@ Room.prototype =
      * @type {function}
      *
      * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} [y] Y position in the room.
      *
      * @note Alternative function: lookAt(target)
      * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
@@ -294,8 +294,8 @@ Room.prototype =
      * @type {function}
      *
      * @param {string} type One of the LOOK_* constants.
-     * @param {number} x X position in the room.
-     * @param {number} y Y position in the room.
+     * @param {number|RoomPosition|RoomObject} x X position in the room.
+     * @param {number} [y] Y position in the room.
      *
      * @note Alternative function: lookForAt(type, target)
      * @param {object} target Can be a RoomPosition object or any object containing RoomPosition.
