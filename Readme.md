@@ -12,16 +12,27 @@ detect it and add it to the autocompletion
 ###### Adding it as a library
 Instead of copying the `ScreepsAutocomplete` folder to each and every project folder, you can add it as a global library.
 Create a new project in Webstorm if you don't already have one and open it.
+
 In the menu bar at the top of the screen, navigate to `File` -> `Settings` -> `Languages & Frameworks` -> `JavaScript` -> `Libraries`
+
 Click `Add`.
-Name the Library whatever you want (I'll go with "ScreepsAutocomplete").
+
+Name the Library whatever you want.
+
 Set `Framework type` to custom, if it is not already so. `Version` can be left blank.
+
 Change `Visibility` to `Global`.
+
 Click the green plus sign to the right of the listbox below `Visibility`, then choose "Attach Directories...".
+
 Navigate to the ScreepsAutocomplete folder, select the folder itself and click `OK`.
+
 Click `OK` at the bottom of the "Edit Library" dialog.
-Check the `Enabled` checkbox on the library you just created.
+
+Click the `Enabled` checkbox on the library you just created, make sure it's checked before continuing.
+
 Click `OK` at the bottom of the "Settings" dialog.
+
 
 Webstorm should automatically detect the library and add it to the autocompletion.
 
