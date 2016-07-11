@@ -57,7 +57,7 @@ StructureLab.prototype =
      * @type {function}
      *
      * @param {Creep} creep The target creep.
-     * @param {number} [bodyPartsCount] The number of body parts of the corresponding type to be boosted. Body parts are always counted left-to-right for TOUGH, and right-to-left for other types. If undefined, all the eligible body parts are boosted.
+     * @param {number|undefined|null} [bodyPartsCount] The number of body parts of the corresponding type to be boosted. Body parts are always counted left-to-right for TOUGH, and right-to-left for other types. If undefined, all the eligible body parts are boosted.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_FOUND|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
      */
@@ -85,7 +85,7 @@ StructureLab.prototype =
      *
      * @param {Creep} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
+     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */

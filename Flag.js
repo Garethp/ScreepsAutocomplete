@@ -56,7 +56,7 @@ Flag.prototype =
      * @type {function}
      *
      * @param {string} color Primary color of the flag. One of the COLOR_* constants.
-     * @param {string} [secondaryColor] Secondary color of the flag. One of the COLOR_* constants.
+     * @param {string|undefined|null} [secondaryColor] Secondary color of the flag. One of the COLOR_* constants.
      *
      * @return {number|OK|ERR_INVALID_ARGS}
      */

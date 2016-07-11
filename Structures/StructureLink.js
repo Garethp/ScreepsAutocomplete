@@ -37,7 +37,7 @@ StructureLink.prototype =
      * @type {function}
      *
      * @param {Creep|StructureLink} target The target object.
-     * @param {number} [amount] The amount of energy to be transferred. If omitted, all the available energy is used.
+     * @param {number|undefined|null} [amount] The amount of energy to be transferred. If omitted, all the available energy is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS|ERR_TIRED|ERR_RCL_NOT_ENOUGH}
      */

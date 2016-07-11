@@ -415,7 +415,7 @@ Creep.prototype =
      *
      * @param {Creep|Spawn|Structure} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
+     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */
@@ -448,7 +448,7 @@ Creep.prototype =
      *
      * @param {Structure} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
+     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */
