@@ -37,8 +37,8 @@ StructureTerminal.prototype =
      *
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number} amount The amount of resources to be sent. The minimum amount is 100.
-     * @param {string} [destination] The name of the target room. You don't have to gain visibility in this room.
-     * @param {string} [description] The description of the transaction. It is visible to the recipient. The maximum length is 100 characters.
+     * @param {string|undefined|null} [destination] The name of the target room. You don't have to gain visibility in this room.
+     * @param {string|undefined|null} [description] The description of the transaction. It is visible to the recipient. The maximum length is 100 characters.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
      */
@@ -53,7 +53,7 @@ StructureTerminal.prototype =
      *
      * @param {Creep} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
+     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */
