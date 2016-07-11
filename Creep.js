@@ -406,6 +406,8 @@ Creep.prototype =
     suicide: function() { },
 
     /**
+     * @deprecated Since version 2016-07-11
+     *
      * Transfer resource from the creep to another object.
      * The target has to be at adjacent square to the creep.
      *
@@ -434,5 +436,21 @@ Creep.prototype =
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
-    upgradeController: function(target) { }
+    upgradeController: function(target) { },
+
+    /**
+     * Withdraw resources from a structure.
+     * The target has to be at adjacent square to the creep.
+     * Multiple creeps can withdraw from the same structure in the same tick.
+     * Your creeps can withdraw resources from hostile structures as well, in case if there is no hostile rampart on top of it.
+     *
+     * @type {function}
+     *
+     * @param {Structure} target The target object.
+     * @param {string} resourceType One of the RESOURCE_* constants.
+     * @param {number} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
+     */
+    withdraw: function(target, resourceType, amount) { }
 };
