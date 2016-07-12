@@ -218,6 +218,7 @@ Room.prototype =
      * @param {number} left The left X boundary of the area.
      * @param {number} bottom The bottom Y boundary of the area.
      * @param {number} right The right X boundary of the area.
+     * @param {boolean} [asArray] Set to true if you want to get the result as a plain array.
      *
      * @return {object} An object with all the objects in the specified area in the following format:
                         // 10,5,11,7
@@ -286,7 +287,7 @@ Room.prototype =
                             }
                         }
      */
-    lookAtArea: function(top, left, bottom, right) { },
+    lookAtArea: function(top, left, bottom, right, asArray) { },
 
     /**
      * Get an object with the given type at the specified room position.
@@ -314,6 +315,7 @@ Room.prototype =
      * @param {number} left The left X boundary of the area.
      * @param {number} bottom The bottom Y boundary of the area.
      * @param {number} right The right X boundary of the area.
+     * @param {boolean} [asArray] Set to true if you want to get the result as a plain array.
      *
      * @return {object} An object with all the objects of the given type in the specified area in the following format:
                         //10,5,11,7
@@ -332,5 +334,5 @@ Room.prototype =
                             }
                         }
      */
-    lookForAtArea: function(type, top, left, bottom, right) { }
+    lookForAtArea: function(type, top, left, bottom, right, asArray) { }
 };
