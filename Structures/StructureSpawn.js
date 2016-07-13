@@ -111,6 +111,8 @@ StructureSpawn.prototype =
     renewCreep: function(target) { },
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer the energy from the spawn to a creep.
      *
      * @type {function}

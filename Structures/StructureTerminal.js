@@ -45,6 +45,8 @@ StructureTerminal.prototype =
     send: function(resourceType, amount, destination, description) { },
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer resource from this terminal to a creep.
      * The target has to be at adjacent square.
      * You can transfer resources to your creeps from hostile structures as well.

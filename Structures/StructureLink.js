@@ -30,6 +30,8 @@ StructureLink.prototype =
     energyCapacity: 0,
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer energy from the link to another link or a creep.
      * If the target is a creep, it has to be at adjacent square to the link.
      * If the target is a link, it can be at any location in the same room.

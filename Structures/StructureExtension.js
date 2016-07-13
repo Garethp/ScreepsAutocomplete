@@ -24,6 +24,8 @@ StructureExtension.prototype =
     energyCapacity: 0,
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer the energy from the extension to a creep.
      * You can transfer resources to your creeps from hostile structures as well.
      *
