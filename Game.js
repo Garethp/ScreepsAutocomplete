@@ -44,6 +44,13 @@ Game =
     },
 
     /**
+     * A hash containing all your construction sites with their id as hash keys.
+     *
+     * @type {Array<string, ConstructionSite>}
+     */
+    constructionSites: {},
+
+    /**
      * A hash containing all your creeps with creep names as hash keys.
      *
      * @type {Array<string, Creep>}
