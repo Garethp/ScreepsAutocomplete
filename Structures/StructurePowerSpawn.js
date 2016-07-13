@@ -59,6 +59,8 @@ StructurePowerSpawn.prototype =
     processPower: function() { },
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer the energy from this structure to a creep.
      * You can transfer resources to your creeps from hostile structures as well.
      *
