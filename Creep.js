@@ -406,8 +406,6 @@ Creep.prototype =
     suicide: function() { },
 
     /**
-     * @deprecated Since version 2016-07-11
-     *
      * Transfer resource from the creep to another object.
      * The target has to be at adjacent square to the creep.
      *
