@@ -26,6 +26,8 @@ StructureStorage.prototype =
     storeCapacity: 0,
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer resource from this storage to a creep.
      * The target has to be at adjacent square.
      * You can transfer resources to your creeps from hostile structures as well.

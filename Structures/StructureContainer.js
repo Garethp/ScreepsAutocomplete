@@ -29,6 +29,8 @@ StructureContainer.prototype =
     storeCapacity: 0,
 
     /**
+     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
+     *
      * Transfer resource from this structure to a creep.
      * The target has to be at adjacent square.
      *
