@@ -41,3 +41,20 @@ There are two ways to enable Autocomplete in Sublime Text, both of them require 
  * `SublimeCodeIntel` - Install `SublimeCodeIntel` through `Package Control`. Go to `Preferences > Package Settings > SublimeCodeIntel > Settings -- User`
  and copy the contents of `ScreepsAutocomplete/config/SublimeCodeIntel.json` in to the file that opens. Save and restart Sublime
  Text. After waiting for CodeIntel to process JavaScript, Autocomplete should be working
+ 
+#### Atom
+Integration with Atom is done through use of the [`atom-ternjs`](https://github.com/tststs/atom-ternjs) package. Here's the steps
+
+ * Copy `ScreepsAutocomplete` in to your project folder
+ * Install the `atom-ternjs` package
+ * Put the following in your `.tern-project` file
+```json
+{
+  "ecmaVersion": 6,
+  "libs": [],
+  "loadEagerly": [
+    "ScreepsAutocomplete/**/*.js"
+  ]
+}
+```
+ * Restart and Enjoy
