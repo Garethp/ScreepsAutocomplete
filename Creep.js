@@ -89,6 +89,13 @@ Creep.prototype =
     name: "",
 
     /**
+     * The text message that the creep was saying at the last tick.
+     *
+     * @type {string}
+     */
+    saying: "",
+
+    /**
      * An object with the creep’s owner info
      *
      * @type {{username:string}}
@@ -383,18 +390,17 @@ Creep.prototype =
     reserveController: function(target) { },
 
     /**
-     * Display a visual speech balloon above the creep with the specified message.
-     * The message will disappear after a few seconds.
-     * Useful for debugging purposes.
-     * Only the creep's owner can see the speech message.
+     * Display a visual speech balloon above the creep with the specified message. The message will be
+     * available for one tick. You can read the last message using the saying property.
      *
      * @type {function}
      *
      * @param {string} message The message to be displayed. Maximum length is 10 characters.
+     * @param {boolean} [public] Set to true to allow other players to see this message. Default is false.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
-    say: function(message) { },
+    say: function(message, public) { },
 
     /**
      * Kill the creep immediately.
