@@ -35,13 +35,13 @@ const RANGED_ATTACK = "ranged_attack";
  * @constant
  * @type {string}
  */
-const HEAL = "heal";
+const TOUGH = "tough";
 
 /**
  * @constant
  * @type {string}
  */
-const TOUGH = "tough";
+const HEAL = "heal";
 
 /**
  * @constant
@@ -207,63 +207,63 @@ const ERR_GCL_NOT_ENOUGH = -15;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_WHITE = "white";
+const COLOR_RED = 1;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_GREY = "grey";
+const COLOR_PURPLE = 2;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_RED = "red";
+const COLOR_BLUE = 3;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_PURPLE = "purple";
+const COLOR_CYAN = 4;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_BLUE = "blue";
+const COLOR_GREEN = 5;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_CYAN = "cyan";
+const COLOR_YELLOW = 6;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_GREEN = "green";
+const COLOR_ORANGE = 7;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_YELLOW = "yellow";
+const COLOR_BROWN = 8;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_ORANGE = "orange";
+const COLOR_GREY = 9;
 
 /**
  * @constant
- * @type {string}
+ * @type {number}
  */
-const COLOR_BROWN = "brown";
+const COLOR_WHITE = 10;
 
 /** FIND CONSTANTS **/
 
@@ -807,6 +807,262 @@ const RESOURCE_CATALYZED_GHODIUM_ACID = "XGH2O";
  */
 const RESOURCE_CATALYZED_GHODIUM_ALKALIDE = "XGHO2";
 
+/**
+ * @constant
+ * @type {object}
+ */
+const REACTIONS = {
+    H: {
+        O: "OH",
+        L: "LH",
+        K: "KH",
+        U: "UH",
+        Z: "ZH",
+        G: "GH"
+    },
+    O: {
+        H: "OH",
+        L: "LO",
+        K: "KO",
+        U: "UO",
+        Z: "ZO",
+        G: "GO"
+    },
+    Z: {
+        K: "ZK",
+        H: "ZH",
+        O: "ZO"
+    },
+    L: {
+        U: "UL",
+        H: "LH",
+        O: "LO"
+    },
+    K: {
+        Z: "ZK",
+        H: "KH",
+        O: "KO"
+    },
+    G: {
+        H: "GH",
+        O: "GO"
+    },
+    U: {
+        L: "UL",
+        H: "UH",
+        O: "UO"
+    },
+    OH: {
+        UH: "UH2O",
+        UO: "UHO2",
+        ZH: "ZH2O",
+        ZO: "ZHO2",
+        KH: "KH2O",
+        KO: "KHO2",
+        LH: "LH2O",
+        LO: "LHO2",
+        GH: "GH2O",
+        GO: "GHO2"
+    },
+    X: {
+        UH2O: "XUH2O",
+        UHO2: "XUHO2",
+        LH2O: "XLH2O",
+        LHO2: "XLHO2",
+        KH2O: "XKH2O",
+        KHO2: "XKHO2",
+        ZH2O: "XZH2O",
+        ZHO2: "XZHO2",
+        GH2O: "XGH2O",
+        GHO2: "XGHO2"
+    },
+    ZK: {
+        UL: "G"
+    },
+    UL: {
+        ZK: "G"
+    },
+    LH: {
+        OH: "LH2O"
+    },
+    ZH: {
+        OH: "ZH2O"
+    },
+    GH: {
+        OH: "GH2O"
+    },
+    KH: {
+        OH: "KH2O"
+    },
+    UH: {
+        OH: "UH2O"
+    },
+    LO: {
+        OH: "LHO2"
+    },
+    ZO: {
+        OH: "ZHO2"
+    },
+    KO: {
+        OH: "KHO2"
+    },
+    UO: {
+        OH: "UHO2"
+    },
+    GO: {
+        OH: "GHO2"
+    },
+    LH2O: {
+        X: "XLH2O"
+    },
+    KH2O: {
+        X: "XKH2O"
+    },
+    ZH2O: {
+        X: "XZH2O"
+    },
+    UH2O: {
+        X: "XUH2O"
+    },
+    GH2O: {
+        X: "XGH2O"
+    },
+    LHO2: {
+        X: "XLHO2"
+    },
+    UHO2: {
+        X: "XUHO2"
+    },
+    KHO2: {
+        X: "XKHO2"
+    },
+    ZHO2: {
+        X: "XZHO2"
+    },
+    GHO2: {
+        X: "XGHO2"
+    }
+};
+
+/**
+ * @constant
+ * @type {object}
+ */
+const BOOSTS = {
+    work: {
+        UO: {
+            harvest: 2
+        },
+        UHO2: {
+            harvest: 3
+        },
+        XUHO2: {
+            harvest: 4
+        },
+        LH: {
+            build: 1.3,
+            repair: 1.3
+        },
+        LH2O: {
+            build: 1.65,
+            repair: 1.65
+        },
+        XLH2O: {
+            build: 2,
+            repair: 2
+        },
+        ZH: {
+            dismantle: 2
+        },
+        ZH2O: {
+            dismantle: 3
+        },
+        XZH2O: {
+            dismantle: 4
+        },
+        GH: {
+            upgradeController: 1.3
+        },
+        GH2O: {
+            upgradeController: 1.65
+        },
+        XGH2O: {
+            upgradeController: 2
+        }
+    },
+    attack: {
+        UH: {
+            attack: 2
+        },
+        UH2O: {
+            attack: 3
+        },
+        XUH2O: {
+            attack: 4
+        }
+    },
+    ranged_attack: {
+        KO: {
+            rangedAttack: 2,
+            rangedMassAttack: 2
+        },
+        KHO2: {
+            rangedAttack: 3,
+            rangedMassAttack: 3
+        },
+        XKHO2: {
+            rangedAttack: 4,
+            rangedMassAttack: 4
+        }
+    },
+    heal: {
+        LO: {
+            heal: 2,
+            rangedHeal: 2
+        },
+        LHO2: {
+            heal: 3,
+            rangedHeal: 3
+        },
+        XLHO2: {
+            heal: 4,
+            rangedHeal: 4
+        }
+    },
+    carry: {
+        KH: {
+            capacity: 2
+        },
+        KH2O: {
+            capacity: 3
+        },
+        XKH2O: {
+            capacity: 4
+        }
+    },
+    move: {
+        ZO: {
+            fatigue: 2
+        },
+        ZHO2: {
+            fatigue: 3
+        },
+        XZHO2: {
+            fatigue: 4
+        }
+    },
+    tough: {
+        GO: {
+            damage: .7
+        },
+        GHO2: {
+            damage: .5
+        },
+        XGHO2: {
+            damage: .3
+        }
+    }
+};
 
 /**
  * @constant
@@ -857,6 +1113,7 @@ const RESOURCES_ALL = [
     RESOURCE_CATALYZED_GHODIUM_ACID,
     RESOURCE_CATALYZED_GHODIUM_ALKALIDE
 ];
+
 /**
  * @constant
  * @type {string[]}
@@ -870,6 +1127,23 @@ const BODYPARTS_ALL = [
     TOUGH,
     HEAL,
     CLAIM
+];
+
+/**
+ * @constant
+ * @type {string[]}
+ */
+const COLORS_ALL = [
+    COLOR_RED,
+    COLOR_PURPLE,
+    COLOR_BLUE,
+    COLOR_CYAN,
+    COLOR_GREEN,
+    COLOR_YELLOW,
+    COLOR_ORANGE,
+    COLOR_BROWN,
+    COLOR_GREY,
+    COLOR_WHITE
 ];
 
 /**
@@ -893,6 +1167,12 @@ const BODYPART_COST = {
  * @type {number}
  */
 const CREEP_SPAWN_TIME = 3;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CREEP_RENEW_RATIO = 1.2;
 
 /**
  * Lifetime of a creep
@@ -931,7 +1211,10 @@ const OBSTACLE_OBJECT_TYPES = [
     'tower',
     'observer',
     'powerSpawn',
-    'powerBank'
+    'powerBank',
+    'lab',
+    'terminal',
+    'nuker'
 ];
 
 /**
@@ -945,6 +1228,32 @@ const ENERGY_REGEN_TIME = 300;
  * @type {number}
  */
 const ENERGY_DECAY = 1000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const MINERAL_REGEN_TIME = 50000;
+
+/**
+ * @constant
+ * @type {object}
+ */
+const MINERAL_MIN_AMOUNT = {
+    H: 140000,
+    O: 140000,
+    L: 70000,
+    K: 70000,
+    Z: 70000,
+    U: 70000,
+    X: 70000
+};
+
+/**
+ * @constant
+ * @type {number}
+ */
+const MINERAL_RANDOM_FACTOR = 2;
 
 /**
  * @constant
@@ -1019,6 +1328,12 @@ const SOURCE_ENERGY_CAPACITY = 3000;
  * @type {number}
  */
 const SOURCE_ENERGY_NEUTRAL_CAPACITY = 1500;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const SOURCE_ENERGY_KEEPER_CAPACITY = 4500;
 
 /**
  * @constant
@@ -1112,6 +1427,88 @@ const LINK_LOSS_RATIO = 0.03;
  * @constant
  * @type {number}
  */
+const CONTAINER_HITS = 250000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTAINER_CAPACITY = 2000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTAINER_DECAY = 5000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTAINER_DECAY_TIME = 100;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTAINER_DECAY_TIME_OWNED = 500;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const NUKER_HITS = 1000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const NUKER_COOLDOWN = 100000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const NUKER_ENERGY_CAPACITY = 5000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const NUKER_GHODIUM_CAPACITY = 5000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const NUKE_LAND_TIME = 50000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const NUKE_RANGE = 5;
+
+/**
+ * @constant
+ * @type {object}
+ */
+const NUKE_DAMAGE = {
+    0: 10000000,
+    1: 1000000,
+    4: 100000
+};
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PORTAL_DECAY = 30000;
+
+/**
+ * @constant
+ * @type {number}
+ */
 const STORAGE_CAPACITY = 1000000;
 
 /**
@@ -1131,6 +1528,12 @@ const CARRY_CAPACITY = 50;
  * @type {number}
  */
 const HARVEST_POWER = 2;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const HARVEST_MINERAL_POWER = 1;
 
 /**
  * @constant
@@ -1194,7 +1597,12 @@ const CONSTRUCTION_COST = {
     storage: 30000,
     tower: 5000,
     observer: 8000,
-    powerSpawn: 100000
+    powerSpawn: 100000,
+    extractor: 5000,
+    lab: 50000,
+    terminal: 100000,
+    container: 5000,
+    nuker: 100000
 };
 
 /**
@@ -1272,6 +1680,36 @@ const CONTROLLER_RESERVE_MAX = 5000;
  * @type {number}
  */
 const CONTROLLER_MAX_UPGRADE_PER_TICK = 15;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTROLLER_ATTACK_BLOCKED_UPGRADE = 1000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const TERMINAL_CAPACITY = 300000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const TERMINAL_HITS = 3000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const TERMINAL_SEND_COST = 0.1;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const TERMINAL_MIN_SEND = 100;
 
 /**
  * @constant
@@ -1398,6 +1836,42 @@ const POWER_SPAWN_POWER_CAPACITY = 100;
  * @type {number}
  */
 const POWER_SPAWN_ENERGY_RATIO = 50;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const LAB_HITS = 500;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const LAB_MINERAL_CAPACITY = 3000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const LAB_ENERGY_CAPACITY = 2000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const LAB_BOOST_ENERGY = 20;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const LAB_BOOST_MINERAL = 30;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const LAB_COOLDOWN = 10;
 
 /**
  * @constant
