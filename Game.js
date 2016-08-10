@@ -304,6 +304,20 @@ Game =
         orders: [],
 
         /**
+         * Estimate the energy transaction cost of StructureTerminal.send and Market.deal methods.
+         * The formula: Math.ceil( amount * ( Math.log( 0.1 * linearDistanceBetweenRooms + 0.9) + 0.1) )
+         *
+         * @type {function}
+         *
+         * @param {number} amount Amount of resources to be sent.
+         * @param {string} roomName1 The name of the first room.
+         * @param {string} roomName2 The name of the second room.
+         *
+         * @return {number} The amount of energy required to perform the transaction.
+         */
+        calcTransactionCost: function(amount, roomName1, roomName2) { },
+
+        /**
          * This method is still under development.
          * Cancel a previously created order.
          * If a buy order provided, then the reserved credits amount will be refunded in full.
