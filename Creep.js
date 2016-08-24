@@ -220,7 +220,7 @@ Creep.prototype =
      *
      * @return {number} A number representing the quantity of body parts.
      */
-    getActiveBodyParts: function(type) { },
+    getActiveBodyparts: function(type) { },
 
     /**
      * Harvest energy from the source or minerals from the mineral deposit.
