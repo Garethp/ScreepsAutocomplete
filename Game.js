@@ -425,6 +425,7 @@ Game =
                             roomName - The room where this order is placed.
                             amount - Currently available amount to trade.
                             remainingAmount - How many resources are left to trade via this order. When it becomes equal to zero, the order is removed.
+                            price - The price per unit of the resourceType
 
                             [{
 	                            id : "55c34a6b5be41a0a6e80c68b",
@@ -465,15 +466,6 @@ Game =
          * @param {string} id The order ID
          *
          * @return {object} An object with the order info in the following form:
-
-                             id - The unique order ID.
-                             created - The order creation time in game ticks.
-                             type - Either ORDER_SELL or ORDER_BUY.
-                             resourceType - Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
-                             roomName - The room where this order is placed.
-                             amount - Currently available amount to trade.
-                             remainingAmount - How many resources are left to trade via this order. When it becomes equal to zero, the order is removed.
-
                              {
 	                            id : "55c34a6b5be41a0a6e80c68b",
                                 created : 13131117,
