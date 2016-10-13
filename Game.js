@@ -175,7 +175,19 @@ Game =
         getTerrainAt: function(x, y, roomName) { },
 
         /**
+         * Check if the room with the given name is available to move into
+         *
+         * @type {function}
+         *
+         * @param {string} roomName The room name.
+         *
+         * @return {boolean}
+         */
+        isRoomAvailable: function(roomName) { },
+
+        /**
          * Check if the room with the given name is protected by temporary "newbie" walls.
+         * This method has been deprecated in favor of isRoomAvailable
          *
          * @type {function}
          *
