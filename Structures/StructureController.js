@@ -39,6 +39,28 @@ StructureController.prototype =
     reservation: {},
 
     /**
+     * How many ticks of safe mode remaining, or undefined.
+     *
+     * @type {number}
+     */
+    safeMode: 0,
+
+    /**
+     * Safe mode activations available to use.
+     *
+     * @type {number}
+     */
+    safeModeAvailable: 0,
+
+    /**
+     * During this period in ticks new safe mode activations will be blocked,
+     * undefined if cooldown is inactive.
+     *
+     * @type {number}
+     */
+    safeModeCooldown: 0,
+
+    /**
      * The amount of game ticks when this controller will lose one level.
      * This timer can be reset by using Creep.upgradeController.
      *
@@ -52,6 +74,15 @@ StructureController.prototype =
      * @type {number}
      */
     upgradeBlocked: 0,
+
+    /**
+     * Activate safe mode if available.
+     *
+     * @type {function}
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_TIRED}
+     */
+    activateSafeMode: function() { },
 
     /**
      * Make your claimed controller neutral again.
