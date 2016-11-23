@@ -1,12 +1,16 @@
 /**
  * The main global game object containing all the gameplay information.
  *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game}
+ *
  * @class
  */
 Game =
 {
     /**
      * An object containing information about your CPU usage
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#cpu}
      */
     cpu:
     {
@@ -36,6 +40,8 @@ Game =
          * Get amount of CPU time used from the beginning of the current game tick.
          * Always returns 0 in the Simulation mode.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#cpu.getUsed}
+         *
          * @type {function}
          *
          * @return {number}
@@ -46,12 +52,16 @@ Game =
     /**
      * A hash containing all your construction sites with their id as hash keys.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#constructionSites}
+     *
      * @type {Array<string, ConstructionSite>}
      */
     constructionSites: {},
 
     /**
      * A hash containing all your creeps with creep names as hash keys.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#creeps}
      *
      * @type {Array<string, Creep>}
      */
@@ -60,12 +70,16 @@ Game =
     /**
      * A hash containing all your flags with flag names as hash keys.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#flags}
+     *
      * @type {Array<string, Flag>}
      */
     flags: {},
 
     /**
      * Your Global Control Level
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#gcl}
      */
     gcl:
     {
@@ -93,11 +107,17 @@ Game =
 
     /**
      * A global object representing world map.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#map}
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map}
+     *
      */
     map:
     {
         /**
          * List all exits available from the room with the given name.
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#describeExits}
          *
          * @type {function}
          *
@@ -116,6 +136,8 @@ Game =
         /**
          * Find the exit direction from the given room en route to another room.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
+         *
          * @type {function}
          *
          * @param {string|Room} fromRoom Start room name or room object.
@@ -128,6 +150,8 @@ Game =
 
         /**
          * Find route from the given room to another room.
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findRoute}
          *
          * @type {function}
          *
@@ -148,6 +172,8 @@ Game =
          * Get the linear distance (in rooms) between two rooms.
          * You can use this function to estimate the energy cost of sending resources through terminals, or using observers and nukes.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#getRoomLinearDistance}
+         *
          * @type {function}
          *
          * @param {string} roomName1 The name of the first room.
@@ -160,6 +186,8 @@ Game =
         /**
          * Get terrain type at the specified room position.
          * This method works for any room in the world even if you have no access to it.
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#getTerrainAt}
          *
          * @type {function}
          *
@@ -177,6 +205,8 @@ Game =
         /**
          * Check if the room with the given name is available to move into
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#isRoomAvailable}
+         *
          * @type {function}
          *
          * @param {string} roomName The room name.
@@ -189,6 +219,8 @@ Game =
          * Check if the room with the given name is protected by temporary "newbie" walls.
          * This method has been deprecated in favor of isRoomAvailable
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#isRoomProtected}
+         *
          * @type {function}
          *
          * @param {string} roomName The room name.
@@ -200,6 +232,9 @@ Game =
 
     /**
      * A global object representing the in-game market.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#market}
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market}
      */
     market:
     {
@@ -221,7 +256,8 @@ Game =
             price : 2.95
         }
     }]
-
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#incomingTransactions}
+         *
          * @type {Array}
          */
         incomingTransactions: [],
@@ -245,6 +281,8 @@ Game =
         }
     }]
 
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#outgoingTransactions}
+         *
          * @type {Array}
          */
         outgoingTransactions: [],
@@ -279,6 +317,8 @@ Game =
         }
          ]
 
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#myOrders}
+         *
          * @type {Array}
          */
         myOrders: [],
@@ -311,6 +351,8 @@ Game =
         }
          ]
 
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#orders}
+         *
          * @type {Array}
          */
         orders: [],
@@ -318,6 +360,8 @@ Game =
         /**
          * Estimate the energy transaction cost of StructureTerminal.send and Market.deal methods.
          * The formula: Math.ceil( amount * ( Math.log( 0.1 * linearDistanceBetweenRooms + 0.9) + 0.1) )
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#calcTransactionCost}
          *
          * @type {function}
          *
@@ -335,6 +379,8 @@ Game =
          * If a buy order provided, then the reserved credits amount will be refunded in full.
          * The 5% fee is not returned.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#cancelOrder}
+         *
          * @type {function}
          *
          * @param {string} orderId The order ID as provided in Game.market.myOrders.
@@ -349,6 +395,8 @@ Game =
          * You will be charged price*amount*0.05 credits when the order is placed, and the price*amount credits will be reserved.
          * The maximum buy orders count is 50 per player.
          * You can cancel an order to refund the reserved credits amount.
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#createBuyOrder}
          *
          * @type {function}
          *
@@ -367,6 +415,8 @@ Game =
          * You will be charged price*amount*0.05 credits when the order is placed.
          * The maximum sell orders count is 50 per player.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#createSellOrder}
+         *
          * @type {function}
          *
          * @param {string} resourceType Either one of the RESOURCE_* constants or GAMETIME_TOKEN. If your Terminal doesn't have the specified resource, the order will be temporary inactive.
@@ -384,6 +434,8 @@ Game =
          * Your Terminal will be charged amount*linearDistanceBetweenRooms*0.1 energy units of transfer cost regardless of the order resource type.
          * You can use Game.map.getRoomLinearDistance method to estimate it.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#deal}
+         *
          * @type {function}
          *
          * @param {string} orderId The order ID as provided in Game.market.orders.
@@ -399,6 +451,8 @@ Game =
          * Add more capacity to an existing order. It will affect remainingAmount and totalAmount properties. You will
          * be charged price*addAmount*0.05 credits.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#extendOrder}
+         *
          * @type {function}
          *
          * @param {string} orderId The order ID as provided in Game.market.orders.
@@ -411,6 +465,8 @@ Game =
         /**
          * This method is still under development.
          * Get other players' orders currently active on the market.
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getAllOrders}
          *
          * @type {function}
          *
@@ -461,6 +517,8 @@ Game =
          * This method is still under development.
          * Retrieve info for specific market order.
          *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getOrderById}
+         *
          * @type {function}
          *
          * @param {string} id The order ID
@@ -483,12 +541,16 @@ Game =
     /**
      * A hash containing all the rooms available to you with room names as hash keys.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#rooms}
+     *
      * @type {Array<string, Room>}
      */
     rooms: {},
 
     /**
      * A hash containing all your spawns with spawn names as hash keys.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#spawns}
      *
      * @type {Array<string, Spawn>}
      */
@@ -497,12 +559,16 @@ Game =
     /**
      * A hash containing all your structures with structure id as hash keys.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#structures}
+     *
      * @type {Array<string, Structure>}
      */
     structures: {},
 
     /**
      * System game tick counter. It is automatically incremented on every tick.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#time}
      *
      * @type {number}
      */
@@ -512,6 +578,8 @@ Game =
      * Get an object with the specified unique ID.
      * It may be a game object of any type.
      * Only objects from the rooms which are visible to you can be accessed.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#getObjectById}
      *
      * @type {function}
      *
@@ -526,6 +594,8 @@ Game =
      * This way, you can set up notifications to yourself on any occasion within the game.
      * You can schedule up to 20 notifications during one game tick.
      * Not available in the Simulation Room.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#notify}
      *
      * @param {string} message Custom text which will be sent in the message. Maximum length is 1000 characters.
      * @param {number} [groupInterval] If set to 0 (default), the notification will be scheduled immediately. Otherwise, it will be grouped with other notifications and mailed out later using the specified time in minutes.

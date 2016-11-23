@@ -3,6 +3,8 @@
  * Flags can be used to mark particular spots in a room.
  * Flags are visible to their owners only.
  *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag}
+ *
  * @class
  * @extends {RoomObject}
  */
@@ -13,6 +15,8 @@ Flag.prototype =
     /**
      * Flag primary color. One of the COLOR_* constants.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#color}
+     *
      * @type {string}
      */
     color: "",
@@ -20,6 +24,8 @@ Flag.prototype =
     /**
      * A shorthand to Memory.flags[flag.name].
      * You can use it for quick access the flag's specific memory data object.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#memory}
      *
      * @type {*}
      */
@@ -30,6 +36,8 @@ Flag.prototype =
      * You can choose the name while creating a new flag, and it cannot be changed later.
      * This name is a hash key to access the spawn via the Game.flags object.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#name}
+     *
      * @type {string}
      */
     name: "",
@@ -37,12 +45,16 @@ Flag.prototype =
     /**
      * Flag secondary color. One of the COLOR_* constants.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#secondaryColor}
+     *
      * @type {string}
      */
     secondaryColor: "",
 
     /**
      * Remove the flag.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#remove}
      *
      * @type {function}
      *
@@ -52,6 +64,8 @@ Flag.prototype =
 
     /**
      * Set new color of the flag.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#setColor}
      *
      * @type {function}
      *
@@ -64,6 +78,8 @@ Flag.prototype =
 
     /**
      * Set new position of the flag.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#setPosition}
      *
      * @type {function}
      *

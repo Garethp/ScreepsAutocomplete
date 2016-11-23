@@ -4,10 +4,14 @@
  * Every object in the room contains its linked Room instance in the room property.
  *
  * @class
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room}
  */
 Room = {
     /**
      * Serialize a path array into a short string representation, which is suitable to store in memory.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#serializePath}
      *
      * @type {function}
      *
@@ -19,6 +23,8 @@ Room = {
 
     /**
      * Deserialize a short string path representation into an array form.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#deserializePath}
      *
      * @type {function}
      *
@@ -34,6 +40,8 @@ Room.prototype =
     /**
      * The Controller structure of this room, if present, otherwise undefined.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#controller}
+     *
      * @type {undefined|StructureController}
      */
     controller: null,
@@ -41,12 +49,16 @@ Room.prototype =
     /**
      * Total amount of energy available in all spawns and extensions in the room.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable}
+     *
      * @type {number}
      */
     energyAvailable: 0,
 
     /**
      * Total amount of energyCapacity of all spawns and extensions in the room.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable}
      *
      * @type {number}
      */
@@ -56,12 +68,16 @@ Room.prototype =
      * A shorthand to Memory.rooms[room.name].
      * You can use it for quick access the room’s specific memory data object.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#memory}
+     *
      * @type {*}
      */
     memory: {},
 
     /**
      * The mode of the room
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#mode}
      *
      * @type {string|MODE_SIMULATION|MODE_SURVIVAL|MODE_WORLD|MODE_ARENA}
      */
@@ -70,12 +86,16 @@ Room.prototype =
     /**
      * The name of the room.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#name}
+     *
      * @type {string}
      */
     name: "",
 
     /**
      * The Storage structure of this room, if present, otherwise undefined.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#storage}
      *
      * @type {undefined|StructureStorage}
      */
@@ -84,12 +104,16 @@ Room.prototype =
     /**
      * The Terminal structure of this room, if present, otherwise undefined.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#terminal}
+     *
      * @type {undefined|StructureTerminal}
      */
     terminal: null,
 
     /**
      * Create new ConstructionSite at the specified location.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#createConstructionSite}
      *
      * @type {function}
      *
@@ -106,6 +130,8 @@ Room.prototype =
 
     /**
      * Create new Flag at the specified location.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#createFlag}
      *
      * @type {function}
      *
@@ -125,6 +151,8 @@ Room.prototype =
     /**
      * Find all objects of the specified type in the room.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#find}
+     *
      * @type {function}
      *
      * @param {number} type One of the FIND_* constants.
@@ -138,6 +166,8 @@ Room.prototype =
     /**
      * Find the exit direction en route to another room.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#findExitTo}
+     *
      * @type {function}
      *
      * @param {string|Room} room Another room name or room object.
@@ -148,6 +178,8 @@ Room.prototype =
 
     /**
      * Find an optimal path inside the room between fromPos and toPos using A* search algorithm.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#findPath}
      *
      * @type {function}
      *
@@ -179,6 +211,8 @@ Room.prototype =
     /**
      * Creates a RoomPosition object at the specified location.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#getPositionAt}
+     *
      * @type {function}
      *
      * @param {number} x The X position.
@@ -190,6 +224,8 @@ Room.prototype =
 
     /**
      * Get the list of objects at the specified room position.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookAt}
      *
      * @type {function}
      *
@@ -211,6 +247,8 @@ Room.prototype =
 
     /**
      * Get the list of objects at the specified room area.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookAtArea}
      *
      * @type {function}
      *
@@ -292,6 +330,8 @@ Room.prototype =
     /**
      * Get an object with the given type at the specified room position.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookForAt}
+     *
      * @type {function}
      *
      * @param {string} type One of the LOOK_* constants.
@@ -307,6 +347,8 @@ Room.prototype =
 
     /**
      * Get the list of objects with the given type at the specified room area.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookForAtArea}
      *
      * @type {function}
      *

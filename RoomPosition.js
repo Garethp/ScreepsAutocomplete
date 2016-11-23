@@ -9,6 +9,8 @@
  *
  * @class
  * @constructor
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition}
  */
 RoomPosition = function(x, y, roomName) { };
 
@@ -17,12 +19,16 @@ RoomPosition.prototype =
     /**
      * The name of the room.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#roomName}
+     *
      * @type {string}
      */
     roomName: "",
 
     /**
      * X position in the room.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#x}
      *
      * @type {number}
      */
@@ -31,12 +37,16 @@ RoomPosition.prototype =
     /**
      * Y position in the room.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#y}
+     *
      * @type {number}
      */
     y: 0,
 
     /**
      * Create new ConstructionSite at the specified location.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#createConstructionSite}
      *
      * @type {function}
      *
@@ -48,6 +58,8 @@ RoomPosition.prototype =
 
     /**
      * Create new Flag at the specified location.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#createFlag}
      *
      * @type {function}
      *
@@ -62,6 +74,8 @@ RoomPosition.prototype =
     /**
      * Find an object with the shortest path from the given position.
      * Uses A* search algorithm and Dijkstra's algorithm.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#findClosestByPath}
      *
      * @type {function}
      *
@@ -83,6 +97,8 @@ RoomPosition.prototype =
     /**
      * Find an object with the shortest linear distance from the given position.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#findClosestByRange}
+     *
      * @type {function}
      *
      * @param {number|Array<RoomPosition>|Array<RoomObject>} type See Room.find.
@@ -98,6 +114,8 @@ RoomPosition.prototype =
 
     /**
      * Find all objects in the specified linear range.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#findInRange}
      *
      * @type {function}
      *
@@ -116,6 +134,8 @@ RoomPosition.prototype =
      * Find an optimal path to the specified position using A* search algorithm.
      * This method is a shorthand for Room.findPath.
      * If the target is in another room, then the corresponding exit will be used as a target.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#findPathTo}
      *
      * @type {function}
      *
@@ -139,6 +159,8 @@ RoomPosition.prototype =
     /**
      * Get linear direction to the specified position.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#getDirectionTo}
+     *
      * @type {function}
      *
      * @param {number|RoomPosition|RoomObject} x X position in the room.
@@ -154,6 +176,8 @@ RoomPosition.prototype =
     /**
      * Get linear range to the specified position.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#getRangeTo}
+     *
      * @type {function}
      *
      * @param {number|RoomPosition|RoomObject} x X position in the room.
@@ -168,6 +192,8 @@ RoomPosition.prototype =
 
     /**
      * Check whether this position is in the given range of another position.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#inRangeTo}
      *
      * @type {function}
      *
@@ -186,6 +212,8 @@ RoomPosition.prototype =
     /**
      * Check whether this position is the same as the specified position.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#isEqualTo}
+     *
      * @type {function}
      *
      * @param {number|RoomPosition|RoomObject} x X position in the room.
@@ -202,6 +230,8 @@ RoomPosition.prototype =
      * Check whether this position is on the adjacent square to the specified position.
      * The same as inRangeTo(target, 1)
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#isNearTo}
+     *
      * @type {function}
      *
      * @param {number|RoomPosition|RoomObject} x X position in the room.
@@ -217,6 +247,8 @@ RoomPosition.prototype =
     /**
      * Get the list of objects at the specified room position.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#look}
+     *
      * @type {function}
      *
      * @return {array} An array with objects at the specified position in the following format:
@@ -231,6 +263,8 @@ RoomPosition.prototype =
 
     /**
      * Get an object with the given type at the specified room position.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203079201-RoomPosition#lookFor}
      *
      * @type {function}
      *

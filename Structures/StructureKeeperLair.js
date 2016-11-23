@@ -5,6 +5,8 @@
  *
  * @class
  * @extends {OwnedStructure}
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/207712119-StructureKeeperLair}
  */
 StructureKeeperLair = function() { };
 
@@ -12,6 +14,8 @@ StructureKeeperLair.prototype =
 {
     /**
      * Time to spawning of the next Source Keeper.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207712119-StructureKeeperLair#ticksToSpawn}
      *
      * @type {number}
      */
