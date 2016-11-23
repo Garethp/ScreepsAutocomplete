@@ -4,7 +4,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureObserver = function() { };
+class StructureObserver extends OwnedStructure {}
 
 StructureObserver.prototype =
 {

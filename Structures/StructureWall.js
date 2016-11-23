@@ -4,7 +4,7 @@
  * @class
  * @extends {Structure}
  */
-StructureWall = function() { };
+class StructureWall extends Structure {}
 
 StructureWall.prototype =
 {

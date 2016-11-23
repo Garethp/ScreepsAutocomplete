@@ -3,7 +3,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureLab = function() { };
+class StructureLab extends OwnedStructure {}
 
 StructureLab.prototype =
 {

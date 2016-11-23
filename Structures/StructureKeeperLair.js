@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureKeeperLair = function() { };
+class StructureKeeperLair extends OwnedStructure {}
 
 StructureKeeperLair.prototype =
 {

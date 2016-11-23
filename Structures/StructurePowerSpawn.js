@@ -4,7 +4,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructurePowerSpawn = function() { };
+class StructurePowerSpawn extends OwnedStructure {}
 
 StructurePowerSpawn.prototype =
 {

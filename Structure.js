@@ -3,7 +3,9 @@
  * @class
  * @extends {RoomObject}
  */
-Structure = function() { };
+class Structure extends RoomObject {
+
+}
 
 Structure.prototype =
 {

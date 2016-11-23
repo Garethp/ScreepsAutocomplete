@@ -5,7 +5,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureStorage = function() { };
+class StructureStorage extends OwnedStructure {}
 
 StructureStorage.prototype =
 {

@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructurePowerBank = function() { };
+class StructurePowerBank extends OwnedStructure {}
 
 StructurePowerBank.prototype =
 {

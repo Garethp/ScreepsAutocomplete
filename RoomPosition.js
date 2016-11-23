@@ -10,7 +10,11 @@
  * @class
  * @constructor
  */
-RoomPosition = function(x, y, roomName) { };
+class RoomPosition {
+    constructor(x, y, roomName) {
+
+    }
+}
 
 RoomPosition.prototype =
 {

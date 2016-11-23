@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureSpawn = function() { };
+class StructureSpawn extends OwnedStructure {}
 
 /**
  *

@@ -5,7 +5,9 @@
  * @class
  * @extends {RoomObject}
  */
-Mineral = function() { };
+class Mineral extends RoomObject {
+    
+}
 
 Mineral.prototype =
 {

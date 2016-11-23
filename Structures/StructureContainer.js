@@ -6,7 +6,7 @@
  * @class
  * @extends {Structure}
  */
-StructureContainer = function() { };
+class StructureContainer extends Structure {}
 
 StructureContainer.prototype =
 {

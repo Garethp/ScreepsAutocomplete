@@ -6,10 +6,41 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureController = function() { };
+class StructureController extends Structure {}
 
 StructureController.prototype =
 {
+
+    /**
+     * Ticks left before another safeMode can be used
+     *
+     * @type {number}
+     */
+    safeModeCooldown: 0,
+    
+    /**
+     * The number of available safeMode activations
+     *
+     * @type {number}
+     */
+    safeModeAvailable: 0,
+
+    /**
+     * Returns if safeMode is active. If not this will return undefined, not false.
+     *
+     * @type {Boolean|undefined}
+     */
+    safeMode: undefined,
+
+    /**
+     * Triggers the activation of a saveMode if possible and available
+     *
+     * @type {function}
+     *
+     * @return {OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_TIRED}
+     */
+    activateSafeMode: function() {},
+    
     /**
      * Current controller level, from 0 to 8.
      *

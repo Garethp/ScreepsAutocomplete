@@ -3,7 +3,10 @@
  * @class
  * @extends {RoomObject}
  */
-Creep = function() { };
+class Creep extends RoomObject {
+    
+}
+
 
 Creep.prototype =
 {

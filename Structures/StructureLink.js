@@ -4,7 +4,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureLink = function() { };
+class StructureLink extends OwnedStructure {}
 
 StructureLink.prototype =
 {
