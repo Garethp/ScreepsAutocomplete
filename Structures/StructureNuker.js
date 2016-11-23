@@ -6,6 +6,8 @@
  *
  * @class
  * @extends {OwnedStructure}
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker}
  */
 StructureNuker = function() { };
 
@@ -14,12 +16,16 @@ StructureNuker.prototype =
     /**
      * The amount of energy containing in this structure.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#energy}
+     *
      * @type {number}
      */
     energy: 0,
 
     /**
      * The total amount of energy this structure can contain.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#energyCapacity}
      *
      * @type {number}
      */
@@ -28,12 +34,16 @@ StructureNuker.prototype =
     /**
      * The amount of ghodium containing in this structure.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#ghodium}
+     *
      * @type {number}
      */
     ghodium: 0,
 
     /**
      * The total amount of ghodium this structure can contain.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#ghodiumCapacity}
      *
      * @type {number}
      */
@@ -42,12 +52,16 @@ StructureNuker.prototype =
     /**
      * The amount of game ticks until the next launch is possible.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#cooldown}
+     *
      * @type {number}
      */
     cooldown: 0,
 
     /**
      * Launch a nuke to the specified position.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#launchNuke}
      *
      * @type {function}
      *
