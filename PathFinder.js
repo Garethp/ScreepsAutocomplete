@@ -1,12 +1,16 @@
 /**
  *
  * @class
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder}
  */
 PathFinder =
 {
     /**
      * Find an optimal path between origin and goal.
      * @static
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#search}
      *
      * @type {function}
      *
@@ -40,6 +44,8 @@ PathFinder =
      *
      * @note It affects the following methods behavior: Room.findPath, RoomPosition.findPathTo, RoomPosition.findClosestByPath, Creep.moveTo.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#use}
+     *
      * @type {function}
      *
      * @param {boolean} isEnabled Whether to activate the new pathfinder or deactivate.
@@ -52,12 +58,16 @@ PathFinder =
  *
  * @constructor
  * @class
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#CostMatrix}
  */
 PathFinder.CostMatrix = function() { };
 
 /**
  * Static method which deserializes a new CostMatrix using the return value of serialize.
  * @static
+ *
+ * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#deserialize}
  *
  * @type {function}
  *
@@ -73,6 +83,8 @@ PathFinder.CostMatrix.prototype =
     /**
      * Set the cost of a position in this CostMatrix.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#set}
+     *
      * @type {function}
      *
      * @param {number} x X position in the room.
@@ -83,6 +95,8 @@ PathFinder.CostMatrix.prototype =
 
     /**
      * Get the cost of a position in this CostMatrix.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#get}
      *
      * @type {function}
      *
@@ -96,6 +110,8 @@ PathFinder.CostMatrix.prototype =
     /**
      * Copy this CostMatrix into a new CostMatrix with the same data.
      *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#clone}
+     *
      * @type {function}
      *
      * @return {CostMatrix}
@@ -104,6 +120,8 @@ PathFinder.CostMatrix.prototype =
 
     /**
      * Returns a compact representation of this CostMatrix which can be stored via JSON.stringify
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#serialize}
      *
      * @type {function}
      *
