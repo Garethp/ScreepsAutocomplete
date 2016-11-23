@@ -6,7 +6,9 @@
  * @class
  * @extends {RoomObject}
  */
-Resource = function() { };
+class Resource extends RoomObject {
+    
+}
 
 Resource.prototype =
 {

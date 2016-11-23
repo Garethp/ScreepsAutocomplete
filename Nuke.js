@@ -5,8 +5,9 @@
  * @class
  * @extends {RoomObject}
  */
-Nuke = function() { };
+class Nuke extends RoomObject {
 
+}
 Nuke.prototype =
 {
     /**

@@ -5,7 +5,7 @@
  * @class
  * @extends {Structure}
  */
-StructureRoad = function() { };
+class StructureRoad extends Structure {}
 
 StructureRoad.prototype =
 {

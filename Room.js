@@ -5,36 +5,16 @@
  *
  * @class
  */
-Room = {
-    /**
-     * Serialize a path array into a short string representation, which is suitable to store in memory.
-     *
-     * @type {function}
-     *
-     * @param {Array} path A path array retrieved from Room.findPath.
-     *
-     * @return {string} A serialized string form of the given path.
-     */
-    serializePath: function(path) { },
-
-    /**
-     * Deserialize a short string path representation into an array form.
-     *
-     * @type {function}
-     *
-     * @param {string} path A serialized path string.
-     *
-     * return {Array} A path array.
-     */
-    deserializePath: function(path) { }
-};
+class Room {
+    
+}
 
 Room.prototype =
 {
     /**
      * The Controller structure of this room, if present, otherwise undefined.
      *
-     * @type {undefined|StructureController}
+     * @type {StructureController|undefined}
      */
     controller: null,
 
@@ -87,6 +67,28 @@ Room.prototype =
      * @type {undefined|StructureTerminal}
      */
     terminal: null,
+
+    /**
+     * Serialize a path array into a short string representation, which is suitable to store in memory.
+     *
+     * @type {function}
+     *
+     * @param {Array} path A path array retrieved from Room.findPath.
+     *
+     * @return {string} A serialized string form of the given path.
+     */
+    serializePath: function(path) { },
+
+    /**
+     * Deserialize a short string path representation into an array form.
+     *
+     * @type {function}
+     *
+     * @param {string} path A serialized path string.
+     *
+     * return {Array} A path array.
+     */
+    deserializePath: function(path) { },
 
     /**
      * Create new ConstructionSite at the specified location.

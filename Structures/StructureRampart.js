@@ -4,7 +4,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureRampart = function() { };
+class StructureRampart extends OwnedStructure {}
 
 StructureRampart.prototype =
 {

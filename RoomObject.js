@@ -3,7 +3,9 @@
  * Almost all game objects prototypes are derived from RoomObject.
  * @class
  */
-RoomObject = function() { };
+class RoomObject {
+    
+}
 
 RoomObject.prototype =
 {

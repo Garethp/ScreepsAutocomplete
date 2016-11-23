@@ -6,7 +6,7 @@
  * @class
  * @extends {Structure}
  */
-StructurePortal = function() { };
+class StructurePortal extends Structure {}
 
 StructurePortal.prototype =
 {

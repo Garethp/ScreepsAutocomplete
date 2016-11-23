@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureController = function() { };
+class StructureController extends Structure {}
 
 StructureController.prototype =
 {

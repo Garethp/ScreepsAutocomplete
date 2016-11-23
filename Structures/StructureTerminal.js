@@ -10,7 +10,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureTerminal = function() { };
+class StructureTerminal extends OwnedStructure {}
 
 StructureTerminal.prototype =
 {

@@ -4,7 +4,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureExtractor = function() { };
+class StructureExtractor extends OwnedStructure {}
 
 StructureExtractor.prototype =
 {

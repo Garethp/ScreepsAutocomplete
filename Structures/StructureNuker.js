@@ -7,7 +7,7 @@
  * @class
  * @extends {OwnedStructure}
  */
-StructureNuker = function() { };
+class StructureNuker extends OwnedStructure {}
 
 StructureNuker.prototype =
 {

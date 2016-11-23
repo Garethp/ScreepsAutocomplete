@@ -175,19 +175,7 @@ Game =
         getTerrainAt: function(x, y, roomName) { },
 
         /**
-         * Check if the room with the given name is available to move into
-         *
-         * @type {function}
-         *
-         * @param {string} roomName The room name.
-         *
-         * @return {boolean}
-         */
-        isRoomAvailable: function(roomName) { },
-
-        /**
          * Check if the room with the given name is protected by temporary "newbie" walls.
-         * This method has been deprecated in favor of isRoomAvailable
          *
          * @type {function}
          *
@@ -392,92 +380,7 @@ Game =
          *
          * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
          */
-        deal: function(orderId, targetRoomName, amount) { },
-
-        /**
-         * This method is still under development.
-         * Add more capacity to an existing order. It will affect remainingAmount and totalAmount properties. You will
-         * be charged price*addAmount*0.05 credits.
-         *
-         * @type {function}
-         *
-         * @param {string} orderId The order ID as provided in Game.market.orders.
-         * @param {number} addAmount How much capacity to add. Cannot be a negative value.
-         *
-         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
-         */
-        extendOrder: function(orderId, addAmount) { },
-
-        /**
-         * This method is still under development.
-         * Get other players' orders currently active on the market.
-         *
-         * @type {function}
-         *
-         * @param {object|function} [filter] An object or function that will filter the resulting list using the lodash.filter method.
-         *
-         * @return {Array} An orders array in the following form:
-
-                            id - The unique order ID.
-                            created - The order creation time in game ticks.
-                            type - Either ORDER_SELL or ORDER_BUY.
-                            resourceType - Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
-                            roomName - The room where this order is placed.
-                            amount - Currently available amount to trade.
-                            remainingAmount - How many resources are left to trade via this order. When it becomes equal to zero, the order is removed.
-                            price - The price per unit of the resourceType
-
-                            [{
-	                            id : "55c34a6b5be41a0a6e80c68b",
-                                created : 13131117,
-                                type : "sell"
-                                resourceType : "OH",
-                                roomName : "W1N1",
-                                amount : 15821,
-                                remainingAmount : 30000,
-                                price : 2.95
-                            }, {
-                                id : "55c34a6b52411a0a6e80693a",
-                                created : 13134122,
-                                type : "buy"
-                                resourceType : "energy",
-                                roomName : "W1N1",
-                                amount : 94000,
-                                remainingAmount : 94000,
-                                price : 0.45
-                            }, {
-                                id : "55c34a6b5be41a0a6e80c123",
-                                created : 13105123,
-                                type : "sell"
-                                resourceType : "token",
-                                amount : 3,
-                                remainingAmount : 10,
-                                price : 50000
-                            }]
-         */
-        getAllOrders: function(filter) { },
-
-        /**
-         * This method is still under development.
-         * Retrieve info for specific market order.
-         *
-         * @type {function}
-         *
-         * @param {string} id The order ID
-         *
-         * @return {object} An object with the order info in the following form:
-                             {
-	                            id : "55c34a6b5be41a0a6e80c68b",
-                                created : 13131117,
-                                type : "sell"
-                                resourceType : "OH",
-                                roomName : "W1N1",
-                                amount : 15821,
-                                remainingAmount : 30000,
-                                price : 2.95
-                            }
-         */
-        getOrderById: function(id) { }
+        deal: function(orderId, targetRoomName, amount) { }
     },
 
     /**
