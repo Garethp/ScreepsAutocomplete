@@ -1987,3 +1987,21 @@ const LOOK_NUKES = "nuke";
  * @type {string}
  */
 const LOOK_TERRAIN = "terrain";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const SYSTEM_USERNAME = 'Screeps';
+
+/**
+ * @constant
+ * @type {string}
+ */
+const SIGN_NOVICE_AREA = 'A new Novice Area is being planned somewhere in this sector. Please make sure all important rooms are reserved.';
+
+/**
+ * @constant
+ * @type {string}
+ */
+const SIGN_RESPAWN_AREA = 'A new Respawn Area is being planned somewhere in this sector. Please make sure all important rooms are reserved.';
