@@ -553,6 +553,12 @@ const STRUCTURE_NUKER = "nuker";
  * @constant
  * @type {string}
  */
+const SUBSCRIPTION_TOKEN = 'token';
+
+/**
+ * @constant
+ * @type {string}
+ */
 const RESOURCE_ENERGY = "energy";
 
 /**
@@ -1503,6 +1509,18 @@ const NUKE_DAMAGE = {
  * @type {number}
  */
 const PORTAL_DECAY = 30000;
+
+/**
+ * @constant
+ * @type {string}
+ */
+const ORDER_SELL = 'sell';
+
+/**
+ * @constant
+ * @type {string}
+ */
+const ORDER_BUY = 'buy';
 
 /**
  * @constant

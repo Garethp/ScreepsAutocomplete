@@ -5,15 +5,21 @@
  *
  * @class
  */
-Game =
-{
+Game = {
+    /**
+     * A hash containing all your construction sites with their id as hash keys.
+     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#constructionSites}
+     * @type {Array<string, ConstructionSite>}
+     */
+    constructionSites: {},
+
     /**
      * An object containing information about your CPU usage
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#cpu}
      */
-    cpu:
-    {
+    cpu: {
         /**
          * Your CPU limit depending on your Global Control Level.
          *
@@ -34,36 +40,19 @@ Game =
          *
          * @type {number}
          */
-        bucket: 0,
-
-        /**
-         * Get amount of CPU time used from the beginning of the current game tick.
-         * Always returns 0 in the Simulation mode.
-         *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#cpu.getUsed}
-         *
-         * @type {function}
-         *
-         * @return {number}
-         */
-        getUsed: function() { }
+        bucket: 0
     },
 
-    /**
-     * A hash containing all your construction sites with their id as hash keys.
-     *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#constructionSites}
-     *
-     * @type {Array<string, ConstructionSite>}
-     */
-    constructionSites: {},
 
     /**
      * A hash containing all your creeps with creep names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#creeps}
-     *
      * @type {Array<string, Creep>}
+     * @example
+     * for(var i in Game.creeps) {
+     *     Game.creeps[i].moveTo(flag);
+     * }
      */
     creeps: {},
 
@@ -71,18 +60,19 @@ Game =
      * A hash containing all your flags with flag names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#flags}
-     *
      * @type {Array<string, Flag>}
+     * @example
+     * creep.moveTo(Game.flags.Flag1);
      */
     flags: {},
 
     /**
      * Your Global Control Level
      *
+     * @see {@link http://docs.screeps.com/control.html}
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#gcl}
      */
-    gcl:
-    {
+    gcl: {
         /**
          * The current level.
          *
@@ -108,45 +98,45 @@ Game =
     /**
      * A global object representing world map.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#map}
      * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map}
-     *
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#map}
      */
-    map:
-    {
+    map: {
         /**
          * List all exits available from the room with the given name.
-         *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#describeExits}
-         *
-         * @type {function}
          *
          * @param {string} roomName The room name.
          *
          * @return {null|object} The exits information in the following format, or null if the room not found.
-                                 {
-                                    "1": "W8N4",    // TOP
-                                    "3": "W7N3",    // RIGHT
-                                    "5": "W8N2",    // BOTTOM
-                                    "7": "W9N3"     // LEFT
-                                }
+           {
+               "1": "W8N4",    // TOP
+               "3": "W7N3",    // RIGHT
+               "5": "W8N2",    // BOTTOM
+               "7": "W9N3"     // LEFT
+           }
+         *
+         * @type {function}
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#describeExits}
+         * @example
+         * var exits = Game.map.describeExits('W8N3');
          */
-        describeExits: function(roomName) { },
+        describeExits: function (roomName) {
+        },
 
         /**
          * Find the exit direction from the given room en route to another room.
-         *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
-         *
-         * @type {function}
          *
          * @param {string|Room} fromRoom Start room name or room object.
          * @param {string|Room} toRoom Finish room name or room object.
          * @param {object} [opts] An object with the pathfinding options. See findRoute.
          *
-         * @return {FIND_EXIT_TOP|FIND_EXIT_RIGHT|FIND_EXIT_BOTTOM|FIND_EXIT_LEFT|number|ERR_NO_PATH|ERR_INVALID_ARGS}
+         * @return {number|FIND_EXIT_TOP|FIND_EXIT_RIGHT|FIND_EXIT_BOTTOM|FIND_EXIT_LEFT|ERR_NO_PATH|ERR_INVALID_ARGS}
+         * @type {function}
+         *
+         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
          */
-        findExit: function(fromRoom, toRoom, opts) { },
+        findExit: function (fromRoom, toRoom, opts) {
+        },
 
         /**
          * Find route from the given room to another room.
@@ -161,12 +151,13 @@ Game =
          * @param {function} [opts.routeCallback] This callback accepts two arguments: function(roomName, fromRoomName). It can be used to calculate the cost of entering that room. You can use this to do things like prioritize your own rooms, or avoid some rooms. You can return a floating point cost or Infinity to block the room.
          *
          * @return {Array|number|ERR_NO_PATH} The route array in the following format:
-                                             [
-                                                 { exit: FIND_EXIT_RIGHT, room: 'arena21' },
-                                                 { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
-                                             ]
+            [
+                { exit: FIND_EXIT_RIGHT, room: 'arena21' },
+                { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
+            ]
          */
-        findRoute: function(fromRoom, toRoom, opts) { },
+        findRoute: function (fromRoom, toRoom, opts) {
+        },
 
         /**
          * Get the linear distance (in rooms) between two rooms.
@@ -178,10 +169,12 @@ Game =
          *
          * @param {string} roomName1 The name of the first room.
          * @param {string} roomName2 The name of the second room.
+         * @param {boolean} [continuous] Whether to treat the world map continuous on borders. Set to true if you want to calculate the trade or terminal send cost. Default is false.
          *
          * @return {number} A number of rooms between the given two rooms.
          */
-        getRoomLinearDistance: function(roomName1, roomName2) { },
+        getRoomLinearDistance: function (roomName1, roomName2, continuous) {
+        },
 
         /**
          * Get terrain type at the specified room position.
@@ -200,7 +193,8 @@ Game =
          *
          * @return {"plain"|"swamp"|"wall"}
          */
-        getTerrainAt: function(x, y, roomName) { },
+        getTerrainAt: function (x, y, roomName) {
+        },
 
         /**
          * Check if the room with the given name is available to move into
@@ -213,21 +207,8 @@ Game =
          *
          * @return {boolean}
          */
-        isRoomAvailable: function(roomName) { },
-
-        /**
-         * Check if the room with the given name is protected by temporary "newbie" walls.
-         * This method has been deprecated in favor of isRoomAvailable
-         *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#isRoomProtected}
-         *
-         * @type {function}
-         *
-         * @param {string} roomName The room name.
-         *
-         * @return {boolean}
-         */
-        isRoomProtected: function(roomName) { }
+        isRoomAvailable: function (roomName) {
+        }
     },
 
     /**
@@ -235,27 +216,34 @@ Game =
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#market}
      * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market}
+     * @see {@link http://docs.screeps.com/market.html}
      */
-    market:
-    {
+    market: {
+        /**
+         * Your current credits balance.
+         *
+         * @type {number}
+         */
+        credits: 0,
+
         /**
          * An array of the last 100 incoming transactions to your terminals with the following format:
          [{
-        transactionId : "56dec546a180ce641dd65960",
-        time : 10390687,
-        sender : {username: "Sender"},
-        recipient : {username: "Me"},
-        resourceType : "U",
-        amount : 100,
-        from : "W0N0",
-        to : "W10N10",
-        description : "trade contract #1",
-        order: {		// optional
-            id : "55c34a6b5be41a0a6e80c68b",
-            type : "sell",
-            price : 2.95
-        }
-    }]
+            transactionId : "56dec546a180ce641dd65960",
+            time : 10390687,
+            sender : {username: "Sender"},
+            recipient : {username: "Me"},
+            resourceType : "U",
+            amount : 100,
+            from : "W0N0",
+            to : "W10N10",
+            description : "trade contract #1",
+            order: {		// optional
+                id : "55c34a6b5be41a0a6e80c68b",
+                type : "sell",
+                price : 2.95
+            }
+        }]
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#incomingTransactions}
          *
          * @type {Array}
@@ -265,22 +253,21 @@ Game =
         /**
          * An array of the last 100 outgoing transactions from your terminals with the following format:
          [{
-        transactionId : "56dec546a180ce641dd65960",
-        time : 10390687,
-        sender : {username: "Me"},
-        recipient : {username: "Recipient"},
-        resourceType : "U",
-        amount : 100,
-        from : "W0N0",
-        to : "W10N10",
-        description : "trade contract #1",
-        order: {		// optional
-            id : "55c34a6b5be41a0a6e80c68b",
-            type : "sell",
-            price : 2.95
-        }
-    }]
-
+            transactionId : "56dec546a180ce641dd65960",
+            time : 10390687,
+            sender : {username: "Me"},
+            recipient : {username: "Recipient"},
+            resourceType : "U",
+            amount : 100,
+            from : "W0N0",
+            to : "W10N10",
+            description : "trade contract #1",
+            order: {		// optional
+                id : "55c34a6b5be41a0a6e80c68b",
+                type : "sell",
+                price : 2.95
+            }
+         }]
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#outgoingTransactions}
          *
          * @type {Array}
@@ -288,72 +275,47 @@ Game =
         outgoingTransactions: [],
 
         /**
-         * This property is still under development.
-         * An array of your active and inactive buy/sell orders on the market, in the following format:
-         [
-         {
-            id : "55c34a6b5be41a0a6e80c68b",
-            active : true,
-            type : "sell"
-            resourceType : "OH",
-            roomName : "W1N1",
-            amount : 15821,
-            price : 2.95
-        }, {
-            id : "55c34a6b52411a0a6e80693a",
-            active : true,
-            type : "buy"
-            resourceType : "energy",
-            roomName : "W1N1",
-            amount : 94000,
-            price : 0.45
-        }, {
-            id : "55c34a6b5be41a0a6e80c123",
-            active : true,
-            type : "sell"
-            resourceType : "token",
-            amount : 3,
-            price : 50000
-        }
-         ]
-
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#myOrders}
-         *
-         * @type {Array}
-         */
-        myOrders: [],
-
-        /**
-         * This property is still under development.
-         * An array of all available buy/sell orders on the market.
-         * Only active orders are visible.
-         [
-         {
-             id : "55c34a6b5be41a0a6e80c68b",
-             type : "sell"
-             resourceType : "OH",
-             roomName : "W1N1",
-             amount : 15821,
-             price : 2.95
-         }, {
-            id : "55c34a6b52411a0a6e80693a",
-            type : "buy"
-            resourceType : "energy",
-            roomName : "W1N1",
-            amount : 94000,
-            price : 0.45
-        }, {
-            id : "55c34a6b5be41a0a6e80c123",
-            type : "sell"
-            resourceType : "token",
-            amount : 3,
-            price : 50000
-        }
-         ]
-
+         *An object with your active and inactive buy/sell orders on the market.
+         * {
+                "55c34a6b5be41a0a6e80c68b": {
+                    id : "55c34a6b5be41a0a6e80c68b",
+                    created : 13131117,
+                    active: true,
+                    type : "sell"
+                    resourceType : "OH",
+                    roomName : "W1N1",
+                    amount : 15821,
+                    remainingAmount : 30000,
+                    totalAmount : 50000,
+                    price : 2.95
+                },
+                "55c34a6b52411a0a6e80693a": {
+                    id : "55c34a6b52411a0a6e80693a",
+                    created : 13134122,
+                    active: true,
+                    type : "buy"
+                    resourceType : "energy",
+                    roomName : "W1N1",
+                    amount : 94000,
+                    remainingAmount : 94000,
+                    totalAmount : 94000
+                    price : 0.45
+                },
+                "55c34a6b5be41a0a6e80c123": {
+                    id : "55c34a6b5be41a0a6e80c123",
+                    created : 13105123,
+                    active: false,
+                    type : "sell"
+                    resourceType : "token",
+                    amount : 0,
+                    remainingAmount : 10,
+                    totalAmount : 10,
+                    price : 50000
+                }
+            }
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#orders}
          *
-         * @type {Array}
+         * @type {Array<string,Order>}
          */
         orders: [],
 
@@ -371,7 +333,8 @@ Game =
          *
          * @return {number} The amount of energy required to perform the transaction.
          */
-        calcTransactionCost: function(amount, roomName1, roomName2) { },
+        calcTransactionCost: function (amount, roomName1, roomName2) {
+        },
 
         /**
          * This method is still under development.
@@ -387,64 +350,60 @@ Game =
          *
          * @return {number|OK|ERR_INVALID_ARGS}
          */
-        cancelOrder: function(orderId) { },
+        cancelOrder: function (orderId) {
+        },
 
         /**
-         * This method is still under development.
-         * Create a buy order in your terminal.
-         * You will be charged price*amount*0.05 credits when the order is placed, and the price*amount credits will be reserved.
-         * The maximum buy orders count is 50 per player.
-         * You can cancel an order to refund the reserved credits amount.
+         * Change the price of an existing order.
+         * If newPrice is greater than old price, you will be charged (newPrice-oldPrice) * remainingAmount * 0.05 credits.
+         *
+         * @param {string} orderId The order ID as provided in Game.market.orders.
+         * @param {number} newPrice The new order price.
+         * @return {OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
+         */
+        changeOrderPrice: function (orderId, newPrice) {
+        },
+
+        /**
+         * Create a market order in your terminal.
+         * You will be charged price * amount * 0.05 credits when the order is placed.
+         * The maximum orders count is 50 per player.
+         * You can create an order at any time with any amount, it will be automatically activated and deactivated depending on the resource/credits availability.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#createBuyOrder}
          *
          * @type {function}
          *
-         * @param {string} resourceType Either one of the RESOURCE_* constants or GAMETIME_TOKEN.
+         * @param {string|ORDER_SELL|ORDER_BUY} type The order type, either ORDER_SELL or ORDER_BUY.
+         * @param {string} resourceType Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
          * @param {number} price The price for one resource unit in credits. Can be a decimal number.
-         * @param {number} totalAmount The amount of resources to be bought in total.
+         * @param {number} totalAmount The amount of resources to be traded in total.
          * @param {string} [roomName] The room where your order will be created. You must have your own Terminal structure in this room, otherwise the created order will be temporary inactive. This argument is not used when resourceType equals to GAMETIME_TOKEN.
          *
          * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
          */
-        createBuyOrder: function(resourceType, price, totalAmount, roomName) { },
+        createOrder: function (type, resourceType, price, totalAmount, roomName) {
+        },
 
         /**
-         * This method is still under development.
-         * Create a sell order in your terminal.
-         * You will be charged price*amount*0.05 credits when the order is placed.
-         * The maximum sell orders count is 50 per player.
-         *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#createSellOrder}
-         *
-         * @type {function}
-         *
-         * @param {string} resourceType Either one of the RESOURCE_* constants or GAMETIME_TOKEN. If your Terminal doesn't have the specified resource, the order will be temporary inactive.
-         * @param {number} price The price for one resource unit in credits. Can be a decimal number.
-         * @param {number} totalAmount The amount of resources to be sold in total. The Terminal doesn't have to contain all the given amount at the same time. If Infinity is provided, the order will remain active until the Terminal contains the specified resource.
-         * @param {string} [roomName] The room where your order will be created. You must have your own Terminal structure in this room, otherwise the created order will be temporary inactive. This argument is not used when resourceType equals to GAMETIME_TOKEN.
-         *
-         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
-         */
-        createSellOrder: function(resourceType, price, totalAmount, roomName) { },
-
-        /**
-         * This method is still under development.
-         * Execute a trade deal from your Terminal to another player's Terminal using the specified buy/sell order.
-         * Your Terminal will be charged amount*linearDistanceBetweenRooms*0.1 energy units of transfer cost regardless of the order resource type.
-         * You can use Game.map.getRoomLinearDistance method to estimate it.
+         * Execute a trade deal from your Terminal in yourRoomName to another player's Terminal using the specified buy/sell order.
+         * Your Terminal will be charged energy units of transfer cost regardless of the order resource type.
+         * You can use Game.market.calcTransactionCost method to estimate it.
+         * When multiple players try to execute the same deal, the one with the shortest distance takes precedence.
+         * You cannot execute more than 10 deals during one tick.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#deal}
          *
          * @type {function}
          *
-         * @param {string} orderId The order ID as provided in Game.market.orders.
-         * @param {string} targetRoomName The name of your room which has to contain an active Terminal with enough amount of energy.
+         * @param {string} orderId The order ID as provided in Game.market.getAllOrders
          * @param {number} amount The amount of resources to transfer.
+         * @param {string} [yourRoomName] The name of your room which has to contain an active Terminal with enough amount of energy. This argument is not used when the order resource type equals to SUBSCRIPTION_TOKEN.
          *
-         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
+         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
          */
-        deal: function(orderId, targetRoomName, amount) { },
+        deal: function (orderId, amount, yourRoomName) {
+        },
 
         /**
          * This method is still under development.
@@ -460,7 +419,8 @@ Game =
          *
          * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
          */
-        extendOrder: function(orderId, addAmount) { },
+        extendOrder: function (orderId, addAmount) {
+        },
 
         /**
          * This method is still under development.
@@ -472,46 +432,10 @@ Game =
          *
          * @param {object|function} [filter] An object or function that will filter the resulting list using the lodash.filter method.
          *
-         * @return {Array} An orders array in the following form:
-
-                            id - The unique order ID.
-                            created - The order creation time in game ticks.
-                            type - Either ORDER_SELL or ORDER_BUY.
-                            resourceType - Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
-                            roomName - The room where this order is placed.
-                            amount - Currently available amount to trade.
-                            remainingAmount - How many resources are left to trade via this order. When it becomes equal to zero, the order is removed.
-                            price - The price per unit of the resourceType
-
-                            [{
-	                            id : "55c34a6b5be41a0a6e80c68b",
-                                created : 13131117,
-                                type : "sell"
-                                resourceType : "OH",
-                                roomName : "W1N1",
-                                amount : 15821,
-                                remainingAmount : 30000,
-                                price : 2.95
-                            }, {
-                                id : "55c34a6b52411a0a6e80693a",
-                                created : 13134122,
-                                type : "buy"
-                                resourceType : "energy",
-                                roomName : "W1N1",
-                                amount : 94000,
-                                remainingAmount : 94000,
-                                price : 0.45
-                            }, {
-                                id : "55c34a6b5be41a0a6e80c123",
-                                created : 13105123,
-                                type : "sell"
-                                resourceType : "token",
-                                amount : 3,
-                                remainingAmount : 10,
-                                price : 50000
-                            }]
+         * @return {Array<Order>} An array of Orders
          */
-        getAllOrders: function(filter) { },
+        getAllOrders: function (filter) {
+        },
 
         /**
          * This method is still under development.
@@ -523,19 +447,10 @@ Game =
          *
          * @param {string} id The order ID
          *
-         * @return {object} An object with the order info in the following form:
-                             {
-	                            id : "55c34a6b5be41a0a6e80c68b",
-                                created : 13131117,
-                                type : "sell"
-                                resourceType : "OH",
-                                roomName : "W1N1",
-                                amount : 15821,
-                                remainingAmount : 30000,
-                                price : 2.95
-                            }
+         * @return {Order} An order
          */
-        getOrderById: function(id) { }
+        getOrderById: function (id) {
+        }
     },
 
     /**
@@ -587,7 +502,8 @@ Game =
      *
      * @return {object|null}
      */
-    getObjectById: function(id) { },
+    getObjectById: function (id) {
+    },
 
     /**
      * Send a custom message at your profile email.
@@ -602,5 +518,6 @@ Game =
      *
      * @return {void}
      */
-    notify: function(message, groupInterval) { }
+    notify: function (message, groupInterval) {
+    }
 };
