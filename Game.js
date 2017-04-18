@@ -40,7 +40,15 @@ Game = {
          *
          * @type {number}
          */
-        bucket: 0
+        bucket: 0,
+
+        /**
+         * Get amount of CPU time used from the beginning of the current game tick. Always returns 0 in the Simulation mode.
+         *
+         * @return {number} Returns the currently used CPU time as a float number
+         */
+        getUsed: function () {
+        }
     },
 
 
@@ -454,6 +462,15 @@ Game = {
     },
 
     /**
+     * An object with your global resources that are bound to the account, like subscription tokens.
+     * Each object key is a resource constant, values are resources amounts.
+     *
+     * @type {Array<string>}
+     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#resources}
+     */
+    resources: {},
+
+    /**
      * A hash containing all the rooms available to you with room names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#rooms}
@@ -467,7 +484,7 @@ Game = {
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#spawns}
      *
-     * @type {Array<string, Spawn>}
+     * @type {Array<string, StructureSpawn>}
      */
     spawns: {},
 
