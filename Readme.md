@@ -27,9 +27,11 @@ Instead of copying the `ScreepsAutocomplete` folder to each and every project fo
 Webstorm should automatically detect the library and add it to the autocompletion.
 
 #### Visual Studio
-Copy the `ScreepsAutcompete` folder in to your project, then create a file called `_references.js`. Right click your newly
-created and empty file, and then select `Update JavaScript References`. The file should now be populated autocomplete should
-be available.
+1. Create a new empty web site (File -> New -> Web Site -> ASP.NET Empty Web Site) and set the location to the location of your program.
+2. Copy the `ScreepsAutocomplete` folder into your project and create a new file called `_references.js` (right click in solution explorer -> Add New Item -> `_references.js`).
+3. Right click within the empty file and select `Update JavaScript References` which will populate the file and make autocomplete avaliable.
+
+[Video](https://youtu.be/XgCBdF1BBdE?t=48s)
 
 #### Sublime Text
 There are two ways to enable Autocomplete in Sublime Text, both of them require installing a plugin through 
