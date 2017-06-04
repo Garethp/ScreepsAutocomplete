@@ -35,6 +35,15 @@ StructureTerminal.prototype =
      * @type {number}
      */
     storeCapacity: 0,
+    
+    /**
+    * The remaining amount of ticks while this terminal cannot be used to make StructureTerminal.send or Game.market.deal calls.
+    *
+    * @see {@link http://docs.screeps.com/api/#StructureTerminal.store}
+    *
+    * @type {number}
+    */
+    cooldown: 0,
 
     /**
      * Sends resource to a Terminal in another room with the specified name.
