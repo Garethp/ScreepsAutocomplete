@@ -2023,3 +2023,9 @@ const SIGN_NOVICE_AREA = 'A new Novice Area is being planned somewhere in this s
  * @type {string}
  */
 const SIGN_RESPAWN_AREA = 'A new Respawn Area is being planned somewhere in this sector. Please make sure all important rooms are reserved.';
+
+/**
+ * @constant
+ * @type {number}
+ */
+const TERMINAL_COOLDOWN = 10;
