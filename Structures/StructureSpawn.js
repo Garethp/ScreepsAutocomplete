@@ -178,7 +178,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * An array with the spawn directions
      *
-     * @see (@Link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions)
+     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions)
      *
      * @type {Array}
      */
@@ -187,7 +187,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * The name of a new creep.
      *
-     * @see (@Link http://docs.screeps.com/api/#StructureSpawn.Spawning.name)
+     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.name)
      *
      * @type (string)
      */
@@ -196,7 +196,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * Time in ticks needed in total to complete the spawning.
      *
-     * @see (@Link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime)
+     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime)
      *
      * @type (number)
      */
@@ -205,7 +205,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * Remaining time to go.
      *
-     * @see (@Link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime)
+     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime)
      *
      * @type (number)
      */
@@ -214,7 +214,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * A link to the spawn.
      *
-     * @see (@Link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn)
+     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn)
      *
      * @type (StructureSpawn)
      */
