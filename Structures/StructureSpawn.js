@@ -178,7 +178,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * An array with the spawn directions
      *
-     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions)
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions}
      *
      * @type {Array}
      */
@@ -187,36 +187,36 @@ StructureSpawn.Spawning.prototype = {
     /**
      * The name of a new creep.
      *
-     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.name)
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.name}
      *
-     * @type (string)
+     * @type {string}
      */
     name: "",
 
     /**
      * Time in ticks needed in total to complete the spawning.
      *
-     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime)
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime}
      *
-     * @type (number)
+     * @type {number}
      */
     needTime: 0,
 
     /**
      * Remaining time to go.
      *
-     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime)
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime}
      *
-     * @type (number)
+     * @type {number}
      */
     remainingTime: 0,
 
     /**
      * A link to the spawn.
      *
-     * @see (@link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn)
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn}
      *
-     * @type (StructureSpawn)
+     * @type {StructureSpawn}
      */
     spawn: {},
 
@@ -238,7 +238,7 @@ StructureSpawn.Spawning.prototype = {
      *
      * @type {function}
      *
-     * @param {array<number>} {directions} An array with the direction constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
+     * @param {Array<number>} {directions} An array with the direction constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
      */
