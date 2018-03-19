@@ -163,3 +163,84 @@ StructureSpawn.prototype =
      */
     transferEnergy: function(target, amount) { }
 };
+
+/**
+ * Details of the creep being spawned currently that can be addressed by the StructureSpawn.spawning property.
+ *
+ * @class
+ *
+ * @see {@link http://docs.screeps.com/api/#StructureSpawn-Spawning}
+ */
+StructureSpawn.Spawning = function () { };
+
+StructureSpawn.Spawning.prototype = {
+
+    /**
+     * An array with the spawn directions
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions}
+     *
+     * @type {Array}
+     */
+    directions: [],
+
+    /**
+     * The name of a new creep.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.name}
+     *
+     * @type {string}
+     */
+    name: "",
+
+    /**
+     * Time in ticks needed in total to complete the spawning.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime}
+     *
+     * @type {number}
+     */
+    needTime: 0,
+
+    /**
+     * Remaining time to go.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime}
+     *
+     * @type {number}
+     */
+    remainingTime: 0,
+
+    /**
+     * A link to the spawn.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn}
+     *
+     * @type {StructureSpawn}
+     */
+    spawn: {},
+
+    /**
+     * Cancel spawning immediately. Energy spent on spawning is not returned.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.cancel}
+     *
+     * @type {function}
+     *
+     * @return {number|OK|ERR_NOT_OWNER}
+     */
+    cancel: function() { },
+
+    /**
+     * Set desired directions where the creep should move when spawned.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.setDirections}
+     *
+     * @type {function}
+     *
+     * @param {Array<number>} {directions} An array with the direction constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
+     */
+    setDirections: function(directions) { }
+};
