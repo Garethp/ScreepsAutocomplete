@@ -108,10 +108,14 @@ StructureSpawn.prototype =
      * @type {function}
      *
      * @param {Array<string>} body An array describing the new creep’s body. Should contain 1 to 50 elements.
-     * @param {string} [name] The name of a new creep. It must be a unique creep name, i.e. the Game.creeps object should not contain another creep with the same name (hash key).
-     * @param {*} [memory] The memory of a new creep. If provided, it will be immediately stored into Memory.creeps[name].
+     * @param {string} name The name of a new creep. It must be a unique creep name, i.e. the Game.creeps object should not contain another creep with the same name (hash key).
+     * @param {Object} [opts] An object with additional options for the spawning process.
+     * @param {*} [opts.memory] Memory of the new creep. If provided, it will be immediately stored into Memory.creeps[name].
+     * @param {Array<StructureSpawn|StructureExtension>} [opts.energyStructures] Array of spawns/extensions from which to draw energy for the spawning process. Structures will be used according to the array order.
+     * @param {boolean} [opts.dryRun] If dryRun is true, the operation will only check if it is possible to create a creep.
+     * @param {Array<number>} [opts.directions] Set desired directions where the creep should move when spawned. 
      *
-     * @return {string|number|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
+     * @return {OK|number|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
     spawnCreep: function(body, name, memory) { },
     
