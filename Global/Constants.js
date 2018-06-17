@@ -405,6 +405,12 @@ const FIND_MINERALS = 116;
  */
 const FIND_NUKES = 117;
 
+/**
+ * @constant
+ * @type {number}
+ */
+const FIND_TOMBSTONES = 118;
+
 /** GAME MODE CONSTANTS **/
 
 /**
@@ -1512,6 +1518,12 @@ const PORTAL_DECAY = 30000;
 
 /**
  * @constant
+ * @type {number}
+ */
+const TOMBSTONE_DECAY_PER_PART = 5;
+
+/**
+ * @constant
  * @type {string}
  */
 const ORDER_SELL = 'sell';
@@ -2005,6 +2017,12 @@ const LOOK_NUKES = "nuke";
  * @type {string}
  */
 const LOOK_TERRAIN = "terrain";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const LOOK_TOMBSTONES = "tombstone";
 
 /**
  * @constant
