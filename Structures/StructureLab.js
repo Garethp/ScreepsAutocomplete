@@ -80,6 +80,21 @@ StructureLab.prototype =
     boostCreep: function(creep, bodyPartsCount) { },
 
     /**
+     * Immediately remove boosts from the creep and drop 50% of the mineral compounds used to boost it onto the ground regardless of the creep's remaining time to live.
+     * The creep has to be at adjacent square to the lab. Unboosting requires cooldown time equal to the total sum of the reactions needed to produce all the compounds applied to the creep.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureLab.unboostCreep}
+     *
+     * @type {function}
+     *
+     * @param {Creep} creep The target creep.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_FOUND|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_TIRED}
+     */
+    unboostCreep: function(creep) { },
+
+
+    /**
      * Produce mineral compounds using reagents from two another labs.
      * The same input labs can be used by many output labs.
      *
