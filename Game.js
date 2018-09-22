@@ -128,8 +128,7 @@ Game = {
          * @example
          * var exits = Game.map.describeExits('W8N3');
          */
-        describeExits: function (roomName) {
-        },
+        describeExits: function (roomName) {},
 
         /**
          * Find the exit direction from the given room en route to another room.
@@ -143,8 +142,7 @@ Game = {
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
          */
-        findExit: function (fromRoom, toRoom, opts) {
-        },
+        findExit: function (fromRoom, toRoom, opts) {},
 
         /**
          * Find route from the given room to another room.
@@ -164,8 +162,7 @@ Game = {
                 { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
             ]
          */
-        findRoute: function (fromRoom, toRoom, opts) {
-        },
+        findRoute: function (fromRoom, toRoom, opts) {},
 
         /**
          * Get the linear distance (in rooms) between two rooms.
@@ -181,12 +178,26 @@ Game = {
          *
          * @return {number} A number of rooms between the given two rooms.
          */
-        getRoomLinearDistance: function (roomName1, roomName2, continuous) {
-        },
+        getRoomLinearDistance: function (roomName1, roomName2, continuous) {},
+
+        /**
+         * Get a Room.Terrain object which provides fast access to static terrain data. This method works for any room in the world even if you have no access to it.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.map.getRoomTerrain}
+         *
+         * @type {function}
+         *
+         * @param {string} roomName The room name.
+         *
+         * @return {Room.Terrain} Returns new Room.Terrain object.
+         */
+        getRoomTerrain: function(roomName) {},
 
         /**
          * Get terrain type at the specified room position.
          * This method works for any room in the world even if you have no access to it.
+         *
+         * @deprecated use Game.map.getRoomTerrain instead.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#getTerrainAt}
          *
@@ -201,8 +212,7 @@ Game = {
          *
          * @return {"plain"|"swamp"|"wall"}
          */
-        getTerrainAt: function (x, y, roomName) {
-        },
+        getTerrainAt: function (x, y, roomName) {},
 
         /**
          * Check if the room with the given name is available to move into
@@ -215,8 +225,7 @@ Game = {
          *
          * @return {boolean}
          */
-        isRoomAvailable: function (roomName) {
-        }
+        isRoomAvailable: function (roomName) {}
     },
 
     /**
