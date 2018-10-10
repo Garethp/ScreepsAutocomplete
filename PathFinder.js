@@ -33,7 +33,7 @@ PathFinder =
      * @param {number} [opts.maxRooms] The maximum allowed rooms to search. The default (and maximum) is 16.
      * @param {number} [opts.heuristicWeight] Weight to apply to the heuristic in the A* formula F = G + weight * H. Use this option only if you understand the underlying A* algorithm mechanics! The default value is 1.2.
      *
-     * @return {{path:Array<RoomPosition>,opts:number}} An object containing: path - An array of RoomPosition objects; ops - Total number of operations performed before this path was calculated.
+     * @return {{path:Array<RoomPosition>,opts:number,cost:number,incomplete:boolean}} An object containing: path - An array of RoomPosition objects; ops - Total number of operations performed before this path was calculated; cost - The total cost of the path as derived from plainCost, swampCost and any given CostMatrix instances; incomplete - If the pathfinder fails to find a complete path, this will be true. Note that path will still be populated with a partial path which represents the closest path it could find given the search parameters.
      */
     search: function(origin, goal, opts) { },
 
@@ -41,7 +41,7 @@ PathFinder =
      * Specify whether to use this new experimental pathfinder in game objects methods.
      * This method should be invoked every tick.
      * @static
-     *
+     * @deprecated
      * @note It affects the following methods behavior: Room.findPath, RoomPosition.findPathTo, RoomPosition.findClosestByPath, Creep.moveTo.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#use}
