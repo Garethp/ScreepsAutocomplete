@@ -525,6 +525,13 @@ Game = {
     rooms: {},
 
     /**
+     * An object describing the world shard where your script is currently being executed in.
+     *
+     * @return {object} name - The name of the shard; type - Currently always equals to normal; ptr - Wether this shard belongs to the PTR.
+     */
+    shard: {},
+
+    /**
      * A hash containing all your spawns with spawn names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#spawns}
