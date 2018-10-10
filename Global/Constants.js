@@ -1158,6 +1158,43 @@ const COLORS_ALL = [
     COLOR_WHITE
 ];
 
+const REACTION_TIME = {
+    OH: 20,
+    ZK: 5,
+    UL: 5,
+    G: 5,
+    UH: 10,
+    UH2O: 5,
+    XUH2O: 60,
+    UO: 10,
+    UHO2: 5,
+    XUHO2: 60,
+    KH: 10,
+    KH2O: 5,
+    XKH2O: 60,
+    KO: 10,
+    KHO2: 5,
+    XKHO2: 60,
+    LH: 15,
+    LH2O: 10,
+    XLH2O: 65,
+    LO: 10,
+    LHO2: 5,
+    XLHO2: 60,
+    ZH: 20,
+    ZH2O: 40,
+    XZH2O: 160,
+    ZO: 10,
+    ZHO2: 5,
+    XZHO2: 60,
+    GH: 10,
+    GH2O: 15,
+    XGH2O: 80,
+    GO: 10,
+    GHO2: 30,
+    XGHO2: 150,
+};
+
 /**
  * @constant
  * @type {object}
