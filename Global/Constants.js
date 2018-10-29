@@ -1727,6 +1727,18 @@ const CONTROLLER_DOWNGRADE = {
  * @constant
  * @type {number}
  */
+const CONTROLLER_DOWNGRADE_RESTORE = 100;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTROLLER_DOWNGRADE_SAFEMODE_THRESHOLD = 5000;
+
+/**
+ * @constant
+ * @type {number}
+ */
 const CONTROLLER_CLAIM_DOWNGRADE = 0.2;
 
 /**
