@@ -383,6 +383,21 @@ Creep.prototype =
     pickup: function(target) { },
 
     /**
+     * Help another creep to follow this creep.
+     * The fatigue generated for the target's move will be added to the creep instead of the target. Requires the MOVE body part.
+     * The target has to be at adjacent square to the creep. The creep must move elsewhere, and the target must move towards the creep.
+     *
+     * @see {@link https://docs.screeps.com/api/#Creep.pull}
+     *
+     * @type {function}
+     *
+     * @param {Creep} target The target creep.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_TIRED|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     */
+    pull: function(target) { },
+
+    /**
      * A ranged attack against another creep or structure.
      * Requires the RANGED_ATTACK body part.
      * If the target is inside a rampart, the rampart is attacked instead.
@@ -484,8 +499,8 @@ Creep.prototype =
      *
      * @type {function}
      *
-     * @param {StructureController} The target controller object to be signed.
-     * @param {string} The sign text. The string is cut off after 100 characters..
+     * @param {StructureController} target The target controller object to be signed.
+     * @param {string} text The sign text. The string is cut off after 100 characters..
      *
      * @return {number|OK|ERR_INVALID_TARGET|ERR_BUSY|ERR_NOT_IN_RANGE}
      */
