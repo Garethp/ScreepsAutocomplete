@@ -1714,14 +1714,26 @@ const CONTROLLER_STRUCTURES = {
  */
 const CONTROLLER_DOWNGRADE = {
     1: 20000,
-    2: 50000,
-    3: 50000,
-    4: 50000,
-    5: 50000,
-    6: 50000,
-    7: 50000,
-    8: 50000
+    2: 5000,
+    3: 10000,
+    4: 20000,
+    5: 40000,
+    6: 60000,
+    7: 100000,
+    8: 150000
 };
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTROLLER_DOWNGRADE_RESTORE = 100;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTROLLER_DOWNGRADE_SAFEMODE_THRESHOLD = 5000;
 
 /**
  * @constant
