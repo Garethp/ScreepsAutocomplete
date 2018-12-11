@@ -79,6 +79,12 @@ Game = {
         getUsed: function () {},
 
         /**
+         * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
+         * Reset your runtime environment and wipe all data in heap memory.
+         */
+        halt: function() {},
+
+        /**
          * Allocate CPU limits to different shards. Total amount of CPU should remain equal to Game.cpu.shardLimits. This method can be used only once per 12 hours.
          * @param {object<string, number>} limits An object with CPU values for each shard in the same format as Game.cpu.shardLimits.
          *
