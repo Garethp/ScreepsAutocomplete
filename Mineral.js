@@ -25,9 +25,9 @@ Mineral.prototype =
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/207218579-Mineral#mineralType}
      *
-     * @type {number}
+     * @type {string}
      */
-    mineralType: 0,
+    mineralType: "",
 
     /**
      * A unique object identificator.
