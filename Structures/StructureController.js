@@ -58,7 +58,7 @@ StructureController.prototype =
      *
      * @type {boolean}
      */
-    level: false,
+    isPowerEnabled: false,
     
     /**
      * Current controller level, from 0 to 8.
