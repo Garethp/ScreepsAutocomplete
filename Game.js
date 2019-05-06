@@ -43,12 +43,54 @@ Game = {
         bucket: 0,
 
         /**
+         * An object with limits for each shard with shard names as keys. You can use setShardLimits method to re-assign them.
+         *
+         * @type {object<string,number>}
+         */
+        shardLimits: {},
+
+        /**
+         * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
+         * Use this method to get heap statistics for your virtual machine. The return value is almost identical to the Node.js function v8.getHeapStatistics().
+         * This function returns one additional property: externally_allocated_size which is the total amount of currently allocated memory which is not included in the v8 heap but counts against this isolate's memory limit.
+         * ArrayBuffer instances over a certain size are externally allocated and will be counted here.
+         *
+         * @return {object} Returns an objects with heap statistics in the following format:
+         * {
+               "total_heap_size": 29085696,
+               "total_heap_size_executable": 3670016,
+               "total_physical_size": 26447928,
+               "total_available_size": 319649520,
+               "used_heap_size": 17493824,
+               "heap_size_limit": 343932928,
+               "malloced_memory": 8192,
+               "peak_malloced_memory": 1060096,
+               "does_zap_garbage": 0,
+               "externally_allocated_size": 38430000
+           }
+         */
+        getHeapStatistics: function() {},
+
+        /**
          * Get amount of CPU time used from the beginning of the current game tick. Always returns 0 in the Simulation mode.
          *
          * @return {number} Returns the currently used CPU time as a float number
          */
-        getUsed: function () {
-        }
+        getUsed: function () {},
+
+        /**
+         * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
+         * Reset your runtime environment and wipe all data in heap memory.
+         */
+        halt: function() {},
+
+        /**
+         * Allocate CPU limits to different shards. Total amount of CPU should remain equal to Game.cpu.shardLimits. This method can be used only once per 12 hours.
+         * @param {object<string, number>} limits An object with CPU values for each shard in the same format as Game.cpu.shardLimits.
+         *
+         * @return {OK|ERR_BUSY|ERR_INVALID_ARGS}
+         */
+        setShardLimits: function(limits) {},
     },
 
 
@@ -56,7 +98,7 @@ Game = {
      * A hash containing all your creeps with creep names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#creeps}
-     * @type {Array<string, Creep>}
+     * @type {object<string, Creep>}
      * @example
      * for(var i in Game.creeps) {
      *     Game.creeps[i].moveTo(flag);
@@ -64,11 +106,24 @@ Game = {
      */
     creeps: {},
 
+
+    /**
+     * A hash containing all your power creeps with their names as hash keys. Even power creeps not spawned in the world can be accessed here.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.powerCreeps}
+     * @type {object<string, PowerCreep>}
+     * @example
+     * for(var i in Game.powerCreeps) {
+     *     Game.powerCreeps[i].moveTo(flag);
+     * }
+     */
+    powerCreeps: {},
+
     /**
      * A hash containing all your flags with flag names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#flags}
-     * @type {Array<string, Flag>}
+     * @type {object<string, Flag>}
      * @example
      * creep.moveTo(Game.flags.Flag1);
      */
@@ -81,6 +136,35 @@ Game = {
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#gcl}
      */
     gcl: {
+        /**
+         * The current level.
+         *
+         * @type {number}
+         */
+        level: 0,
+
+        /**
+         * The current progress to the next level.
+         *
+         * @type {number}
+         */
+        progress: 0,
+
+        /**
+         * The progress required to reach the next level.
+         *
+         * @type {number}
+         */
+        progressTotal: 0
+    },
+
+    /**
+     * Your Global Power Level, an object with the following properties :
+     *
+     * @see {@link http://docs.screeps.com/power.html}
+     * @see {@link https://docs.screeps.com/api/#Game.gpl}
+     */
+    gpl: {
         /**
          * The current level.
          *
@@ -128,8 +212,7 @@ Game = {
          * @example
          * var exits = Game.map.describeExits('W8N3');
          */
-        describeExits: function (roomName) {
-        },
+        describeExits: function (roomName) {},
 
         /**
          * Find the exit direction from the given room en route to another room.
@@ -143,8 +226,7 @@ Game = {
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
          */
-        findExit: function (fromRoom, toRoom, opts) {
-        },
+        findExit: function (fromRoom, toRoom, opts) {},
 
         /**
          * Find route from the given room to another room.
@@ -164,8 +246,7 @@ Game = {
                 { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
             ]
          */
-        findRoute: function (fromRoom, toRoom, opts) {
-        },
+        findRoute: function (fromRoom, toRoom, opts) {},
 
         /**
          * Get the linear distance (in rooms) between two rooms.
@@ -181,12 +262,26 @@ Game = {
          *
          * @return {number} A number of rooms between the given two rooms.
          */
-        getRoomLinearDistance: function (roomName1, roomName2, continuous) {
-        },
+        getRoomLinearDistance: function (roomName1, roomName2, continuous) {},
+
+        /**
+         * Get a Room.Terrain object which provides fast access to static terrain data. This method works for any room in the world even if you have no access to it.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.map.getRoomTerrain}
+         *
+         * @type {function}
+         *
+         * @param {string} roomName The room name.
+         *
+         * @return {Room.Terrain} Returns new Room.Terrain object.
+         */
+        getRoomTerrain: function(roomName) {},
 
         /**
          * Get terrain type at the specified room position.
          * This method works for any room in the world even if you have no access to it.
+         *
+         * @deprecated use Game.map.getRoomTerrain instead.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#getTerrainAt}
          *
@@ -201,8 +296,7 @@ Game = {
          *
          * @return {"plain"|"swamp"|"wall"}
          */
-        getTerrainAt: function (x, y, roomName) {
-        },
+        getTerrainAt: function (x, y, roomName) {},
 
         /**
          * Check if the room with the given name is available to move into
@@ -215,8 +309,7 @@ Game = {
          *
          * @return {boolean}
          */
-        isRoomAvailable: function (roomName) {
-        }
+        isRoomAvailable: function (roomName) {}
     },
 
     /**
@@ -478,6 +571,13 @@ Game = {
      * @type {Array<string, Room>}
      */
     rooms: {},
+
+    /**
+     * An object describing the world shard where your script is currently being executed in.
+     *
+     * @return {object} name - The name of the shard; type - Currently always equals to normal; ptr - Wether this shard belongs to the PTR.
+     */
+    shard: {},
 
     /**
      * A hash containing all your spawns with spawn names as hash keys.

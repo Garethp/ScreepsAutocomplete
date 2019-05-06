@@ -99,7 +99,26 @@ StructureSpawn.prototype =
      * @return {string|number|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
     createCreep: function(body, name, memory) { },
-
+    
+    /**
+     * Start the creep spawning process. The required energy amount can be withdrawn from all spawns and extensions in the room.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.spawnCreep}
+     *
+     * @type {function}
+     *
+     * @param {Array<string>} body An array describing the new creep’s body. Should contain 1 to 50 elements.
+     * @param {string} name The name of a new creep. It must be a unique creep name, i.e. the Game.creeps object should not contain another creep with the same name (hash key).
+     * @param {Object} [opts] An object with additional options for the spawning process.
+     * @param {*} [opts.memory] Memory of the new creep. If provided, it will be immediately stored into Memory.creeps[name].
+     * @param {Array<StructureSpawn|StructureExtension>} [opts.energyStructures] Array of spawns/extensions from which to draw energy for the spawning process. Structures will be used according to the array order.
+     * @param {boolean} [opts.dryRun] If dryRun is true, the operation will only check if it is possible to create a creep.
+     * @param {Array<number>} [opts.directions] Set desired directions where the creep should move when spawned. 
+     *
+     * @return {OK|number|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
+     */
+    spawnCreep: function(body, name, memory) { },
+    
     /**
      * Kill the creep and drop up to 100% of resources spent on its spawning and boosting depending on remaining life time.
      * The target should be at adjacent square.
@@ -147,4 +166,85 @@ StructureSpawn.prototype =
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
      */
     transferEnergy: function(target, amount) { }
+};
+
+/**
+ * Details of the creep being spawned currently that can be addressed by the StructureSpawn.spawning property.
+ *
+ * @class
+ *
+ * @see {@link http://docs.screeps.com/api/#StructureSpawn-Spawning}
+ */
+StructureSpawn.Spawning = function () { };
+
+StructureSpawn.Spawning.prototype = {
+
+    /**
+     * An array with the spawn directions
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions}
+     *
+     * @type {Array}
+     */
+    directions: [],
+
+    /**
+     * The name of a new creep.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.name}
+     *
+     * @type {string}
+     */
+    name: "",
+
+    /**
+     * Time in ticks needed in total to complete the spawning.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime}
+     *
+     * @type {number}
+     */
+    needTime: 0,
+
+    /**
+     * Remaining time to go.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime}
+     *
+     * @type {number}
+     */
+    remainingTime: 0,
+
+    /**
+     * A link to the spawn.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn}
+     *
+     * @type {StructureSpawn}
+     */
+    spawn: {},
+
+    /**
+     * Cancel spawning immediately. Energy spent on spawning is not returned.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.cancel}
+     *
+     * @type {function}
+     *
+     * @return {number|OK|ERR_NOT_OWNER}
+     */
+    cancel: function() { },
+
+    /**
+     * Set desired directions where the creep should move when spawned.
+     *
+     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.setDirections}
+     *
+     * @type {function}
+     *
+     * @param {Array<number>} {directions} An array with the direction constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
+     */
+    setDirections: function(directions) { }
 };
