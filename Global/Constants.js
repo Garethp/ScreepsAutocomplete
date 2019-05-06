@@ -411,6 +411,7 @@ const FIND_NUKES = 117;
  */
 const FIND_TOMBSTONES = 118;
 
+<<<<<<< HEAD
 /**
  * @constant
  * @type {number}
@@ -429,6 +430,8 @@ const FIND_MY_POWER_CREEPS = 120;
  */
 const FIND_HOSTILE_POWER_CREEPS = 121;
 
+=======
+>>>>>>> refs/remotes/Garethp/master
 /** GAME MODE CONSTANTS **/
 
 /**
