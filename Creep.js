@@ -192,7 +192,7 @@ Creep.prototype =
      *
      * @param {ConstructionSite} target The target construction site to be built.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
     build: function(target) { },
 
@@ -383,6 +383,21 @@ Creep.prototype =
     pickup: function(target) { },
 
     /**
+     * Help another creep to follow this creep.
+     * The fatigue generated for the target's move will be added to the creep instead of the target. Requires the MOVE body part.
+     * The target has to be at adjacent square to the creep. The creep must move elsewhere, and the target must move towards the creep.
+     *
+     * @see {@link https://docs.screeps.com/api/#Creep.pull}
+     *
+     * @type {function}
+     *
+     * @param {Creep} target The target creep.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_TIRED|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     */
+    pull: function(target) { },
+
+    /**
      * A ranged attack against another creep or structure.
      * Requires the RANGED_ATTACK body part.
      * If the target is inside a rampart, the rampart is attacked instead.
@@ -473,6 +488,23 @@ Creep.prototype =
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
     say: function(message, public) { },
+    
+    /**
+     * Sign a controller with an arbitrary text visible to all players. 
+     * This text will appear in the room UI, in the world map, and can be accessed via the API. 
+     * You can sign unowned and hostile controllers. The target has to be at adjacent square to the creep. 
+     * Pass an empty string to remove the sign.
+     *
+     * @see {@link http://docs.screeps.com/api/#Creep.signController}
+     *
+     * @type {function}
+     *
+     * @param {StructureController} target The target controller object to be signed.
+     * @param {string} text The sign text. The string is cut off after 100 characters..
+     *
+     * @return {number|OK|ERR_INVALID_TARGET|ERR_BUSY|ERR_NOT_IN_RANGE}
+     */
+    signController: function(target, text) { },
 
     /**
      * Kill the creep immediately.

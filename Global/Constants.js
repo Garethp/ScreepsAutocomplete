@@ -405,6 +405,30 @@ const FIND_MINERALS = 116;
  */
 const FIND_NUKES = 117;
 
+/**
+ * @constant
+ * @type {number}
+ */
+const FIND_TOMBSTONES = 118;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const FIND_POWER_CREEPS = 119;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const FIND_MY_POWER_CREEPS = 120;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const FIND_HOSTILE_POWER_CREEPS = 121;
+
 /** GAME MODE CONSTANTS **/
 
 /**
@@ -566,7 +590,6 @@ const RESOURCE_ENERGY = "energy";
  * @type {string}
  */
 const RESOURCE_POWER = "power";
-
 /**
  * @constant
  * @type {string}
@@ -608,6 +631,12 @@ const RESOURCE_ZYNTHIUM = "Z";
  * @type {string}
  */
 const RESOURCE_CATALYST = "X";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_OPS = "ops";
 
 /**
  * @constant
@@ -1117,7 +1146,8 @@ const RESOURCES_ALL = [
     RESOURCE_CATALYZED_ZYNTHIUM_ACID,
     RESOURCE_CATALYZED_ZYNTHIUM_ALKALIDE,
     RESOURCE_CATALYZED_GHODIUM_ACID,
-    RESOURCE_CATALYZED_GHODIUM_ALKALIDE
+    RESOURCE_CATALYZED_GHODIUM_ALKALIDE,
+    RESOURCE_OPS
 ];
 
 /**
@@ -1151,6 +1181,43 @@ const COLORS_ALL = [
     COLOR_GREY,
     COLOR_WHITE
 ];
+
+const REACTION_TIME = {
+    OH: 20,
+    ZK: 5,
+    UL: 5,
+    G: 5,
+    UH: 10,
+    UH2O: 5,
+    XUH2O: 60,
+    UO: 10,
+    UHO2: 5,
+    XUHO2: 60,
+    KH: 10,
+    KH2O: 5,
+    XKH2O: 60,
+    KO: 10,
+    KHO2: 5,
+    XKHO2: 60,
+    LH: 15,
+    LH2O: 10,
+    XLH2O: 65,
+    LO: 10,
+    LHO2: 5,
+    XLHO2: 60,
+    ZH: 20,
+    ZH2O: 40,
+    XZH2O: 160,
+    ZO: 10,
+    ZHO2: 5,
+    XZHO2: 60,
+    GH: 10,
+    GH2O: 15,
+    XGH2O: 80,
+    GO: 10,
+    GHO2: 30,
+    XGHO2: 150,
+};
 
 /**
  * @constant
@@ -1512,6 +1579,12 @@ const PORTAL_DECAY = 30000;
 
 /**
  * @constant
+ * @type {number}
+ */
+const TOMBSTONE_DECAY_PER_PART = 5;
+
+/**
+ * @constant
  * @type {string}
  */
 const ORDER_SELL = 'sell';
@@ -1665,14 +1738,26 @@ const CONTROLLER_STRUCTURES = {
  */
 const CONTROLLER_DOWNGRADE = {
     1: 20000,
-    2: 50000,
-    3: 50000,
-    4: 50000,
-    5: 50000,
-    6: 50000,
-    7: 50000,
-    8: 50000
+    2: 5000,
+    3: 10000,
+    4: 20000,
+    5: 40000,
+    6: 60000,
+    7: 100000,
+    8: 150000
 };
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTROLLER_DOWNGRADE_RESTORE = 100;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const CONTROLLER_DOWNGRADE_SAFEMODE_THRESHOLD = 5000;
 
 /**
  * @constant
@@ -2010,22 +2095,362 @@ const LOOK_TERRAIN = "terrain";
  * @constant
  * @type {string}
  */
+const LOOK_TOMBSTONES = "tombstone";
+
+/**
+ * @constant
+ * @type {string}
+ */
 const SYSTEM_USERNAME = 'Screeps';
 
 /**
  * @constant
+ * @deprecated use SIGN_PLANNED_AREA instead.
  * @type {string}
  */
 const SIGN_NOVICE_AREA = 'A new Novice Area is being planned somewhere in this sector. Please make sure all important rooms are reserved.';
 
 /**
  * @constant
+ * @deprecated use SIGN_PLANNED_AREA instead.
  * @type {string}
  */
 const SIGN_RESPAWN_AREA = 'A new Respawn Area is being planned somewhere in this sector. Please make sure all important rooms are reserved.';
 
 /**
  * @constant
+ * @type {string}
+ */
+const SIGN_PLANNED_AREA = 'A new Novice or Respawn Area is being planned somewhere in this sector. Please make sure all important rooms are reserved.';
+
+/**
+ * @constant
  * @type {number}
  */
 const TERMINAL_COOLDOWN = 10;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const POWER_LEVEL_MULTIPLY = 1000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const POWER_LEVEL_POW = 2;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const POWER_CREEP_SPAWN_COOLDOWN = 8*3600*1000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const POWER_CREEP_DELETE_COOLDOWN = 24*3600*1000;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const POWER_CREEP_MAX_LEVEL = 25;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const POWER_CREEP_LIFE_TIME = 5000;
+
+/**
+ * @constant
+ * @type {object}
+ */
+const POWER_CLASS = {
+        OPERATOR: 'operator'
+    },
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_GENERATE_OPS = 1;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_SPAWN = 2;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_TOWER = 3;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_STORAGE = 4;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_LAB = 5;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_EXTENSION = 6;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_OBSERVER = 7;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_TERMINAL = 8;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_DISRUPT_SPAWN = 9;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_DISRUPT_TOWER = 10;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_DISRUPT_SOURCE = 11;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_SHIELD = 12;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_REGEN_SOURCE = 13;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_REGEN_MINERAL = 14;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_DISRUPT_TERMINAL = 15;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_POWER = 16;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_FORTIFY = 17;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_CONTROLLER = 18;
+
+/**
+ * @constant
+ * @type {number}
+ */
+const PWR_OPERATE_FACTORY = 19;
+
+/**
+ * @constant
+ * @type {object}
+ */
+const POWER_INFO = {
+        [exports.PWR_GENERATE_OPS]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 50,
+            effect: [1, 2, 4, 6, 8]
+        },
+        [exports.PWR_OPERATE_SPAWN]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 300,
+            duration: 1000,
+            range: 3,
+            ops: 100,
+            effect: [0.9, 0.7, 0.5, 0.35, 0.2]
+        },
+        [exports.PWR_OPERATE_TOWER]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 10,
+            duration: 100,
+            range: 3,
+            ops: 10,
+            effect: [1.1, 1.2, 1.3, 1.4, 1.5]
+        },
+        [exports.PWR_OPERATE_STORAGE]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 800,
+            duration: 1000,
+            range: 3,
+            ops: 100,
+            effect: [500000,1000000,2000000,4000000,7000000]
+        },
+        [exports.PWR_OPERATE_LAB]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 50,
+            duration: 1000,
+            range: 3,
+            ops: 10,
+            effect: [2,4,6,8,10]
+        },
+        [exports.PWR_OPERATE_EXTENSION]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 50,
+            range: 3,
+            ops: 2,
+            effect: [0.2, 0.4, 0.6, 0.8, 1.0]
+        },
+        [exports.PWR_OPERATE_OBSERVER]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 400,
+            duration: [200,400,600,800,1000],
+            range: 3,
+            ops: 10,
+        },
+        [exports.PWR_OPERATE_TERMINAL]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 500,
+            duration: 1000,
+            range: 3,
+            ops: 100,
+            effect: [0.9, 0.8, 0.7, 0.6, 0.5]
+        },
+        [exports.PWR_DISRUPT_SPAWN]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 5,
+            range: 20,
+            ops: 10,
+            duration: [1,2,3,4,5]
+        },
+        [exports.PWR_DISRUPT_TOWER]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 0,
+            duration: 5,
+            range: 3,
+            ops: 10,
+            effect: [0.9, 0.8, 0.7, 0.6, 0.5],
+        },
+        [exports.PWR_DISRUPT_SOURCE]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 100,
+            range: 3,
+            ops: 100,
+            duration: [100, 200, 300, 400, 500]
+        },
+        [exports.PWR_SHIELD]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            effect: [5000, 10000, 15000, 20000, 25000],
+            duration: 50,
+            cooldown: 20,
+            energy: 100,
+        },
+        [exports.PWR_REGEN_SOURCE]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [10, 11, 12, 14, 22],
+            cooldown: 100,
+            duration: 300,
+            range: 3,
+            effect: [50,100,150,200,250],
+            period: 15
+        },
+        [exports.PWR_REGEN_MINERAL]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [10, 11, 12, 14, 22],
+            cooldown: 100,
+            duration: 100,
+            range: 3,
+            effect: [2,4,6,8,10],
+            period: 10
+        },
+        [exports.PWR_DISRUPT_TERMINAL]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [20, 21, 22, 23, 24],
+            cooldown: 8,
+            duration: 10,
+            range: 50,
+            ops: [50,40,30,20,10]
+
+        },
+        [exports.PWR_FORTIFY]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 5,
+            range: 3,
+            ops: 5,
+            duration: [1, 2, 3, 4, 5]
+        },
+        [exports.PWR_OPERATE_POWER]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [10, 11, 12, 14, 22],
+            cooldown: 1000,
+            range: 3,
+            duration: 800,
+            ops: 200,
+            effect: [1, 2, 3, 4, 5]
+        },
+        [exports.PWR_OPERATE_CONTROLLER]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [20, 21, 22, 23, 24],
+            cooldown: 1000,
+            range: 3,
+            duration: 800,
+            ops: 200,
+            effect: [10, 20, 30, 40, 50]
+        },
+        [exports.PWR_OPERATE_FACTORY]: {
+            className: exports.POWER_CLASS.OPERATOR,
+            level: [0, 2, 7, 14, 22],
+            cooldown: 1000,
+            range: 3,
+            duration: 800,
+            ops: 100
+        },
+    };
