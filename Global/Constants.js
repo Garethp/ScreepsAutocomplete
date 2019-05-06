@@ -1270,23 +1270,7 @@ const CREEP_CORPSE_RATE = 0.2;
  * @constant
  * @type {string[]}
  */
-const OBSTACLE_OBJECT_TYPES = [
-    'spawn',
-    'creep',
-    'wall',
-    'source',
-    'constructedWall',
-    'extension',
-    'link',
-    'storage',
-    'tower',
-    'observer',
-    'powerSpawn',
-    'powerBank',
-    'lab',
-    'terminal',
-    'nuker'
-];
+const OBSTACLE_OBJECT_TYPES = ["spawn", "creep", "powerCreep", "source", "mineral", "controller", "constructedWall", "extension", "link", "storage", "tower", "observer", "powerSpawn", "powerBank", "lab", "terminal","nuker"];
 
 /**
  * @constant
