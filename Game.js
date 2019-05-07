@@ -98,7 +98,7 @@ Game = {
      * A hash containing all your creeps with creep names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#creeps}
-     * @type {Array<string, Creep>}
+     * @type {object<string, Creep>}
      * @example
      * for(var i in Game.creeps) {
      *     Game.creeps[i].moveTo(flag);
@@ -106,11 +106,24 @@ Game = {
      */
     creeps: {},
 
+
+    /**
+     * A hash containing all your power creeps with their names as hash keys. Even power creeps not spawned in the world can be accessed here.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.powerCreeps}
+     * @type {object<string, PowerCreep>}
+     * @example
+     * for(var i in Game.powerCreeps) {
+     *     Game.powerCreeps[i].moveTo(flag);
+     * }
+     */
+    powerCreeps: {},
+
     /**
      * A hash containing all your flags with flag names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#flags}
-     * @type {Array<string, Flag>}
+     * @type {object<string, Flag>}
      * @example
      * creep.moveTo(Game.flags.Flag1);
      */
@@ -123,6 +136,35 @@ Game = {
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#gcl}
      */
     gcl: {
+        /**
+         * The current level.
+         *
+         * @type {number}
+         */
+        level: 0,
+
+        /**
+         * The current progress to the next level.
+         *
+         * @type {number}
+         */
+        progress: 0,
+
+        /**
+         * The progress required to reach the next level.
+         *
+         * @type {number}
+         */
+        progressTotal: 0
+    },
+
+    /**
+     * Your Global Power Level, an object with the following properties :
+     *
+     * @see {@link http://docs.screeps.com/power.html}
+     * @see {@link https://docs.screeps.com/api/#Game.gpl}
+     */
+    gpl: {
         /**
          * The current level.
          *

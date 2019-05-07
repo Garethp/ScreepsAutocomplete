@@ -10,6 +10,14 @@ RoomObject = function() { };
 RoomObject.prototype =
 {
     /**
+     * Applied effects, an array of objects with the following properties:
+     *
+     * @see {@link https://docs.screeps.com/api/#RoomObject.effects}
+     *
+     * @type {array}
+     */
+    effects: null,
+    /**
      * An object representing the position of this object in the room.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208435305-RoomObject#pos}

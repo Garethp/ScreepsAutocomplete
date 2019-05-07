@@ -52,6 +52,15 @@ StructureController.prototype =
     activateSafeMode: function() {},
     
     /**
+     * Whether using power is enabled in this room. Use PowerCreep.enableRoom to turn powers on.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureController.isPowerEnabled}
+     *
+     * @type {boolean}
+     */
+    isPowerEnabled: false,
+    
+    /**
      * Current controller level, from 0 to 8.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#level}
