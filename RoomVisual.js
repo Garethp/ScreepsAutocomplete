@@ -49,6 +49,42 @@ RoomVisual.prototype =
         line: function(x1, y1, x2, y2, style) { },
 
         /**
+          * Draw a circle.
+          *
+          * @see {@link https://docs.screeps.com/api/#RoomVisual.circle}
+          *
+          * @type {function}
+          *
+          * @param {number} x The X coordinate of the center.
+          * @param {number} [y] The Y coordinate of the center.
+          * @param {Object} [style] Style object
+          *
+          * @alias circle(pos, [style])
+          *
+          * @return {RoomVisual}
+          */
+        circle: function(x, y, style) { },
+
+        /**
+         * Draw a rectangle.
+         *
+         * @see {@link https://docs.screeps.com/api/#RoomVisual.rect}
+         *
+         * @type {function}
+         *
+         * @param {number} x The X coordinate of the top-left corner.
+         * @param {number} y The Y coordinate of the top-left corner.
+         * @param {number} width The width of the rectangle.
+         * @param {number} height The height of the rectangle.
+         * @param {object} style Style object
+         *
+         * @alias rect(topLeftPos, width, height, [style])
+         *
+         * @return {RoomVisual}
+         */
+        rect(x, y, width, height, style) { },
+
+        /**
          * Draw a line.
          *
          * @see {@link http://docs.screeps.com/api/#RoomVisual.poly}
@@ -61,4 +97,42 @@ RoomVisual.prototype =
          * @return {RoomVisual}
          */
         poly: function(points, style) { },
+
+        /**
+         * Draw a text label. You can use any valid Unicode characters, including emoji.
+         *
+         * @see {@link https://docs.screeps.com/api/#RoomVisual.text}
+         *
+         * @type {function}
+         *
+         * @param {string} text The text message.
+         * @param {number} x The X coordinate of the label baseline point.
+         * @param {number} y The Y coordinate of the label baseline point.
+         * @param {object} [style] Style object
+         *
+         * @alias text(text, pos, [style])
+         *
+         * @return {RoomVisual}
+         */
+         text: function(text, x, y, style) { },
+
+        /**
+         * Remove all visuals from the room.
+         *
+         * @see {@link https://docs.screeps.com/api/#RoomVisual.clear}
+         *
+         * @type {function}
+         *
+         * @return {RoomVisual}
+         */
+         clear: function() { },
+
+        /**
+         * Get the stored size of all visuals added in the room in the current tick. It must not exceed 512,000 (500 KB).
+         *
+         * @see {@link https://docs.screeps.com/api/#RoomVisual.getSize}
+         *
+         * @return {number} The size of the visuals in bytes.
+         */
+         getSize: function() { },
     };
