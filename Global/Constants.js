@@ -2153,7 +2153,7 @@ const POWER_CREEP_LIFE_TIME = 5000;
  */
 const POWER_CLASS = {
         OPERATOR: 'operator'
-    },
+};
 
 /**
  * @constant
