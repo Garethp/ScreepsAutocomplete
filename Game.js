@@ -10,7 +10,7 @@ Game = {
      * A hash containing all your construction sites with their id as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#constructionSites}
-     * @type {Array<string, ConstructionSite>}
+     * @type {Object.<string, ConstructionSite>}
      */
     constructionSites: {},
 
@@ -45,7 +45,7 @@ Game = {
         /**
          * An object with limits for each shard with shard names as keys. You can use setShardLimits method to re-assign them.
          *
-         * @type {object<string,number>}
+         * @type {Object.<string,number>}
          */
         shardLimits: {},
 
@@ -98,7 +98,7 @@ Game = {
      * A hash containing all your creeps with creep names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#creeps}
-     * @type {object<string, Creep>}
+     * @type {Object.<string, Creep>}
      * @example
      * for(var i in Game.creeps) {
      *     Game.creeps[i].moveTo(flag);
@@ -111,7 +111,7 @@ Game = {
      * A hash containing all your power creeps with their names as hash keys. Even power creeps not spawned in the world can be accessed here.
      *
      * @see {@link https://docs.screeps.com/api/#Game.powerCreeps}
-     * @type {object<string, PowerCreep>}
+     * @type {Object.<string, PowerCreep>}
      * @example
      * for(var i in Game.powerCreeps) {
      *     Game.powerCreeps[i].moveTo(flag);
@@ -123,7 +123,7 @@ Game = {
      * A hash containing all your flags with flag names as hash keys.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#flags}
-     * @type {object<string, Flag>}
+     * @type {Object.<string, Flag>}
      * @example
      * creep.moveTo(Game.flags.Flag1);
      */
@@ -558,7 +558,7 @@ Game = {
      * An object with your global resources that are bound to the account, like subscription tokens.
      * Each object key is a resource constant, values are resources amounts.
      *
-     * @type {Array<string>}
+     * @type {Object.<string, object>}
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#resources}
      */
     resources: {},
@@ -568,7 +568,7 @@ Game = {
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#rooms}
      *
-     * @type {Array<string, Room>}
+     * @type {Object.<string, Room>}
      */
     rooms: {},
 
@@ -584,7 +584,7 @@ Game = {
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#spawns}
      *
-     * @type {Array<string, StructureSpawn>}
+     * @type {Object.<string, StructureSpawn>}
      */
     spawns: {},
 
@@ -593,7 +593,7 @@ Game = {
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#structures}
      *
-     * @type {Array<string, Structure>}
+     * @type {Object.<string, Structure>}
      */
     structures: {},
 
