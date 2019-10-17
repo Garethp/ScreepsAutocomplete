@@ -24,14 +24,6 @@ this previous discussion.
     
     You're trying to redefine store property, which is now non-configurable.
 
-* POSSIBLY BREAKING CHANGE: Removed FIND_DROPPED_ENERGY constant, which was deprecated long ago. Use 
-FIND_DROPPED_RESOURCES instead.
-
-* POSSIBLY BREAKING CHANGE: Removed all Structure*.transfer methods which were deprecated long ago. Use Creep.withdraw 
-instead.
-
-* New prototypes: StructureFactory, StructureInvaderCore, Deposit, Ruin.
-
 * A lot of new constants.
 
 * PWR_OPERATE_FACTORY power is now operational.
