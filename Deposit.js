@@ -5,7 +5,7 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link https://docs.screeps.com/api/#Deposit.depositType}
+ * @see {@link https://docs.screeps.com/api/#Deposit}
  */
 Deposit = function () {
 };
