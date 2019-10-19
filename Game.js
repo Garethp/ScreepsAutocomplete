@@ -69,20 +69,23 @@ Game = {
                "externally_allocated_size": 38430000
            }
          */
-        getHeapStatistics: function() {},
+        getHeapStatistics: function () {
+        },
 
         /**
          * Get amount of CPU time used from the beginning of the current game tick. Always returns 0 in the Simulation mode.
          *
          * @return {number} Returns the currently used CPU time as a float number
          */
-        getUsed: function () {},
+        getUsed: function () {
+        },
 
         /**
          * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
          * Reset your runtime environment and wipe all data in heap memory.
          */
-        halt: function() {},
+        halt: function () {
+        },
 
         /**
          * Allocate CPU limits to different shards. Total amount of CPU should remain equal to Game.cpu.shardLimits. This method can be used only once per 12 hours.
@@ -90,7 +93,8 @@ Game = {
          *
          * @return {OK|ERR_BUSY|ERR_INVALID_ARGS}
          */
-        setShardLimits: function(limits) {},
+        setShardLimits: function (limits) {
+        },
     },
 
 
@@ -200,7 +204,7 @@ Game = {
          * @param {string} roomName The room name.
          *
          * @return {null|object} The exits information in the following format, or null if the room not found.
-           {
+         {
                "1": "W8N4",    // TOP
                "3": "W7N3",    // RIGHT
                "5": "W8N2",    // BOTTOM
@@ -212,7 +216,8 @@ Game = {
          * @example
          * var exits = Game.map.describeExits('W8N3');
          */
-        describeExits: function (roomName) {},
+        describeExits: function (roomName) {
+        },
 
         /**
          * Find the exit direction from the given room en route to another room.
@@ -226,7 +231,8 @@ Game = {
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
          */
-        findExit: function (fromRoom, toRoom, opts) {},
+        findExit: function (fromRoom, toRoom, opts) {
+        },
 
         /**
          * Find route from the given room to another room.
@@ -241,12 +247,13 @@ Game = {
          * @param {function} [opts.routeCallback] This callback accepts two arguments: function(roomName, fromRoomName). It can be used to calculate the cost of entering that room. You can use this to do things like prioritize your own rooms, or avoid some rooms. You can return a floating point cost or Infinity to block the room.
          *
          * @return {Array|number|ERR_NO_PATH} The route array in the following format:
-            [
-                { exit: FIND_EXIT_RIGHT, room: 'arena21' },
-                { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
-            ]
+         [
+         { exit: FIND_EXIT_RIGHT, room: 'arena21' },
+         { exit: FIND_EXIT_BOTTOM, room: 'arena22' }
+         ]
          */
-        findRoute: function (fromRoom, toRoom, opts) {},
+        findRoute: function (fromRoom, toRoom, opts) {
+        },
 
         /**
          * Get the linear distance (in rooms) between two rooms.
@@ -262,7 +269,8 @@ Game = {
          *
          * @return {number} A number of rooms between the given two rooms.
          */
-        getRoomLinearDistance: function (roomName1, roomName2, continuous) {},
+        getRoomLinearDistance: function (roomName1, roomName2, continuous) {
+        },
 
         /**
          * Get a Room.Terrain object which provides fast access to static terrain data. This method works for any room in the world even if you have no access to it.
@@ -275,7 +283,8 @@ Game = {
          *
          * @return {Room.Terrain} Returns new Room.Terrain object.
          */
-        getRoomTerrain: function(roomName) {},
+        getRoomTerrain: function (roomName) {
+        },
 
         /**
          * Get terrain type at the specified room position.
@@ -296,7 +305,8 @@ Game = {
          *
          * @return {"plain"|"swamp"|"wall"}
          */
-        getTerrainAt: function (x, y, roomName) {},
+        getTerrainAt: function (x, y, roomName) {
+        },
 
         /**
          * Check if the room with the given name is available to move into
@@ -309,19 +319,20 @@ Game = {
          *
          * @return {boolean}
          */
-        isRoomAvailable: function (roomName) {}
+        isRoomAvailable: function (roomName) {
+        }
     },
 
     /**
      * A global object representing the in-game market.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#market}
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market}
-     * @see {@link http://docs.screeps.com/market.html}
+     * @see {@link https://docs.screeps.com/api/#Game.market}
      */
     market: {
         /**
          * Your current credits balance.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.market.credits}
          *
          * @type {number}
          */
@@ -345,7 +356,7 @@ Game = {
                 price : 2.95
             }
         }]
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#incomingTransactions}
+         * @see {@link https://docs.screeps.com/api/#Game.market.incomingTransactions}
          *
          * @type {Array}
          */
@@ -369,7 +380,7 @@ Game = {
                 price : 2.95
             }
          }]
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#outgoingTransactions}
+         * @see {@link https://docs.screeps.com/api/#Game.market.outgoingTransactions}
          *
          * @type {Array}
          */
@@ -414,7 +425,7 @@ Game = {
                     price : 50000
                 }
             }
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#orders}
+         * @see {@link https://docs.screeps.com/api/#Game.market.orders}
          *
          * @type {Array<string,Order>}
          */
@@ -424,7 +435,7 @@ Game = {
          * Estimate the energy transaction cost of StructureTerminal.send and Market.deal methods.
          * The formula: Math.ceil( amount * ( Math.log( 0.1 * linearDistanceBetweenRooms + 0.9) + 0.1) )
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#calcTransactionCost}
+         * @see {@link https://docs.screeps.com/api/#Game.market.calcTransactionCost}
          *
          * @type {function}
          *
@@ -438,12 +449,9 @@ Game = {
         },
 
         /**
-         * This method is still under development.
-         * Cancel a previously created order.
-         * If a buy order provided, then the reserved credits amount will be refunded in full.
-         * The 5% fee is not returned.
+         * Cancel a previously created order. The 5% fee is not returned
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#cancelOrder}
+         * @see {@link https://docs.screeps.com/api/#Game.market.cancelOrder}
          *
          * @type {function}
          *
@@ -469,37 +477,41 @@ Game = {
          * Create a market order in your terminal.
          * You will be charged price * amount * 0.05 credits when the order is placed.
          * The maximum orders count is 50 per player.
-         * You can create an order at any time with any amount, it will be automatically activated and deactivated depending on the resource/credits availability.
+         * You can create an order at any time with any amount, it will be automatically activated and deactivated
+         * depending on the resource/credits availability.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#createBuyOrder}
+         * @see {@link https://docs.screeps.com/api/#Game.market.createOrder}
          *
          * @type {function}
+         *@param {Object} params An Object with the following parameters:
+         *          {string|ORDER_SELL|ORDER_BUY} type The order type, either ORDER_SELL or ORDER_BUY.
+         *          {string} resourceType Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
+         *          {number} price The price for one resource unit in credits. Can be a decimal number.
+         *          {number} totalAmount The amount of resources to be traded in total.
+         *          (optional){string} [roomName] The room where your order will be created. You must have your own
+         *              Terminal structure in this room, otherwise the created order will be temporary inactive.
+         *              This argument is not used when resourceType equals to GAMETIME_TOKEN.
          *
-         * @param {string|ORDER_SELL|ORDER_BUY} type The order type, either ORDER_SELL or ORDER_BUY.
-         * @param {string} resourceType Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
-         * @param {number} price The price for one resource unit in credits. Can be a decimal number.
-         * @param {number} totalAmount The amount of resources to be traded in total.
-         * @param {string} [roomName] The room where your order will be created. You must have your own Terminal structure in this room, otherwise the created order will be temporary inactive. This argument is not used when resourceType equals to GAMETIME_TOKEN.
-         *
-         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
+         * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
          */
-        createOrder: function (type, resourceType, price, totalAmount, roomName) {
+        createOrder: function (params) {
         },
 
         /**
-         * Execute a trade deal from your Terminal in yourRoomName to another player's Terminal using the specified buy/sell order.
-         * Your Terminal will be charged energy units of transfer cost regardless of the order resource type.
-         * You can use Game.market.calcTransactionCost method to estimate it.
-         * When multiple players try to execute the same deal, the one with the shortest distance takes precedence.
-         * You cannot execute more than 10 deals during one tick.
+         * Execute a trade deal from your Terminal in yourRoomName to another player's Terminal using the specified
+         * buy/sell order. Your Terminal will be charged energy units of transfer cost regardless of the order resource
+         * type. You can use Game.market.calcTransactionCost method to estimate it. When multiple players try to execute
+         * the same deal, the one with the shortest distance takes precedence.You cannot execute more than 10 deals
+         * during one tick.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#deal}
+         * @see {@link https://docs.screeps.com/api/#Game.market.deal}
          *
          * @type {function}
          *
          * @param {string} orderId The order ID as provided in Game.market.getAllOrders
          * @param {number} amount The amount of resources to transfer.
-         * @param {string} [yourRoomName] The name of your room which has to contain an active Terminal with enough amount of energy. This argument is not used when the order resource type equals to SUBSCRIPTION_TOKEN.
+         * @param {string} [yourRoomName] The name of your room which has to contain an active Terminal with enough
+         * amount of energy. This argument is not used when the order resource type equals to SUBSCRIPTION_TOKEN.
          *
          * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
          */
@@ -507,11 +519,10 @@ Game = {
         },
 
         /**
-         * This method is still under development.
-         * Add more capacity to an existing order. It will affect remainingAmount and totalAmount properties. You will
-         * be charged price*addAmount*0.05 credits.
+         * Add more capacity to an existing order. It will affect remainingAmount and totalAmount properties.
+         * You will be charged price*addAmount*0.05 credits.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#extendOrder}
+         * @see {@link https://docs.screeps.com/api/#Game.market.extendOrder}
          *
          * @type {function}
          *
@@ -524,14 +535,13 @@ Game = {
         },
 
         /**
-         * This method is still under development.
          * Get other players' orders currently active on the market.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getAllOrders}
          *
          * @type {function}
          *
-         * @param {object|function} [filter] An object or function that will filter the resulting list using the lodash.filter method.
+         * @param {object|function} [filter] (optional) An object or function that will filter the resulting list using the lodash.filter method.
          *
          * @return {Array<Order>} An array of Orders
          */
@@ -539,10 +549,31 @@ Game = {
         },
 
         /**
-         * This method is still under development.
+         * Get daily price history of the specified resource on the market for the last 14 days.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.market.getHistory}
+         *
+         * @type {function}
+         *
+         * @param {string} resourceType - One of the RESOURCE_* constants. If undefined, returns history data for all resources.
+         *
+         * @return {Array<Object>} with the following format:
+         *      [{
+         *           "resourceType": "L",
+         *           "date": "2019-06-24",
+         *           "transactions": 4,
+         *           "volume": 400,
+         *           "avgPrice": 3.63,
+         *           "stddevPrice": 0.27
+         *       }]
+         */
+        getHistory: function (resourceType) {
+        },
+
+        /**
          * Retrieve info for specific market order.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getOrderById}
+         * @see {@link https://docs.screeps.com/api/#Game.market.getOrderById}
          *
          * @type {function}
          *
