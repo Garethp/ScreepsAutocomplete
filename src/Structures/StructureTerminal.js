@@ -53,7 +53,7 @@ StructureTerminal.prototype =
      * @type {function}
      *
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number} amount The amount of resources to be sent. The minimum amount is 100.
+     * @param {number} amount The amount of resources to be sent.
      * @param {string|undefined|null} [destination] The name of the target room. You don't have to gain visibility in this room.
      * @param {string|undefined|null} [description] The description of the transaction. It is visible to the recipient. The maximum length is 100 characters.
      *
