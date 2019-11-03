@@ -204,6 +204,9 @@ Room.prototype =
      * @param {number} [opts.heuristicWeight] Weight to apply to the heuristic in the A* formula F = G + weight * H. Use this option only if you understand the underlying A* algorithm mechanics! The default value is 1.2.
      * @param {boolean} [opts.serialize] If true, the result path will be serialized using Room.serializePath. The default is false.
      * @param {number} [opts.maxRooms] The maximum allowed rooms to search. The default (and maximum) is 16. This is only used when the new PathFinder is enabled.
+     * @param {number} [opts.range] Find a path to a position in specified linear range of target. The default is 0.
+     * @param {number} [opts.plainCost] Cost for walking on plain positions. The default is 1.
+     * @param {number} [opts.swampCost] Cost for walking on swamp positions. The default is 5.
      *
      * @return {Array} An array with path steps in the following format:
                          [
