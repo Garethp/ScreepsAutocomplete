@@ -468,22 +468,23 @@ Game = {
         /**
          * Create a market order in your terminal.
          * You will be charged price * amount * 0.05 credits when the order is placed.
-         * The maximum orders count is 50 per player.
+         * The maximum orders count is 300 per player.
          * You can create an order at any time with any amount, it will be automatically activated and deactivated depending on the resource/credits availability.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#createBuyOrder}
+         * @see {@link https://docs.screeps.com/api/#Game.market.createOrder}
          *
          * @type {function}
          *
-         * @param {string|ORDER_SELL|ORDER_BUY} type The order type, either ORDER_SELL or ORDER_BUY.
-         * @param {string} resourceType Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
-         * @param {number} price The price for one resource unit in credits. Can be a decimal number.
-         * @param {number} totalAmount The amount of resources to be traded in total.
-         * @param {string} [roomName] The room where your order will be created. You must have your own Terminal structure in this room, otherwise the created order will be temporary inactive. This argument is not used when resourceType equals to GAMETIME_TOKEN.
+         * @param {object} params
+         * @param {string|ORDER_SELL|ORDER_BUY} params.type The order type, either ORDER_SELL or ORDER_BUY.
+         * @param {string} params.resourceType Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN.
+         * @param {number} params.price The price for one resource unit in credits. Can be a decimal number.
+         * @param {number} params.totalAmount The amount of resources to be traded in total.
+         * @param {string} [params.roomName] The room where your order will be created. You must have your own Terminal structure in this room, otherwise the created order will be temporary inactive. This argument is not used when resourceType equals to GAMETIME_TOKEN.
          *
          * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
          */
-        createOrder: function (type, resourceType, price, totalAmount, roomName) {
+        createOrder: function (params) {
         },
 
         /**
@@ -524,7 +525,6 @@ Game = {
         },
 
         /**
-         * This method is still under development.
          * Get other players' orders currently active on the market.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getAllOrders}
@@ -536,6 +536,20 @@ Game = {
          * @return {Array<Order>} An array of Orders
          */
         getAllOrders: function (filter) {
+        },
+
+        /**
+         * Get daily price history of the specified resource on the market for the last 14 days.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.market.getHistory}
+         *
+         * @type {function}
+         *
+         * @param {string} [resourceType] One of the RESOURCE_* constants. If undefined, returns history data for all resources.
+         *
+         * @return {Array<{resourceType:string, date:string, transactions:number, volume:number, avgPrice:number, stddevPrice:number}>} Returns an array of objects
+         */
+        getHistory: function (resourceType) {
         },
 
         /**
