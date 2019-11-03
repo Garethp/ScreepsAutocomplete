@@ -525,7 +525,6 @@ Game = {
         },
 
         /**
-         * This method is still under development.
          * Get other players' orders currently active on the market.
          *
          * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getAllOrders}
@@ -537,6 +536,20 @@ Game = {
          * @return {Array<Order>} An array of Orders
          */
         getAllOrders: function (filter) {
+        },
+
+        /**
+         * Get daily price history of the specified resource on the market for the last 14 days.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.market.getHistory}
+         *
+         * @type {function}
+         *
+         * @param {string} [resourceType] One of the RESOURCE_* constants. If undefined, returns history data for all resources.
+         *
+         * @return {Array<{resourceType:string, date:string, transactions:number, volume:number, avgPrice:number, stddevPrice:number}>} Returns an array of objects
+         */
+        getHistory: function (resourceType) {
         },
 
         /**
