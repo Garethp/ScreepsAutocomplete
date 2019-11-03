@@ -288,7 +288,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {number} x X position of the target in the same room.
+     * @param {number|RoomPosition|RoomObject} x X position of the target in the same room.
      * @param {number} [y] Y position of the target in the same room.
      * @param {object} [opts] An object containing additional options
      * @param {number} [opts.reusePath] This option enables reusing the path found along multiple game ticks. It allows to save CPU time, but can result in a slightly slower creep reaction behavior. The path is stored into the creep's memory to the _move property. The reusePath value defines the amount of ticks which the path should be reused for. The default value is 5. Increase the amount to save more CPU, decrease to make the movement more consistent. Set to 0 if you want to disable path reusing.
