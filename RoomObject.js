@@ -10,11 +10,11 @@ RoomObject = function() { };
 RoomObject.prototype =
 {
     /**
-     * Applied effects, an array of objects with the following properties:
+     * Applied effects, an array of objects
      *
      * @see {@link https://docs.screeps.com/api/#RoomObject.effects}
      *
-     * @type {array}
+     * @type {Array<{effect:number, level:number, ticksRemaining:number}>}
      */
     effects: null,
     /**
