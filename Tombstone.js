@@ -38,11 +38,11 @@ Tombstone.prototype =
     id: "",
 
     /**
-     * An object with the tombstone contents. Each object key is one of the RESOURCE_* constants, values are resources amounts. RESOURCE_ENERGY is always defined and equals to 0 when empty, other resources are undefined when empty. You can use lodash.sum to get the total amount of contents.
+     * A Store object that contains cargo of this structure.
      *
      * @see {@link https://docs.screeps.com/api/#Tombstone.store}
      *
-     * @type {object}
+     * @type {Store}
      */
     store: { },
 

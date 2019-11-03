@@ -11,6 +11,8 @@ StructurePowerSpawn = function() { };
 StructurePowerSpawn.prototype =
 {
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_ENERGY]`.
+     *
      * The amount of energy containing in this structure.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436585-StructurePowerSpawn#energy}
@@ -20,6 +22,8 @@ StructurePowerSpawn.prototype =
     energy: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_ENERGY)`.
+     *
      * The total amount of energy this structure can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436585-StructurePowerSpawn#energyCapacity}
@@ -29,6 +33,8 @@ StructurePowerSpawn.prototype =
     energyCapacity: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_POWER]`.
+     *
      * The amount of power containing in this structure.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436585-StructurePowerSpawn#power}
@@ -38,6 +44,8 @@ StructurePowerSpawn.prototype =
     power: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_POWER)`.
+     *
      * The total amount of power this structure can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436585-StructurePowerSpawn#powerCapacity}
@@ -45,6 +53,15 @@ StructurePowerSpawn.prototype =
      * @type {number}
      */
     powerCapacity: 0,
+
+    /**
+     * A Store object that contains cargo of this structure.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructurePowerSpawn.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * Create a power creep.

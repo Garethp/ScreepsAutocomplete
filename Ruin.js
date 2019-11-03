@@ -34,7 +34,7 @@ Ruin.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Ruin.store}
      *
-     * @return {Object}
+     * @return {Store}
      */
     store: {},
 

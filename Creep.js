@@ -24,6 +24,8 @@ Creep.prototype =
     body: [],
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store`.
+     *
      * An object with the creep's cargo contents.
      * Each object key is one of the RESOURCE_* constants, values are resources amounts.
      * Use _.sum(creep.carry) to get the total amount of contents.
@@ -35,6 +37,8 @@ Creep.prototype =
     carry: {},
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity()`.
+     *
      * The total amount of resources the creep can carry.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#carryCapacity}
@@ -139,6 +143,15 @@ Creep.prototype =
      * @type {boolean}
      */
     spawning: false,
+
+    /**
+     * A Store object that contains cargo of this creep.
+     *
+     * @see {@link https://docs.screeps.com/api/#Creep.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * The remaining amount of game ticks after which the creep will die.
