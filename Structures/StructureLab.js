@@ -19,6 +19,8 @@ StructureLab.prototype =
     cooldown: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_ENERGY]`.
+     *
      * The amount of energy containing in the lab. Energy is used for boosting creeps.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436195-StructureLab#energy}
@@ -28,6 +30,8 @@ StructureLab.prototype =
     energy: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_ENERGY)`.
+     *
      * The total amount of energy the lab can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436195-StructureLab#energyCapacity}
@@ -37,6 +41,8 @@ StructureLab.prototype =
     energyCapacity: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `lab.store[lab.mineralType]`.
+     *
      * The amount of mineral resources containing in the lab.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436195-StructureLab#mineralAmount}
@@ -56,6 +62,8 @@ StructureLab.prototype =
     mineralType: "",
 
     /**
+     * @deprecated Since version 4.x, replaced by `lab.store.getCapacity(lab.mineralType || yourMineral)`.
+     *
      * The total amount of minerals the lab can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208436195-StructureLab#mineralCapacity}
@@ -63,6 +71,15 @@ StructureLab.prototype =
      * @type {number}
      */
     mineralCapacity: 0,
+
+    /**
+     * A Store object that contains cargo of this structure.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureLab.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * Boosts creep body part using the containing mineral compound.

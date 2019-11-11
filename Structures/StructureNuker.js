@@ -14,6 +14,8 @@ StructureNuker = function() { };
 StructureNuker.prototype =
 {
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_ENERGY]`.
+     *
      * The amount of energy containing in this structure.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#energy}
@@ -23,6 +25,8 @@ StructureNuker.prototype =
     energy: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_ENERGY)`.
+     *
      * The total amount of energy this structure can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#energyCapacity}
@@ -32,6 +36,8 @@ StructureNuker.prototype =
     energyCapacity: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_GHODIUM]`.
+     *
      * The amount of ghodium containing in this structure.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#ghodium}
@@ -41,6 +47,8 @@ StructureNuker.prototype =
     ghodium: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_GHODIUM)`.
+     *
      * The total amount of ghodium this structure can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#ghodiumCapacity}
@@ -57,6 +65,15 @@ StructureNuker.prototype =
      * @type {number}
      */
     cooldown: 0,
+
+    /**
+     * A Store object that contains cargo of this structure.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * Launch a nuke to the specified position.

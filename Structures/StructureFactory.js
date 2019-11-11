@@ -34,7 +34,7 @@ StructureFactory.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#StructureFactory.store}
      *
-     * @return {Object}
+     * @return {Store}
      */
     store: {},
 

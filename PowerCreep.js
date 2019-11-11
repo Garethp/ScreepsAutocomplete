@@ -29,6 +29,8 @@ PowerCreep.prototype =
     create: function(name, className) { },
     
     /**
+     * @deprecated Since version 4.x, replaced by `.store`.
+     *
      * An object with the PowerCreep's cargo contents.
      * Each object key is one of the RESOURCE_* constants, values are resources amounts.
      * Use _.sum(creep.carry) to get the total amount of contents.
@@ -40,6 +42,8 @@ PowerCreep.prototype =
     carry: {},
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity()`.
+     *
      * The total amount of resources the PowerCreep can carry.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.carryCapacity}
@@ -154,6 +158,15 @@ PowerCreep.prototype =
     {
         username: ""
     },
+
+    /**
+     * A Store object that contains cargo of this creep.
+     *
+     * @see {@link https://docs.screeps.com/api/#PowerCreep.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * Available powers, an object with power ID as a key, and the following properties:

@@ -15,17 +15,17 @@ StructureContainer.prototype =
 
 
     /**
-     * An object with the structure contents.
-     * Each object key is one of the RESOURCE_* constants, values are resources amounts.
-     * Use _.sum(structure.store) to get the total amount of contents.
+     * A Store object that contains cargo of this structure.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208435885-StructureContainer#store}
+     * @see {@link https://docs.screeps.com/api/#StructureContainer.store}
      *
-     * @type {Array<string, number>}
+     * @type {Store}
      */
     store: {},
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity()`.
+     *
      * The total amount of resources the structure can contain.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208435885-StructureContainer#storeCapacity}

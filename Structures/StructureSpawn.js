@@ -23,6 +23,8 @@ Spawn.prototype = StructureSpawn.prototype;
 StructureSpawn.prototype =
 {
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_ENERGY]`.
+     *
      * The amount of energy containing in the spawn.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#energy}
@@ -32,6 +34,8 @@ StructureSpawn.prototype =
     energy: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_ENERGY)`.
+     *
      * The total amount of energy the spawn can contain
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#energyCapacity}
@@ -69,6 +73,15 @@ StructureSpawn.prototype =
      * @type {object|null}
      */
     spawning: null,
+
+    /**
+     * A Store object that contains cargo of this structure.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * Check if a creep can be created.

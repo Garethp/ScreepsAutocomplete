@@ -14,6 +14,7 @@ StructureTower = function() { };
 StructureTower.prototype =
 {
     /**
+     * @deprecated Since version 4.x, replaced by `.store[RESOURCE_ENERGY]`.
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#energy}
      *
@@ -22,11 +23,22 @@ StructureTower.prototype =
     energy: 0,
 
     /**
+     * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_ENERGY)`.
+     *
      * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#energyCapacity}
      *
      * @type {number}
      */
     energyCapacity: 0,
+
+    /**
+     * A Store object that contains cargo of this structure.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureTower.store}
+     *
+     * @type {Store}
+     */
+    store: {},
 
     /**
      * Remotely attack any creep in the room.
