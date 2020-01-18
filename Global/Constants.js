@@ -563,6 +563,12 @@ const STRUCTURE_CONTAINER = "container";
  */
 const STRUCTURE_NUKER = "nuker";
 
+/**
+ * @constant
+ * @type {string}
+ */
+const STRUCTURE_FACTORY = "factory";
+
 /** RESOURCE CONSTANTS **/
 
 /**
@@ -1264,7 +1270,7 @@ const CREEP_CORPSE_RATE = 0.2;
  * @constant
  * @type {string[]}
  */
-const OBSTACLE_OBJECT_TYPES = ["spawn", "creep", "powerCreep", "source", "mineral", "controller", "constructedWall", "extension", "link", "storage", "tower", "observer", "powerSpawn", "powerBank", "lab", "terminal","nuker"];
+const OBSTACLE_OBJECT_TYPES = ["spawn", "creep", "powerCreep", "source", "mineral", "controller", "constructedWall", "extension", "link", "storage", "tower", "observer", "powerSpawn", "powerBank", "lab", "terminal", "nuker", "factory"];
 
 /**
  * @constant
@@ -1545,7 +1551,19 @@ const NUKE_RANGE = 10;
 const NUKE_DAMAGE = {
     0: 10000000,
     2: 5000000
-};
+}; 
+
+/**
+ * @constant
+ * @type {number}
+ */
+const FACTORY_HITS = 1000,
+      
+/**
+ * @constant
+ * @type {number}
+ */
+const FACTORY_CAPACITY = 50000,
 
 /**
  * @constant
