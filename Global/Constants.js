@@ -842,6 +842,247 @@ const RESOURCE_CATALYZED_GHODIUM_ALKALIDE = "XGHO2";
 
 /**
  * @constant
+ * @type {string}
+ */
+const RESOURCE_SILICON = "silicon";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_METAL = "metal";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_BIOMASS = "biomass";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_MIST = "mist";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_UTRIUM_BAR = "utrium_bar";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_LEMERGIUM_BAR = "lemergium_bar";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_ZYNTHIUM_BAR = "zynthium_bar";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_KEANIUM_BAR = "keanium_bar";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_GHODIUM_MELT = "ghodium_melt";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_OXIDANT = "oxidant";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_REDUCTANT = "reductant";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_PURIFIER = "purifier";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_BATTERY = "battery";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_COMPOSITE = "composite";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_CRYSTAL = "crystal";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_LIQUID = "liquid";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_WIRE = "wire";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_SWITCH = "switch";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_TRANSISTOR = "transistor";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_MICROCHIP = "microchip";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_CIRCUIT = "circuit";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_DEVICE = "device";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_CELL = "cell";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_PHLEGM = "phlegm";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_TISSUE = "tissue";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_MUSCLE = "muscle";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_ORGANOID = "organoid";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_ORGANISM = "organism";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_ALLOY = "alloy";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_TUBE = "tube";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_FIXTURES = "fixtures";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_FRAME = "frame";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_HYDRAULICS = "hydraulics";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_MACHINE = "machine";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_CONDENSATE = "condensate";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_CONCENTRATE = "concentrate";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_EXTRACT = "extract";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_SPIRIT = "spirit";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_EMANATION = "emanation";
+
+/**
+ * @constant
+ * @type {string}
+ */
+const RESOURCE_ESSENCE = "essence";
+
+
+/**
+ * @constant
  * @type {object}
  */
 const REACTIONS = {
