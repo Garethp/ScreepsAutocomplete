@@ -1798,13 +1798,13 @@ const NUKE_DAMAGE = {
  * @constant
  * @type {number}
  */
-const FACTORY_HITS = 1000,
+const FACTORY_HITS = 1000;
       
 /**
  * @constant
  * @type {number}
  */
-const FACTORY_CAPACITY = 50000,
+const FACTORY_CAPACITY = 50000;
 
 /**
  * @constant
