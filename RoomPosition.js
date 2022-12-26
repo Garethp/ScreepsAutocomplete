@@ -277,7 +277,7 @@ RoomPosition.prototype =
      *
      * @type {function}
      *
-     * @return {array} An array with objects at the specified position in the following format:
+     * @return {LookResultItem[]} An array with objects at the specified position in the following format:
                          [
                             { type: 'creep', creep: {...} },
                             { type: 'structure', structure: {...} },
@@ -300,3 +300,11 @@ RoomPosition.prototype =
      */
     lookFor: function(type) { }
 };
+
+/**
+ * @typedef {Object} LookResultItem
+ * @property {'creep' | 'structure' | 'terrain'} type
+ * @property {Creep} [creep]
+ * @property {Structure} [structure]
+ * @property {string} [terrain]
+ */
