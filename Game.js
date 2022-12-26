@@ -195,6 +195,13 @@ Game = {
      */
     map: {
         /**
+         *
+         * @param {string} roomName
+         * @return {{status: 'normal' | 'closed' | 'novice' | 'respawn', timestamp: number | null}}
+         */
+        getRoomStatus: function (roomName) {},
+
+        /**
          * List all exits available from the room with the given name.
          *
          * @param {string} roomName The room name.
