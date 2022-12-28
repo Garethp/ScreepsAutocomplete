@@ -36,7 +36,7 @@ ConstructionSite.prototype =
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#owner}
      *
-     * @type {{username: ""}}
+     * @type {{username: string}}
      */
     owner:
     {

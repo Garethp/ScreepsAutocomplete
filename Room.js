@@ -70,7 +70,7 @@ Room.prototype =
      *
      * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#memory}
      *
-     * @type {*}
+     * @type {RoomMemory}
      */
     memory: {},
 

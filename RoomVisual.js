@@ -55,7 +55,7 @@ RoomVisual.prototype =
           *
           * @type {function}
           *
-          * @param {number} x The X coordinate of the center.
+          * @param {number | RoomPosition} x The X coordinate of the center.
           * @param {number} [y] The Y coordinate of the center.
           * @param {Object} [style] Style object
           *
@@ -76,7 +76,7 @@ RoomVisual.prototype =
          * @param {number} y The Y coordinate of the top-left corner.
          * @param {number} width The width of the rectangle.
          * @param {number} height The height of the rectangle.
-         * @param {object} style Style object
+         * @param {object} [style] Style object
          *
          * @alias rect(topLeftPos, width, height, [style])
          *
