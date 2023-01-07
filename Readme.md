@@ -26,6 +26,16 @@ Instead of copying the `ScreepsAutocomplete` folder to each and every project fo
 
 Webstorm should automatically detect the library and add it to the autocompletion.
 
+#### VSCode
+
+* Clone https://github.com/Garethp/ScreepsAutocomplete and place it into your vscode directory.
+* `npm install @types/screeps`
+* `npm install @types/lodash`
+
+Restart VSCode
+
+Source: https://gitlab.com/-/snippets/1722234
+
 #### Visual Studio
 1. Create a new empty web site (File -> New -> Web Site -> ASP.NET Empty Web Site) and set the location to the location of your program.
 2. Copy the `ScreepsAutocomplete` folder into your project and create a new file called `_references.js` (right click in solution explorer -> Add New Item -> `_references.js`).
