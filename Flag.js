@@ -3,7 +3,7 @@
  * Flags can be used to mark particular spots in a room.
  * Flags are visible to their owners only.
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag}
+ * @see {@link https://docs.screeps.com/api/#Flag}
  *
  * @class
  * @extends {RoomObject}
