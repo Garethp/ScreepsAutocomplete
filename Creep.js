@@ -275,11 +275,11 @@ Creep.prototype =
      *
      * @type {function}
      *
-     * @param {StructureController} controller The target room controller.
+     * @param {StructureController} target The target room controller.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
      */
-    generateSafeMode: function(controller) { },
+    generateSafeMode: function(target) { },
     
     /**
      * Get the quantity of live body parts of the given type.
