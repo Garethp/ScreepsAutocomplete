@@ -5,7 +5,7 @@
  * @class
  * @extends {Structure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207710979-OwnedStructure}
+ * @see {@link https://docs.screeps.com/api/#OwnedStructure}
  */
 OwnedStructure = function() { };
 
@@ -14,7 +14,7 @@ OwnedStructure.prototype =
     /**
      * Whether this is your own structure.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207710979-OwnedStructure#my}
+     * @see {@link https://docs.screeps.com/api/#OwnedStructure.my}
      *
      * @type {boolean}
      */
@@ -23,7 +23,7 @@ OwnedStructure.prototype =
     /**
      * An object with the structure’s owner info
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207710979-OwnedStructure#owner}
+     * @see {@link https://docs.screeps.com/api/#OwnedStructure.owner}
      *
      * @type {{username: string}}
      */
