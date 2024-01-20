@@ -11,11 +11,11 @@ Tombstone = function() { };
 Tombstone.prototype =
 {
     /**
-     * An object containing the deceased creep.
+     * An object containing the deceased creep or power creep.
      *
      * @see {@link https://docs.screeps.com/api/#Tombstone.creep}
      *
-     * @type {Creep}
+     * @type {Creep|PowerCreep}
      */
     creep: { },
 
