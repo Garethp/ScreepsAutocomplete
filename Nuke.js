@@ -5,7 +5,7 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/208488525-Nuke}
+ * @see {@link https://docs.screeps.com/api/#Nuke}
  */
 Nuke = function() { };
 
@@ -15,7 +15,7 @@ Nuke.prototype =
      * A unique object identificator.
      * You can use Game.getObjectById method to retrieve an object instance by its id.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488525-Nuke#id}
+     * @see {@link https://docs.screeps.com/api/#Nuke.id}
      *
      * @type {string}
      */
@@ -24,7 +24,7 @@ Nuke.prototype =
     /**
      * The name of the room where this nuke has been launched from.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488525-Nuke#launchRoomName}
+     * @see {@link https://docs.screeps.com/api/#Nuke.launchRoomName}
      *
      * @type {string}
      */
@@ -33,7 +33,7 @@ Nuke.prototype =
     /**
      * The remaining landing time.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488525-Nuke#timeToLand}
+     * @see {@link https://docs.screeps.com/api/#Nuke.timeToLand}
      *
      * @type {number}
      */
