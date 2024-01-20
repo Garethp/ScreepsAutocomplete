@@ -10,7 +10,7 @@ Creep = function() { };
 Creep.prototype =
 {
     /**
-     * An array describing the creep’s body
+     * An array describing the creep’s body.
      *
      * @see {@link https://docs.screeps.com/api/#Creep.body}
      *
@@ -163,7 +163,7 @@ Creep.prototype =
     ticksToLive: 0,
 
     /**
-     * Attack another creep or structure in a short-ranged attack.
+     * Attack another creep, power creep, or structure in a short-ranged attack.
      * Requires the ATTACK body part.
      * If the target is inside a rampart, then the rampart is attacked instead.
      * The target has to be at adjacent square to the creep.
@@ -190,7 +190,7 @@ Creep.prototype =
      *
      * @param {StructureController} target The target controller object.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_TIRED|ERR_NO_BODYPART}
      */
     attackController: function(target) { },
 
@@ -263,7 +263,7 @@ Creep.prototype =
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number} [amount] The amount of resource units to be dropped. If omitted, all the available carried amount is used.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
      */
     drop: function(resourceType, amount) { },
 
@@ -296,7 +296,7 @@ Creep.prototype =
     getActiveBodyparts: function(type) { },
 
     /**
-     * Harvest energy from the source or minerals from the mineral deposit.
+     * Harvest energy from the source or resources from minerals and deposits.
      * Requires the WORK body part.
      * If the creep has an empty CARRY body part, the harvested resource is put into it; otherwise it is dropped on the ground.
      * The target has to be at an adjacent square to the creep.
@@ -307,7 +307,7 @@ Creep.prototype =
      *
      * @param {Source|Mineral|Deposit} target The object to be harvested.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_TIRED|ERR_NO_BODYPART}
      */
     harvest: function(target) { },
 
@@ -329,7 +329,7 @@ Creep.prototype =
 
     /**
      * Move the creep one square in the specified direction.
-     * Requires the MOVE body part.
+     * Requires the MOVE body part, or another creep nearby pulling the creep.
      *
      * @see {@link https://docs.screeps.com/api/#Creep.move}
      *
@@ -393,7 +393,7 @@ Creep.prototype =
      *
      * @alias moveTo(target, [opts])
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART|ERR_INVALID_TARGET|ERR_NO_PATH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART|ERR_INVALID_TARGET|ERR_NO_PATH|ERR_NOT_FOUND}
      */
     moveTo: function(x, y, opts) { },
 
@@ -408,7 +408,7 @@ Creep.prototype =
      *
      * @param {boolean} enabled Whether to enable notification or disable.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_ARGS}
      */
     notifyWhenAttacked: function(enabled) { },
 
@@ -438,7 +438,7 @@ Creep.prototype =
      *
      * @param {Creep} target The target creep.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_TIRED|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
      */
     pull: function(target) { },
 
@@ -504,7 +504,7 @@ Creep.prototype =
     repair: function(target) { },
 
     /**
-     * Temporarily block a neutral controller from claiming by other players.
+     * Temporarily block a neutral controller from claiming by other players and restore energy sources to their full capacity.
      * Each tick, this command increases the counter of the period during which the controller is unavailable by 1 tick per each CLAIM body part.
      * The maximum reservation period to maintain is 5,000 ticks.
      * The target has to be at adjacent square to the creep.
@@ -545,7 +545,7 @@ Creep.prototype =
      * @type {function}
      *
      * @param {StructureController} target The target controller object to be signed.
-     * @param {string} text The sign text. The string is cut off after 100 characters..
+     * @param {string} text The sign text. The string is cut off after 100 characters.
      *
      * @return {number|OK|ERR_INVALID_TARGET|ERR_BUSY|ERR_NOT_IN_RANGE}
      */
@@ -583,9 +583,10 @@ Creep.prototype =
      * Upgrading controllers raises your Global Control Level in parallel.
      * Requires WORK and CARRY body parts.
      * The target has to be within 3 squares range of the creep.
-     * A fully upgraded level 8 controller can't be upgraded with the power over 15 energy units per tick regardless of creeps power.
+     * A fully upgraded level 8 controller can't be upgraded over 15 energy units per tick regardless of creeps abilities.
      * The cumulative effect of all the creeps performing upgradeController in the current tick is taken into account.
-     * The effect can be boosted by ghodium mineral compounds (including limit increase).
+     * This limit can be increased by using ghodium mineral boost.
+     * Upgrading the controller raises its ticksToDowngrade timer by 100. The timer must be full in order for controller to be levelled up.
      *
      * @see {@link https://docs.screeps.com/api/#Creep.upgradeController}
      *
@@ -598,10 +599,10 @@ Creep.prototype =
     upgradeController: function(target) { },
 
     /**
-     * Withdraw resources from a structure.
+     * Withdraw resources from a structure or tombstone.
      * The target has to be at adjacent square to the creep.
-     * Multiple creeps can withdraw from the same structure in the same tick.
-     * Your creeps can withdraw resources from hostile structures as well, in case if there is no hostile rampart on top of it.
+     * Multiple creeps can withdraw from the same object in the same tick.
+     * Your creeps can withdraw resources from hostile structures/tombstones as well, in case if there is no hostile rampart on top of it.
      *
      * @see {@link https://docs.screeps.com/api/#Creep.withdraw}
      *
@@ -609,7 +610,7 @@ Creep.prototype =
      *
      * @param {Structure|Tombstone|Ruin} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
+     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */
