@@ -17,7 +17,7 @@ Deposit.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Deposit.cooldown}
      *
-     * @return {number}
+     * @type {number}
      */
     cooldown: 0,
 
@@ -25,16 +25,24 @@ Deposit.prototype = {
      * The deposit type
      * @see {@link https://docs.screeps.com/api/#Deposit.depositType}
      *
-     * @return {string|RESOURCE_MIST|RESOURCE_BIOMASS|RESOURCE_METAL|RESOURCE_SILICON}
+     * @type {string|RESOURCE_MIST|RESOURCE_BIOMASS|RESOURCE_METAL|RESOURCE_SILICON}
      */
     depositType: "",
+
+    /**
+     * A unique object identificator. You can use Game.getObjectById method to retrieve an object instance by its id.
+     * @see {@link https://docs.screeps.com/api/#Deposit.id}
+     *
+     * @type {string}
+     */
+    id: "",
 
     /**
      * The cooldown of the last harvest operation on this deposit.
      *
      * @see {@link https://docs.screeps.com/api/#Deposit.lastCooldown}
      *
-     * @return {number}
+     * @type {number}
      */
     lastCooldown: 0,
 
@@ -43,7 +51,7 @@ Deposit.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Deposit.ticksToDecay}
      *
-     * @return {number}
+     * @type {number}
      */
     ticksToDecay: 0,
 
