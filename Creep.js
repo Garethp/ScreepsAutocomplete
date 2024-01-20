@@ -3,7 +3,7 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep}
+ * @see {@link https://docs.screeps.com/api/#Creep}
  */
 Creep = function() { };
 
@@ -12,7 +12,7 @@ Creep.prototype =
     /**
      * An array describing the creep’s body
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#body}
+     * @see {@link https://docs.screeps.com/api/#Creep.body}
      *
      * @type {Array<{boost:string, type:string, hits:number}>}
      *
@@ -30,7 +30,7 @@ Creep.prototype =
      * Each object key is one of the RESOURCE_* constants, values are resources amounts.
      * Use _.sum(creep.carry) to get the total amount of contents.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#carry}
+     * @see {@link https://docs.screeps.com/api/#Creep.carry}
      *
      * @type {object<string, number>}
      */
@@ -41,7 +41,7 @@ Creep.prototype =
      *
      * The total amount of resources the creep can carry.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#carryCapacity}
+     * @see {@link https://docs.screeps.com/api/#Creep.carryCapacity}
      *
      * @type {number}
      */
@@ -50,7 +50,7 @@ Creep.prototype =
     /**
      * The movement fatigue indicator. If it is greater than zero, the creep cannot move.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#fatigue}
+     * @see {@link https://docs.screeps.com/api/#Creep.fatigue}
      *
      * @type {number}
      */
@@ -59,7 +59,7 @@ Creep.prototype =
     /**
      * The current amount of hit points of the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#hits}
+     * @see {@link https://docs.screeps.com/api/#Creep.hits}
      *
      * @type {number}
      */
@@ -68,7 +68,7 @@ Creep.prototype =
     /**
      * The maximum amount of hit points of the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#hitsMax}
+     * @see {@link https://docs.screeps.com/api/#Creep.hitsMax}
      *
      * @type {number}
      */
@@ -78,7 +78,7 @@ Creep.prototype =
      * A unique object identificator.
      * You can use Game.getObjectById method to retrieve an object instance by its id.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#id}
+     * @see {@link https://docs.screeps.com/api/#Creep.id}
      *
      * @type {string}
      */
@@ -88,7 +88,7 @@ Creep.prototype =
      * A shorthand to Memory.creeps[creep.name].
      * You can use it for quick access the creep’s specific memory data object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#memory}
+     * @see {@link https://docs.screeps.com/api/#Creep.memory}
      *
      * @type {*}
      */
@@ -97,7 +97,7 @@ Creep.prototype =
     /**
      * Whether it is your creep or foe.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#my}
+     * @see {@link https://docs.screeps.com/api/#Creep.my}
      *
      * @type {boolean}
      */
@@ -108,7 +108,7 @@ Creep.prototype =
      * You can choose the name while creating a new creep, and it cannot be changed later.
      * This name is a hash key to access the creep via the Game.creeps object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#name}
+     * @see {@link https://docs.screeps.com/api/#Creep.name}
      *
      * @type {string}
      */
@@ -117,7 +117,7 @@ Creep.prototype =
     /**
      * The text message that the creep was saying at the last tick.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#saying}
+     * @see {@link https://docs.screeps.com/api/#Creep.saying}
      *
      * @type {string}
      */
@@ -126,7 +126,7 @@ Creep.prototype =
     /**
      * An object with the creep’s owner info
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#owner}
+     * @see {@link https://docs.screeps.com/api/#Creep.owner}
      *
      * @type {{username:string}}
      */
@@ -138,7 +138,7 @@ Creep.prototype =
     /**
      * Whether this creep is still being spawned.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#spawning}
+     * @see {@link https://docs.screeps.com/api/#Creep.spawning}
      *
      * @type {boolean}
      */
@@ -156,7 +156,7 @@ Creep.prototype =
     /**
      * The remaining amount of game ticks after which the creep will die.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#ticksToLive}
+     * @see {@link https://docs.screeps.com/api/#Creep.ticksToLive}
      *
      * @type {number}
      */
@@ -169,11 +169,11 @@ Creep.prototype =
      * The target has to be at adjacent square to the creep.
      * If the target is a creep with ATTACK body parts and is not inside a rampart, it will automatically hit back at the attacker.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#attack}
+     * @see {@link https://docs.screeps.com/api/#Creep.attack}
      *
      * @type {function}
      *
-     * @param {Creep|Spawn|Structure} target The target object to be attacked.
+     * @param {Creep|PowerCreep|Structure} target The target object to be attacked.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -184,7 +184,7 @@ Creep.prototype =
      * The controller under attack cannot be upgraded for the next 1,000 ticks.
      * The target has to be at adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#attackController}
+     * @see {@link https://docs.screeps.com/api/#Creep.attackController}
      *
      * @type {function}
      *
@@ -199,7 +199,7 @@ Creep.prototype =
      * Requires WORK and CARRY body parts.
      * The target has to be within 3 squares range of the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#build}
+     * @see {@link https://docs.screeps.com/api/#Creep.build}
      *
      * @type {function}
      *
@@ -212,7 +212,7 @@ Creep.prototype =
     /**
      * Cancel the order given during the current game tick.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#cancelOrder}
+     * @see {@link https://docs.screeps.com/api/#Creep.cancelOrder}
      *
      * @type {function}
      *
@@ -227,7 +227,7 @@ Creep.prototype =
      * Requires the CLAIM body part.
      * The target has to be at adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#claimController}
+     * @see {@link https://docs.screeps.com/api/#Creep.claimController}
      *
      * @type {function}
      *
@@ -243,11 +243,11 @@ Creep.prototype =
      * If the creep has an empty CARRY body part, the energy is put into it; otherwise it is dropped on the ground.
      * The target has to be at adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#dismantle}
+     * @see {@link https://docs.screeps.com/api/#Creep.dismantle}
      *
      * @type {function}
      *
-     * @param {Spawn|Structure} target The target structure.
+     * @param {Structure} target The target structure.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -256,7 +256,7 @@ Creep.prototype =
     /**
      * Drop this resource on the ground.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#drop}
+     * @see {@link https://docs.screeps.com/api/#Creep.drop}
      *
      * @type {function}
      *
@@ -268,10 +268,24 @@ Creep.prototype =
     drop: function(resourceType, amount) { },
 
     /**
+     * Add one more available safe mode activation to a room controller.
+     * The creep has to be at adjacent square to the target room controller and have 1000 ghodium resource.
+     *
+     * @see {@link https://docs.screeps.com/api/#Creep.generateSafeMode}
+     *
+     * @type {function}
+     *
+     * @param {StructureController} controller The target room controller.
+     *
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
+     */
+    generateSafeMode: function(controller) { },
+    
+    /**
      * Get the quantity of live body parts of the given type.
      * Fully damaged parts do not count.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#getActiveBodyparts}
+     * @see {@link https://docs.screeps.com/api/#Creep.getActiveBodyparts}
      *
      * @type {function}
      *
@@ -287,11 +301,11 @@ Creep.prototype =
      * If the creep has an empty CARRY body part, the harvested resource is put into it; otherwise it is dropped on the ground.
      * The target has to be at an adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#harvest}
+     * @see {@link https://docs.screeps.com/api/#Creep.harvest}
      *
      * @type {function}
      *
-     * @param {Source|Mineral} target The object to be harvested.
+     * @param {Source|Mineral|Deposit} target The object to be harvested.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -303,11 +317,11 @@ Creep.prototype =
      * Requires the HEAL body part.
      * The target has to be at adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#heal}
+     * @see {@link https://docs.screeps.com/api/#Creep.heal}
      *
      * @type {function}
      *
-     * @param {Creep} target The target creep object.
+     * @param {Creep|PowerCreep} target The target creep object.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -317,11 +331,11 @@ Creep.prototype =
      * Move the creep one square in the specified direction.
      * Requires the MOVE body part.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#move}
+     * @see {@link https://docs.screeps.com/api/#Creep.move}
      *
      * @type {function}
      *
-     * @param {number} direction One of the following constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
+     * @param {Creep|number} direction A creep nearby, or one of the following constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART}
      */
@@ -331,7 +345,7 @@ Creep.prototype =
      * Move the creep using the specified predefined path.
      * Requires the MOVE body part.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#moveByPath}
+     * @see {@link https://docs.screeps.com/api/#Creep.moveByPath}
      *
      * @type {function}
      *
@@ -347,7 +361,7 @@ Creep.prototype =
      * If the target is in another room, then the corresponding exit will be used as a target.
      * Requires the MOVE body part.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#moveTo}
+     * @see {@link https://docs.screeps.com/api/#Creep.moveTo}
      *
      * @type {function}
      *
@@ -388,7 +402,7 @@ Creep.prototype =
      * The notification will be sent to your account email.
      * Turned on by default.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#notifyWhenAttacked}
+     * @see {@link https://docs.screeps.com/api/#Creep.notifyWhenAttacked}
      *
      * @type {function}
      *
@@ -403,7 +417,7 @@ Creep.prototype =
      * Requires the CARRY body part.
      * The target has to be at adjacent square to the creep or at the same square.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#pickup}
+     * @see {@link https://docs.screeps.com/api/#Creep.pickup}
      *
      * @type {function}
      *
@@ -434,11 +448,11 @@ Creep.prototype =
      * If the target is inside a rampart, the rampart is attacked instead.
      * The target has to be within 3 squares range of the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#rangedAttack}
+     * @see {@link https://docs.screeps.com/api/#Creep.rangedAttack}
      *
      * @type {function}
      *
-     * @param {Creep|Spawn|Structure} target The target object to be attacked.
+     * @param {Creep|PowerCreep|Structure} target The target object to be attacked.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -450,11 +464,11 @@ Creep.prototype =
      * Requires the HEAL body part.
      * The target has to be within 3 squares range of the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#rangedHeal}
+     * @see {@link https://docs.screeps.com/api/#Creep.rangedHeal}
      *
      * @type {function}
      *
-     * @param {Creep} target The target creep object.
+     * @param {Creep|PowerCreep} target The target creep object.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -466,7 +480,7 @@ Creep.prototype =
      * The attack power depends on the range to each target.
      * Friendly units are not affected.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#rangedMassAttack}
+     * @see {@link https://docs.screeps.com/api/#Creep.rangedMassAttack}
      *
      * @type {function}
      *
@@ -479,11 +493,11 @@ Creep.prototype =
      * Requires the WORK and CARRY body parts.
      * The target has to be within 3 squares range of the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#repair}
+     * @see {@link https://docs.screeps.com/api/#Creep.repair}
      *
      * @type {function}
      *
-     * @param {Spawn|Structure} target The target structure to be repaired.
+     * @param {Structure} target The target structure to be repaired.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_NO_BODYPART}
      */
@@ -495,7 +509,7 @@ Creep.prototype =
      * The maximum reservation period to maintain is 5,000 ticks.
      * The target has to be at adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#reserveController}
+     * @see {@link https://docs.screeps.com/api/#Creep.reserveController}
      *
      * @type {function}
      *
@@ -509,7 +523,7 @@ Creep.prototype =
      * Display a visual speech balloon above the creep with the specified message. The message will be
      * available for one tick. You can read the last message using the saying property.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#say}
+     * @see {@link https://docs.screeps.com/api/#Creep.say}
      *
      * @type {function}
      *
@@ -526,7 +540,7 @@ Creep.prototype =
      * You can sign unowned and hostile controllers. The target has to be at adjacent square to the creep. 
      * Pass an empty string to remove the sign.
      *
-     * @see {@link http://docs.screeps.com/api/#Creep.signController}
+     * @see {@link https://docs.screeps.com/api/#Creep.signController}
      *
      * @type {function}
      *
@@ -540,7 +554,7 @@ Creep.prototype =
     /**
      * Kill the creep immediately.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#suicide}
+     * @see {@link https://docs.screeps.com/api/#Creep.suicide}
      *
      * @type {function}
      *
@@ -552,11 +566,11 @@ Creep.prototype =
      * Transfer resource from the creep to another object.
      * The target has to be at adjacent square to the creep.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#transfer}
+     * @see {@link https://docs.screeps.com/api/#Creep.transfer}
      *
      * @type {function}
      *
-     * @param {Creep|Spawn|Structure} target The target object.
+     * @param {Creep|PowerCreep|Structure} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
      *
@@ -573,7 +587,7 @@ Creep.prototype =
      * The cumulative effect of all the creeps performing upgradeController in the current tick is taken into account.
      * The effect can be boosted by ghodium mineral compounds (including limit increase).
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#upgradeController}
+     * @see {@link https://docs.screeps.com/api/#Creep.upgradeController}
      *
      * @type {function}
      *
@@ -589,11 +603,11 @@ Creep.prototype =
      * Multiple creeps can withdraw from the same structure in the same tick.
      * Your creeps can withdraw resources from hostile structures as well, in case if there is no hostile rampart on top of it.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203013212-Creep#withdraw}
+     * @see {@link https://docs.screeps.com/api/#Creep.withdraw}
      *
      * @type {function}
      *
-     * @param {Structure} target The target object.
+     * @param {Structure|Tombstone|Ruin} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
      *
