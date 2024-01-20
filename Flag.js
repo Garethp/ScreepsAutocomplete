@@ -15,17 +15,17 @@ Flag.prototype =
     /**
      * Flag primary color. One of the COLOR_* constants.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#color}
+     * @see {@link https://docs.screeps.com/api/#Flag.color}
      *
      * @type {number}
      */
-    color: "",
+    color: 0,
 
     /**
      * A shorthand to Memory.flags[flag.name].
      * You can use it for quick access the flag's specific memory data object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#memory}
+     * @see {@link https://docs.screeps.com/api/#Flag.memory}
      *
      * @type {*}
      */
@@ -34,9 +34,9 @@ Flag.prototype =
     /**
      * Flag’s name.
      * You can choose the name while creating a new flag, and it cannot be changed later.
-     * This name is a hash key to access the spawn via the Game.flags object.
+     * This name is a hash key to access the flag via the Game.flags object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#name}
+     * @see {@link https://docs.screeps.com/api/#Flag.name}
      *
      * @type {string}
      */
@@ -45,16 +45,16 @@ Flag.prototype =
     /**
      * Flag secondary color. One of the COLOR_* constants.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#secondaryColor}
+     * @see {@link https://docs.screeps.com/api/#Flag.secondaryColor}
      *
      * @type {number}
      */
-    secondaryColor: "",
+    secondaryColor: 0,
 
     /**
      * Remove the flag.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#remove}
+     * @see {@link https://docs.screeps.com/api/#Flag.remove}
      *
      * @type {function}
      *
@@ -65,7 +65,7 @@ Flag.prototype =
     /**
      * Set new color of the flag.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#setColor}
+     * @see {@link https://docs.screeps.com/api/#Flag.setColor}
      *
      * @type {function}
      *
@@ -79,7 +79,7 @@ Flag.prototype =
     /**
      * Set new position of the flag.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079181-Flag#setPosition}
+     * @see {@link https://docs.screeps.com/api/#Flag.setPosition}
      *
      * @type {function}
      *
