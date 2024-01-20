@@ -3,7 +3,7 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure}
+ * @see {@link https://docs.screeps.com/api/#Structure}
  */
 Structure = function() { };
 
@@ -12,7 +12,7 @@ Structure.prototype =
     /**
      * The current amount of hit points of the structure.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#hits}
+     * @see {@link https://docs.screeps.com/api/#Structure.hits}
      *
      * @type {number}
      */
@@ -21,7 +21,7 @@ Structure.prototype =
     /**
      * The total amount of hit points of the structure.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#hitsMax}
+     * @see {@link https://docs.screeps.com/api/#Structure.hitsMax}
      *
      * @type {number}
      */
@@ -31,7 +31,7 @@ Structure.prototype =
      * A unique object identificator.
      * You can use Game.getObjectById method to retrieve an object instance by its id.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#id}
+     * @see {@link https://docs.screeps.com/api/#Structure.id}
      *
      * @type {string}
      */
@@ -40,7 +40,7 @@ Structure.prototype =
     /**
      * One of the STRUCTURE_* constants.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#structureType}
+     * @see {@link https://docs.screeps.com/api/#Structure.structureType}
      *
      * @type {string}
      */
@@ -49,20 +49,20 @@ Structure.prototype =
     /**
      * Destroy this structure immediately.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#destroy}
+     * @see {@link https://docs.screeps.com/api/#Structure.destroy}
      *
      * @type {function}
      *
-     * @return {number|OK|ERR_NOT_OWNER}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
     destroy: function() { },
 
     /**
      * Check whether this structure can be used.
-     * If the room controller level is not enough,
+     * If room controller level is insufficient,
      * then this method will return false, and the structure will be highlighted with red in the game.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#isActive}
+     * @see {@link https://docs.screeps.com/api/#Structure.isActive}
      *
      * @type {function}
      *
@@ -75,7 +75,7 @@ Structure.prototype =
      * The notification will be sent to your account email.
      * Turned on by default.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079221-Structure#notifyWhenAttacked}
+     * @see {@link https://docs.screeps.com/api/#Structure.notifyWhenAttacked}
      *
      * @type {function}
      *
