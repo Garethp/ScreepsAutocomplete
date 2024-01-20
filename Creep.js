@@ -180,8 +180,8 @@ Creep.prototype =
     attack: function(target) { },
 
     /**
-     * Decreases the controller's downgrade or reservation timer for 1 tick per every 5 CLAIM body parts (so the creep must have at least 5xCLAIM).
-     * The controller under attack cannot be upgraded for the next 1,000 ticks.
+     * Decreases the controller's downgrade timer by 300 ticks per every CLAIM body part, or reservation timer by 1 tick per every CLAIM body part.
+     * If the controller under attack is owned, it cannot be upgraded or attacked again for the next 1,000 ticks.
      * The target has to be at adjacent square to the creep.
      *
      * @see {@link https://docs.screeps.com/api/#Creep.attackController}
@@ -238,7 +238,7 @@ Creep.prototype =
     claimController: function(target) { },
 
     /**
-     * Dismantles any (even hostile) structure returning 50% of the energy spent on its repair.
+     * Dismantles any structure that can be constructed (even hostile) returning 50% of the energy spent on its repair.
      * Requires the WORK body part.
      * If the creep has an empty CARRY body part, the energy is put into it; otherwise it is dropped on the ground.
      * The target has to be at adjacent square to the creep.
@@ -337,7 +337,7 @@ Creep.prototype =
      *
      * @param {Creep|number} direction A creep nearby, or one of the following constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS|ERR_TIRED|ERR_NO_BODYPART}
      */
     move: function(direction) { },
 
@@ -349,7 +349,7 @@ Creep.prototype =
      *
      * @type {function}
      *
-     * @param {Array|string} path A path value as returned from Room.findPath or RoomPosition.findPathTo methods. Both array form and serialized string form are accepted.
+     * @param {Array|string} path A path value as returned from Room.findPath, RoomPosition.findPathTo, or PathFinder.search methods. Both array form and serialized string form are accepted.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_INVALID_ARGS|ERR_TIRED|ERR_NO_BODYPART}
      */
