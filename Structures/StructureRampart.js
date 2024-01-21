@@ -1,10 +1,11 @@
 /**
  * Blocks movement of hostile creeps, and defends your creeps and structures on the same tile.
+ * Can be used as a controllable gate.
  *
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link https://docs.screeps.com/api/#StructureRampart.}
+ * @see {@link https://docs.screeps.com/api/#StructureRampart}
  */
 StructureRampart = function() { };
 
@@ -18,6 +19,7 @@ StructureRampart.prototype =
      * @type {boolean}
      */
     isPublic: false,
+    
     /**
      * The amount of game ticks when this rampart will lose some hit points.
      *
@@ -34,9 +36,9 @@ StructureRampart.prototype =
      *
      * @type {function}
      *
-     * @param {boolean} Whether this rampart should be public or non-public..
+     * @param {boolean} isPublic Whether this rampart should be public or non-public.
      *
-     * @return {OK|ERR_NOT_OWNER}
+     * @return {number|OK|ERR_NOT_OWNER}
      */
-    setPublic: function(isPublic) { },
+    setPublic: function(isPublic) { }
 };
