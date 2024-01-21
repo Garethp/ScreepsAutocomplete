@@ -1,17 +1,17 @@
 /**
  * An object representing the room in which your units and structures are in.
  * It can be used to look around, find paths, etc.
- * Every object in the room contains its linked Room instance in the room property.
+ * Every RoomObject in the room contains its linked Room instance in the room property.
  *
  * @class
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room}
+ * @see {@link https://docs.screeps.com/api/#Room}
  */
 Room = {
     /**
      * Serialize a path array into a short string representation, which is suitable to store in memory.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#serializePath}
+     * @see {@link https://docs.screeps.com/api/#Room.serializePath}
      *
      * @type {function}
      *
@@ -24,7 +24,7 @@ Room = {
     /**
      * Deserialize a short string path representation into an array form.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#deserializePath}
+     * @see {@link https://docs.screeps.com/api/#Room.deserializePath}
      *
      * @type {function}
      *
@@ -32,7 +32,7 @@ Room = {
      *
      * return {Array} A path array.
      */
-    deserializePath: function(path) { },
+    deserializePath: function(path) { }
 };
 
 Room.prototype =
@@ -40,7 +40,7 @@ Room.prototype =
     /**
      * The Controller structure of this room, if present, otherwise undefined.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#controller}
+     * @see {@link https://docs.screeps.com/api/#Room.controller}
      *
      * @type {undefined|StructureController}
      */
@@ -49,7 +49,7 @@ Room.prototype =
     /**
      * Total amount of energy available in all spawns and extensions in the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#energyAvailable}
+     * @see {@link https://docs.screeps.com/api/#Room.energyAvailable}
      *
      * @type {number}
      */
@@ -58,7 +58,7 @@ Room.prototype =
     /**
      * Total amount of energyCapacity of all spawns and extensions in the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#energyCapacityAvailable}
+     * @see {@link https://docs.screeps.com/api/#Room.energyCapacityAvailable}
      *
      * @type {number}
      */
@@ -68,25 +68,16 @@ Room.prototype =
      * A shorthand to Memory.rooms[room.name].
      * You can use it for quick access the room’s specific memory data object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#memory}
+     * @see {@link https://docs.screeps.com/api/#Room.memory}
      *
      * @type {RoomMemory}
      */
     memory: {},
 
     /**
-     * The mode of the room
-     *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#mode}
-     *
-     * @type {string|MODE_SIMULATION|MODE_SURVIVAL|MODE_WORLD|MODE_ARENA}
-     */
-    mode: "",
-
-    /**
      * The name of the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#name}
+     * @see {@link https://docs.screeps.com/api/#Room.name}
      *
      * @type {string}
      */
@@ -95,7 +86,7 @@ Room.prototype =
     /**
      * The Storage structure of this room, if present, otherwise undefined.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#storage}
+     * @see {@link https://docs.screeps.com/api/#Room.storage}
      *
      * @type {undefined|StructureStorage}
      */
@@ -104,7 +95,7 @@ Room.prototype =
     /**
      * The Terminal structure of this room, if present, otherwise undefined.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#terminal}
+     * @see {@link https://docs.screeps.com/api/#Room.terminal}
      *
      * @type {undefined|StructureTerminal}
      */
@@ -112,7 +103,7 @@ Room.prototype =
 
     /**
      * A RoomVisual object for this room. You can use this object to draw simple shapes (lines, circles, text labels) in the room.
-     * @see {@link http://docs.screeps.com/api/#Room.visual}
+     * @see {@link https://docs.screeps.com/api/#Room.visual}
      *
      * @type {RoomVisual}
      */
@@ -121,7 +112,7 @@ Room.prototype =
     /**
      * Create new ConstructionSite at the specified location.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#createConstructionSite}
+     * @see {@link https://docs.screeps.com/api/#Room.createConstructionSite}
      *
      * @type {function}
      *
@@ -132,34 +123,34 @@ Room.prototype =
      * @note Alternative function: createConstructionSite(pos, structureType)
      * @param {object} pos Can be a RoomPosition object or any object containing RoomPosition.
      *
-     * @return {number|OK|ERR_INVALID_TARGET|ERR_FULL|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_TARGET|ERR_FULL|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
     createConstructionSite: function(x, y, structureType) { },
 
     /**
      * Create new Flag at the specified location.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#createFlag}
+     * @see {@link https://docs.screeps.com/api/#Room.createFlag}
      *
      * @type {function}
      *
      * @param {number|RoomPosition|RoomObject} x The X position.
      * @param {number|string} y The Y position.
-     * @param {string|string} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
+     * @param {string} [name] The name of a new flag. It should be unique, i.e. the Game.flags object should not contain another flag with the same name (hash key). If not defined, a random name will be generated.
      * @param {string} [color] The color of a new flag. Should be one of the COLOR_* constants. The default value is COLOR_WHITE.
      * @param {string} [secondaryColor] The secondary color of a new flag. Should be one of the COLOR_* constants. The default value is equal to color.
      *
      * @note Alternative function: createConstructionSite(pos, name, color, secondaryColor)
      * @param {object} pos Can be a RoomPosition object or any object containing RoomPosition.
      *
-     * @return {number|ERR_NAME_EXISTS|ERR_INVALID_ARGS}
+     * @return {number|ERR_NAME_EXISTS|ERR_INVALID_ARGS|ERR_FULL} The name of a new flag, or one of the following error codes: ERR_NAME_EXISTS, ERR_INVALID_ARGS, ERR_FULL.
      */
     createFlag: function(x, y, name, color, secondaryColor) { },
 
     /**
      * Find all objects of the specified type in the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#find}
+     * @see {@link https://docs.screeps.com/api/#Room.find}
      *
      * @type {function}
      *
@@ -174,7 +165,7 @@ Room.prototype =
     /**
      * Find the exit direction en route to another room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#findExitTo}
+     * @see {@link https://docs.screeps.com/api/#Room.findExitTo}
      *
      * @type {function}
      *
@@ -187,7 +178,7 @@ Room.prototype =
     /**
      * Find an optimal path inside the room between fromPos and toPos using A* search algorithm.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#findPath}
+     * @see {@link https://docs.screeps.com/api/#Room.findPath}
      *
      * @type {function}
      *
@@ -226,9 +217,9 @@ Room.prototype =
      *
      * @type {function}
      *
-     * @param {raw} [raw] If this parameter is false or undefined, the method returns an object parsed using JSON.parse which incurs some CPU cost on the first access (the return value is cached on subsequent calls). If raw is truthy, then raw JSON in string format is returned.
+     * @param {boolean} [raw] If this parameter is false or undefined, the method returns an object parsed using JSON.parse which incurs some CPU cost on the first access (the return value is cached on subsequent calls). If raw is truthy, then raw JSON in string format is returned.
      *
-     * @return An array of events. Each event represents some game action in the following format:
+     * @return {Array} An array of events. Each event represents some game action in the following format:
                         {
                             event: EVENT_ATTACK,
                             objectId: '54bff72ab32a10f73a57d017',
@@ -240,14 +231,14 @@ Room.prototype =
     /**
      * Creates a RoomPosition object at the specified location.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#getPositionAt}
+     * @see {@link https://docs.screeps.com/api/#Room.getPositionAt}
      *
      * @type {function}
      *
      * @param {number} x The X position.
      * @param {number} y The Y position.
      *
-     * @return {null|RoomPosition}
+     * @return {null|RoomPosition} A RoomPosition object or null if it cannot be obtained.
      */
     getPositionAt: function(x, y) { },
 
@@ -265,7 +256,7 @@ Room.prototype =
     /**
      * Get the list of objects at the specified room position.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookAt}
+     * @see {@link https://docs.screeps.com/api/#Room.lookAt}
      *
      * @type {function}
      *
@@ -288,7 +279,7 @@ Room.prototype =
     /**
      * Get the list of objects at the specified room area.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookAtArea}
+     * @see {@link https://docs.screeps.com/api/#Room.lookAtArea}
      *
      * @type {function}
      *
@@ -298,7 +289,7 @@ Room.prototype =
      * @param {number} right The right X boundary of the area.
      * @param {boolean} [asArray] Set to true if you want to get the result as a plain array.
      *
-     * @return {object} An object with all the objects in the specified area in the following format:
+     * @return {object|Array} An object with all the objects in the specified area in the following format:
                         // 10,5,11,7
                          {
                             10 :
@@ -370,7 +361,7 @@ Room.prototype =
     /**
      * Get an object with the given type at the specified room position.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookForAt}
+     * @see {@link https://docs.screeps.com/api/#Room.lookForAt}
      *
      * @type {function}
      *
@@ -388,7 +379,7 @@ Room.prototype =
     /**
      * Get the list of objects with the given type at the specified room area.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079011-Room#lookForAtArea}
+     * @see {@link https://docs.screeps.com/api/#Room.lookForAtArea}
      *
      * @type {function}
      *
@@ -399,7 +390,7 @@ Room.prototype =
      * @param {number} right The right X boundary of the area.
      * @param {boolean} [asArray] Set to true if you want to get the result as a plain array.
      *
-     * @return {object} An object with all the objects of the given type in the specified area in the following format:
+     * @return {object|Array} An object with all the objects of the given type in the specified area in the following format:
                         //10,5,11,7
                         {
                             10:
@@ -416,7 +407,7 @@ Room.prototype =
                             }
                         }
      */
-    lookForAtArea: function(type, top, left, bottom, right, asArray) { },
+    lookForAtArea: function(type, top, left, bottom, right, asArray) { }
 };
 
 /**
@@ -444,7 +435,7 @@ Room.Terrain.prototype = {
      * @param {number} x X position in the room.
      * @param {number} y Y position in the room.
      *
-     * @return {0|TERRAIN_MASK_WALL|TERRAIN_MASK_SWAMP} An integer value. 0 if Plain.
+     * @return {number|0|TERRAIN_MASK_WALL|TERRAIN_MASK_SWAMP} An integer value. 0 if Plain.
      */
     get: function(x, y) {},
 
@@ -457,13 +448,13 @@ Room.Terrain.prototype = {
      *
      * @type {function}
      *
-     * @param {Array} [destinationArray] A typed array view in which terrain will be copied to.
+     * @param {Uint8Array} [destinationArray] A typed array view in which terrain will be copied to.
      *
-     * @return {Array|ERR_INVALID_ARGS} Copy of underlying room terrain representations as a new Uint8Array typed array of size 2500.
+     * @return {Uint8Array|number|ERR_INVALID_ARGS} Copy of underlying room terrain representations as a new Uint8Array typed array of size 2500.
 
                                   Each element is an integer number, terrain type can be obtained by applying bitwise AND (&) operator with appropriate TERRAIN_MASK_* constant. Room tiles are stored row by row.
 
                                   If destinationArray is specified, function returns reference to this filled destinationArray if coping succeeded, or error code otherwise:
      */
-    getRawBuffer: function(destinationArray) {},
+    getRawBuffer: function(destinationArray) {}
 };
