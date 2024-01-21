@@ -2,7 +2,7 @@
  *
  * @class
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder}
+ * @see {@link https://docs.screeps.com/api/#PathFinder}
  */
 PathFinder =
 {
@@ -10,7 +10,7 @@ PathFinder =
      * Find an optimal path between origin and goal.
      * @static
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#search}
+     * @see {@link https://docs.screeps.com/api/#PathFinder.search}
      *
      * @type {function}
      *
@@ -18,12 +18,8 @@ PathFinder =
      * @param {object} goal A goal or an array of goals. If more than one goal is supplied then the cheapest path found out of all the goals will be returned. A goal is either a RoomPosition or an object as defined below.
      Important: Please note that if your goal is not walkable (for instance, a source) then you should set range to at least 1 or else you will waste many CPU cycles searching for a target that you can't walk on.
 
-     pos
-     RoomPosition
-     The target.
-     range
-     number
-     Range to pos before goal is considered reached. The default is 0.
+     pos - RoomPosition - The target.
+     range - number - Range to pos before goal is considered reached. The default is 0.
      * @param {object} [opts] An object containing additional pathfinding flags.
      * @param {function} [opts.roomCallback] Request from the pathfinder to generate a CostMatrix for a certain room. The callback accepts one argument, roomName. This callback will only be called once per room per search. If you are running multiple pathfinding operations in a single room and in a single tick you may consider caching your CostMatrix to speed up your code. Please read the CostMatrix documentation below for more information on CostMatrix. If you return false from the callback the requested room will not be searched, and it won't count against maxRooms
      * @param {number} [opts.plainCost] Cost for walking on plain positions. The default is 1.
@@ -45,7 +41,7 @@ PathFinder =
      * @deprecated
      * @note It affects the following methods behavior: Room.findPath, RoomPosition.findPathTo, RoomPosition.findClosestByPath, Creep.moveTo.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#use}
+     * @see {@link https://docs.screeps.com/api/#PathFinder.use}
      *
      * @type {function}
      *
@@ -55,12 +51,12 @@ PathFinder =
 };
 
 /**
- * Creates a new CostMatrix containing 0's for all positions.
+ * Creates a new CostMatrix containing 0's for all positions. 
  *
  * @constructor
  * @class
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#CostMatrix}
+ * @see {@link https://docs.screeps.com/api/#PathFinder-CostMatrix}
  */
 PathFinder.CostMatrix = function() { };
 
@@ -68,23 +64,22 @@ PathFinder.CostMatrix = function() { };
  * Static method which deserializes a new CostMatrix using the return value of serialize.
  * @static
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#deserialize}
+ * @see {@link https://docs.screeps.com/api/#PathFinder.CostMatrix.deserialize}
  *
  * @type {function}
  *
  * @param {object} val Whatever serialize returned
  *
- * @return {CostMatrix}
+ * @return {CostMatrix} Returns new CostMatrix instance.
  */
 PathFinder.CostMatrix.deserialize = function(val) { };
-
 
 PathFinder.CostMatrix.prototype =
 {
     /**
      * Set the cost of a position in this CostMatrix.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#set}
+     * @see {@link https://docs.screeps.com/api/#PathFinder.CostMatrix.set}
      *
      * @type {function}
      *
@@ -97,7 +92,7 @@ PathFinder.CostMatrix.prototype =
     /**
      * Get the cost of a position in this CostMatrix.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#get}
+     * @see {@link https://docs.screeps.com/api/#PathFinder.CostMatrix.get}
      *
      * @type {function}
      *
@@ -111,18 +106,18 @@ PathFinder.CostMatrix.prototype =
     /**
      * Copy this CostMatrix into a new CostMatrix with the same data.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#clone}
+     * @see {@link https://docs.screeps.com/api/#PathFinder.CostMatrix.clone}
      *
      * @type {function}
      *
-     * @return {CostMatrix}
+     * @return {CostMatrix} A new CostMatrix instance.
      */
     clone: function() { },
 
     /**
      * Returns a compact representation of this CostMatrix which can be stored via JSON.stringify
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207023879-PathFinder#serialize}
+     * @see {@link https://docs.screeps.com/api/#PathFinder.CostMatrix.serialize}
      *
      * @type {function}
      *
