@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn}
+ * @see {@link https://docs.screeps.com/api/#StructureSpawn}
  */
 StructureSpawn = function() { };
 
@@ -15,7 +15,7 @@ StructureSpawn = function() { };
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn}
+ * @see {@link https://docs.screeps.com/api/#StructureSpawn}
  */
 Spawn = StructureSpawn;
 Spawn.prototype = StructureSpawn.prototype;
@@ -27,7 +27,7 @@ StructureSpawn.prototype =
      *
      * The amount of energy containing in the spawn.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#energy}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.energy}
      *
      * @type {number}
      */
@@ -38,7 +38,7 @@ StructureSpawn.prototype =
      *
      * The total amount of energy the spawn can contain
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#energyCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.energyCapacity}
      *
      * @type {number}
      */
@@ -48,7 +48,7 @@ StructureSpawn.prototype =
      * A shorthand to Memory.spawns[spawn.name].
      * You can use it for quick access the spawn’s specific memory data object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#memory}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.memory}
      *
      * @type {*}
      */
@@ -59,16 +59,16 @@ StructureSpawn.prototype =
      * You choose the name upon creating a new spawn, and it cannot be changed later.
      * This name is a hash key to access the spawn via the Game.spawns object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#name}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.name}
      *
      * @type {string}
      */
     name: "",
 
     /**
-     * If the spawn is in process of spawning a new creep, this object will contain the new creep’s information, or null otherwise.
+     * If the spawn is in process of spawning a new creep, this object will contain a StructureSpawn.Spawning object, or null otherwise.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#spawning}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.spawning}
      *
      * @type {object|null}
      */
@@ -84,9 +84,11 @@ StructureSpawn.prototype =
     store: {},
 
     /**
+     * @deprecated This method is deprecated and will be removed soon. Please use StructureSpawn.spawnCreep with dryRun flag instead.
+     *
      * Check if a creep can be created.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#canCreateCreep}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.canCreateCreep}
      *
      * @type {function}
      *
@@ -99,9 +101,11 @@ StructureSpawn.prototype =
     canCreateCreep: function(body, name) { },
 
     /**
+     * @deprecated This method is deprecated and will be removed soon. Please use StructureSpawn.spawnCreep instead.
+     *
      * Start the creep spawning process.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#createCreep}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.createCreep}
      *
      * @type {function}
      *
@@ -116,7 +120,7 @@ StructureSpawn.prototype =
     /**
      * Start the creep spawning process. The required energy amount can be withdrawn from all spawns and extensions in the room.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.spawnCreep}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.spawnCreep}
      *
      * @type {function}
      *
@@ -128,57 +132,44 @@ StructureSpawn.prototype =
      * @param {boolean} [opts.dryRun] If dryRun is true, the operation will only check if it is possible to create a creep.
      * @param {Array<number>} [opts.directions] Set desired directions where the creep should move when spawned. 
      *
-     * @return {OK|number|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
-    spawnCreep: function(body, name, memory) { },
+    spawnCreep: function(body, name, opts) { },
     
     /**
      * Kill the creep and drop up to 100% of resources spent on its spawning and boosting depending on remaining life time.
      * The target should be at adjacent square.
+     * Energy return is limited to 125 units per body part.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#recycleCreep}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.recycleCreep}
      *
      * @type {function}
      *
      * @param {Creep} target The target creep object.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_RCL_NOT_ENOUGH}
      */
     recycleCreep: function(target) { },
 
     /**
      * Increase the remaining time to live of the target creep.
      * The target should be at adjacent square.
+     * The target should not have CLAIM body parts.
      * The spawn should not be busy with the spawning process.
-     * Each execution increases the creep's timer by amount of ticks according to this formula: floor(500/body_size).
-     * Energy required for each execution is determined using this formula: ceil(creep_cost/3/body_size).
+     * Each execution increases the creep's timer by amount of ticks according to this formula: floor(600/body_size).
+     * Energy required for each execution is determined using this formula: ceil(creep_cost/2.5/body_size).
      * Renewing a creep removes all of its boosts.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#renewCreep}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.renewCreep}
      *
      * @type {function}
      *
      * @param {Creep} target The target creep object.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_RCL_NOT_ENOUGH}
      */
-    renewCreep: function(target) { },
+    renewCreep: function(target) { }
 
-    /**
-     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
-     *
-     * Transfer the energy from the spawn to a creep.
-     *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205990342-StructureSpawn#transferEnergy}
-     *
-     * @type {function}
-     *
-     * @param {Creep} target The creep object which energy should be transferred to.
-     * @param {number|undefined|null} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
-     *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
-     */
-    transferEnergy: function(target, amount) { }
 };
 
 /**
@@ -186,7 +177,7 @@ StructureSpawn.prototype =
  *
  * @class
  *
- * @see {@link http://docs.screeps.com/api/#StructureSpawn-Spawning}
+ * @see {@link https://docs.screeps.com/api/#StructureSpawn-Spawning}
  */
 StructureSpawn.Spawning = function () { };
 
@@ -195,25 +186,25 @@ StructureSpawn.Spawning.prototype = {
     /**
      * An array with the spawn directions
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.directions}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.directions}
      *
-     * @type {Array}
+     * @type {Array<number>}
      */
     directions: [],
 
     /**
      * The name of a new creep.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.name}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.name}
      *
      * @type {string}
      */
     name: "",
 
     /**
-     * Time in ticks needed in total to complete the spawning.
+     * Time needed in total to complete the spawning.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.needTime}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.needTime}
      *
      * @type {number}
      */
@@ -222,7 +213,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * Remaining time to go.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.remainingTime}
      *
      * @type {number}
      */
@@ -231,7 +222,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * A link to the spawn.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.spawn}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.spawn}
      *
      * @type {StructureSpawn}
      */
@@ -240,7 +231,7 @@ StructureSpawn.Spawning.prototype = {
     /**
      * Cancel spawning immediately. Energy spent on spawning is not returned.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.cancel}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.cancel}
      *
      * @type {function}
      *
@@ -251,11 +242,11 @@ StructureSpawn.Spawning.prototype = {
     /**
      * Set desired directions where the creep should move when spawned.
      *
-     * @see {@link http://docs.screeps.com/api/#StructureSpawn.Spawning.setDirections}
+     * @see {@link https://docs.screeps.com/api/#StructureSpawn.Spawning.setDirections}
      *
      * @type {function}
      *
-     * @param {Array<number>} {directions} An array with the direction constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
+     * @param {Array<number>} directions An array with the direction constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
      */
