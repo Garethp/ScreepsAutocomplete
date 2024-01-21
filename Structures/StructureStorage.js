@@ -5,7 +5,7 @@
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/208436805-StructureStorage}
+ * @see {@link https://docs.screeps.com/api/#StructureStorage}
  */
 StructureStorage = function() { };
 
@@ -25,10 +25,10 @@ StructureStorage.prototype =
      *
      * The total amount of resources the storage can contain.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208436805-StructureStorage#storeCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureStorage.storeCapacity}
      *
      * @type {number}
      */
-    storeCapacity: 0,
+    storeCapacity: 0
 
 };
