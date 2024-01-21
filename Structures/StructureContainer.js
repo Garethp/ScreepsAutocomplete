@@ -6,13 +6,12 @@
  * @class
  * @extends {Structure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/208435885-StructureContainer}
+ * @see {@link https://docs.screeps.com/api/#StructureContainer}
  */
 StructureContainer = function() { };
 
 StructureContainer.prototype =
 {
-
 
     /**
      * A Store object that contains cargo of this structure.
@@ -28,10 +27,18 @@ StructureContainer.prototype =
      *
      * The total amount of resources the structure can contain.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208435885-StructureContainer#storeCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureContainer.storeCapacity}
      *
      * @type {number}
      */
     storeCapacity: 0,
 
+    /**
+     * The amount of game ticks when this container will lose some hit points.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureContainer.ticksToDecay}
+     *
+     * @type {number}
+     */
+    ticksToDecay: 0
 };
