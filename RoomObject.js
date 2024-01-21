@@ -17,6 +17,7 @@ RoomObject.prototype =
      * @type {Array<{effect:number, level:number, ticksRemaining:number}>}
      */
     effects: null,
+    
     /**
      * An object representing the position of this object in the room.
      *
