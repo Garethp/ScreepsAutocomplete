@@ -423,7 +423,7 @@ Room.prototype =
  *
  * @see {@link https://docs.screeps.com/api/#Room-Terrain}
  */
-Room.Terrain = function(roomName) {},
+Room.Terrain = function(roomName) {};
 
 Room.Terrain.prototype = {
     /**
