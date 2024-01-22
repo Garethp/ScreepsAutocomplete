@@ -119,13 +119,14 @@ Room.prototype =
      * @param {number|RoomPosition|RoomObject} x The X position.
      * @param {number|string} [y] The Y position.
      * @param {string} [structureType] One of the STRUCTURE_* constants.
+     * @param {string} [name] The name of the structure, for structures that support it (currently only spawns).
      *
      * @note Alternative function: createConstructionSite(pos, structureType)
      * @param {object} pos Can be a RoomPosition object or any object containing RoomPosition.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_TARGET|ERR_FULL|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
-    createConstructionSite: function(x, y, structureType) { },
+    createConstructionSite: function(x, y, structureType, name) { },
 
     /**
      * Create new Flag at the specified location.
