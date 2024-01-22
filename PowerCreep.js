@@ -225,7 +225,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {boolean} cancel Set this to true to cancel previously scheduled deletion.
+     * @param {boolean} [cancel] Set this to true to cancel previously scheduled deletion.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
