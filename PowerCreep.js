@@ -428,7 +428,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {Creep|Structure} target The target object.
+     * @param {Creep|PowerCreep|Structure} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
      *
@@ -478,7 +478,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {Structure|Tombstone} target The target object.
+     * @param {Structure|Tombstone|Ruin} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      *
