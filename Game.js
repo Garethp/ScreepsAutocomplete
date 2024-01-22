@@ -391,127 +391,9 @@ Game = {
 
         /**
          * Map visuals provide a way to show various visual debug info on the game map.
+         * @type {MapVisual}
          */
-        visual: {
-            /**
-             * Draw a line.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.line}
-             *
-             * @type {function}
-             *
-             * @param {RoomPosition} pos1 The start position object.
-             * @param {RoomPosition} pos2 The finish position object.
-             * @param {Object} [style] Style object
-             *
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            line: function(pos1, pos2, style) { },
-
-            /**
-             * Draw a circle.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.circle}
-             *
-             * @type {function}
-             *
-             * @param {RoomPosition} pos The position object of the center.
-             * @param {Object} [style] Style object
-             *
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            circle: function(pos, style) { },
-
-            /**
-             * Draw a rectangle.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.rect}
-             *
-             * @type {function}
-             *
-             * @param {RoomPosition} topLeftPos The position object of the top-left corner.
-             * @param {number} width The width of the rectangle.
-             * @param {number} height The height of the rectangle.
-             * @param {Object} [style] Style object
-             *
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            rect: function(topLeftPos, width, height, [style]) { },
-
-            /**
-             * Draw a polyline.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.poly}
-             *
-             * @type {function}
-             *
-             * @param {array} points An array of points. Every item should be a RoomPosition object.
-             * @param {Object} [style] Style object
-             *
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            poly: function(points, style) { },
-
-            /**
-             * Draw a text label. You can use any valid Unicode characters, including emoji.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.text}
-             *
-             * @type {function}
-             *
-             * @param {string} text The text message.
-             * @param {RoomPosition} pos The position object of the label baseline.
-             * @param {Object} [style] Style object
-             *
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            text: function(text, pos, style) { },
-
-            /**
-             * Remove all visuals from the map.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.clear}
-             *
-             * @type {function}
-             *
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            clear: function() { },
-
-            /**
-             * Get the stored size of all visuals added on the map in the current tick. It must not exceed 1024,000 (1000 KB).
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.getSize}
-             *
-             * @type {function}
-             *
-             * @return {number} The size of the visuals in bytes.
-             */
-            getSize: function() { },
-
-            /**
-             * Returns a compact representation of all visuals added on the map in the current tick.
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.export}
-             *
-             * @type {function}
-             *
-             * @return {string} A string with visuals data. There's not much you can do with the string besides store them for later.
-             */
-            export: function() { },
-
-            /**
-             * Add previously exported (with Game.map.visual.export) map visuals to the map visual data of the current tick. 
-             *
-             * @see {@link https://docs.screeps.com/api/#Game.map-visual.import}
-             *
-             * @type {function}
-             *
-             * @param {string} val The string returned from Game.map.visual.export.
-             * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
-             */
-            import: function(val) { }
-        }
+        visual: {}
     },
 
     /**
@@ -850,3 +732,134 @@ Game = {
      */
     notify: function (message, groupInterval) { }
 };
+
+/**
+ * Map visuals provide a way to show various visual debug info on the game map.
+ *
+ * @class
+ * @constructor
+ *
+ * @see {@link https://docs.screeps.com/api/#Game-map-visual}
+ */
+MapVisual = function() { };
+MapVisual.prototype = {
+    /**
+     * Draw a line.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.line}
+     *
+     * @type {function}
+     *
+     * @param {RoomPosition} pos1 The start position object.
+     * @param {RoomPosition} pos2 The finish position object.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    line: function(pos1, pos2, style) { },
+
+    /**
+     * Draw a circle.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.circle}
+     *
+     * @type {function}
+     *
+     * @param {RoomPosition} pos The position object of the center.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    circle: function(pos, style) { },
+
+    /**
+     * Draw a rectangle.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.rect}
+     *
+     * @type {function}
+     *
+     * @param {RoomPosition} topLeftPos The position object of the top-left corner.
+     * @param {number} width The width of the rectangle.
+     * @param {number} height The height of the rectangle.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    rect: function(topLeftPos, width, height, [style]) { },
+
+    /**
+     * Draw a polyline.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.poly}
+     *
+     * @type {function}
+     *
+     * @param {array} points An array of points. Every item should be a RoomPosition object.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    poly: function(points, style) { },
+
+    /**
+     * Draw a text label. You can use any valid Unicode characters, including emoji.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.text}
+     *
+     * @type {function}
+     *
+     * @param {string} text The text message.
+     * @param {RoomPosition} pos The position object of the label baseline.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    text: function(text, pos, style) { },
+
+    /**
+     * Remove all visuals from the map.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.clear}
+     *
+     * @type {function}
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    clear: function() { },
+
+    /**
+     * Get the stored size of all visuals added on the map in the current tick. It must not exceed 1024,000 (1000 KB).
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.getSize}
+     *
+     * @type {function}
+     *
+     * @return {number} The size of the visuals in bytes.
+     */
+    getSize: function() { },
+
+    /**
+     * Returns a compact representation of all visuals added on the map in the current tick.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.export}
+     *
+     * @type {function}
+     *
+     * @return {string} A string with visuals data. There's not much you can do with the string besides store them for later.
+     */
+    export: function() { },
+
+    /**
+     * Add previously exported (with Game.map.visual.export) map visuals to the map visual data of the current tick. 
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.import}
+     *
+     * @type {function}
+     *
+     * @param {string} val The string returned from Game.map.visual.export.
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    import: function(val) { }
+
+}
