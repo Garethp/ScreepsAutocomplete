@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207712729-StructurePowerBank}
+ * @see {@link https://docs.screeps.com/api/#StructurePowerBank}
  */
 StructurePowerBank = function() { };
 
@@ -15,7 +15,7 @@ StructurePowerBank.prototype =
     /**
      * The amount of power containing.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207712729-StructurePowerBank#power}
+     * @see {@link https://docs.screeps.com/api/#StructurePowerBank.power}
      *
      * @type {number}
      */
@@ -24,7 +24,7 @@ StructurePowerBank.prototype =
     /**
      * The amount of game ticks when this structure will disappear.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207712729-StructurePowerBank#ticksToDecay}
+     * @see {@link https://docs.screeps.com/api/#StructurePowerBank.ticksToDecay}
      *
      * @type {number}
      */

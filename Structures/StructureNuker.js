@@ -7,7 +7,7 @@
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker}
+ * @see {@link https://docs.screeps.com/api/#StructureNuker}
  */
 StructureNuker = function() { };
 
@@ -18,7 +18,7 @@ StructureNuker.prototype =
      *
      * The amount of energy containing in this structure.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#energy}
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.energy}
      *
      * @type {number}
      */
@@ -29,7 +29,7 @@ StructureNuker.prototype =
      *
      * The total amount of energy this structure can contain.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#energyCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.energyCapacity}
      *
      * @type {number}
      */
@@ -40,7 +40,7 @@ StructureNuker.prototype =
      *
      * The amount of ghodium containing in this structure.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#ghodium}
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.ghodium}
      *
      * @type {number}
      */
@@ -51,7 +51,7 @@ StructureNuker.prototype =
      *
      * The total amount of ghodium this structure can contain.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#ghodiumCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.ghodiumCapacity}
      *
      * @type {number}
      */
@@ -60,7 +60,7 @@ StructureNuker.prototype =
     /**
      * The amount of game ticks until the next launch is possible.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#cooldown}
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.cooldown}
      *
      * @type {number}
      */
@@ -78,13 +78,13 @@ StructureNuker.prototype =
     /**
      * Launch a nuke to the specified position.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208488255-StructureNuker#launchNuke}
+     * @see {@link https://docs.screeps.com/api/#StructureNuker.launchNuke}
      *
      * @type {function}
      *
      * @param {RoomPosition} pos The target room position.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_TIRED|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE|ERR_TIRED|ERR_RCL_NOT_ENOUGH}
      */
     launchNuke: function(pos) { }
 };

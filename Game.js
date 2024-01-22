@@ -1,7 +1,7 @@
 /**
- * The main global game object containing all the gameplay information.
+ * The main global game object containing all the game play information.
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game}
+ * @see {@link https://docs.screeps.com/api/#Game}
  *
  * @class
  */
@@ -9,19 +9,20 @@ Game = {
     /**
      * A hash containing all your construction sites with their id as hash keys.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#constructionSites}
-     * @type {Object.<string, ConstructionSite>}
+     * @see {@link https://docs.screeps.com/api/#Game.constructionSites}
+     *
+     * @type {Object<string, ConstructionSite>}
      */
     constructionSites: {},
 
     /**
      * An object containing information about your CPU usage
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#cpu}
+     * @see {@link https://docs.screeps.com/api/#Game.cpu}
      */
     cpu: {
         /**
-         * Your CPU limit depending on your Global Control Level.
+         * Your assigned CPU limit for the current shard.
          *
          * @type {number}
          */
@@ -29,7 +30,7 @@ Game = {
 
         /**
          * An amount of available CPU time at the current game tick.
-         * It can be higher than Game.cpu.limit.
+         * Usually it is higher than Game.cpu.limit.
          *
          * @type {number}
          */
@@ -45,15 +46,34 @@ Game = {
         /**
          * An object with limits for each shard with shard names as keys. You can use setShardLimits method to re-assign them.
          *
-         * @type {Object.<string,number>}
+         * @type {Object<string,number>}
          */
         shardLimits: {},
 
+        /**
+         * Whether full CPU is currently unlocked for your account.
+         *
+         * @type {boolean}
+         */
+        unlocked: false,
+
+        /**
+         * The time in milliseconds since UNIX epoch time until full CPU is unlocked for your account.
+         * This property is not defined when full CPU is not unlocked for your account or it's unlocked with a subscription.
+         *
+         * @type {number}
+         */
+        unlockedTime: 0,
+        
         /**
          * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
          * Use this method to get heap statistics for your virtual machine. The return value is almost identical to the Node.js function v8.getHeapStatistics().
          * This function returns one additional property: externally_allocated_size which is the total amount of currently allocated memory which is not included in the v8 heap but counts against this isolate's memory limit.
          * ArrayBuffer instances over a certain size are externally allocated and will be counted here.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.cpu.getHeapStatistics}
+         *
+         * @type {function}
          *
          * @return {object} Returns an objects with heap statistics in the following format:
          * {
@@ -74,31 +94,68 @@ Game = {
         /**
          * Get amount of CPU time used from the beginning of the current game tick. Always returns 0 in the Simulation mode.
          *
-         * @return {number} Returns the currently used CPU time as a float number
+         * @see {@link https://docs.screeps.com/api/#Game.cpu.getUsed}
+         *
+         * @type {function}
+         *
+         * @return {number} Returns currently used CPU time as a float number.
          */
         getUsed: function () {},
 
         /**
          * This method is only available when Virtual machine is set to Isolated in your account runtime settings.
          * Reset your runtime environment and wipe all data in heap memory.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.cpu.getHeapStatistics}
+         *
+         * @type {function}
+         *
+         * @return {void}
          */
         halt: function() {},
 
         /**
          * Allocate CPU limits to different shards. Total amount of CPU should remain equal to Game.cpu.shardLimits. This method can be used only once per 12 hours.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.cpu.setShardLimits}
+         *
+         * @type {function}
+         *
          * @param {object<string, number>} limits An object with CPU values for each shard in the same format as Game.cpu.shardLimits.
          *
-         * @return {OK|ERR_BUSY|ERR_INVALID_ARGS}
+         * @return {number|OK|ERR_BUSY|ERR_INVALID_ARGS}
          */
         setShardLimits: function(limits) {},
-    },
 
+        /**
+         * Unlock full CPU for your account for additional 24 hours.
+         * This method will consume 1 CPU unlock bound to your account (See Game.resources).
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.cpu.unlock}
+         *
+         * @type {function}
+         *
+         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL}
+         */
+        unlock: function() {},
+
+        /**
+         * Generate 1 pixel resource unit for 10000 CPU from your bucket.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.cpu.generatePixel}
+         *
+         * @type {function}
+         *
+         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES}
+         */
+        generatePixel: function() {}
+    },
 
     /**
      * A hash containing all your creeps with creep names as hash keys.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#creeps}
-     * @type {Object.<string, Creep>}
+     * @see {@link https://docs.screeps.com/api/#Game.creeps}
+     * @type {Object<string, Creep>}
      * @example
      * for(var i in Game.creeps) {
      *     Game.creeps[i].moveTo(flag);
@@ -106,12 +163,11 @@ Game = {
      */
     creeps: {},
 
-
     /**
      * A hash containing all your power creeps with their names as hash keys. Even power creeps not spawned in the world can be accessed here.
      *
      * @see {@link https://docs.screeps.com/api/#Game.powerCreeps}
-     * @type {Object.<string, PowerCreep>}
+     * @type {Object<string, PowerCreep>}
      * @example
      * for(var i in Game.powerCreeps) {
      *     Game.powerCreeps[i].moveTo(flag);
@@ -122,8 +178,8 @@ Game = {
     /**
      * A hash containing all your flags with flag names as hash keys.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#flags}
-     * @type {Object.<string, Flag>}
+     * @see {@link https://docs.screeps.com/api/#Game.flags}
+     * @type {Object<string, Flag>}
      * @example
      * creep.moveTo(Game.flags.Flag1);
      */
@@ -132,8 +188,8 @@ Game = {
     /**
      * Your Global Control Level
      *
-     * @see {@link http://docs.screeps.com/control.html}
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#gcl}
+     * @see {@link https://docs.screeps.com/control.html}
+     * @see {@link https://docs.screeps.com/api/#Game.gcl}
      */
     gcl: {
         /**
@@ -161,7 +217,7 @@ Game = {
     /**
      * Your Global Power Level, an object with the following properties :
      *
-     * @see {@link http://docs.screeps.com/power.html}
+     * @see {@link https://docs.screeps.com/power.html}
      * @see {@link https://docs.screeps.com/api/#Game.gpl}
      */
     gpl: {
@@ -190,13 +246,17 @@ Game = {
     /**
      * A global object representing world map.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map}
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#map}
+     * @see {@link https://docs.screeps.com/api/#Game.map}
      */
     map: {
         /**
+         * Gets availablity status of the room with the specified name.
          *
-         * @param {string} roomName
+         * @see {@link https://docs.screeps.com/api/#Game.map.getRoomStatus}
+         *
+         * @type {function}
+         *
+         * @param {string} roomName The room name.
          * @return {{status: 'normal' | 'closed' | 'novice' | 'respawn', timestamp: number | null}}
          */
         getRoomStatus: function (roomName) {},
@@ -215,7 +275,7 @@ Game = {
            }
          *
          * @type {function}
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#describeExits}
+         * @see {@link https://docs.screeps.com/api/#Game.map.describeExits}
          * @example
          * var exits = Game.map.describeExits('W8N3');
          */
@@ -231,14 +291,14 @@ Game = {
          * @return {number|FIND_EXIT_TOP|FIND_EXIT_RIGHT|FIND_EXIT_BOTTOM|FIND_EXIT_LEFT|ERR_NO_PATH|ERR_INVALID_ARGS}
          * @type {function}
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findExit}
+         * @see {@link https://docs.screeps.com/api/#Game.map.findExit}
          */
         findExit: function (fromRoom, toRoom, opts) {},
 
         /**
          * Find route from the given room to another room.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#findRoute}
+         * @see {@link https://docs.screeps.com/api/#Game.map.findRoute}
          *
          * @type {function}
          *
@@ -259,7 +319,7 @@ Game = {
          * Get the linear distance (in rooms) between two rooms.
          * You can use this function to estimate the energy cost of sending resources through terminals, or using observers and nukes.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#getRoomLinearDistance}
+         * @see {@link https://docs.screeps.com/api/#Game.map.getRoomLinearDistance}
          *
          * @type {function}
          *
@@ -290,7 +350,7 @@ Game = {
          *
          * @deprecated use Game.map.getRoomTerrain instead.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#getTerrainAt}
+         * @see {@link https://docs.screeps.com/api/#Game.map.getTerrainAt}
          *
          * @type {function}
          *
@@ -306,9 +366,20 @@ Game = {
         getTerrainAt: function (x, y, roomName) {},
 
         /**
-         * Check if the room with the given name is available to move into
+         * Returns the world size as a number of rooms between world corners.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/203079191-Map#isRoomAvailable}
+         * @see {@link https://docs.screeps.com/api/#Game.map.getWorldSize}
+         *
+         * @type {function}
+         *
+         * @return {number}
+         */
+        getWorldSize: function () {},
+            
+        /**
+         * Check if the room is available to move into.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.map.isRoomAvailable}
          *
          * @type {function}
          *
@@ -316,19 +387,26 @@ Game = {
          *
          * @return {boolean}
          */
-        isRoomAvailable: function (roomName) {}
+        isRoomAvailable: function (roomName) {},
+
+        /**
+         * Map visuals provide a way to show various visual debug info on the game map.
+         * @type {MapVisual}
+         */
+        visual: {}
     },
 
     /**
      * A global object representing the in-game market.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#market}
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market}
-     * @see {@link http://docs.screeps.com/market.html}
+     * @see {@link https://docs.screeps.com/api/#Game.market}
+     * @see {@link https://docs.screeps.com/market.html}
      */
     market: {
         /**
          * Your current credits balance.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.market.credits}
          *
          * @type {number}
          */
@@ -352,7 +430,7 @@ Game = {
                 price : 2.95
             }
         }]
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#incomingTransactions}
+         * @see {@link https://docs.screeps.com/api/#Game.market.incomingTransactions}
          *
          * @type {Array}
          */
@@ -376,7 +454,7 @@ Game = {
                 price : 2.95
             }
          }]
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#outgoingTransactions}
+         * @see {@link https://docs.screeps.com/api/#Game.market.outgoingTransactions}
          *
          * @type {Array}
          */
@@ -421,17 +499,17 @@ Game = {
                     price : 50000
                 }
             }
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#orders}
+         * @see {@link https://docs.screeps.com/api/#Game.market.orders}
          *
-         * @type {Array<string,Order>}
+         * @type {Object<string,Order>}
          */
-        orders: [],
+        orders: {},
 
         /**
-         * Estimate the energy transaction cost of StructureTerminal.send and Market.deal methods.
-         * The formula: Math.ceil( amount * ( Math.log( 0.1 * linearDistanceBetweenRooms + 0.9) + 0.1) )
+         * Estimate the energy transaction cost of StructureTerminal.send and Game.market.deal methods.
+         * The formula: Math.ceil( amount * ( 1 - Math.exp(-distanceBetweenRooms/30) ) )
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#calcTransactionCost}
+         * @see {@link https://docs.screeps.com/api/#Game.market.calcTransactionCost}
          *
          * @type {function}
          *
@@ -441,40 +519,39 @@ Game = {
          *
          * @return {number} The amount of energy required to perform the transaction.
          */
-        calcTransactionCost: function (amount, roomName1, roomName2) {
-        },
+        calcTransactionCost: function (amount, roomName1, roomName2) { },
 
         /**
-         * This method is still under development.
          * Cancel a previously created order.
-         * If a buy order provided, then the reserved credits amount will be refunded in full.
          * The 5% fee is not returned.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#cancelOrder}
+         * @see {@link https://docs.screeps.com/api/#Game.market.cancelOrder}
          *
          * @type {function}
          *
-         * @param {string} orderId The order ID as provided in Game.market.myOrders.
+         * @param {string} orderId The order ID as provided in Game.market.orders.
          *
          * @return {number|OK|ERR_INVALID_ARGS}
          */
-        cancelOrder: function (orderId) {
-        },
+        cancelOrder: function (orderId) { },
 
         /**
          * Change the price of an existing order.
-         * If newPrice is greater than old price, you will be charged (newPrice-oldPrice) * remainingAmount * 0.05 credits.
+         * If newPrice is greater than old price, you will be charged (newPrice-oldPrice)*remainingAmount*0.05 credits.
+         *
+         * @see {@link https://docs.screeps.com/api/#Game.market.changeOrderPrice}
+         *
+         * @type {function}
          *
          * @param {string} orderId The order ID as provided in Game.market.orders.
          * @param {number} newPrice The new order price.
-         * @return {OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
+         * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
          */
-        changeOrderPrice: function (orderId, newPrice) {
-        },
+        changeOrderPrice: function (orderId, newPrice) { },
 
         /**
          * Create a market order in your terminal.
-         * You will be charged price * amount * 0.05 credits when the order is placed.
+         * You will be charged price*amount*0.05 credits when the order is placed.
          * The maximum orders count is 300 per player.
          * You can create an order at any time with any amount, it will be automatically activated and deactivated depending on the resource/credits availability.
          *
@@ -489,10 +566,9 @@ Game = {
          * @param {number} params.totalAmount The amount of resources to be traded in total.
          * @param {string} [params.roomName] The room where your order will be created. You must have your own Terminal structure in this room, otherwise the created order will be temporary inactive. This argument is not used when resourceType equals to GAMETIME_TOKEN.
          *
-         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
+         * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
          */
-        createOrder: function (params) {
-        },
+        createOrder: function (params) { },
 
         /**
          * Execute a trade deal from your Terminal in yourRoomName to another player's Terminal using the specified buy/sell order.
@@ -501,25 +577,23 @@ Game = {
          * When multiple players try to execute the same deal, the one with the shortest distance takes precedence.
          * You cannot execute more than 10 deals during one tick.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#deal}
+         * @see {@link https://docs.screeps.com/api/#Game.market.deal}
          *
          * @type {function}
          *
-         * @param {string} orderId The order ID as provided in Game.market.getAllOrders
+         * @param {string} orderId The order ID as provided in Game.market.getAllOrders.
          * @param {number} amount The amount of resources to transfer.
-         * @param {string} [yourRoomName] The name of your room which has to contain an active Terminal with enough amount of energy. This argument is not used when the order resource type equals to SUBSCRIPTION_TOKEN.
+         * @param {string} [yourRoomName] The name of your room which has to contain an active Terminal with enough amount of energy. This argument is not used when the order resource type is one of account-bound resources (See INTERSHARD_RESOURCES constant).
          *
-         * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
+         * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS|ERR_TIRED}
          */
-        deal: function (orderId, amount, yourRoomName) {
-        },
+        deal: function (orderId, amount, yourRoomName) { },
 
         /**
-         * This method is still under development.
          * Add more capacity to an existing order. It will affect remainingAmount and totalAmount properties. You will
          * be charged price*addAmount*0.05 credits.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#extendOrder}
+         * @see {@link https://docs.screeps.com/api/#Game.market.extendOrder}
          *
          * @type {function}
          *
@@ -528,13 +602,12 @@ Game = {
          *
          * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
          */
-        extendOrder: function (orderId, addAmount) {
-        },
+        extendOrder: function (orderId, addAmount) { },
 
         /**
          * Get other players' orders currently active on the market.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getAllOrders}
+         * @see {@link https://docs.screeps.com/api/#Game.market.getAllOrders}
          *
          * @type {function}
          *
@@ -542,8 +615,7 @@ Game = {
          *
          * @return {Array<Order>} An array of Orders
          */
-        getAllOrders: function (filter) {
-        },
+        getAllOrders: function (filter) { },
 
         /**
          * Get daily price history of the specified resource on the market for the last 14 days.
@@ -556,72 +628,73 @@ Game = {
          *
          * @return {Array<{resourceType:string, date:string, transactions:number, volume:number, avgPrice:number, stddevPrice:number}>} Returns an array of objects
          */
-        getHistory: function (resourceType) {
-        },
+        getHistory: function (resourceType) { },
 
         /**
-         * This method is still under development.
          * Retrieve info for specific market order.
          *
-         * @see {@link http://support.screeps.com/hc/en-us/articles/207928635-Market#getOrderById}
+         * @see {@link https://docs.screeps.com/api/#Game.market.getOrderById}
          *
          * @type {function}
          *
-         * @param {string} id The order ID
+         * @param {string} id The order ID.
          *
-         * @return {Order} An order
+         * @return {Order} An object with the order info.
          */
-        getOrderById: function (id) {
-        }
+        getOrderById: function (id) { }
     },
 
     /**
-     * An object with your global resources that are bound to the account, like subscription tokens.
+     * An object with your global resources that are bound to the account, like pixels or cpu unlocks.
      * Each object key is a resource constant, values are resources amounts.
      *
-     * @type {Object.<string, object>}
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#resources}
+     * @see {@link https://docs.screeps.com/api/#Game.resources}
+     *
+     * @type {Object<string, number>}
      */
     resources: {},
 
     /**
      * A hash containing all the rooms available to you with room names as hash keys.
+     * A room is visible if you have a creep or an owned structure in it.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#rooms}
+     * @see {@link https://docs.screeps.com/api/#Game.rooms}
      *
-     * @type {Object.<string, Room>}
+     * @type {Object<string, Room>}
      */
     rooms: {},
 
     /**
      * An object describing the world shard where your script is currently being executed in.
      *
-     * @return {object} name - The name of the shard; type - Currently always equals to normal; ptr - Wether this shard belongs to the PTR.
+     * @see {@link https://docs.screeps.com/api/#Game.shard}
+     *
+     * @type {object} name - The name of the shard; type - Currently always equals to normal; ptr - Wether this shard belongs to the PTR.
      */
     shard: {},
 
     /**
      * A hash containing all your spawns with spawn names as hash keys.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#spawns}
+     * @see {@link https://docs.screeps.com/api/#Game.spawns}
      *
-     * @type {Object.<string, StructureSpawn>}
+     * @type {Object<string, StructureSpawn>}
      */
     spawns: {},
 
     /**
      * A hash containing all your structures with structure id as hash keys.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#structures}
+     * @see {@link https://docs.screeps.com/api/#Game.structures}
      *
-     * @type {Object.<string, Structure>}
+     * @type {Object<string, Structure>}
      */
     structures: {},
 
     /**
      * System game tick counter. It is automatically incremented on every tick.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#time}
+     * @see {@link https://docs.screeps.com/api/#Game.time}
      *
      * @type {number}
      */
@@ -632,16 +705,15 @@ Game = {
      * It may be a game object of any type.
      * Only objects from the rooms which are visible to you can be accessed.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#getObjectById}
+     * @see {@link https://docs.screeps.com/api/#Game.getObjectById}
      *
      * @type {function}
      *
      * @param {string} id The unique identificator.
      *
-     * @return {object|null}
+     * @return {object|null} Returns an object instance or null if it cannot be found.
      */
-    getObjectById: function (id) {
-    },
+    getObjectById: function (id) { },
 
     /**
      * Send a custom message at your profile email.
@@ -649,13 +721,145 @@ Game = {
      * You can schedule up to 20 notifications during one game tick.
      * Not available in the Simulation Room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016382-Game#notify}
+     * @see {@link https://docs.screeps.com/api/#Game.notify}
+     *
+     * @type {function}
      *
      * @param {string} message Custom text which will be sent in the message. Maximum length is 1000 characters.
      * @param {number} [groupInterval] If set to 0 (default), the notification will be scheduled immediately. Otherwise, it will be grouped with other notifications and mailed out later using the specified time in minutes.
      *
      * @return {void}
      */
-    notify: function (message, groupInterval) {
-    }
+    notify: function (message, groupInterval) { }
 };
+
+/**
+ * Map visuals provide a way to show various visual debug info on the game map.
+ *
+ * @class
+ * @constructor
+ *
+ * @see {@link https://docs.screeps.com/api/#Game-map-visual}
+ */
+MapVisual = function() { };
+MapVisual.prototype = {
+    /**
+     * Draw a line.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.line}
+     *
+     * @type {function}
+     *
+     * @param {RoomPosition} pos1 The start position object.
+     * @param {RoomPosition} pos2 The finish position object.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    line: function(pos1, pos2, style) { },
+
+    /**
+     * Draw a circle.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.circle}
+     *
+     * @type {function}
+     *
+     * @param {RoomPosition} pos The position object of the center.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    circle: function(pos, style) { },
+
+    /**
+     * Draw a rectangle.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.rect}
+     *
+     * @type {function}
+     *
+     * @param {RoomPosition} topLeftPos The position object of the top-left corner.
+     * @param {number} width The width of the rectangle.
+     * @param {number} height The height of the rectangle.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    rect: function(topLeftPos, width, height, [style]) { },
+
+    /**
+     * Draw a polyline.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.poly}
+     *
+     * @type {function}
+     *
+     * @param {array} points An array of points. Every item should be a RoomPosition object.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    poly: function(points, style) { },
+
+    /**
+     * Draw a text label. You can use any valid Unicode characters, including emoji.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.text}
+     *
+     * @type {function}
+     *
+     * @param {string} text The text message.
+     * @param {RoomPosition} pos The position object of the label baseline.
+     * @param {Object} [style] Style object
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    text: function(text, pos, style) { },
+
+    /**
+     * Remove all visuals from the map.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.clear}
+     *
+     * @type {function}
+     *
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    clear: function() { },
+
+    /**
+     * Get the stored size of all visuals added on the map in the current tick. It must not exceed 1024,000 (1000 KB).
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.getSize}
+     *
+     * @type {function}
+     *
+     * @return {number} The size of the visuals in bytes.
+     */
+    getSize: function() { },
+
+    /**
+     * Returns a compact representation of all visuals added on the map in the current tick.
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.export}
+     *
+     * @type {function}
+     *
+     * @return {string} A string with visuals data. There's not much you can do with the string besides store them for later.
+     */
+    export: function() { },
+
+    /**
+     * Add previously exported (with Game.map.visual.export) map visuals to the map visual data of the current tick. 
+     *
+     * @see {@link https://docs.screeps.com/api/#Game.map-visual.import}
+     *
+     * @type {function}
+     *
+     * @param {string} val The string returned from Game.map.visual.export.
+     * @return {MapVisual} The MapVisual object itself, so that you can chain calls.
+     */
+    import: function(val) { }
+
+}

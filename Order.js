@@ -14,23 +14,30 @@ Order = {
     created: 0,
 
     /**
+     * The order creation time in milliseconds since UNIX epoch time.
+     *
+     * @type {number}
+     */
+    createdTimestamp: 0,
+    
+    /**
      * Whether this order is active and visible to other players. An order can become non-active when the terminal doesn't have enough resources to sell or you are out of credits to buy.Whether this order is active and visible to other players. An order can become non-active when the terminal doesn't have enough resources to sell or you are out of credits to buy.
      *
-     * @type {boolean}
+     * @type {boolean|undefined}
      */
     active: true,
 
     /**
-     * Either ORDER_SELL or ORDER_BUY
+     * Either ORDER_SELL or ORDER_BUY.
      *
-     * @type {ORDER_SELL|ORDER_BUY}
+     * @type {string|ORDER_SELL|ORDER_BUY}
      */
     type: 'sell',
 
     /**
-     * Either one of the RESOURCE_* constants or SUBSCRIPTION_TOKEN
+     * Either one of the RESOURCE_* constants or one of account-bound resources.
      *
-     * @type {string|SUBSCRIPTION_TOKEN}
+     * @type {string}
      */
     resourceType: "",
 
@@ -54,12 +61,12 @@ Order = {
 
     /**
      * Initial order amount.
-     * @type {number}
+     * @type {number|undefined}
      */
     totalAmount: 0,
 
     /**
-     * Price
+     * The current price per unit.
      * @type {number}
      */
     price: 0

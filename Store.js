@@ -18,7 +18,8 @@ Store = function() { };
 Store.prototype =
 {
     /**
-     * Returns capacity of this store for the specified resource, or total capacity if resource is undefined.
+     * Returns capacity of this store for the specified resource.
+     * For a general purpose store, it returns total capacity if resource is undefined.
      *
      * @see {@link https://docs.screeps.com/api/#Store.getCapacity}
      *
@@ -26,12 +27,13 @@ Store.prototype =
      *
      * @param {string} [resource] The type of the resource. One of the RESOURCE_* constants.
      *
-     * @return {number|null} Returns capacity number, or null in case of a not valid resource for this store type.
+     * @return {number|null} Returns capacity number, or null in case of an invalid resource for this store type.
      */
     getCapacity: function(resource) { },
 
     /**
-     * A shorthand for getCapacity(resource) - getUsedCapacity(resource).
+     * Returns free capacity for the store.
+     * For a limited store, it returns the capacity available for the specified resource if resource is defined and valid for this store.
      *
      * @see {@link https://docs.screeps.com/api/#Store.getFreeCapacity}
      *
@@ -39,12 +41,13 @@ Store.prototype =
      *
      * @param {string} [resource] The type of the resource. One of the RESOURCE_* constants.
      *
-     * @return {number|null} Returns free capacity number, or null in case of a not valid resource for this store type.
+     * @return {number|null} Returns available capacity number, or null in case of an invalid resource for this store type.
      */
     getFreeCapacity: function(resource) { },
 
     /**
-     * Returns the capacity used by the specified resource, or total used capacity for general purpose stores if resource is undefined.
+     * Returns the capacity used by the specified resource.
+     * For a general purpose store, it returns total used capacity if resource is undefined.
      *
      * @see {@link https://docs.screeps.com/api/#Store.getUsedCapacity}
      *
@@ -54,5 +57,5 @@ Store.prototype =
      *
      * @return {number|null} Returns used capacity number, or null in case of a not valid resource for this store type.
      */
-    getUsedCapacity: function(resource) { },
+    getUsedCapacity: function(resource) { }
 };

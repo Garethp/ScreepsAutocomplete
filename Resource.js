@@ -6,7 +6,7 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203016362-Resource}
+ * @see {@link https://docs.screeps.com/api/#Resource}
  */
 Resource = function() { };
 
@@ -15,7 +15,7 @@ Resource.prototype =
     /**
      * The amount of resource units containing.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016362-Resource#amount}
+     * @see {@link https://docs.screeps.com/api/#Resource.amount}
      *
      * @type {number}
      */
@@ -25,7 +25,7 @@ Resource.prototype =
      * A unique object identificator.
      * You can use Game.getObjectById method to retrieve an object instance by its id.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016362-Resource#id}
+     * @see {@link https://docs.screeps.com/api/#Resource.id}
      *
      * @type {string}
      */
@@ -34,7 +34,7 @@ Resource.prototype =
     /**
      * One of the RESOURCE_* constants.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016362-Resource#resourceType}
+     * @see {@link https://docs.screeps.com/api/#Resource.resourceType}
      *
      * @type {string}
      */

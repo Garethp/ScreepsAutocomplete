@@ -15,7 +15,7 @@ StructureInvaderCore = function () {
 StructureInvaderCore.prototype = {
 
     /**
-     * The level of the stronghold. The amount and quality of the loot depends on the level
+     * The level of the stronghold. The amount and quality of the loot depends on the level.
      *
      * @see {@link https://docs.screeps.com/api/#StructureInvaderCore.level}
      *
@@ -24,12 +24,20 @@ StructureInvaderCore.prototype = {
     level: 0,
 
     /**
-     * Shows the timer for a not yet deployed stronghold, undefined otherwise
+     * Shows the timer for a not yet deployed stronghold, undefined otherwise.
      *
      * @see {@link https://docs.screeps.com/api/#StructureInvaderCore.ticksToDeploy}
      *
      * @return {number|undefined}
      */
-    ticksToDeploy: 0
-
+    ticksToDeploy: 0,
+    
+    /**
+     * If the core is in process of spawning a new creep, this object will contain a StructureSpawn.Spawning object, or null otherwise.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureInvaderCore.spawning}
+     *
+     * @type {object|null}
+     */
+    spawning: null
 };

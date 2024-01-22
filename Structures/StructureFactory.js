@@ -15,7 +15,7 @@ StructureFactory.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#StructureFactory.cooldown}
      *
-     * @return number
+     * @type {number}
      */
     cooldown: 0,
 
@@ -25,7 +25,7 @@ StructureFactory.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#StructureFactory.level}
      *
-     * @return {number}
+     * @type {number}
      */
     level: 0,
 
@@ -34,7 +34,7 @@ StructureFactory.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#StructureFactory.store}
      *
-     * @return {Store}
+     * @type {Store}
      */
     store: {},
 
@@ -43,7 +43,7 @@ StructureFactory.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#StructureFactory.storeCapacity}
      *
-     * @return {number}
+     * @type {number}
      */
     storeCapacity: 0,
 
@@ -54,10 +54,9 @@ StructureFactory.prototype = {
      *
      * @type {function}
      *
-     * @param {string} resourceType One of the Resource_* constants
+     * @param {string} resourceType One of the RESOURCE_* constants.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_INVALID_ARGS|ERR_TIRED|ERR_RCL_NOT_ENOUGH}
      */
-    produce: function (resourceType) {
-    }
+    produce: function (resourceType) { }
 };

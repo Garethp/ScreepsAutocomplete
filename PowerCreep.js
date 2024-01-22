@@ -3,28 +3,27 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link https://docs.screeps.com/power.html#Power-Creeps}
+ * @see {@link https://docs.screeps.com/api/#PowerCreep}
  */
 PowerCreep = function() { };
 
 PowerCreep.prototype =
 {
 
-
     /**
      * A static method to create new Power Creep instance in your account. 
      * It will be added in an unspawned state, use spawn method to spawn it in the world.
      * You need one free Power Level in your account to perform this action.
      *
-     * @see {@link https://docs.screeps.com/api/#PowerCreep.PowerCreep-create}
+     * @see {@link https://docs.screeps.com/api/#PowerCreep.create}
      *
      * @type {function}
      *
-     * @param {string} The name of the new power creep.
+     * @param {string} name The name of the new power creep.
      *
-     * @param {string} The class of the new power creep, one of the POWER_CLASS constants.
+     * @param {string} className The class of the new power creep, one of the POWER_CLASS constants.
      *
-     * @return {number|OK|ERR_NAME_EXISTS|ERR_NOT_ENOUGH_RESOURCES}
+     * @return {number|OK|ERR_NAME_EXISTS|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
      */
     create: function(name, className) { },
     
@@ -72,7 +71,7 @@ PowerCreep.prototype =
     deleteTime: 0,
 
     /**
-     * The current amount of hit points of the PowerCreep.
+     * The current amount of hit points of the creep.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.hits}
      *
@@ -81,7 +80,7 @@ PowerCreep.prototype =
     hits: 0,
 
     /**
-     * The maximum amount of hit points of the PowerCreep.
+     * The maximum amount of hit points of the creep.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.hitsMax}
      *
@@ -100,7 +99,7 @@ PowerCreep.prototype =
     id: "",
 
     /**
-     * The PowerCreep's level.
+     * The power creep's level.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.level}
      *
@@ -109,7 +108,7 @@ PowerCreep.prototype =
     level: 0,
 
     /**
-     * A shorthand to Memory.creeps[creep.name].
+     * A shorthand to Memory.powerCreeps[creep.name].
      * You can use it for quick access the creep’s specific memory data object.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.memory}
@@ -128,9 +127,9 @@ PowerCreep.prototype =
     my: true,
 
     /**
-     * Creep’s name.
-     * You can choose the name while creating a new creep, and it cannot be changed later.
-     * This name is a hash key to access the creep via the Game.creeps object.
+     * Power creep’s name.
+     * You can choose the name while creating a new power creep, and it cannot be changed later.
+     * This name is a hash key to access the creep via the Game.powerCreeps object.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.name}
      *
@@ -175,11 +174,7 @@ PowerCreep.prototype =
      *
      * @type {object}
      */
-    powers:
-    {
-        level: "",
-        cooldown: ""
-    },
+    powers: {},
 
     /**
      * The name of the shard where the power creep is spawned, or undefined.
@@ -200,7 +195,7 @@ PowerCreep.prototype =
     spawnCooldownTime: 0,
 
     /**
-     * TheThe remaining amount of game ticks after which the creep will die and become unspawned. Undefined if the creep is not spawned in the world.
+     * The remaining amount of game ticks after which the creep will die and become unspawned. Undefined if the creep is not spawned in the world.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.ticksToLive}
      *
@@ -217,7 +212,7 @@ PowerCreep.prototype =
      *
      * @param {string} methodName The name of a creep's method to be cancelled.
      *
-     * @return {number|OK|ERR_NOT_FOUND}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND}
      */
     cancelOrder: function(methodName) { },
 
@@ -230,7 +225,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {boolean} Set this to true to cancel previously scheduled deletion.
+     * @param {boolean} [cancel] Set this to true to cancel previously scheduled deletion.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY}
      */
@@ -246,7 +241,7 @@ PowerCreep.prototype =
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number} [amount] The amount of resource units to be dropped. If omitted, all the available carried amount is used.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_ARGS}
      */
     drop: function(resourceType, amount) { },
 
@@ -257,7 +252,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {StructureController} The room controller.
+     * @param {StructureController} controller The room controller.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
      */
@@ -265,29 +260,27 @@ PowerCreep.prototype =
 
     /**
      * Move the creep one square in the specified direction.
-     * Requires the MOVE body part.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.move}
      *
      * @type {function}
      *
-     * @param {number} direction One of the following constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
+     * @param {Creep|number} direction A creep nearby, or one of the following constants: TOP, TOP_RIGHT, RIGHT, BOTTOM_RIGHT, BOTTOM, BOTTOM_LEFT, LEFT, TOP_LEFT
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS|ERR_TIRED}
      */
     move: function(direction) { },
 
     /**
      * Move the creep using the specified predefined path.
-     * Requires the MOVE body part.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.moveByPath}
      *
      * @type {function}
      *
-     * @param {Array|string} path A path value as returned from Room.findPath or RoomPosition.findPathTo methods. Both array form and serialized string form are accepted.
+     * @param {Array|string} path A path value as returned from Room.findPath, RoomPosition.findPathTo, or PathFinder.search methods. Both array form and serialized string form are accepted.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_INVALID_ARGS|ERR_TIRED|ERR_NO_BODYPART}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_FOUND|ERR_INVALID_ARGS|ERR_TIRED}
      */
     moveByPath: function(path) { },
 
@@ -295,7 +288,6 @@ PowerCreep.prototype =
      * Find the optimal path to the target within the same room and move to it.
      * A shorthand to consequent calls of pos.findPathTo() and move() methods.
      * If the target is in another room, then the corresponding exit will be used as a target.
-     * Requires the MOVE body part.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.moveTo}
      *
@@ -329,7 +321,7 @@ PowerCreep.prototype =
      *
      * @alias moveTo(target, [opts])
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NO_BODYPART|ERR_INVALID_TARGET|ERR_NO_PATH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_TIRED|ERR_NOT_FOUND|ERR_INVALID_TARGET|ERR_NO_PATH}
      */
     moveTo: function(x, y, opts) { },
 
@@ -344,13 +336,12 @@ PowerCreep.prototype =
      *
      * @param {boolean} enabled Whether to enable notification or disable.
      *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_INVALID_ARGS}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_ARGS}
      */
     notifyWhenAttacked: function(enabled) { },
 
     /**
      * Pick up an item (a dropped piece of energy).
-     * Requires the CARRY body part.
      * The target has to be at adjacent square to the creep or at the same square.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.pickup}
@@ -370,7 +361,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {string} The new name of the power creep.
+     * @param {string} name The new name of the power creep.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NAME_EXISTS|ERR_BUSY}
      */
@@ -383,7 +374,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {StructurePowerBank|StructurePowerSpawn} The target structure.
+     * @param {StructurePowerBank|StructurePowerSpawn} target The target structure.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_NOT_IN_RANGE}
      */
@@ -405,23 +396,21 @@ PowerCreep.prototype =
     say: function(message, public) { },
     
     /**
-     * Sign a controller with an arbitrary text visible to all players. 
-     * This text will appear in the room UI, in the world map, and can be accessed via the API. 
-     * You can sign unowned and hostile controllers. The target has to be at adjacent square to the creep. 
-     * Pass an empty string to remove the sign.
+     * Spawn this power creep in the specified Power Spawn.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.spawn}
      *
      * @type {function}
      *
-     * @param {StructurePowerSpawn} Your Power Spawn structure.
+     * @param {StructurePowerSpawn} powerSpawn Your Power Spawn structure.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_INVALID_TARGET|ERR_TIRED|ERR_RCL_NOT_ENOUGH}
      */
     spawn: function(powerSpawn) { },
 
     /**
-     * Kill the creep immediately.
+     * Kill the power creep immediately.
+     * It will not be destroyed permanently, but will become unspawned, so that you can spawn it again.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.suicide}
      *
@@ -439,7 +428,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {Creep|Spawn|Structure} target The target object.
+     * @param {Creep|PowerCreep|Structure} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
      * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
      *
@@ -455,7 +444,7 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {number} The power ability to upgrade, one of the PWR_* constants.
+     * @param {number} power The power ability to upgrade, one of the PWR_* constants.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_FULL|ERR_INVALID_ARGS}
      */
@@ -472,26 +461,26 @@ PowerCreep.prototype =
      *
      * @type {function}
      *
-     * @param {number} The power ability to use, one of the PWR_* constants.
-     * @param {RoomObject} A target object in the room.
+     * @param {number} power The power ability to use, one of the PWR_* constants.
+     * @param {RoomObject} [target] A target object in the room.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS|ERR_TIRED|ERR_NO_BODYPART}
      */
     usePower: function(power, [target]) { },
 
     /**
-     * Withdraw resources from a structure.
+     * Withdraw resources from a structure or tombstone.
      * The target has to be at adjacent square to the creep.
-     * Multiple creeps can withdraw from the same structure in the same tick.
-     * Your creeps can withdraw resources from hostile structures as well, in case if there is no hostile rampart on top of it.
+     * Multiple creeps can withdraw from the same object in the same tick.
+     * Your creeps can withdraw resources from hostile structures/tombstones as well, in case if there is no hostile rampart on top of it.
      *
      * @see {@link https://docs.screeps.com/api/#PowerCreep.withdraw}
      *
      * @type {function}
      *
-     * @param {Structure} target The target object.
+     * @param {Structure|Tombstone|Ruin} target The target object.
      * @param {string} resourceType One of the RESOURCE_* constants.
-     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available carried amount is used.
+     * @param {number|undefined|null} [amount] The amount of resources to be transferred. If omitted, all the available amount is used.
      *
      * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE|ERR_INVALID_ARGS}
      */

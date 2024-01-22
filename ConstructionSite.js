@@ -6,7 +6,7 @@
  * @class
  * @extends {RoomObject}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite}
+ * @see {@link https://docs.screeps.com/api/#ConstructionSite}
  */
 ConstructionSite = function() { };
 
@@ -16,7 +16,7 @@ ConstructionSite.prototype =
      * A unique object identificator.
      * You can use Game.getObjectById method to retrieve an object instance by its id.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#id}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.id}
      *
      * @type {string}
      */
@@ -25,7 +25,7 @@ ConstructionSite.prototype =
     /**
      * Whether this is your own construction site.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#my}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.my}
      *
      * @type {boolean}
      */
@@ -34,7 +34,7 @@ ConstructionSite.prototype =
     /**
      * An object with the structure’s owner info
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#owner}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.owner}
      *
      * @type {{username: string}}
      */
@@ -46,7 +46,7 @@ ConstructionSite.prototype =
     /**
      * The current construction progress.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#progress}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.progress}
      *
      * @type {number}
      */
@@ -55,7 +55,7 @@ ConstructionSite.prototype =
     /**
      * The total construction progress needed for the structure to be built.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#progressTotal}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.progressTotal}
      *
      * @type {number}
      */
@@ -64,7 +64,7 @@ ConstructionSite.prototype =
     /**
      * One of the STRUCTURE_* constants.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#structureType}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.structureType}
      *
      * @type {string}
      */
@@ -73,7 +73,7 @@ ConstructionSite.prototype =
     /**
      * Remove the construction site.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/203016342-ConstructionSite#remove}
+     * @see {@link https://docs.screeps.com/api/#ConstructionSite.remove}
      *
      * @type {function}
      *

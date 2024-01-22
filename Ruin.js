@@ -16,7 +16,7 @@ Ruin.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Ruin.destroyTime}
      *
-     * @return {number}
+     * @type {number}
      */
     destroyTime: 0,
 
@@ -25,7 +25,7 @@ Ruin.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Ruin.id}
      *
-     * @return {string}
+     * @type {string}
      */
     id: "",
 
@@ -34,7 +34,7 @@ Ruin.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Ruin.store}
      *
-     * @return {Store}
+     * @type {Store}
      */
     store: {},
 
@@ -43,7 +43,7 @@ Ruin.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Ruin.structure}
      *
-     * @return {Structure|OwnedStructure}
+     * @type {Structure|OwnedStructure}
      */
     structure: {},
 
@@ -52,7 +52,7 @@ Ruin.prototype = {
      *
      * @see {@link https://docs.screeps.com/api/#Ruin.ticksToDecay}
      *
-     * @return {number}
+     * @type {number}
      */
     ticksToDecay: 0
 };
