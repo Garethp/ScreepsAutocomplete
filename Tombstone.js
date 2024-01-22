@@ -53,5 +53,5 @@ Tombstone.prototype =
      *
      * @type {number}
      */
-    ticksToDecay: 0,
+    ticksToDecay: 0
 };
