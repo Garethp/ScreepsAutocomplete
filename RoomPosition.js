@@ -55,7 +55,7 @@ RoomPosition.prototype =
      *
      * @return {number|OK|ERR_INVALID_TARGET|ERR_FULL|ERR_INVALID_ARGS|ERR_RCL_NOT_ENOUGH}
      */
-    createConstructionSite: function(structureType) { },
+    createConstructionSite: function(structureType, name) { },
 
     /**
      * Create new Flag at the specified location.
