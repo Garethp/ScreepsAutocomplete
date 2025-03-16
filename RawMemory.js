@@ -15,7 +15,7 @@ RawMemory = {
      *
      * @see {@link https://docs.screeps.com/api/#RawMemory.segments}
      *
-     * @type {object<string,string>}
+     * @type {object<number,string>}
      */
     segments: {},
 
