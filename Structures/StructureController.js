@@ -6,7 +6,7 @@
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController}
+ * @see {@link https://docs.screeps.com/api/#StructureController}
  */
 StructureController = function() { };
 
@@ -14,40 +14,40 @@ StructureController.prototype =
 {
 
     /**
-     * Ticks left before another safeMode can be used
+     * During this period in ticks new safe mode activations will be blocked, undefined if cooldown is inactive.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#safeModeCooldown}
+     * @see {@link https://docs.screeps.com/api/#StructureController.safeModeCooldown}
      *
      * @type {number}
      */
     safeModeCooldown: 0,
     
     /**
-     * The number of available safeMode activations
+     * Safe mode activations available to use.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#safeModeAvailable}
+     * @see {@link https://docs.screeps.com/api/#StructureController.safeModeAvailable}
      *
      * @type {number}
      */
     safeModeAvailable: 0,
 
     /**
-     * Returns if safeMode is active. If not this will return undefined, not false.
+     * How many ticks of safe mode remaining, or undefined.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#safeMode}
+     * @see {@link https://docs.screeps.com/api/#StructureController.safeMode}
      *
-     * @type {Boolean|undefined}
+     * @type {number|undefined}
      */
-    safeMode: undefined,
+    safeMode: 0,
 
     /**
-     * Triggers the activation of a saveMode if possible and available
+     * Activate safe mode if available.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#activateSafeMode}
+     * @see {@link https://docs.screeps.com/api/#StructureController.activateSafeMode}
      *
      * @type {function}
      *
-     * @return {OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_TIRED}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_BUSY|ERR_NOT_ENOUGH_RESOURCES|ERR_TIRED}
      */
     activateSafeMode: function() {},
     
@@ -63,7 +63,7 @@ StructureController.prototype =
     /**
      * Current controller level, from 0 to 8.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#level}
+     * @see {@link https://docs.screeps.com/api/#StructureController.level}
      *
      * @type {number}
      */
@@ -72,7 +72,7 @@ StructureController.prototype =
     /**
      * The current progress of upgrading the controller to the next level.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#progress}
+     * @see {@link https://docs.screeps.com/api/#StructureController.progress}
      *
      * @type {number}
      */
@@ -81,7 +81,7 @@ StructureController.prototype =
     /**
      * The progress needed to reach the next level.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#progressTotal}
+     * @see {@link https://docs.screeps.com/api/#StructureController.progressTotal}
      *
      * @type {number}
      */
@@ -90,17 +90,69 @@ StructureController.prototype =
     /**
      * An object with the controller reservation info if present
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#reservation}
+     * @see {@link https://docs.screeps.com/api/#StructureController.reservation}
      *
-     * @type {null|{username: string, ticksToEnd: number}}
+     * @type {null|object}
      */
-    reservation: {},
+    reservation: {
+
+        /**
+         * The name of a player who reserved this controller.
+         *
+         * @type {string}
+         */
+        username: "",
+
+        /**
+         * The amount of game ticks when the reservation will end.
+         *
+         * @type {number}
+         */
+        ticksToEnd: 0
+    },
 
     /**
-     * The amount of game ticks when this controller will lose one level.
-     * This timer can be reset by using Creep.upgradeController.
+     * An object with the controller sign info
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#ticksToDowngrade}
+     * @see {@link https://docs.screeps.com/api/#StructureController.sign}
+     *
+     * @type {object|undefined}
+     */
+    sign: {
+        /**
+         * The name of a player who signed this controller.
+         *
+         * @type {string}
+         */
+        username: "",
+
+        /**
+         * The sign text.
+         *
+         * @type {string}
+         */
+        text: "",
+        
+        /**
+         * The sign time in game ticks.
+         *
+         * @type {number}
+         */
+        time: 0,
+        
+        /**
+         * The sign real date.
+         *
+         * @type {Date}
+         */
+        datetime: ""
+    },
+    
+    /**
+     * The amount of game ticks when this controller will lose one level.
+     * This timer is set to 50% on level upgrade or downgrade, and it can be increased by using Creep.upgradeController. Must be full to upgrade the controller to the next level.
+     *
+     * @see {@link https://docs.screeps.com/api/#StructureController.ticksToDowngrade}
      *
      * @type {number}
      */
@@ -108,8 +160,9 @@ StructureController.prototype =
 
     /**
      * The amount of game ticks while this controller cannot be upgraded due to attack.
+     * Safe mode is also unavailable during this period.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#upgradeBlocked}
+     * @see {@link https://docs.screeps.com/api/#StructureController.upgradeBlocked}
      *
      * @type {number}
      */
@@ -118,7 +171,7 @@ StructureController.prototype =
     /**
      * Make your claimed controller neutral again.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711889-StructureController#unclaim}
+     * @see {@link https://docs.screeps.com/api/#StructureController.unclaim}
      *
      * @type {function}
      *

@@ -1,13 +1,13 @@
 /**
  * Remotely attacks or heals creeps, or repairs structures.
  * Can be targeted to any object in the room.
- * However, its effectiveness highly depends on the distance.
+ * However, its effectiveness linearly depends on the distance.
  * Each action consumes energy.
  *
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower}
+ * @see {@link https://docs.screeps.com/api/#StructureTower}
  */
 StructureTower = function() { };
 
@@ -16,7 +16,7 @@ StructureTower.prototype =
     /**
      * @deprecated Since version 4.x, replaced by `.store[RESOURCE_ENERGY]`.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#energy}
+     * @see {@link https://docs.screeps.com/api/#StructureTower.energy}
      *
      * @type {number}
      */
@@ -25,7 +25,7 @@ StructureTower.prototype =
     /**
      * @deprecated Since version 4.x, replaced by `.store.getCapacity(RESOURCE_ENERGY)`.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#energyCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureTower.energyCapacity}
      *
      * @type {number}
      */
@@ -41,61 +41,41 @@ StructureTower.prototype =
     store: {},
 
     /**
-     * Remotely attack any creep in the room.
+     * Remotely attack any creep, power creep or structure in the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#attack}
+     * @see {@link https://docs.screeps.com/api/#StructureTower.attack}
      *
      * @type {function}
      *
-     * @param {Creep} target The target creep.
+     * @param {Creep|PowerCreep|Structure} target The target creep.
      *
-     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
      */
     attack: function(target) { },
 
-
     /**
-     * Remotely heal any creep in the room.
+     * Remotely heal any creep or power creep in the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#heal}
+     * @see {@link https://docs.screeps.com/api/#StructureTower.heal}
      *
      * @type {function}
      *
-     * @param {Creep} target The target creep.
+     * @param {Creep|PowerCreep} target The target creep.
      *
-     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
      */
     heal: function(target) { },
-
 
     /**
      * Remotely repair any structure in the room.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#repair}
+     * @see {@link https://docs.screeps.com/api/#StructureTower.repair}
      *
      * @type {function}
      *
-     * @param {Spawn|Structure} target The target structure.
+     * @param {Structure} target The target structure.
      *
-     * @return {number|OK|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
+     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_ENERGY|ERR_INVALID_TARGET|ERR_RCL_NOT_ENOUGH}
      */
-    repair: function(target) { },
-
-
-    /**
-     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
-     *
-     * Transfer energy from the structure to a creep.
-     * You can transfer resources to your creeps from hostile structures as well.
-     *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208437105-StructureTower#transferEnergy}
-     *
-     * @type {function}
-     *
-     * @param {Creep} target The creep object which energy should be transferred to.
-     * @param {number|undefined|null} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
-     *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
-     */
-    transferEnergy: function(target, amount) { }
+    repair: function(target) { }
 };

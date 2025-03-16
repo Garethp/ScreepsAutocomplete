@@ -5,7 +5,7 @@
  * @class
  * @extends {OwnedStructure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/207711949-StructureExtension}
+ * @see {@link https://docs.screeps.com/api/#StructureExtension}
  */
 StructureExtension = function() { };
 
@@ -16,7 +16,7 @@ StructureExtension.prototype =
      *
      * The amount of energy containing in the extension.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711949-StructureExtension#energy}
+     * @see {@link https://docs.screeps.com/api/#StructureExtension.energy}
      *
      * @type {number}
      */
@@ -27,7 +27,7 @@ StructureExtension.prototype =
      *
      * The total amount of energy the extension can contain.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711949-StructureExtension#energyCapacity}
+     * @see {@link https://docs.screeps.com/api/#StructureExtension.energyCapacity}
      *
      * @type {number}
      */
@@ -40,22 +40,6 @@ StructureExtension.prototype =
      *
      * @type {Store}
      */
-    store: {},
+    store: {}
 
-    /**
-     * @deprecated Since version 2016-07-11, replaced by `Creep.withdraw()`.
-     *
-     * Transfer the energy from the extension to a creep.
-     * You can transfer resources to your creeps from hostile structures as well.
-     *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/207711949-StructureExtension#transferEnergy}
-     *
-     * @type {function}
-     *
-     * @param {Creep} target The creep object which energy should be transferred to.
-     * @param {number|undefined|null} [amount] The amount of energy to be transferred. If omitted, all the remaining amount of energy will be used.
-     *
-     * @return {number|OK|ERR_NOT_OWNER|ERR_NOT_ENOUGH_RESOURCES|ERR_INVALID_TARGET|ERR_FULL|ERR_NOT_IN_RANGE}
-     */
-    transferEnergy: function(target, amount) { }
 };

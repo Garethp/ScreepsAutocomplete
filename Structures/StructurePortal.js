@@ -6,25 +6,26 @@
  * @class
  * @extends {Structure}
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/208647345-StructurePortal}
+ * @see {@link https://docs.screeps.com/api/#StructurePortal}
  */
 StructurePortal = function() { };
 
 StructurePortal.prototype =
 {
     /**
-     * The position object in the destination room.
+     * If this is an inter-room portal, then this property contains a RoomPosition object leading to the point in the destination room.
+     * If this is an inter-shard portal, then this property contains an object with shard and room string properties.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208647345-StructurePortal#destination}
+     * @see {@link https://docs.screeps.com/api/#StructurePortal.destination}
      *
-     * @type {RoomPosition}
+     * @type {RoomPosition|object}
      */
     destination: null,
 
     /**
      * The amount of game ticks when the portal disappears, or undefined when the portal is stable.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/208647345-StructurePortal#ticksToDecay}
+     * @see {@link https://docs.screeps.com/api/#StructurePortal.ticksToDecay}
      *
      * @type {undefined|number}
      */

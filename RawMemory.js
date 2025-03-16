@@ -3,7 +3,7 @@
  *
  * @class
  *
- * @see {@link http://support.screeps.com/hc/en-us/articles/205619121-RawMemory}
+ * @see {@link https://docs.screeps.com/api/#RawMemory}
  */
 RawMemory = {
     /**
@@ -15,7 +15,7 @@ RawMemory = {
      *
      * @see {@link https://docs.screeps.com/api/#RawMemory.segments}
      *
-     * @type {object<string,string>}
+     * @type {object<number,string>}
      */
     segments: {},
 
@@ -49,7 +49,7 @@ RawMemory = {
     /**
      * Get a raw string representation of the Memory object.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205619121-RawMemory#get}
+     * @see {@link https://docs.screeps.com/api/#RawMemory.get}
      *
      * @type {function}
      *
@@ -58,13 +58,13 @@ RawMemory = {
     get: function() { },
 
     /**
-     * Set new memory value.
+     * Set new Memory value.
      *
-     * @see {@link http://support.screeps.com/hc/en-us/articles/205619121-RawMemory#set}
+     * @see {@link https://docs.screeps.com/api/#RawMemory.set}
      *
      * @type {function}
      *
-     * @param {string} value
+     * @param {string} value New memory value as a string.
      *
      * @return {void}
      */
@@ -131,5 +131,5 @@ RawMemory = {
      *
      * @return {void}
      */
-    setPublicSegments: function(ids) { },
+    setPublicSegments: function(ids) { }
 };
